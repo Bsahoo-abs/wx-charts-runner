@@ -1,4 +1,4 @@
-# Every 15 minutes: for each model, make the PNG charts + GIFs of its newest complete run (if not made yet),
+# Every 30 minutes: for each model, make the PNG charts + GIFs of its newest complete run (if not made yet),
 # then publish everything to Cloudflare Pages. The chart code itself lives in your PRIVATE repository (v2).
 #
 # Needs (Settings -> Secrets and variables -> Actions):
@@ -11,7 +11,7 @@ name: charts
 
 on:
   schedule:
-    - cron: "4,19,34,49 * * * *"     # every 15 minutes: a new model run is on the site soon after it is out
+    - cron: "4,34 * * * *"           # every 30 minutes: a new model run is on the site soon after it is out
   push:                              # also runs when this schedule file is changed
     paths: [".github/workflows/charts.yml"]
   workflow_dispatch:                 # "Run workflow" button
