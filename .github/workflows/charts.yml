@@ -1,5 +1,5 @@
 # Every 2 hours: for each model, make the PNG charts + GIFs of its newest complete run (if not made yet),
-# then publish everything to Cloudflare Pages. The chart code itself lives in your PRIVATE repository.
+# then publish everything to Cloudflare Pages. The chart code itself lives in your PRIVATE repository (v2).
 #
 # Needs (Settings -> Secrets and variables -> Actions):
 #   secrets   CODE_TOKEN              GitHub token that can READ the private code repository
