@@ -1,6 +1,7 @@
 # ensembles: cyclone-ensemble track videos (MP4 + GIF)
 # Every 30 minutes: for each model, make the cyclone-ensemble track videos (MP4 + GIF) of its newest complete run (if not made yet), then publish
-# the whole website to Cloudflare Pages. The code itself lives in your PRIVATE repository.
+# the whole website to Cloudflare Pages. The code itself lives in your PRIVATE repository. (models: GFS, AIGFS,
+# ECMWF, AIFS, ICON, GEM; ensembles: GEFS, AIGEFS, ECMWF ENS, AIFS ENS)
 #   secrets   CODE_TOKEN, CLOUDFLARE_API_TOKEN, CLOUDFLARE_ACCOUNT_ID
 #   variables CODE_REPO (yourname/wx-charts-code), PAGES_PROJECT (odisha-wx-charts)
 name: ensembles
