@@ -32,7 +32,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        model: [ECMWF, AIFS, GFS, AIGFS]
+        model: [ECMWF, AIFS, GFS, AIGFS, ICON, GEM]
     steps:
       - name: Get the code (private repository)
         uses: actions/checkout@v5
@@ -157,6 +157,10 @@ jobs:
           with: { path: site/GFS, key: site-GFS-none, restore-keys: site-GFS- } }
       - { name: 'site AIGFS', if: steps.check.outputs.any == 'true', uses: actions/cache/restore@v4,
           with: { path: site/AIGFS, key: site-AIGFS-none, restore-keys: site-AIGFS- } }
+      - { name: 'site ICON', if: steps.check.outputs.any == 'true', uses: actions/cache/restore@v4,
+          with: { path: site/ICON, key: site-ICON-none, restore-keys: site-ICON- } }
+      - { name: 'site GEM', if: steps.check.outputs.any == 'true', uses: actions/cache/restore@v4,
+          with: { path: site/GEM, key: site-GEM-none, restore-keys: site-GEM- } }
       - { name: 'vid ECMWF', if: steps.check.outputs.any == 'true', uses: actions/cache/restore@v4,
           with: { path: site/vid/ECMWF, key: vid-ECMWF-none, restore-keys: vid-ECMWF- } }
       - { name: 'vid AIFS', if: steps.check.outputs.any == 'true', uses: actions/cache/restore@v4,
@@ -165,6 +169,10 @@ jobs:
           with: { path: site/vid/GFS, key: vid-GFS-none, restore-keys: vid-GFS- } }
       - { name: 'vid AIGFS', if: steps.check.outputs.any == 'true', uses: actions/cache/restore@v4,
           with: { path: site/vid/AIGFS, key: vid-AIGFS-none, restore-keys: vid-AIGFS- } }
+      - { name: 'vid ICON', if: steps.check.outputs.any == 'true', uses: actions/cache/restore@v4,
+          with: { path: site/vid/ICON, key: vid-ICON-none, restore-keys: vid-ICON- } }
+      - { name: 'vid GEM', if: steps.check.outputs.any == 'true', uses: actions/cache/restore@v4,
+          with: { path: site/vid/GEM, key: vid-GEM-none, restore-keys: vid-GEM- } }
       - { name: 'ens ECMWF_ENS', if: steps.check.outputs.any == 'true', uses: actions/cache/restore@v4,
           with: { path: site/ens/ECMWF_ENS, key: ens-ECMWF_ENS-none, restore-keys: ens-ECMWF_ENS- } }
       - { name: 'ens AIFS_ENS', if: steps.check.outputs.any == 'true', uses: actions/cache/restore@v4,
