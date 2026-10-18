@@ -12,6 +12,8 @@ name: charts
 on:
   schedule:
     - cron: "7 */2 * * *"            # every 2 hours (UTC); GitHub may start a few minutes late
+  push:                              # also runs when this schedule file is changed
+    paths: [".github/workflows/charts.yml"]
   workflow_dispatch:                 # "Run workflow" button
     inputs:
       force:
@@ -29,7 +31,7 @@ permissions:
 
 jobs:
   charts:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 150
     strategy:
       fail-fast: false               # one model failing does not stop the others
@@ -37,7 +39,7 @@ jobs:
         model: [ECMWF, AIFS, GFS, AIGFS]
     steps:
       - name: Get the chart code (private repository)
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: ${{ vars.CODE_REPO }}
           token: ${{ secrets.CODE_TOKEN }}
@@ -56,7 +58,7 @@ jobs:
           path: ~/.local/share/cartopy
           key: cartopy-v1
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.11"
           cache: pip
@@ -65,7 +67,7 @@ jobs:
       - name: Install
         run: |
           pip install -q -r code/requirements.txt
-          python -c "import eccodes, cartopy; print('eccodes', eccodes.codes_get_api_version())"
+          python -c "import cartopy, eccodes; print('eccodes', eccodes.codes_get_api_version())"   # cartopy FIRST (other order crashes)
 
       - name: Make the charts
         id: run
@@ -105,7 +107,7 @@ jobs:
   publish:
     needs: charts
     if: always()
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
     steps:
       - name: Anything new?
@@ -125,7 +127,7 @@ jobs:
             echo "any=false" >> "$GITHUB_OUTPUT"; echo "no new run - nothing to publish"
           fi
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         if: steps.check.outputs.any == 'true'
         with:
           repository: ${{ vars.CODE_REPO }}
