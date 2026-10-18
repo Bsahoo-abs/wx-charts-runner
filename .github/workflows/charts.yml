@@ -1,20 +1,16 @@
-# Every 30 minutes: for each model, make the PNG charts + GIFs of its newest complete run (if not made yet),
-# then publish everything to Cloudflare Pages. The chart code itself lives in your PRIVATE repository (v2).
-#
-# Needs (Settings -> Secrets and variables -> Actions):
-#   secrets   CODE_TOKEN              GitHub token that can READ the private code repository
-#             CLOUDFLARE_API_TOKEN    Cloudflare token with "Cloudflare Pages: Edit"
-#             CLOUDFLARE_ACCOUNT_ID   your Cloudflare account ID
-#   variables CODE_REPO               e.g. yourname/wx-charts-code
-#             PAGES_PROJECT           e.g. odisha-wx-charts  (becomes https://odisha-wx-charts.pages.dev)
+# charts: PNG charts + GIFs
+# Every 30 minutes: for each model, make the PNG charts + GIFs of its newest complete run (if not made yet), then publish
+# the whole website to Cloudflare Pages. The code itself lives in your PRIVATE repository.
+#   secrets   CODE_TOKEN, CLOUDFLARE_API_TOKEN, CLOUDFLARE_ACCOUNT_ID
+#   variables CODE_REPO (yourname/wx-charts-code), PAGES_PROJECT (odisha-wx-charts)
 name: charts
 
 on:
   schedule:
-    - cron: "4,34 * * * *"           # every 30 minutes: a new model run is on the site soon after it is out
-  push:                              # also runs when this schedule file is changed
+    - cron: "4,34 * * * *"
+  push:                              # also runs when this file is changed
     paths: [".github/workflows/charts.yml"]
-  workflow_dispatch:                 # "Run workflow" button
+  workflow_dispatch:
     inputs:
       force:
         description: "Make the newest runs again even if already published"
@@ -27,25 +23,25 @@ concurrency:
 
 permissions:
   contents: read
-  actions: write                     # to delete old saved chart sets (keeps the cache small)
+  actions: write                     # to delete old saved sets (keeps the cache small)
 
 jobs:
-  charts:
+  make:
     runs-on: ubuntu-24.04
     timeout-minutes: 150
     strategy:
-      fail-fast: false               # one model failing does not stop the others
+      fail-fast: false
       matrix:
         model: [ECMWF, AIFS, GFS, AIGFS]
     steps:
-      - name: Get the chart code (private repository)
+      - name: Get the code (private repository)
         uses: actions/checkout@v5
         with:
           repository: ${{ vars.CODE_REPO }}
           token: ${{ secrets.CODE_TOKEN }}
           path: code
 
-      - name: Restore this model's published charts
+      - name: Restore this model's published files
         uses: actions/cache/restore@v4
         with:
           path: site/${{ matrix.model }}
@@ -67,15 +63,16 @@ jobs:
       - name: Install
         run: |
           pip install -q -r code/requirements.txt
-          python -c "import cartopy, eccodes; print('eccodes', eccodes.codes_get_api_version())"   # cartopy FIRST (other order crashes)
+          python -c "import cartopy, eccodes; print('eccodes', eccodes.codes_get_api_version())"   # cartopy FIRST
 
       - name: Make the charts
         id: run
         env:
           MPLBACKEND: Agg
         run: |
-          python code/cloud_run.py --model ${{ matrix.model }} --site site --work work \
-            ${{ inputs.force && '--force' || '' }} 2>&1 | tee run.log
+          cd code
+          python cloud_run.py --model ${{ matrix.model }} --site ../site --work ../work \
+            ${{ inputs.force && '--force' || '' }} 2>&1 | tee ../run.log
 
       - name: Show problems in the run summary
         if: always()
@@ -87,14 +84,14 @@ jobs:
           except FileNotFoundError:
               raise SystemExit
           key = re.compile(r"fail|error|traceback|skipp|missing|warning|not on the server|complete to|finished at|"
-                           r"steps to download|done \(|charts on|pictures|nothing to do|exception|  File ", re.I)
-          pick = [l for l in lines if key.search(l)] + ["--- last lines ---"] + lines[-25:]
+                           r"steps to download|done \(|charts on|pictures|videos|MB|nothing to do|exception|  File ", re.I)
+          pick = [l for l in lines if key.search(l) and "piece" not in l] + ["--- last lines ---"] + lines[-25:]
           for i in range(0, min(len(pick), 400), 40):
               msg = "%0A".join(x.replace("%", "%25")[:300] for x in pick[i:i + 40])
               print(f"::warning title=${{ matrix.model }} log {i // 40 + 1}::{msg}")
           PY
 
-      - name: Save this model's charts
+      - name: Save this model's files
         if: steps.run.outputs.updated == 'true'
         uses: actions/cache/save@v4
         with:
@@ -122,13 +119,15 @@ jobs:
           retention-days: 1
 
   publish:
-    needs: charts
+    needs: make
     if: always()
     runs-on: ubuntu-24.04
-    timeout-minutes: 30
+    timeout-minutes: 40
+    concurrency:                     # one publish at a time across charts / videos / ensembles
+      group: publish
+      cancel-in-progress: false
     steps:
       - name: Anything new?
-        id: new
         uses: actions/download-artifact@v4
         continue-on-error: true
         with:
@@ -141,7 +140,7 @@ jobs:
           if [ -d updated ] && [ -n "$(ls -A updated 2>/dev/null)" ]; then
             echo "any=true" >> "$GITHUB_OUTPUT"; echo "new: $(ls updated | tr '\n' ' ')"
           else
-            echo "any=false" >> "$GITHUB_OUTPUT"; echo "no new run - nothing to publish"
+            echo "any=false" >> "$GITHUB_OUTPUT"; echo "nothing new - nothing to publish"
           fi
 
       - uses: actions/checkout@v5
@@ -150,15 +149,30 @@ jobs:
           repository: ${{ vars.CODE_REPO }}
           token: ${{ secrets.CODE_TOKEN }}
           path: code
-
-      - { name: ECMWF, if: steps.check.outputs.any == 'true', uses: actions/cache/restore@v4,
+      - { name: 'site ECMWF', if: steps.check.outputs.any == 'true', uses: actions/cache/restore@v4,
           with: { path: site/ECMWF, key: site-ECMWF-none, restore-keys: site-ECMWF- } }
-      - { name: AIFS, if: steps.check.outputs.any == 'true', uses: actions/cache/restore@v4,
+      - { name: 'site AIFS', if: steps.check.outputs.any == 'true', uses: actions/cache/restore@v4,
           with: { path: site/AIFS, key: site-AIFS-none, restore-keys: site-AIFS- } }
-      - { name: GFS, if: steps.check.outputs.any == 'true', uses: actions/cache/restore@v4,
+      - { name: 'site GFS', if: steps.check.outputs.any == 'true', uses: actions/cache/restore@v4,
           with: { path: site/GFS, key: site-GFS-none, restore-keys: site-GFS- } }
-      - { name: AIGFS, if: steps.check.outputs.any == 'true', uses: actions/cache/restore@v4,
+      - { name: 'site AIGFS', if: steps.check.outputs.any == 'true', uses: actions/cache/restore@v4,
           with: { path: site/AIGFS, key: site-AIGFS-none, restore-keys: site-AIGFS- } }
+      - { name: 'vid ECMWF', if: steps.check.outputs.any == 'true', uses: actions/cache/restore@v4,
+          with: { path: site/vid/ECMWF, key: vid-ECMWF-none, restore-keys: vid-ECMWF- } }
+      - { name: 'vid AIFS', if: steps.check.outputs.any == 'true', uses: actions/cache/restore@v4,
+          with: { path: site/vid/AIFS, key: vid-AIFS-none, restore-keys: vid-AIFS- } }
+      - { name: 'vid GFS', if: steps.check.outputs.any == 'true', uses: actions/cache/restore@v4,
+          with: { path: site/vid/GFS, key: vid-GFS-none, restore-keys: vid-GFS- } }
+      - { name: 'vid AIGFS', if: steps.check.outputs.any == 'true', uses: actions/cache/restore@v4,
+          with: { path: site/vid/AIGFS, key: vid-AIGFS-none, restore-keys: vid-AIGFS- } }
+      - { name: 'ens ECMWF_ENS', if: steps.check.outputs.any == 'true', uses: actions/cache/restore@v4,
+          with: { path: site/ens/ECMWF_ENS, key: ens-ECMWF_ENS-none, restore-keys: ens-ECMWF_ENS- } }
+      - { name: 'ens AIFS_ENS', if: steps.check.outputs.any == 'true', uses: actions/cache/restore@v4,
+          with: { path: site/ens/AIFS_ENS, key: ens-AIFS_ENS-none, restore-keys: ens-AIFS_ENS- } }
+      - { name: 'ens GEFS', if: steps.check.outputs.any == 'true', uses: actions/cache/restore@v4,
+          with: { path: site/ens/GEFS, key: ens-GEFS-none, restore-keys: ens-GEFS- } }
+      - { name: 'ens AIGEFS', if: steps.check.outputs.any == 'true', uses: actions/cache/restore@v4,
+          with: { path: site/ens/AIGEFS, key: ens-AIGEFS-none, restore-keys: ens-AIGEFS- } }
 
       - name: Build the website
         if: steps.check.outputs.any == 'true'
