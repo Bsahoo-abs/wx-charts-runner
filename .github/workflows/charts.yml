@@ -1,4 +1,4 @@
-# Every 2 hours: for each model, make the PNG charts + GIFs of its newest complete run (if not made yet),
+# Every 15 minutes: for each model, make the PNG charts + GIFs of its newest complete run (if not made yet),
 # then publish everything to Cloudflare Pages. The chart code itself lives in your PRIVATE repository (v2).
 #
 # Needs (Settings -> Secrets and variables -> Actions):
@@ -11,7 +11,7 @@ name: charts
 
 on:
   schedule:
-    - cron: "7 */2 * * *"            # every 2 hours (UTC); GitHub may start a few minutes late
+    - cron: "4,19,34,49 * * * *"     # every 15 minutes: a new model run is on the site soon after it is out
   push:                              # also runs when this schedule file is changed
     paths: [".github/workflows/charts.yml"]
   workflow_dispatch:                 # "Run workflow" button
@@ -75,7 +75,7 @@ jobs:
           MPLBACKEND: Agg
         run: |
           python code/cloud_run.py --model ${{ matrix.model }} --site site --work work \
-            ${{ (inputs.force || github.event_name == 'push') && '--force' || '' }} 2>&1 | tee run.log
+            ${{ inputs.force && '--force' || '' }} 2>&1 | tee run.log
 
       - name: Show problems in the run summary
         if: always()
