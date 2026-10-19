@@ -1,0 +1,36 @@
+WCS 2.0.1: HTTP 200 560905 bytes, 8 coverages, iodc: []
+WCS 1.1.1: HTTP 200 6751 bytes, 0 coverages, iodc: []
+WCS 1.0.0: HTTP 200 7505 bytes, 0 coverages, iodc: []
+GetCoverage msg_iodc__ir108 image/tiff: HTTP Error 404: 
+GetCoverage msg_iodc__ir108 image/geotiff: HTTP Error 404: 
+GetCoverage msg_iodc__ir108 application/x-netcdf: HTTP Error 404: 
+GetCoverage msg_iodc:ir108 image/tiff: HTTP Error 404: 
+GetCoverage msg_iodc:ir108 image/geotiff: HTTP Error 404: 
+GetCoverage msg_iodc:ir108 application/x-netcdf: HTTP Error 404: 
+GetFeatureInfo application/json: HTTP 200 application/json;charset=UTF-8: {"type":"FeatureCollection","features":[{"type":"Feature","id":"","geometry":null,"properties":{"RED_BAND":31,"GREEN_BAND":31,"BLUE_BAND":31}}],"totalFeatures":"unknown","numberReturned":1,"timeStamp":"2026-10-19T17:35:06.996Z","crs":null}
+GetFeatureInfo text/plain: HTTP 200 text/plain;charset=UTF-8: Results for FeatureType 'http://www.eumetsat.int/msg_iodc:ir108':
+--------------------------------------------
+RED_BAND = 31.0
+GREEN_BAND = 31.0
+BLUE_BAND = 31.0
+--------------------------------------------
+
+GetMap image/geotiff: HTTP 200 image/geotiff 4321452 bytes
+   getmap_ir108.tif: dtype uint8 shape (1200, 1200, 3) min 15.00 max 255.00 mean 63.98 uniq 241
+GetMap image/png: HTTP 200 image/png 229645 bytes
+   png fine: changes along one row of 1200 px: 193 (~native px count over 12 deg)
+SLD K: HTTP 200 text/xml;charset=UTF-8 496 bytes
+   <?xml version="1.0" encoding="UTF-8"?><ServiceExceptionReport version="1.3.0" xmlns="http://www.opengis.net/ogc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/ogc https://view.eumetsat.int/geoserver/schemas/wms/1.3.0/exceptions_1_3_0.xsd">   <ServiceException>
+      Error rendering coverage on the fast path
+java.lang.IllegalArgumentException: Band
+SLD C: HTTP 200 text/xml;charset=UTF-8 496 bytes
+   <?xml version="1.0" encoding="UTF-8"?><ServiceExceptionReport version="1.3.0" xmlns="http://www.opengis.net/ogc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/ogc https://view.eumetsat.int/geoserver/schemas/wms/1.3.0/exceptions_1_3_0.xsd">   <ServiceException>
+      Error rendering coverage on the fast path
+java.lang.IllegalArgumentException: Band
+Legend json: {"Legend": [{
+  "layerName": "ir108",
+  "title": "High Rate SEVIRI IR10.8 μm Image - MSG - Indian Ocean",
+  "rules": [{"symbolizers": [{"Raster": {"opacity": "1.0"}}]}]
+}]}
+AWS noaa-himawari9: HTTP 200: [b'AHI-L1b-FLDK/', b'AHI-L1b-FLDK/2022/', b'AHI-L1b-FLDK/2023/', b'AHI-L1b-FLDK/2024/', b'AHI-L1b-FLDK/2025/', b'AHI-L1b-FLDK/2026/']
+AWS noaa-gk2a-pds: HTTP 200: [b'AMI/', b'GK2A/', b'LV1/']
