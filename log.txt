@@ -1,0 +1,41 @@
+  got gk2a_ami_le1b_ir105_fd020ge_202610191710.nc 35 MB in 1s
+  got gk2a_ami_le1b_wv063_fd020ge_202610191710.nc 18 MB in 1s
+  got gk2a_ami_le1b_wv069_fd020ge_202610191710.nc 27 MB in 1s
+ir 2026-10-19 17:10:00+00:00 3 files
+/home/runner/.local/lib/python3.12/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/home/runner/.local/lib/python3.12/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/home/runner/.local/lib/python3.12/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/home/runner/.local/lib/python3.12/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/home/runner/.local/lib/python3.12/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/home/runner/.local/lib/python3.12/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+  resampled in 2 s
+  IR105: 187.7..297.7 nan 0.00
+  WV063: 190.5..252.5 nan 0.00
+  WV069: 188.3..261.4 nan 0.00
+day 2026-10-19 06:00:00+00:00 0 files
+Traceback (most recent call last):
+  File "/home/runner/work/wx-charts-runner/wx-charts-runner/code/tools/probe_gk2a.py", line 102, in <module>
+    main(sys.argv[1])
+  File "/home/runner/work/wx-charts-runner/wx-charts-runner/code/tools/probe_gk2a.py", line 74, in main
+    sc = Scene(filenames=files, reader="ami_l1b")
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.local/lib/python3.12/site-packages/satpy/scene.py", line 155, in __init__
+    self._readers = self._create_reader_instances(filenames=filenames,
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.local/lib/python3.12/site-packages/satpy/scene.py", line 176, in _create_reader_instances
+    return load_readers(filenames=filenames,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.local/lib/python3.12/site-packages/satpy/readers/core/loading.py", line 47, in load_readers
+    if _early_exit(filenames, reader):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.local/lib/python3.12/site-packages/satpy/readers/core/loading.py", line 114, in _early_exit
+    _check_reader_and_filenames(reader, filenames)
+  File "/home/runner/.local/lib/python3.12/site-packages/satpy/readers/core/loading.py", line 124, in _check_reader_and_filenames
+    raise ValueError("'filenames' was provided but is empty.")
+ValueError: 'filenames' was provided but is empty.
