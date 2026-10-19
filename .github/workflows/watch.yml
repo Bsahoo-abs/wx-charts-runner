@@ -25,6 +25,7 @@ jobs:
         with:
           repository: ${{ vars.CODE_REPO }}
           token: ${{ secrets.CODE_TOKEN }}
+          ref: main
           path: code
       - uses: actions/setup-python@v6
         with:

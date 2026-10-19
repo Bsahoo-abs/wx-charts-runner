@@ -30,6 +30,7 @@ jobs:
         with:
           repository: ${{ vars.CODE_REPO }}
           token: ${{ secrets.CODE_TOKEN }}
+          ref: main
           path: code
       - uses: actions/cache/restore@v4
         with:
@@ -96,6 +97,7 @@ jobs:
         with:
           repository: ${{ vars.CODE_REPO }}
           token: ${{ secrets.CODE_TOKEN }}
+          ref: main
           path: code
       - { name: 'site ECMWF', uses: actions/cache/restore@v4,
           with: { path: site/ECMWF, key: site-ECMWF-none, restore-keys: site-ECMWF- } }
