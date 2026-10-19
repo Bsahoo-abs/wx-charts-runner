@@ -138,7 +138,7 @@ jobs:
       - name: Check
         id: check
         run: |
-          if [ -d updated ] && [ -n "$(ls -A updated 2>/dev/null)" ]; then
+          if [ "${{ github.event_name }}" != "schedule" ] || { [ -d updated ] && [ -n "$(ls -A updated 2>/dev/null)" ]; }; then
             echo "any=true" >> "$GITHUB_OUTPUT"; echo "new: $(ls updated | tr '\n' ' ')"
           else
             echo "any=false" >> "$GITHUB_OUTPUT"; echo "nothing new - nothing to publish"
