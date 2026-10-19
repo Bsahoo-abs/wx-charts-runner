@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+  </body>
+    <script>
+    	var isIntranet = window.location.hostname.indexOf("rsapp") != -1
+    	if(isIntranet){
+    			window.location.href = "http://rsapp.nsmc.org.cn/geofy?i18n=en"
+    	}else{
+    			window.location.href = "http://10.0.65.135/geofy?i18n=en"
+    	}
+		</script>
+</html>

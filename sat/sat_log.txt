@@ -1,0 +1,24 @@
+EUMETView https://view.eumetsat.int/geoserver/ows: HTTP 200, 255 layers; matching: 75
+  GetMap msg_iodc:clm: HTTP 200 image/png 1110521 bytes -> eumetview_msg_iodc_clm.png
+  GetMap msg_iodc:cth: HTTP 200 image/png 1241779 bytes -> eumetview_msg_iodc_cth.png
+  GetMap msg_iodc:fire: HTTP 200 image/png 14128 bytes -> eumetview_msg_iodc_fire.png
+  GetMap msg_iodc:gii_kindex: HTTP 200 image/png 326631 bytes -> eumetview_msg_iodc_gii_kindex.png
+  GetMap msg_iodc:gii_liftedindex: HTTP 200 image/png 643141 bytes -> eumetview_msg_iodc_gii_liftedindex.png
+  GetMap msg_iodc:h63: HTTP 200 image/png 539323 bytes -> eumetview_msg_iodc_h63.png
+  GetMap msg_iodc:ir039: HTTP 200 image/png 887050 bytes -> eumetview_msg_iodc_ir039.png
+  GetMap msg_iodc:ir108: HTTP 200 image/png 880946 bytes -> eumetview_msg_iodc_ir108.png
+  GetMap mtg_fd:frp: HTTP 200 image/png 14050 bytes -> eumetview_mtg_fd_frp.png
+  GetMap mtg_fd:frp_default: HTTP 200 text/xml;charset=UTF-8 442 bytes -> eumetview_mtg_fd_frp_default.txt
+  GetMap mtg_fd:h40b: HTTP 200 image/png 31198 bytes -> eumetview_mtg_fd_h40b.png
+  GetMap mtg_fd:ir105_hrfi: HTTP 200 image/png 138711 bytes -> eumetview_mtg_fd_ir105_hrfi.png
+RealEarth search IODC: HTTP 200, 192364 bytes
+RealEarth search meteosat: HTTP 200, 262048 bytes
+RealEarth search global-ir: HTTP 200, 192364 bytes
+RealEarth search himawari: HTTP 200, 1068943 bytes
+RealEarth search fy4: HTTP 200, 192364 bytes
+RealEarth search gk2a: HTTP 200, 192364 bytes
+RealEarth search insat: HTTP 200, 192364 bytes
+NMSC KMA: HTTP 200 text/html;charset=utf-8 13717 bytes
+Fengyun Earth: HTTP 200 text/html 353 bytes
+NSMC FY-4B images: HTTP Error 403: Forbidden
+RealEarth home: HTTP 200 text/html; charset=UTF-8 1893 bytes

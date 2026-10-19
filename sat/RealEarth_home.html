@@ -1,0 +1,88 @@
+
+<!DOCTYPE HTML>
+<html style="height:100%;"> 
+<head>
+
+<title>RealEarth™</title>
+
+<meta name="description" content="RealEarth collects, displays, and animates satellite, weather, earth science, and other GIS data">
+<meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="format-detection" content="telephone=no" />
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="apple-touch-fullscreen" content="yes" />
+
+<link rel="apple-touch-icon" href="/images/iphone.png" />
+
+<script type="application/javascript" src="/js/RELoader.js"></script>
+
+<script type="application/javascript"> 
+var reController;
+function initialize() {
+var myOptions = {
+  view: '',
+  x: '',
+  y: '',
+  z: '',
+  bounds: '',
+  databounds: '',
+  maxzoom: '',
+  seedpolicy: '0',
+  app: 'RealEarth',
+  collection: 'RealEarth',
+  categories: '',
+  hidecollections: '',
+  hidecategories: '',
+  basemaps: '',
+  basemap: '',
+  labels: '',
+  mode: 'shape',
+  format: 'png',
+  declutter: '',
+  select: '',
+  time: '',
+  timespan: '6t',
+  timerange: '',
+  timestep: '1h',
+  timeproduct: '',
+  animationmode: 'time',
+  animationspeed: '50',
+  animationrock: '',
+  animate: '',
+  width: '320',
+  height: '240',
+  iframe: '0',
+  ui: '1',
+  selector: '1',
+  welcome: '1',
+  autoprobe: '-1',
+  preloaddata: '-1',
+  waitdata: '-1',
+  keyboard: '-1',
+  legend: '1',
+  refreshinterval: '-1',
+  cache: '1',
+  force: '',
+  debug: '',
+  defaults: '',
+  heatmap: '',
+  done: true
+}
+  reController = new ssec.realearth.ViewController('re_canvas', myOptions);
+}
+</script> 
+
+</head> 
+<body style="
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+  width: 100%;
+" onLoad="initialize();">
+<div id="re_canvas" style="
+  width:100%;
+  height:100%;
+">Loading...</div>
+</body> 
+</html> 
