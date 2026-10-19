@@ -46,7 +46,7 @@ jobs:
       - name: Sample pictures for checking (test only)
         if: github.event_name == 'push' && contains('satellite-test', 'test')
         run: |
-          mkdir -p sample && cp site/sat/base.webp sample/ && for k in clouds ir wv natural; do f=$(ls site/sat/$k/*.webp | tail -1); cp "$f" sample/$k.webp; done
+          mkdir -p sample && cp site/sat/base.webp sample/ && for k in visible clouds ir wv; do f=$(ls site/sat/$k/*.webp | tail -1); cp "$f" sample/$k.webp; done
           cd sample && git init -q -b probe-out-satimg && git add -A
           git -c user.name=probe -c user.email=probe@users.noreply.github.com commit -qm sample
           git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-satimg
