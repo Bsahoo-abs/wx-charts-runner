@@ -20,7 +20,7 @@ jobs:
           token: ${{ secrets.CODE_TOKEN }}
           ref: test
           path: code
-      - run: pip install -q numpy pillow "satpy[ami_l1b]" pyresample pyorbital netCDF4 h5netcdf dask
+      - run: pip install -q numpy pillow "satpy[ami_l1b]" pyresample pyorbital pyspectral netCDF4 h5netcdf dask
       - run: mkdir -p out && python3 code/tools/probe_gk2a.py out 2>&1 | tee out/log.txt; exit ${PIPESTATUS[0]}
       - name: Save
         if: always()
