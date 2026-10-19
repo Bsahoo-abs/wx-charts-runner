@@ -44,7 +44,7 @@ jobs:
           pip install -q numpy pillow cartopy "shapely>=2"
           python code/cloud_sat.py site
       - name: Sample pictures for checking (test only)
-        if: github.event_name == 'push' && contains('satellite-test', 'test')
+        if: contains('satellite-test', 'test')
         run: |
           mkdir -p sample && cp site/sat/base.webp sample/ && for k in visible clouds ir wv; do f=$(ls site/sat/$k/*.webp | tail -1); cp "$f" sample/$k.webp; done
           cd sample && git init -q -b probe-out-satimg && git add -A
