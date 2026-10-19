@@ -1,0 +1,44 @@
+now 2026-10-19 17:38 UTC
+noaa-gk2a-pds AMI/L1B/FD/: ['AMI/L1B/FD/202302/', 'AMI/L1B/FD/202303/', 'AMI/L1B/FD/202304/', 'AMI/L1B/FD/202305/', 'AMI/L1B/FD/202306/', 'AMI/L1B/FD/202307/', 'AMI/L1B/FD/202308/', 'AMI/L1B/FD/202309/', 'AMI/L1B/FD/202310/', 'AMI/L1B/FD/202311/', 'AMI/L1B/FD/202312/', 'AMI/L1B/FD/202401/', 'AMI/L1B/FD/202402/', 'AMI/L1B/FD/202403/', 'AMI/L1B/FD/202404/', 'AMI/L1B/FD/202405/', 'AMI/L1B/FD/202406/', 'AMI/L1B/FD/202407/', 'AMI/L1B/FD/202408/', 'AMI/L1B/FD/202409/']
+  noaa-gk2a-pds: -> AMI/L1B/FD/202610/   (siblings: ['202607', '202608', '202609', '202610'])
+  noaa-gk2a-pds: -> AMI/L1B/FD/202610/19/   (siblings: ['16', '17', '18', '19'])
+  noaa-gk2a-pds: -> AMI/L1B/FD/202610/19/17/   (siblings: ['14', '15', '16', '17'])
+  files in AMI/L1B/FD/202610/19/17/: 32
+    gk2a_ami_le1b_wv073_fd020ge_202610191700.nc  modified 2026-10-19T17:22:29.000Z  29.3 MB
+    gk2a_ami_le1b_wv069_fd020ge_202610191700.nc  modified 2026-10-19T17:22:40.000Z  27.1 MB
+    gk2a_ami_le1b_wv063_fd020ge_202610191700.nc  modified 2026-10-19T17:22:44.000Z  18.3 MB
+    gk2a_ami_le1b_vi008_fd010ge_202610191700.nc  modified 2026-10-19T17:22:55.000Z  72.0 MB
+    gk2a_ami_le1b_vi005_fd010ge_202610191700.nc  modified 2026-10-19T17:23:07.000Z  28.9 MB
+    gk2a_ami_le1b_vi004_fd010ge_202610191700.nc  modified 2026-10-19T17:23:14.000Z  25.8 MB
+    gk2a_ami_le1b_vi006_fd005ge_202610191700.nc  modified 2026-10-19T17:23:16.000Z  247.9 MB
+    gk2a_ami_le1b_sw038_fd020ge_202610191700.nc  modified 2026-10-19T17:23:22.000Z  28.2 MB
+    gk2a_ami_le1b_nr016_fd020ge_202610191700.nc  modified 2026-10-19T17:23:29.000Z  6.6 MB
+    gk2a_ami_le1b_nr013_fd020ge_202610191700.nc  modified 2026-10-19T17:23:35.000Z  11.7 MB
+    gk2a_ami_le1b_ir133_fd020ge_202610191700.nc  modified 2026-10-19T17:23:45.000Z  32.8 MB
+    gk2a_ami_le1b_ir123_fd020ge_202610191700.nc  modified 2026-10-19T17:23:51.000Z  34.7 MB
+    gk2a_ami_le1b_ir112_fd020ge_202610191700.nc  modified 2026-10-19T17:23:57.000Z  35.1 MB
+    gk2a_ami_le1b_ir105_fd020ge_202610191700.nc  modified 2026-10-19T17:24:05.000Z  35.1 MB
+    gk2a_ami_le1b_ir096_fd020ge_202610191700.nc  modified 2026-10-19T17:24:12.000Z  31.7 MB
+    gk2a_ami_le1b_ir087_fd020ge_202610191700.nc  modified 2026-10-19T17:26:04.000Z  34.9 MB
+    gk2a_ami_le1b_wv063_fd020ge_202610191710.nc  modified 2026-10-19T17:31:47.000Z  18.3 MB
+    gk2a_ami_le1b_wv069_fd020ge_202610191710.nc  modified 2026-10-19T17:31:47.000Z  27.1 MB
+    gk2a_ami_le1b_wv073_fd020ge_202610191710.nc  modified 2026-10-19T17:31:47.000Z  29.3 MB
+    gk2a_ami_le1b_vi008_fd010ge_202610191710.nc  modified 2026-10-19T17:31:51.000Z  72.7 MB
+    gk2a_ami_le1b_vi005_fd010ge_202610191710.nc  modified 2026-10-19T17:32:03.000Z  30.0 MB
+    gk2a_ami_le1b_vi004_fd010ge_202610191710.nc  modified 2026-10-19T17:32:13.000Z  26.7 MB
+    gk2a_ami_le1b_sw038_fd020ge_202610191710.nc  modified 2026-10-19T17:32:19.000Z  28.2 MB
+    gk2a_ami_le1b_vi006_fd005ge_202610191710.nc  modified 2026-10-19T17:32:19.000Z  250.5 MB
+    gk2a_ami_le1b_nr016_fd020ge_202610191710.nc  modified 2026-10-19T17:32:27.000Z  6.8 MB
+    gk2a_ami_le1b_nr013_fd020ge_202610191710.nc  modified 2026-10-19T17:32:33.000Z  11.8 MB
+    gk2a_ami_le1b_ir133_fd020ge_202610191710.nc  modified 2026-10-19T17:32:42.000Z  32.8 MB
+    gk2a_ami_le1b_ir123_fd020ge_202610191710.nc  modified 2026-10-19T17:36:22.000Z  34.7 MB
+    gk2a_ami_le1b_ir105_fd020ge_202610191710.nc  modified 2026-10-19T17:36:26.000Z  35.1 MB
+    gk2a_ami_le1b_ir112_fd020ge_202610191710.nc  modified 2026-10-19T17:36:26.000Z  35.1 MB
+    gk2a_ami_le1b_ir096_fd020ge_202610191710.nc  modified 2026-10-19T17:36:28.000Z  31.7 MB
+    gk2a_ami_le1b_ir087_fd020ge_202610191710.nc  modified 2026-10-19T17:36:37.000Z  34.9 MB
+gk2a AMI/L1B/: ['AMI/L1B/FD/', 'AMI/L1B/LA/'] files 0
+gk2a AMI/L1B/FD/: ['AMI/L1B/FD/202302/', 'AMI/L1B/FD/202303/', 'AMI/L1B/FD/202304/', 'AMI/L1B/FD/202305/', 'AMI/L1B/FD/202306/', 'AMI/L1B/FD/202307/', 'AMI/L1B/FD/202308/', 'AMI/L1B/FD/202309/', 'AMI/L1B/FD/202310/', 'AMI/L1B/FD/202311/', 'AMI/L1B/FD/202312/', 'AMI/L1B/FD/202401/'] files 0
+gk2a AMI/L1B/ELA/: [] files 0
+gk2a AMI/L1B/KO/: [] files 0
+gk2a GK2A/: ['GK2A/LE1B/', 'GK2A/LV1/'] files 0
+gk2a LV1/: ['LV1/CM-1M/', 'LV1/CM-5M/', 'LV1/MG-1M/', 'LV1/MG-5M/', 'LV1/PD-E-1M/', 'LV1/PD-E-5M/', 'LV1/PD-P-1M/'] files 0
