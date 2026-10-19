@@ -1,20 +1,20 @@
-# TEST: watcher - starts a build for each model with new data (test copy of the site only)
-name: watch-test
+# Watcher - every 2 minutes it asks the data servers what is new and starts a build for each such model
+name: watch
 
 on:
   schedule:
     - cron: "*/10 * * * *"
   push:
-    paths: [".github/workflows/watch-test.yml"]
+    paths: [".github/workflows/watch.yml"]
   workflow_dispatch:
 
 concurrency:
-  group: watch-test
+  group: watch
   cancel-in-progress: true          # a newer watcher takes over
 
 permissions:
   contents: read
-  actions: write                    # to start build-test
+  actions: write                    # to start the builds
 
 jobs:
   watch:
@@ -40,5 +40,5 @@ jobs:
           GH_REPO: ${{ github.repository }}
         run: |
           cd code
-          python cloud_plan.py --site-url "https://test.${{ vars.PAGES_PROJECT }}.pages.dev" \
-            --models ECMWF,AIFS,GFS,AIGFS,ICON,GEM --watch 30 --dispatch build-test.yml
+          python cloud_plan.py --site-url "https://${{ vars.PAGES_PROJECT }}.pages.dev" \
+            --models ECMWF,AIFS,GFS,AIGFS,ICON,GEM --watch 30 --dispatch build.yml

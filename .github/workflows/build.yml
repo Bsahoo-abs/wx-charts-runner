@@ -1,5 +1,6 @@
-# TEST: build and publish ONE model (started by watch-test) - test copy of the site only
-name: build-test
+# Build and publish ONE model (started by the watcher). A run still coming in is shown up to the hours
+# already out; each time more hours arrive only the new ones are drawn.
+name: build
 
 on:
   workflow_dispatch:
@@ -11,7 +12,7 @@ on:
         options: [ECMWF, AIFS, GFS, AIGFS, ICON, GEM]
 
 concurrency:
-  group: build-test-${{ inputs.model }}     # one build per model at a time; a newer request waits
+  group: build-${{ inputs.model }}     # one build per model at a time; a newer request waits
   cancel-in-progress: false
 
 permissions:
@@ -33,8 +34,8 @@ jobs:
       - uses: actions/cache/restore@v4
         with:
           path: site/${{ inputs.model }}
-          key: ptest-${{ inputs.model }}-none
-          restore-keys: ptest-${{ inputs.model }}-
+          key: site-${{ inputs.model }}-none
+          restore-keys: site-${{ inputs.model }}-
       - uses: actions/cache@v4
         with:
           path: ~/.local/share/cartopy
@@ -72,23 +73,23 @@ jobs:
         if: steps.run.outputs.updated == 'true'
         with:
           path: site/${{ inputs.model }}
-          key: ptest-${{ inputs.model }}-${{ steps.run.outputs.run }}-${{ github.run_id }}
+          key: site-${{ inputs.model }}-${{ steps.run.outputs.run }}-${{ github.run_id }}
       - name: Delete older saved sets of this model
         if: steps.run.outputs.updated == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
-          NEW: ptest-${{ inputs.model }}-${{ steps.run.outputs.run }}-${{ github.run_id }}
+          NEW: site-${{ inputs.model }}-${{ steps.run.outputs.run }}-${{ github.run_id }}
         run: |
-          gh cache list -R "$GITHUB_REPOSITORY" --key "ptest-${{ inputs.model }}-" --limit 100 --json key -q '.[].key' |
+          gh cache list -R "$GITHUB_REPOSITORY" --key "site-${{ inputs.model }}-" --limit 100 --json key -q '.[].key' |
             while read -r k; do [ "$k" != "$NEW" ] && gh cache delete -R "$GITHUB_REPOSITORY" "$k" || true; done
 
   publish:
     needs: make
-    if: needs.make.outputs.updated == 'true'
+    if: needs.make.result == 'success'
     runs-on: ubuntu-24.04
     timeout-minutes: 40
     concurrency:
-      group: publish-test
+      group: publish
       cancel-in-progress: false
     steps:
       - uses: actions/checkout@v5
@@ -96,18 +97,18 @@ jobs:
           repository: ${{ vars.CODE_REPO }}
           token: ${{ secrets.CODE_TOKEN }}
           path: code
-      - { name: 'ptest ECMWF', uses: actions/cache/restore@v4,
-          with: { path: site/ECMWF, key: ptest-ECMWF-none, restore-keys: ptest-ECMWF- } }
-      - { name: 'ptest AIFS', uses: actions/cache/restore@v4,
-          with: { path: site/AIFS, key: ptest-AIFS-none, restore-keys: ptest-AIFS- } }
-      - { name: 'ptest GFS', uses: actions/cache/restore@v4,
-          with: { path: site/GFS, key: ptest-GFS-none, restore-keys: ptest-GFS- } }
-      - { name: 'ptest AIGFS', uses: actions/cache/restore@v4,
-          with: { path: site/AIGFS, key: ptest-AIGFS-none, restore-keys: ptest-AIGFS- } }
-      - { name: 'ptest ICON', uses: actions/cache/restore@v4,
-          with: { path: site/ICON, key: ptest-ICON-none, restore-keys: ptest-ICON- } }
-      - { name: 'ptest GEM', uses: actions/cache/restore@v4,
-          with: { path: site/GEM, key: ptest-GEM-none, restore-keys: ptest-GEM- } }
+      - { name: 'site ECMWF', uses: actions/cache/restore@v4,
+          with: { path: site/ECMWF, key: site-ECMWF-none, restore-keys: site-ECMWF- } }
+      - { name: 'site AIFS', uses: actions/cache/restore@v4,
+          with: { path: site/AIFS, key: site-AIFS-none, restore-keys: site-AIFS- } }
+      - { name: 'site GFS', uses: actions/cache/restore@v4,
+          with: { path: site/GFS, key: site-GFS-none, restore-keys: site-GFS- } }
+      - { name: 'site AIGFS', uses: actions/cache/restore@v4,
+          with: { path: site/AIGFS, key: site-AIGFS-none, restore-keys: site-AIGFS- } }
+      - { name: 'site ICON', uses: actions/cache/restore@v4,
+          with: { path: site/ICON, key: site-ICON-none, restore-keys: site-ICON- } }
+      - { name: 'site GEM', uses: actions/cache/restore@v4,
+          with: { path: site/GEM, key: site-GEM-none, restore-keys: site-GEM- } }
       - { name: 'vid ECMWF', uses: actions/cache/restore@v4,
           with: { path: site/vid/ECMWF, key: vid-ECMWF-none, restore-keys: vid-ECMWF- } }
       - { name: 'vid AIFS', uses: actions/cache/restore@v4,
@@ -144,9 +145,9 @@ jobs:
           python code/cloud_guidance.py site
       - name: Build the website
         run: python3 code/site_build.py site
-      - name: Publish to the TEST copy
+      - name: Publish to Cloudflare Pages
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           PROJECT: ${{ vars.PAGES_PROJECT }}
-        run: npx --yes wrangler@3 pages deploy site --project-name "$PROJECT" --branch test --commit-dirty=true
+        run: npx --yes wrangler@3 pages deploy site --project-name "$PROJECT" --branch main --commit-dirty=true
