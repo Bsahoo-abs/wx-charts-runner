@@ -131,6 +131,8 @@ jobs:
           with: { path: site/ens/GEFS, key: ens-GEFS-none, restore-keys: ens-GEFS- } }
       - { name: 'ens AIGEFS', uses: actions/cache/restore@v4,
           with: { path: site/ens/AIGEFS, key: ens-AIGEFS-none, restore-keys: ens-AIGEFS- } }
+      - { name: 'satt IODC', uses: actions/cache/restore@v4,
+          with: { path: site/sat, key: satt-IODC-none, restore-keys: satt-IODC- } }
       - uses: actions/setup-python@v6
         with:
           python-version: "3.11"

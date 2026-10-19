@@ -183,6 +183,8 @@ jobs:
           with: { path: site/ens/GEFS, key: ens-GEFS-none, restore-keys: ens-GEFS- } }
       - { name: 'ens AIGEFS', if: steps.check.outputs.any == 'true', uses: actions/cache/restore@v4,
           with: { path: site/ens/AIGEFS, key: ens-AIGEFS-none, restore-keys: ens-AIGEFS- } }
+      - { name: 'sat IODC', if: steps.check.outputs.any == 'true', uses: actions/cache/restore@v4,
+          with: { path: site/sat, key: sat-IODC-none, restore-keys: sat-IODC- } }
 
       - uses: actions/setup-python@v6
         if: steps.check.outputs.any == 'true'
