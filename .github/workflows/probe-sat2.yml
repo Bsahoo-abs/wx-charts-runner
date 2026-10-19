@@ -1,4 +1,4 @@
-# One-off TEST (not the website): GK2A full disk. Results -> branch probe-out-sat3.
+# One-off TEST (not the website): GK2A samples on the map grid. Results -> branch probe-out-gk2a.
 name: probe-sat2
 
 on:
@@ -12,7 +12,7 @@ permissions:
 jobs:
   probe:
     runs-on: ubuntu-24.04
-    timeout-minutes: 20
+    timeout-minutes: 40
     steps:
       - uses: actions/checkout@v5
         with:
@@ -20,12 +20,12 @@ jobs:
           token: ${{ secrets.CODE_TOKEN }}
           ref: test
           path: code
-      - run: pip install -q numpy pillow tifffile
-      - run: python3 code/tools/probe_sat3.py out
+      - run: pip install -q numpy pillow "satpy[ami_l1b]" pyresample pyorbital netCDF4 h5netcdf dask
+      - run: python3 code/tools/probe_gk2a.py out
       - name: Save
         if: always()
         run: |
           cd out
-          git init -q -b probe-out-sat3 && git add -A
-          git -c user.name=probe -c user.email=probe@users.noreply.github.com commit -qm "sat3 probe"
-          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-sat3
+          git init -q -b probe-out-gk2a && git add -A
+          git -c user.name=probe -c user.email=probe@users.noreply.github.com commit -qm "gk2a probe"
+          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-gk2a
