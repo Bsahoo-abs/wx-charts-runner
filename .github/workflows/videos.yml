@@ -183,6 +183,27 @@ jobs:
       - { name: 'ens AIGEFS', if: steps.check.outputs.any == 'true', uses: actions/cache/restore@v4,
           with: { path: site/ens/AIGEFS, key: ens-AIGEFS-none, restore-keys: ens-AIGEFS- } }
 
+      - uses: actions/setup-python@v6
+        if: steps.check.outputs.any == 'true'
+        with:
+          python-version: "3.11"
+
+      - name: Map data cache (coastlines, borders)
+        if: steps.check.outputs.any == 'true'
+        uses: actions/cache/restore@v4
+        with:
+          path: ~/.local/share/cartopy
+          key: cartopy-v1
+
+      - name: Model guidance (all models' cyclone tracks)
+        if: steps.check.outputs.any == 'true'
+        continue-on-error: true
+        env:
+          MPLBACKEND: Agg
+        run: |
+          pip install -q numpy matplotlib cartopy "shapely>=2"
+          python code/cloud_guidance.py site
+
       - name: Build the website
         if: steps.check.outputs.any == 'true'
         run: python3 code/site_build.py site
