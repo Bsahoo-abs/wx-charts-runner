@@ -1,4 +1,4 @@
-# One-off TEST (not the website): raw satellite temperatures and detail. Results -> branch probe-out-sat3.
+# One-off TEST (not the website): GK2A full disk. Results -> branch probe-out-sat3.
 name: probe-sat2
 
 on:
