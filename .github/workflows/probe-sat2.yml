@@ -1,4 +1,4 @@
-# One-off TEST (not the website): GK2A samples on the map grid. Results -> branch probe-out-gk2a.
+# One-off TEST (not the website): GK2A samples on the map grid. Results -> branch probe-out-gk2a-day.
 name: probe-sat2
 
 on:
@@ -26,6 +26,6 @@ jobs:
         if: always()
         run: |
           mkdir -p out && cd out
-          git init -q -b probe-out-gk2a && git add -A
+          git init -q -b probe-out-gk2a-day && git add -A
           git -c user.name=probe -c user.email=probe@users.noreply.github.com commit -qm "gk2a probe"
-          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-gk2a
+          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-gk2a-day
