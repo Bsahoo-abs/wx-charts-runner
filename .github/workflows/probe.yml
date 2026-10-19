@@ -1,0 +1,53 @@
+# One-off TEST (not the website): which copy of the ECMWF open data has the 12Z run first, and which free
+# satellite picture services work from here. Results are pushed to the "probe-out" branch.
+name: probe
+
+on:
+  push:
+    paths: [".github/workflows/probe.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  satellite:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          repository: ${{ vars.CODE_REPO }}
+          token: ${{ secrets.CODE_TOKEN }}
+          path: code
+      - name: Try the satellite services
+        run: python3 code/tools/probe_sat.py out/sat
+      - name: Save the results
+        run: |
+          cd out
+          git init -q -b probe-out-sat && git add -A
+          git -c user.name=probe -c user.email=probe@users.noreply.github.com commit -qm "satellite probe"
+          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-sat
+
+  sources:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          repository: ${{ vars.CODE_REPO }}
+          token: ${{ secrets.CODE_TOKEN }}
+          path: code
+      - name: Watch the four copies of the ECMWF open data (12Z run)
+        run: |
+          RUN=$(date -u +%Y%m%d)12
+          python3 code/tools/probe_sources.py "$RUN" out/src 340 &
+          PID=$!
+          push() {
+            cd out && rm -rf .git && git init -q -b probe-out-src && git add -A &&
+            git -c user.name=probe -c user.email=probe@users.noreply.github.com commit -qm "sources $(date -u +%H:%M)" &&
+            git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-src; cd ..
+          }
+          while kill -0 $PID 2>/dev/null; do sleep 600; push || true; done
+          push || true
+          cat out/src/sources.txt || true
