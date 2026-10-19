@@ -1,0 +1,31 @@
+# One-off TEST (not the website): raw satellite temperatures and detail. Results -> branch probe-out-sat2.
+name: probe-sat2
+
+on:
+  push:
+    paths: [".github/workflows/probe-sat2.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          repository: ${{ vars.CODE_REPO }}
+          token: ${{ secrets.CODE_TOKEN }}
+          ref: test
+          path: code
+      - run: pip install -q numpy pillow tifffile
+      - run: python3 code/tools/probe_sat2.py out
+      - name: Save
+        if: always()
+        run: |
+          cd out
+          git init -q -b probe-out-sat2 && git add -A
+          git -c user.name=probe -c user.email=probe@users.noreply.github.com commit -qm "sat2 probe"
+          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-sat2
