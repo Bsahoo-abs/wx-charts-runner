@@ -4,7 +4,7 @@
 # ECMWF, AIFS, ICON, GEM; ensembles: GEFS, AIGEFS, ECMWF ENS, AIFS ENS)
 #   secrets   CODE_TOKEN, CLOUDFLARE_API_TOKEN, CLOUDFLARE_ACCOUNT_ID
 #   variables CODE_REPO (yourname/wx-charts-code), PAGES_PROJECT (odisha-wx-charts)
-# rev 2026-10-19b
+# rev 2026-10-19c
 name: charts
 
 on:
