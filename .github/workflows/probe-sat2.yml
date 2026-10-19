@@ -21,11 +21,11 @@ jobs:
           ref: test
           path: code
       - run: pip install -q numpy pillow "satpy[ami_l1b]" pyresample pyorbital netCDF4 h5netcdf dask
-      - run: python3 code/tools/probe_gk2a.py out
+      - run: mkdir -p out && python3 code/tools/probe_gk2a.py out 2>&1 | tee out/log.txt; exit ${PIPESTATUS[0]}
       - name: Save
         if: always()
         run: |
-          cd out
+          mkdir -p out && cd out
           git init -q -b probe-out-gk2a && git add -A
           git -c user.name=probe -c user.email=probe@users.noreply.github.com commit -qm "gk2a probe"
           git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-gk2a
