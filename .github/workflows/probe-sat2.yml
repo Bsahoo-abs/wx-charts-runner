@@ -1,4 +1,4 @@
-# One-off TEST (not the website): raw satellite temperatures and detail. Results -> branch probe-out-sat2.
+# One-off TEST (not the website): raw satellite temperatures and detail. Results -> branch probe-out-sat3.
 name: probe-sat2
 
 on:
@@ -21,11 +21,11 @@ jobs:
           ref: test
           path: code
       - run: pip install -q numpy pillow tifffile
-      - run: python3 code/tools/probe_sat2.py out
+      - run: python3 code/tools/probe_sat3.py out
       - name: Save
         if: always()
         run: |
           cd out
-          git init -q -b probe-out-sat2 && git add -A
-          git -c user.name=probe -c user.email=probe@users.noreply.github.com commit -qm "sat2 probe"
-          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-sat2
+          git init -q -b probe-out-sat3 && git add -A
+          git -c user.name=probe -c user.email=probe@users.noreply.github.com commit -qm "sat3 probe"
+          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-sat3
