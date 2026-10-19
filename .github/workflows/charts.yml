@@ -201,7 +201,7 @@ jobs:
         env:
           MPLBACKEND: Agg
         run: |
-          pip install -q numpy matplotlib cartopy "shapely>=2"
+          pip install -q numpy matplotlib cartopy "shapely>=2" reportlab pillow
           python code/cloud_guidance.py site
 
       - name: Build the website
