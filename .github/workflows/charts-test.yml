@@ -30,7 +30,7 @@ permissions:
 jobs:
   plan:
     runs-on: ubuntu-24.04
-    timeout-minutes: 15
+    timeout-minutes: 35
     outputs:
       models: ${{ steps.plan.outputs.models }}
     steps:
@@ -53,7 +53,7 @@ jobs:
         run: |
           cd code
           python cloud_plan.py --site-url "https://test.${{ vars.PAGES_PROJECT }}.pages.dev" \
-            --models ECMWF,AIFS,GFS,AIGFS,ICON,GEM ${{ inputs.force && '--force' || '' }}
+            --models ECMWF,AIFS,GFS,AIGFS,ICON,GEM --watch 22 ${{ inputs.force && '--force' || '' }}
 
   make:
     needs: plan
