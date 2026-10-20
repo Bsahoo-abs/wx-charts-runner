@@ -1,0 +1,73 @@
+# One-off TEST (not the website): run-to-run comparison demo. Results -> branch probe-out-compare.
+name: probe-compare
+
+on:
+  push:
+    paths: [".github/workflows/probe-compare.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  demo:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          repository: ${{ vars.CODE_REPO }}
+          token: ${{ secrets.CODE_TOKEN }}
+          ref: test
+          path: code
+      - uses: actions/cache/restore@v4
+        with:
+          path: site/ECMWF
+          key: site-ECMWF-none
+          restore-keys: site-ECMWF-
+      - uses: actions/cache/restore@v4
+        with:
+          path: site/AIFS
+          key: site-AIFS-none
+          restore-keys: site-AIFS-
+      - uses: actions/cache/restore@v4
+        with:
+          path: site/GFS
+          key: site-GFS-none
+          restore-keys: site-GFS-
+      - uses: actions/cache/restore@v4
+        with:
+          path: site/AIGFS
+          key: site-AIGFS-none
+          restore-keys: site-AIGFS-
+      - uses: actions/cache/restore@v4
+        with:
+          path: site/ICON
+          key: site-ICON-none
+          restore-keys: site-ICON-
+      - uses: actions/cache/restore@v4
+        with:
+          path: site/GEM
+          key: site-GEM-none
+          restore-keys: site-GEM-
+      - uses: actions/cache/restore@v4
+        with:
+          path: ~/.local/share/cartopy
+          key: cartopy-v1
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+      - name: Demo
+        env:
+          MPLBACKEND: Agg
+        run: |
+          pip install -q numpy matplotlib cartopy "shapely>=2"
+          mkdir -p out && ls site/*/ > out/runs.txt 2>&1
+          cd code && python cloud_compare.py ../site ../out 2>&1 | tee ../out/log.txt
+      - name: Save
+        if: always()
+        run: |
+          mkdir -p out && cd out
+          git init -q -b probe-out-compare && git add -A
+          git -c user.name=probe -c user.email=probe@users.noreply.github.com commit -qm compare
+          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-compare
