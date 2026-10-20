@@ -57,22 +57,17 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: "3.11"
-      - name: Demo
+      - name: Pressure check
         env:
           MPLBACKEND: Agg
         run: |
-          pip install -q numpy matplotlib cartopy "shapely>=2"
-          mkdir -p out && ls site/*/ > out/runs.txt 2>&1
-          python3 - <<'PY' 2>&1 | tee out/log.txt
-          import json, glob
-          for f in sorted(glob.glob("site/*/*/tracks.json")):
-              js = json.load(open(f))
-              for k, s in enumerate(js["systems"]):
-                  pts = s["pts"]
-                  lo = min(pts, key=lambda p: p[3])
-                  print(f, "system", k, "min", lo[3], "hPa at +", lo[0], "h", round(lo[1], 1), "E", round(lo[2], 1), "N", "npts", len(pts))
-          PY
-          ls -la --time-style=+%H:%M site/*/*/tracks.json >> out/log.txt
+          pip install -q -r code/requirements.txt
+          mkdir -p out
+          cd code
+          for mr in AIGFS:2026102006 AIGFS:2026102012 ECMWF:2026102000; do
+            echo "=== $mr" >> ../out/log.txt
+            python tools/probe_pressure.py ${mr%%:*} ${mr##*:} ../site ../work 2>&1 | grep -v "steps\|looking\|memory\|Warning" >> ../out/log.txt || true
+          done
       - name: Save
         if: always()
         run: |
