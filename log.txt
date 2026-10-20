@@ -1,0 +1,18 @@
+msg_iodc:ir108 (2754, 1493)
+msg_iodc:vis006 (2754, 1493)
+msg_iodc:wv062 (2754, 1493)
+/home/runner/.local/lib/python3.12/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/home/runner/.local/lib/python3.12/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/home/runner/.local/lib/python3.12/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/home/runner/.local/lib/python3.12/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/home/runner/.local/lib/python3.12/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/home/runner/.local/lib/python3.12/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+The input area chunks are large. This usually means that the input area is of much higher resolution than the output area. You can reduce the chunks passed, and ponder whether you are using the right resampler for the job.
+The input area chunks are large. This usually means that the input area is of much higher resolution than the output area. You can reduce the chunks passed, and ponder whether you are using the right resampler for the job.
+saved
