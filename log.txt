@@ -1,0 +1,39 @@
+202610200120 ['raw/gk2a_ami_le1b_vi006_fd005ge_202610200120.nc', 'raw/gk2a_ami_le1b_ir105_fd020ge_202610200120.nc']
+/home/runner/.local/lib/python3.12/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/home/runner/.local/lib/python3.12/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/home/runner/.local/lib/python3.12/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/home/runner/.local/lib/python3.12/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+The input area chunks are large. This usually means that the input area is of much higher resolution than the output area. You can reduce the chunks passed, and ponder whether you are using the right resampler for the job.
+The input area chunks are large. This usually means that the input area is of much higher resolution than the output area. You can reduce the chunks passed, and ponder whether you are using the right resampler for the job.
+  main: 3000x2588 in 6s
+  fine: 3200x3348 in 7s
+202610200040 ['raw/gk2a_ami_le1b_vi006_fd005ge_202610200040.nc', 'raw/gk2a_ami_le1b_ir105_fd020ge_202610200040.nc']
+/home/runner/.local/lib/python3.12/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/home/runner/.local/lib/python3.12/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/home/runner/.local/lib/python3.12/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/home/runner/.local/lib/python3.12/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+The input area chunks are large. This usually means that the input area is of much higher resolution than the output area. You can reduce the chunks passed, and ponder whether you are using the right resampler for the job.
+The input area chunks are large. This usually means that the input area is of much higher resolution than the output area. You can reduce the chunks passed, and ponder whether you are using the right resampler for the job.
+  main: 3000x2588 in 6s
+  fine: 3200x3348 in 7s
+202610190500 ['raw/gk2a_ami_le1b_vi006_fd005ge_202610190500.nc', 'raw/gk2a_ami_le1b_ir105_fd020ge_202610190500.nc']
+/home/runner/.local/lib/python3.12/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/home/runner/.local/lib/python3.12/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/home/runner/.local/lib/python3.12/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/home/runner/.local/lib/python3.12/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+The input area chunks are large. This usually means that the input area is of much higher resolution than the output area. You can reduce the chunks passed, and ponder whether you are using the right resampler for the job.
+The input area chunks are large. This usually means that the input area is of much higher resolution than the output area. You can reduce the chunks passed, and ponder whether you are using the right resampler for the job.
+  main: 3000x2588 in 6s
+  fine: 3200x3348 in 7s
