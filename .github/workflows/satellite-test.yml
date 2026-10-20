@@ -43,6 +43,7 @@ jobs:
           cache-dependency-path: code/cloud_sat.py
       - name: Satellite pictures
         run: |
+          which ffmpeg || (sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null)
           pip install -q numpy scipy pillow cartopy "shapely>=2" "satpy[ami_l1b]" pyspectral pyresample netCDF4 h5netcdf dask
           python code/cloud_sat.py site
       - name: Sample pictures for checking (test only)
