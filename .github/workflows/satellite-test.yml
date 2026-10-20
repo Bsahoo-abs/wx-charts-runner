@@ -129,6 +129,8 @@ jobs:
           python code/cloud_guidance.py site
       - name: Build the website
         run: python3 code/site_build.py site
+      - name: Site size (free plan allows 20000 files)
+        run: echo "::notice title=site::$(find site -type f | wc -l) files, $(du -sh site | cut -f1)"
       - name: Publish to Cloudflare Pages
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
