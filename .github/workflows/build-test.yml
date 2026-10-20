@@ -10,6 +10,10 @@ on:
         required: true
         type: choice
         options: [ECMWF, AIFS, GFS, AIGFS, ICON, GEM]
+      tracks_run:
+        description: "Only redo the storm tracks of this (older) run, e.g. 2026102006"
+        required: false
+        default: ""
 
 concurrency:
   group: build-test-${{ inputs.model }}     # one build per model at a time; a newer request waits
@@ -56,7 +60,11 @@ jobs:
           MPLBACKEND: Agg
         run: |
           cd code
-          python cloud_run.py --progressive --model ${{ inputs.model }} --site ../site --work ../work 2>&1 | tee ../run.log
+          if [ -n "${{ inputs.tracks_run }}" ]; then
+            python cloud_run.py --tracks-only --run "${{ inputs.tracks_run }}" --model ${{ inputs.model }} --site ../site --work ../work 2>&1 | tee ../run.log
+          else
+            python cloud_run.py --progressive --model ${{ inputs.model }} --site ../site --work ../work 2>&1 | tee ../run.log
+          fi
       - name: Show the log
         if: always()
         run: |
