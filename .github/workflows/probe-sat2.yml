@@ -21,7 +21,7 @@ jobs:
           ref: test
           path: code
       - run: pip install -q numpy pillow "satpy[ami_l1b]" pyresample pyorbital pyspectral netCDF4 h5netcdf dask
-      - run: mkdir -p out && python3 code/tools/probe_gk2a2.py out 202610200140 202610200120 202610200500 2>&1 | tee out/log.txt; exit ${PIPESTATUS[0]}
+      - run: mkdir -p out && python3 code/tools/probe_gk2a2.py out 202610200120 202610200040 202610190500 2>&1 | tee out/log.txt; exit ${PIPESTATUS[0]}
       - name: Save
         if: always()
         run: |
