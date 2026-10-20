@@ -23,33 +23,33 @@ jobs:
       - uses: actions/cache/restore@v4
         with:
           path: site/ECMWF
-          key: site-ECMWF-none
-          restore-keys: site-ECMWF-
+          key: ptest-ECMWF-none
+          restore-keys: ptest-ECMWF-
       - uses: actions/cache/restore@v4
         with:
           path: site/AIFS
-          key: site-AIFS-none
-          restore-keys: site-AIFS-
+          key: ptest-AIFS-none
+          restore-keys: ptest-AIFS-
       - uses: actions/cache/restore@v4
         with:
           path: site/GFS
-          key: site-GFS-none
-          restore-keys: site-GFS-
+          key: ptest-GFS-none
+          restore-keys: ptest-GFS-
       - uses: actions/cache/restore@v4
         with:
           path: site/AIGFS
-          key: site-AIGFS-none
-          restore-keys: site-AIGFS-
+          key: ptest-AIGFS-none
+          restore-keys: ptest-AIGFS-
       - uses: actions/cache/restore@v4
         with:
           path: site/ICON
-          key: site-ICON-none
-          restore-keys: site-ICON-
+          key: ptest-ICON-none
+          restore-keys: ptest-ICON-
       - uses: actions/cache/restore@v4
         with:
           path: site/GEM
-          key: site-GEM-none
-          restore-keys: site-GEM-
+          key: ptest-GEM-none
+          restore-keys: ptest-GEM-
       - uses: actions/cache/restore@v4
         with:
           path: ~/.local/share/cartopy
@@ -63,7 +63,16 @@ jobs:
         run: |
           pip install -q numpy matplotlib cartopy "shapely>=2"
           mkdir -p out && ls site/*/ > out/runs.txt 2>&1
-          cd code && python cloud_compare.py ../site ../out 2>&1 | tee ../out/log.txt
+          python3 - <<'PY' 2>&1 | tee out/log.txt
+          import json, glob
+          for f in sorted(glob.glob("site/*/*/tracks.json")):
+              js = json.load(open(f))
+              for k, s in enumerate(js["systems"]):
+                  pts = s["pts"]
+                  lo = min(pts, key=lambda p: p[3])
+                  print(f, "system", k, "min", lo[3], "hPa at +", lo[0], "h", round(lo[1], 1), "E", round(lo[2], 1), "N", "npts", len(pts))
+          PY
+          ls -la --time-style=+%H:%M site/*/*/tracks.json >> out/log.txt
       - name: Save
         if: always()
         run: |
