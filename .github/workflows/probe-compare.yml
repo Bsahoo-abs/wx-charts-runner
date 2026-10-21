@@ -52,6 +52,31 @@ jobs:
           restore-keys: ptest-GEM-
       - uses: actions/cache/restore@v4
         with:
+          path: site/ECMWF9
+          key: ptest-ECMWF9-none
+          restore-keys: ptest-ECMWF9-
+      - uses: actions/cache/restore@v4
+        with:
+          path: site/ens/ECMWF_ENS
+          key: ens-ECMWF_ENS-none
+          restore-keys: ens-ECMWF_ENS-
+      - uses: actions/cache/restore@v4
+        with:
+          path: site/ens/AIFS_ENS
+          key: ens-AIFS_ENS-none
+          restore-keys: ens-AIFS_ENS-
+      - uses: actions/cache/restore@v4
+        with:
+          path: site/ens/GEFS
+          key: ens-GEFS-none
+          restore-keys: ens-GEFS-
+      - uses: actions/cache/restore@v4
+        with:
+          path: site/ens/AIGEFS
+          key: ens-AIGEFS-none
+          restore-keys: ens-AIGEFS-
+      - uses: actions/cache/restore@v4
+        with:
           path: ~/.local/share/cartopy
           key: cartopy-v1
       - uses: actions/setup-python@v6
@@ -64,7 +89,7 @@ jobs:
           pip install -q numpy matplotlib cartopy "shapely>=2" reportlab pillow
           mkdir -p out
           cd code && python cloud_guidance.py ../site > ../out/log.txt 2>&1 || true
-          cp ../site/guide/*.png ../out/ || true
+          cp ../site/guide/*.png ../site/guide/guide.json ../site/guide/*.pdf ../out/ || true
       - name: Save
         if: always()
         run: |
