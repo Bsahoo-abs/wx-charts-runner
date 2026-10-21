@@ -1,0 +1,31 @@
+# One-off TEST (not the website): IMD radar pictures. Results -> branch probe-out-imd.
+name: probe-imd
+
+on:
+  push:
+    paths: [".github/workflows/probe-imd.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          repository: ${{ vars.CODE_REPO }}
+          token: ${{ secrets.CODE_TOKEN }}
+          ref: test
+          path: code
+      - run: echo start
+      - run: mkdir -p out && python3 code/tools/probe_imd.py out 2>&1 | tee out/log.txt; exit ${PIPESTATUS[0]}
+      - name: Save
+        if: always()
+        run: |
+          mkdir -p out && cd out
+          git init -q -b probe-out-imd && git add -A
+          git -c user.name=probe -c user.email=probe@users.noreply.github.com commit -qm "imd probe"
+          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-imd
