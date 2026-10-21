@@ -57,17 +57,14 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: "3.11"
-      - name: Pressure check
+      - name: Guidance pictures
         env:
           MPLBACKEND: Agg
         run: |
-          pip install -q -r code/requirements.txt
+          pip install -q numpy matplotlib cartopy "shapely>=2" reportlab pillow
           mkdir -p out
-          cd code
-          for mr in AIGFS:2026102006 AIGFS:2026102012 ECMWF:2026102000; do
-            echo "=== $mr" >> ../out/log.txt
-            python tools/probe_pressure.py ${mr%%:*} ${mr##*:} ../site ../work 2>&1 | grep -v "steps\|looking\|memory\|Warning" >> ../out/log.txt || true
-          done
+          cd code && python cloud_guidance.py ../site > ../out/log.txt 2>&1 || true
+          cp ../site/guide/*.png ../out/ || true
       - name: Save
         if: always()
         run: |
