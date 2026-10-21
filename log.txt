@@ -1,0 +1,16 @@
+20261021/00z/ifs/0p1/oper/20261021000000-24h-oper-fc-pl.grib2
+20261021/00z/ifs/0p1/oper/20261021000000-24h-oper-fc-pl.index
+20261021/00z/ifs/0p1/oper/20261021000000-24h-oper-fc-sfc.grib2
+20261021/00z/ifs/0p1/oper/20261021000000-24h-oper-fc-sfc.index
+
+20261021/00z/ifs/0p1/oper/20261021000000-24h-oper-fc-pl.index: 140 lines
+{"domain": "g", "date": "20261021", "time": "0000", "expver": "0001", "class": "od", "type": "fc", "stream": "oper", "step": "24", "levelist": "600", "levtype": "pl", "param": "z", "_offset": 0, "_length": 4682268}
+{"domain": "g", "date": "20261021", "time": "0000", "expver": "0001", "class": "od", "type": "fc", "stream": "oper", "step": "24", "levelist": "400", "levtype": "pl", "param": "z", "_offset": 4682268, "_length": 4945344}
+{"domain": "g", "date": "20261021", "time": "0000", "expver": "0001", "class": "od", "type": "fc", "stream": "oper", "step": "24", "levelist": "925", "levtype": "pl", "param": "z", "_offset": 9627612, "_length": 5604296}
+params: [('d', 'pl'), ('gh', 'pl'), ('q', 'pl'), ('r', 'pl'), ('t', 'pl'), ('u', 'pl'), ('v', 'pl'), ('vo', 'pl'), ('w', 'pl'), ('z', 'pl')]
+20261021/00z/ifs/0p1/oper/20261021000000-24h-oper-fc-sfc.index: 51 lines
+{"domain": "g", "date": "20261021", "time": "0000", "expver": "0001", "class": "od", "type": "fc", "stream": "oper", "step": "24", "levelist": "2", "levtype": "sol", "param": "sot", "_offset": 0, "_length": 1316859}
+{"domain": "g", "date": "20261021", "time": "0000", "expver": "0001", "class": "od", "type": "fc", "stream": "oper", "step": "24", "levtype": "sfc", "param": "lcc", "_offset": 1316859, "_length": 2246113}
+{"domain": "g", "date": "20261021", "time": "0000", "expver": "0001", "class": "od", "type": "fc", "stream": "oper", "step": "24", "levelist": "4", "levtype": "sol", "param": "vsw", "_offset": 3562972, "_length": 1332104}
+params: [('100u', 'sfc'), ('100v', 'sfc'), ('10fg', 'sfc'), ('10u', 'sfc'), ('10v', 'sfc'), ('2d', 'sfc'), ('2t', 'sfc'), ('asn', 'sfc'), ('cp', 'sfc'), ('ewss', 'sfc'), ('hcc', 'sfc'), ('lcc', 'sfc'), ('lsm', 'sfc'), ('mcc', 'sfc'), ('mn2t3', 'sfc'), ('msl', 'sfc'), ('mucape', 'sfc'), ('mx2t3', 'sfc'), ('nsss', 'sfc'), ('ptype', 'sfc'), ('ro', 'sfc'), ('rsn', 'sfc'), ('sd', 'sfc'), ('sf', 'sfc'), ('sithick', 'sfc'), ('skt', 'sfc'), ('sot', 'sol'), ('sp', 'sfc'), ('ssr', 'sfc'), ('ssrd', 'sfc'), ('str', 'sfc'), ('strd', 'sfc'), ('sve', 'sfc'), ('svn', 'sfc'), ('tcc', 'sfc'), ('tciw', 'sfc'), ('tclw', 'sfc'), ('tcrw', 'sfc'), ('tcw', 'sfc'), ('tcwv', 'sfc'), ('tp', 'sfc'), ('tprate', 'sfc'), ('ttr', 'sfc'), ('vsw', 'sol'), ('zos', 'sfc')]
+
