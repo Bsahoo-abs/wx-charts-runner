@@ -1,4 +1,4 @@
-# One-off TEST (not the website): GK2A samples on the map grid. Results -> branch probe-out-3d.
+# One-off TEST (not the website): GK2A samples on the map grid. Results -> branch probe-out-3dloop.
 name: probe-sat2
 
 on:
@@ -21,11 +21,11 @@ jobs:
           ref: test
           path: code
       - run: pip install -q numpy pillow "satpy[ami_l1b]" pyresample pyorbital pyspectral netCDF4 h5netcdf dask
-      - run: mkdir -p out && python3 code/tools/probe_3d.py out 2>&1 | tee out/log.txt; exit ${PIPESTATUS[0]}
+      - run: mkdir -p out && python3 code/tools/probe_3d_loop.py out 2>&1 | tee out/log.txt; exit ${PIPESTATUS[0]}
       - name: Save
         if: always()
         run: |
           mkdir -p out && cd out
-          git init -q -b probe-out-3d && git add -A
+          git init -q -b probe-out-3dloop && git add -A
           git -c user.name=probe -c user.email=probe@users.noreply.github.com commit -qm "gk2a probe"
-          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-3d
+          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-3dloop
