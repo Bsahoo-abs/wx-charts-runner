@@ -94,7 +94,7 @@ jobs:
 
   publish:
     needs: make
-    if: needs.make.result == 'success'
+    if: needs.make.result == 'success' && needs.make.outputs.updated == 'true'
     runs-on: ubuntu-24.04
     timeout-minutes: 40
     concurrency:
