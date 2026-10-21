@@ -1,4 +1,4 @@
-# One-off TEST (not the website): IMD radar pictures. Results -> branch probe-out-imd.
+# One-off TEST (not the website): IMD radar mosaic + current satellite, for a demo. Results -> branch probe-out-imd.
 name: probe-imd
 
 on:
@@ -12,7 +12,7 @@ permissions:
 jobs:
   probe:
     runs-on: ubuntu-24.04
-    timeout-minutes: 15
+    timeout-minutes: 50
     steps:
       - uses: actions/checkout@v5
         with:
@@ -20,12 +20,33 @@ jobs:
           token: ${{ secrets.CODE_TOKEN }}
           ref: test
           path: code
-      - run: echo start
-      - run: mkdir -p out && python3 code/tools/probe_imd.py out 2>&1 | tee out/log.txt; exit ${PIPESTATUS[0]}
+      - uses: actions/cache/restore@v4
+        with:
+          path: site/sat
+          key: satt-IODC-none
+          restore-keys: satt-IODC-
+      - run: pip install -q numpy pillow scipy
+      - name: Radar, 4 times 10 minutes apart
+        run: |
+          mkdir -p out
+          for i in 1 2 3 4; do
+            python3 code/cloud_radar.py site 2>&1 | tee -a out/log.txt
+            [ $i -lt 4 ] && sleep 600
+          done
+          true
+      - name: Collect
+        if: always()
+        run: |
+          mkdir -p out/sat/ir out/sat/visible
+          cp -r site/sat/radar out/sat/ || true
+          cp -r site/sat/3d out/sat/ || true
+          cp site/sat/index.json out/sat/ || true
+          for p in ir visible; do ls site/sat/$p/*.webp | tail -6 | xargs -I{} cp {} out/sat/$p/ || true; done
+          du -sh out
       - name: Save
         if: always()
         run: |
-          mkdir -p out && cd out
+          cd out
           git init -q -b probe-out-imd && git add -A
           git -c user.name=probe -c user.email=probe@users.noreply.github.com commit -qm "imd probe"
           git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-imd
