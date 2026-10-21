@@ -9,7 +9,7 @@ on:
         description: "Model"
         required: true
         type: choice
-        options: [ECMWF, AIFS, GFS, AIGFS, ICON, GEM]
+        options: [ECMWF, AIFS, GFS, AIGFS, ICON, GEM, ECMWF9]
       tracks_run:
         description: "Only redo the storm tracks of this (older) run, e.g. 2026102006"
         required: false
@@ -119,6 +119,8 @@ jobs:
           with: { path: site/ICON, key: ptest-ICON-none, restore-keys: ptest-ICON- } }
       - { name: 'ptest GEM', uses: actions/cache/restore@v4,
           with: { path: site/GEM, key: ptest-GEM-none, restore-keys: ptest-GEM- } }
+      - { name: 'ptest ECMWF9', uses: actions/cache/restore@v4,
+          with: { path: site/ECMWF9, key: ptest-ECMWF9-none, restore-keys: ptest-ECMWF9- } }
       - { name: 'vid ECMWF', uses: actions/cache/restore@v4,
           with: { path: site/vid/ECMWF, key: vid-ECMWF-none, restore-keys: vid-ECMWF- } }
       - { name: 'vid AIFS', uses: actions/cache/restore@v4,

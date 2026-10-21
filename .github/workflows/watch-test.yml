@@ -42,4 +42,4 @@ jobs:
         run: |
           cd code
           python cloud_plan.py --site-url "https://test.${{ vars.PAGES_PROJECT }}.pages.dev" \
-            --models ECMWF,AIFS,GFS,AIGFS,ICON,GEM --watch 30 --dispatch build-test.yml
+            --models ECMWF,AIFS,GFS,AIGFS,ICON,GEM,ECMWF9 --watch 30 --dispatch build-test.yml
