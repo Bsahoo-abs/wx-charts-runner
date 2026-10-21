@@ -12,7 +12,7 @@ permissions:
 jobs:
   probe:
     runs-on: ubuntu-24.04
-    timeout-minutes: 50
+    timeout-minutes: 55
     steps:
       - uses: actions/checkout@v5
         with:
@@ -25,7 +25,7 @@ jobs:
           path: site/sat
           key: satt-IODC-none
           restore-keys: satt-IODC-
-      - run: pip install -q numpy pillow scipy
+      - run: pip install -q -r code/radarx/requirements.txt
       - name: Radar, 4 times 10 minutes apart
         run: |
           mkdir -p out
@@ -40,7 +40,7 @@ jobs:
           mkdir -p out/sat/ir out/sat/visible
           cp -r site/sat/radar out/sat/ || true
           cp -r site/sat/3d out/sat/ || true
-          cp site/sat/index.json out/sat/ || true
+          cp site/sat/sat.json site/sat/base.webp site/sat/lines.json site/sat/districts.json out/sat/ || true
           for p in ir visible; do ls site/sat/$p/*.webp | tail -6 | xargs -I{} cp {} out/sat/$p/ || true; done
           du -sh out
       - name: Save
