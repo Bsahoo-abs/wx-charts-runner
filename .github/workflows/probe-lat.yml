@@ -1,0 +1,41 @@
+# One-off TEST: how late do the satellite files arrive? Results -> branch probe-out-lat.
+name: probe-lat
+on:
+  push:
+    paths: [".github/workflows/probe-lat.yml"]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Latency
+        run: |
+          mkdir -p out
+          python3 - <<'P' | tee out/log.txt
+          import re, urllib.request
+          from datetime import datetime, timedelta, timezone
+          now = datetime.now(timezone.utc); print("now", now)
+          def ls(bucket, prefix):
+              u = f"https://{bucket}.s3.amazonaws.com/?list-type=2&prefix={prefix}"
+              b = urllib.request.urlopen(u, timeout=60).read().decode()
+              return re.findall(r"<Key>([^<]+)</Key><LastModified>([^<]+)</LastModified>", b)
+          for h in (1, 0):
+              t = now - timedelta(hours=h)
+              for k, lm in ls("noaa-gk2a-pds", f"AMI/L1B/FD/{t:%Y%m/%d/%H}/"):
+                  if "_ir105_" in k:
+                      scan = datetime.strptime(k[-15:-3], "%Y%m%d%H%M").replace(tzinfo=timezone.utc)
+                      print("GK2A", scan.strftime("%H:%M"), "on S3 after", round((datetime.fromisoformat(lm.replace("Z","+00:00")) - scan).total_seconds()/60, 1), "min")
+              for k, lm in ls("noaa-himawari9", f"AHI-L1b-FLDK/{t:%Y/%m/%d/%H}"):
+                  if "B13" in k and "S0110" in k:
+                      m = re.search(r"_(\d{8})_(\d{4})_", k); scan = datetime.strptime(m.group(1)+m.group(2), "%Y%m%d%H%M").replace(tzinfo=timezone.utc)
+                      print("HIMAWARI", scan.strftime("%H:%M"), "first segment on S3 after", round((datetime.fromisoformat(lm.replace("Z","+00:00")) - scan).total_seconds()/60, 1), "min")
+          P
+      - name: Save
+        if: always()
+        run: |
+          cd out && git init -q -b probe-out-lat && git add -A
+          git -c user.name=probe -c user.email=probe@users.noreply.github.com commit -qm lat
+          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-lat
