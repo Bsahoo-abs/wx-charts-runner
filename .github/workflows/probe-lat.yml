@@ -12,8 +12,14 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: Check
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
           mkdir -p out
+          npx --yes wrangler@3 pages project list 2>&1 | grep -i "radar\|Project Name\|odisha" | sed 's/[^[:print:]]//g' >> out/log.txt || true
+          npx --yes wrangler@3 pages deployment list --project-name odisha-wx-charts-radar 2>&1 | head -12 >> out/log.txt || true
+          for u in https://test.odisha-wx-charts-radar.pages.dev/ https://odisha-wx-charts-radar.pages.dev/; do curl -sS -o /dev/null -w "$u %{http_code}\n" "$u" >> out/log.txt 2>&1 || true; done
           for u in https://test.odisha-wx-charts-radar.pages.dev/radar/radar.json https://odisha-wx-charts-radar.pages.dev/radar/radar.json; do
             echo "== $u" >> out/log.txt; curl -s -D - -o out/body.txt "$u" | head -20 >> out/log.txt; head -c 400 out/body.txt >> out/log.txt; echo >> out/log.txt
           done
