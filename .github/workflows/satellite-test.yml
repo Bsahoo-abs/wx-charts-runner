@@ -127,6 +127,15 @@ jobs:
           path: site/guide/archive
           key: garch-none
           restore-keys: garch-
+      - uses: actions/cache/restore@v4
+        with:
+          path: site/vidt
+          key: vidt-none
+          restore-keys: vidt-
+      - name: Social-media video copies (test)
+        run: |
+          if [ -d site/vidt ]; then for d in vid ens; do [ -d site/vidt/$d ] && mkdir -p site/$d && cp -r site/vidt/$d/. site/$d/; done; rm -rf site/vidt; fi
+          true
       - name: Model guidance
         continue-on-error: true
         env:
