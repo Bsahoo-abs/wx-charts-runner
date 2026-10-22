@@ -150,6 +150,11 @@ jobs:
         with:
           path: ~/.local/share/cartopy
           key: cartopy-v1
+      - uses: actions/cache/restore@v4
+        with:
+          path: site/guide/archive
+          key: garch-none
+          restore-keys: garch-
       - name: Model guidance
         continue-on-error: true
         env:
@@ -159,6 +164,19 @@ jobs:
           python code/cloud_guidance.py site
       - name: Build the website
         run: python3 code/site_build.py site
+      - uses: actions/cache/save@v4
+        continue-on-error: true
+        with:
+          path: site/guide/archive
+          key: garch-${{ github.run_id }}
+      - name: Delete older guidance archives
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+          NEW: garch-${{ github.run_id }}
+        run: |
+          gh cache list -R "$GITHUB_REPOSITORY" --key "garch-" --limit 100 --json key -q '.[].key' |
+            while read -r k; do [ "$k" != "$NEW" ] && gh cache delete -R "$GITHUB_REPOSITORY" "$k" || true; done
       - name: Publish to Cloudflare Pages
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
