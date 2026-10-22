@@ -1,16 +1,24 @@
-# One-off: remove the test video copies (they pushed the test site's saved data out of GitHub's 10 GB store).
+# One-off: what the test site lists.
 name: probe-lat
 on:
   push:
     paths: [".github/workflows/probe-lat.yml"]
   workflow_dispatch:
 permissions:
-  actions: write
+  contents: write
 jobs:
-  clean:
+  p:
     runs-on: ubuntu-24.04
     steps:
-      - env:
-          GH_TOKEN: ${{ github.token }}
+      - run: |
+          mkdir -p out
+          curl -sL "https://test.odisha-wx-charts.pages.dev/index.json?x=$RANDOM" | python3 -c "
+          import json,sys;d=json.load(sys.stdin)
+          for m in d['models']:
+              r=m['runs'][0];sp=list((r.get('states') or {}).get('odisha',{}).get('products',{}))
+              print(m['model'],r['run'],'partial' if r.get('partial') else 'full',r.get('upto'),sp)" > out/log.txt
+      - if: always()
         run: |
-          gh cache list -R "$GITHUB_REPOSITORY" --key "vidt-" --limit 50 --json key -q '.[].key' | while read -r k; do gh cache delete -R "$GITHUB_REPOSITORY" "$k"; done
+          cd out && git init -q -b probe-out-lat && git add -A
+          git -c user.name=probe -c user.email=probe@users.noreply.github.com commit -qm lat
+          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-lat
