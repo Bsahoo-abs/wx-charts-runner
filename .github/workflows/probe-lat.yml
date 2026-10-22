@@ -21,7 +21,7 @@ jobs:
           npx --yes wrangler@3 pages deployment list --project-name odisha-wx-charts-radar 2>&1 | head -12 >> out/log.txt || true
           for u in https://test.odisha-wx-charts-radar.pages.dev/ https://odisha-wx-charts-radar.pages.dev/; do curl -sS -o /dev/null -w "$u %{http_code}\n" "$u" >> out/log.txt 2>&1 || true; done
           for u in https://test.odisha-wx-charts-radar.pages.dev/radar/radar.json https://odisha-wx-charts-radar.pages.dev/radar/radar.json; do
-            echo "== $u" >> out/log.txt; curl -s -D - -o out/body.txt "$u" | head -20 >> out/log.txt; head -c 400 out/body.txt >> out/log.txt; echo >> out/log.txt
+            echo "== $u" >> out/log.txt; curl -s -D - -o out/body.txt "$u" | head -20 >> out/log.txt; cp out/body.txt out/$(echo $u | cut -d/ -f3).json; echo >> out/log.txt
           done
           curl -sL https://test.odisha-wx-charts.pages.dev/lab.html | grep -c "m-radar\|RADAR_BASE" >> out/log.txt || true
           curl -s -o /dev/null -w "radar3d %{http_code}\n" https://test.odisha-wx-charts.pages.dev/radar3d.html >> out/log.txt
