@@ -23,7 +23,7 @@ jobs:
           for u in https://test.odisha-wx-charts-radar.pages.dev/radar/radar.json https://odisha-wx-charts-radar.pages.dev/radar/radar.json; do
             echo "== $u" >> out/log.txt; curl -s -D - -o out/body.txt "$u" | head -20 >> out/log.txt; head -c 400 out/body.txt >> out/log.txt; echo >> out/log.txt
           done
-          curl -s https://test.odisha-wx-charts.pages.dev/lab.html | grep -c "m-radar" >> out/log.txt || true
+          curl -sL https://test.odisha-wx-charts.pages.dev/lab.html | grep -c "m-radar\|RADAR_BASE" >> out/log.txt || true
           curl -s -o /dev/null -w "radar3d %{http_code}\n" https://test.odisha-wx-charts.pages.dev/radar3d.html >> out/log.txt
       - name: Save
         if: always()
