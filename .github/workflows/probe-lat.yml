@@ -1,4 +1,4 @@
-# One-off TEST: is the radar page reachable? Results -> branch probe-out-lat.
+# One-off TEST: which saved sets exist. Results -> branch probe-out-lat.
 name: probe-lat
 on:
   push:
@@ -6,16 +6,130 @@ on:
   workflow_dispatch:
 permissions:
   contents: write
+  actions: read
 jobs:
   probe:
     runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
-      - name: Check
+      - id: site_ECMWF
+        uses: actions/cache/restore@v4
+        with:
+          path: x/site/ECMWF
+          key: site-ECMWF-none
+          restore-keys: site-ECMWF-
+          lookup-only: true
+      - id: site_AIFS
+        uses: actions/cache/restore@v4
+        with:
+          path: x/site/AIFS
+          key: site-AIFS-none
+          restore-keys: site-AIFS-
+          lookup-only: true
+      - id: site_GFS
+        uses: actions/cache/restore@v4
+        with:
+          path: x/site/GFS
+          key: site-GFS-none
+          restore-keys: site-GFS-
+          lookup-only: true
+      - id: site_AIGFS
+        uses: actions/cache/restore@v4
+        with:
+          path: x/site/AIGFS
+          key: site-AIGFS-none
+          restore-keys: site-AIGFS-
+          lookup-only: true
+      - id: site_ICON
+        uses: actions/cache/restore@v4
+        with:
+          path: x/site/ICON
+          key: site-ICON-none
+          restore-keys: site-ICON-
+          lookup-only: true
+      - id: site_GEM
+        uses: actions/cache/restore@v4
+        with:
+          path: x/site/GEM
+          key: site-GEM-none
+          restore-keys: site-GEM-
+          lookup-only: true
+      - id: site_ECMWF9
+        uses: actions/cache/restore@v4
+        with:
+          path: x/site/ECMWF9
+          key: site-ECMWF9-none
+          restore-keys: site-ECMWF9-
+          lookup-only: true
+      - id: ptest_ECMWF
+        uses: actions/cache/restore@v4
+        with:
+          path: x/ptest/ECMWF
+          key: ptest-ECMWF-none
+          restore-keys: ptest-ECMWF-
+          lookup-only: true
+      - id: ptest_AIFS
+        uses: actions/cache/restore@v4
+        with:
+          path: x/ptest/AIFS
+          key: ptest-AIFS-none
+          restore-keys: ptest-AIFS-
+          lookup-only: true
+      - id: ptest_GFS
+        uses: actions/cache/restore@v4
+        with:
+          path: x/ptest/GFS
+          key: ptest-GFS-none
+          restore-keys: ptest-GFS-
+          lookup-only: true
+      - id: ptest_AIGFS
+        uses: actions/cache/restore@v4
+        with:
+          path: x/ptest/AIGFS
+          key: ptest-AIGFS-none
+          restore-keys: ptest-AIGFS-
+          lookup-only: true
+      - id: ptest_ICON
+        uses: actions/cache/restore@v4
+        with:
+          path: x/ptest/ICON
+          key: ptest-ICON-none
+          restore-keys: ptest-ICON-
+          lookup-only: true
+      - id: ptest_GEM
+        uses: actions/cache/restore@v4
+        with:
+          path: x/ptest/GEM
+          key: ptest-GEM-none
+          restore-keys: ptest-GEM-
+          lookup-only: true
+      - id: ptest_ECMWF9
+        uses: actions/cache/restore@v4
+        with:
+          path: x/ptest/ECMWF9
+          key: ptest-ECMWF9-none
+          restore-keys: ptest-ECMWF9-
+          lookup-only: true
+      - name: Report
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           mkdir -p out
-          curl -s https://test.odisha-wx-charts-radar.pages.dev/radar/radar.json -o out/radar.json
-          curl -sL https://test.odisha-wx-charts.pages.dev/vid/GFS/ -o /dev/null || true
+          echo "site-ECMWF: ${{ steps.site_ECMWF.outputs.cache-matched-key }}" >> out/log.txt
+          echo "site-AIFS: ${{ steps.site_AIFS.outputs.cache-matched-key }}" >> out/log.txt
+          echo "site-GFS: ${{ steps.site_GFS.outputs.cache-matched-key }}" >> out/log.txt
+          echo "site-AIGFS: ${{ steps.site_AIGFS.outputs.cache-matched-key }}" >> out/log.txt
+          echo "site-ICON: ${{ steps.site_ICON.outputs.cache-matched-key }}" >> out/log.txt
+          echo "site-GEM: ${{ steps.site_GEM.outputs.cache-matched-key }}" >> out/log.txt
+          echo "site-ECMWF9: ${{ steps.site_ECMWF9.outputs.cache-matched-key }}" >> out/log.txt
+          echo "ptest-ECMWF: ${{ steps.ptest_ECMWF.outputs.cache-matched-key }}" >> out/log.txt
+          echo "ptest-AIFS: ${{ steps.ptest_AIFS.outputs.cache-matched-key }}" >> out/log.txt
+          echo "ptest-GFS: ${{ steps.ptest_GFS.outputs.cache-matched-key }}" >> out/log.txt
+          echo "ptest-AIGFS: ${{ steps.ptest_AIGFS.outputs.cache-matched-key }}" >> out/log.txt
+          echo "ptest-ICON: ${{ steps.ptest_ICON.outputs.cache-matched-key }}" >> out/log.txt
+          echo "ptest-GEM: ${{ steps.ptest_GEM.outputs.cache-matched-key }}" >> out/log.txt
+          echo "ptest-ECMWF9: ${{ steps.ptest_ECMWF9.outputs.cache-matched-key }}" >> out/log.txt
+          gh cache list -R "$GITHUB_REPOSITORY" --limit 200 --json key,sizeInBytes,lastAccessedAt -q '.[]|"\(.key) \(.sizeInBytes/1e6|floor) MB \(.lastAccessedAt)"' >> out/log.txt || true
       - name: Save
         if: always()
         run: |
