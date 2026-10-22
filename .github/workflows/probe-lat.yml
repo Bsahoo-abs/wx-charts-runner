@@ -14,8 +14,8 @@ jobs:
       - name: Check
         run: |
           mkdir -p out
-          for c in cni shr plk kol chn; do curl -s -A "Mozilla/5.0" -D out/h_$c.txt -o out/caz_$c.gif "https://mausam.imd.gov.in/Radar/caz_$c.gif"; echo "$c $(head -1 out/h_$c.txt) $(stat -c %s out/caz_$c.gif)" >> out/log.txt; done
-          curl -s -A "Mozilla/5.0" "https://radar.bmd.gov.bd/radar-images-dhaka.json" | head -c 600 >> out/log.txt; echo >> out/log.txt
+          curl -s https://test.odisha-wx-charts-radar.pages.dev/radar/radar.json -o out/radar.json
+          curl -sL https://test.odisha-wx-charts.pages.dev/vid/GFS/ -o /dev/null || true
       - name: Save
         if: always()
         run: |
