@@ -1,0 +1,1321 @@
+09:57:32    ECMWF AIFS Single 2026-10-23 06Z: not on the server yet
+09:57:32    ECMWF AIFS Single 2026-10-23 00Z: complete to +360 h
+09:57:32  ECMWF AIFS Single: looking for the newest complete run ...
+09:57:33  ECMWF AIFS Single 2026-10-23 00Z: 61 steps to download -> /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_data/AIFS/2026102300
+09:57:56      5/61 steps    24 s  (0 failed)
+09:57:59      10/61 steps    27 s  (0 failed)
+09:58:02      15/61 steps    29 s  (0 failed)
+09:58:07      20/61 steps    34 s  (0 failed)
+09:58:10      25/61 steps    37 s  (0 failed)
+09:58:29      30/61 steps    57 s  (0 failed)
+09:58:41      35/61 steps    69 s  (0 failed)
+09:58:47      40/61 steps    74 s  (0 failed)
+09:59:00      45/61 steps    87 s  (0 failed)
+09:59:07      50/61 steps    94 s  (0 failed)
+09:59:13      55/61 steps   100 s  (0 failed)
+09:59:24      60/61 steps   111 s  (0 failed)
+09:59:27      61/61 steps   114 s  (0 failed)
+09:59:27    memory free now: 13.3 GB
+downloaded in 119 s
+09:59:29    ECMWF AIFS Single globe_storm_bay ...
+09:59:32    tracked 6 system(s): 969 hPa near 126E, 988 hPa near 86E, 1009 hPa near 58E, 1010 hPa near 57E, 1009 hPa near 50E, 1008 hPa near 72E
+09:59:32      globe_storm_bay: following the system from +0 h to +168 h
+09:59:32      globe_storm_bay: 1537 frames on 4 CPU workers ...
+09:59:37    ECMWF AIFS Single 2026-10-23 06Z: not on the server yet
+09:59:37    ECMWF AIFS Single 2026-10-23 06Z: not on the server yet
+09:59:38    ECMWF AIFS Single 2026-10-23 06Z: not on the server yet
+09:59:38    ECMWF AIFS Single 2026-10-23 06Z: not on the server yet
+09:59:38    ECMWF AIFS Single 2026-10-23 00Z: complete to +360 h
+09:59:38    ECMWF AIFS Single 2026-10-23 00Z: complete to +360 h
+09:59:38  ECMWF AIFS Single: looking for the newest complete run ...
+09:59:38  ECMWF AIFS Single: looking for the newest complete run ...
+09:59:38  ECMWF AIFS Single 2026-10-23 00Z: 0 steps to download -> /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_data/AIFS/2026102300
+09:59:38  ECMWF AIFS Single 2026-10-23 00Z: 0 steps to download -> /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_data/AIFS/2026102300
+09:59:38    ECMWF AIFS Single 2026-10-23 00Z: complete to +360 h
+09:59:38    memory free now: 13.6 GB
+downloaded in 4 s
+09:59:38  ECMWF AIFS Single: looking for the newest complete run ...
+09:59:38    memory free now: 13.6 GB
+downloaded in 4 s
+09:59:38    ECMWF AIFS Single 2026-10-23 00Z: complete to +360 h
+09:59:38  ECMWF AIFS Single: looking for the newest complete run ...
+09:59:38  ECMWF AIFS Single 2026-10-23 00Z: 0 steps to download -> /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_data/AIFS/2026102300
+09:59:38  ECMWF AIFS Single 2026-10-23 00Z: 0 steps to download -> /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_data/AIFS/2026102300
+09:59:38    memory free now: 13.6 GB
+downloaded in 4 s
+09:59:38    memory free now: 13.6 GB
+downloaded in 5 s
+09:59:41    ECMWF AIFS Single globe_storm_bay ...
+09:59:41    ECMWF AIFS Single globe_storm_bay ...
+09:59:41    ECMWF AIFS Single globe_storm_bay ...
+09:59:41    ECMWF AIFS Single globe_storm_bay ...
+09:59:44    tracked 6 system(s): 969 hPa near 126E, 988 hPa near 86E, 1009 hPa near 58E, 1010 hPa near 57E, 1009 hPa near 50E, 1008 hPa near 72E
+09:59:44    tracked 6 system(s): 969 hPa near 126E, 988 hPa near 86E, 1009 hPa near 58E, 1010 hPa near 57E, 1009 hPa near 50E, 1008 hPa near 72E
+09:59:44      globe_storm_bay: following the system from +0 h to +168 h
+09:59:44      globe_storm_bay: 1537 frames on 4 CPU workers ...
+09:59:44    globe_storm_bay failed (carrying on): 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+
+        To fix this issue, refer to the "Safe importing of main module"
+        section in https://docs.python.org/3/library/multiprocessing.html
+        
+09:59:44      globe_storm_bay: following the system from +0 h to +168 h
+09:59:44      globe_storm_bay: 1537 frames on 4 CPU workers ...
+09:59:44    globe_storm_bay failed (carrying on): 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+
+        To fix this issue, refer to the "Safe importing of main module"
+        section in https://docs.python.org/3/library/multiprocessing.html
+        
+09:59:45    tracked 6 system(s): 969 hPa near 126E, 988 hPa near 86E, 1009 hPa near 58E, 1010 hPa near 57E, 1009 hPa near 50E, 1008 hPa near 72E
+09:59:45    tracked 6 system(s): 969 hPa near 126E, 988 hPa near 86E, 1009 hPa near 58E, 1010 hPa near 57E, 1009 hPa near 50E, 1008 hPa near 72E
+09:59:45    memory free now: 12.2 GB
+rendered in 11 s
+[in#0 @ 0x82cfec0] Error opening input: No such file or directory
+Error opening input file /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_charts/AIFS/2026102300/aifs_globe_storm_bay_2026102300.mp4.
+Error opening input files: No such file or directory
+09:59:45      globe_storm_bay: following the system from +0 h to +168 h
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 131, in _main
+    prepare(preparation_data)
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 246, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 297, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 291, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/runner/work/wx-charts-runner/wx-charts-runner/code/tools/hq_video.py", line 37, in <module>
+    subprocess.run([media.FFMPEG, "-y", "-loglevel", "error", "-i", str(src),
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/subprocess.py", line 571, in run
+09:59:45    memory free now: 12.2 GB
+rendered in 11 s
+09:59:45      globe_storm_bay: 1537 frames on 4 CPU workers ...
+[in#0 @ 0xd75aec0] Error opening input: No such file or directory
+Error opening input file /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_charts/AIFS/2026102300/aifs_globe_storm_bay_2026102300.mp4.
+Error opening input files: No such file or directory
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 131, in _main
+    prepare(preparation_data)
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 246, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 297, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 291, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/runner/work/wx-charts-runner/wx-charts-runner/code/tools/hq_video.py", line 37, in <module>
+    subprocess.run([media.FFMPEG, "-y", "-loglevel", "error", "-i", str(src),
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/subprocess.py", line 571, in run
+09:59:45    globe_storm_bay failed (carrying on): 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+
+        To fix this issue, refer to the "Safe importing of main module"
+        section in https://docs.python.org/3/library/multiprocessing.html
+        
+09:59:45      globe_storm_bay: following the system from +0 h to +168 h
+09:59:45      globe_storm_bay: 1537 frames on 4 CPU workers ...
+09:59:45    globe_storm_bay failed (carrying on): 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+
+        To fix this issue, refer to the "Safe importing of main module"
+        section in https://docs.python.org/3/library/multiprocessing.html
+        
+    raise CalledProcessError(retcode, process.args,
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2', '-y', '-loglevel', 'error', '-i', '/home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_charts/AIFS/2026102300/aifs_globe_storm_bay_2026102300.mp4', '-f', 'lavfi', '-i', 'anullsrc=r=48000:cl=stereo', '-vf', 'fps=30,scale=1920:-2:flags=lanczos', '-c:v', 'libx264', '-preset', 'slow', '-profile:v', 'high', '-level', '4.1', '-crf', '16', '-maxrate', '16M', '-bufsize', '32M', '-g', '60', '-bf', '2', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '128k', '-shortest', '-movflags', '+faststart', '../out/AIFS_2026102300_globe_storm_bay_1080p.mp4']' returned non-zero exit status 254.
+subprocess.CalledProcessError: Command '['/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2', '-y', '-loglevel', 'error', '-i', '/home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_charts/AIFS/2026102300/aifs_globe_storm_bay_2026102300.mp4', '-f', 'lavfi', '-i', 'anullsrc=r=48000:cl=stereo', '-vf', 'fps=30,scale=1920:-2:flags=lanczos', '-c:v', 'libx264', '-preset', 'slow', '-profile:v', 'high', '-level', '4.1', '-crf', '16', '-maxrate', '16M', '-bufsize', '32M', '-g', '60', '-bf', '2', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '128k', '-shortest', '-movflags', '+faststart', '../out/AIFS_2026102300_globe_storm_bay_1080p.mp4']' returned non-zero exit status 254.
+09:59:45    memory free now: 12.2 GB
+rendered in 11 s
+[in#0 @ 0x3f336ec0] Error opening input: No such file or directory
+Error opening input file /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_charts/AIFS/2026102300/aifs_globe_storm_bay_2026102300.mp4.
+Error opening input files: No such file or directory
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 131, in _main
+    prepare(preparation_data)
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 246, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 297, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 291, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/runner/work/wx-charts-runner/wx-charts-runner/code/tools/hq_video.py", line 37, in <module>
+    subprocess.run([media.FFMPEG, "-y", "-loglevel", "error", "-i", str(src),
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2', '-y', '-loglevel', 'error', '-i', '/home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_charts/AIFS/2026102300/aifs_globe_storm_bay_2026102300.mp4', '-f', 'lavfi', '-i', 'anullsrc=r=48000:cl=stereo', '-vf', 'fps=30,scale=1920:-2:flags=lanczos', '-c:v', 'libx264', '-preset', 'slow', '-profile:v', 'high', '-level', '4.1', '-crf', '16', '-maxrate', '16M', '-bufsize', '32M', '-g', '60', '-bf', '2', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '128k', '-shortest', '-movflags', '+faststart', '../out/AIFS_2026102300_globe_storm_bay_1080p.mp4']' returned non-zero exit status 254.
+09:59:45    memory free now: 12.2 GB
+rendered in 11 s
+[in#0 @ 0x20604ec0] Error opening input: No such file or directory
+Error opening input file /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_charts/AIFS/2026102300/aifs_globe_storm_bay_2026102300.mp4.
+Error opening input files: No such file or directory
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 131, in _main
+    prepare(preparation_data)
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 246, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 297, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 291, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/runner/work/wx-charts-runner/wx-charts-runner/code/tools/hq_video.py", line 37, in <module>
+    subprocess.run([media.FFMPEG, "-y", "-loglevel", "error", "-i", str(src),
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2', '-y', '-loglevel', 'error', '-i', '/home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_charts/AIFS/2026102300/aifs_globe_storm_bay_2026102300.mp4', '-f', 'lavfi', '-i', 'anullsrc=r=48000:cl=stereo', '-vf', 'fps=30,scale=1920:-2:flags=lanczos', '-c:v', 'libx264', '-preset', 'slow', '-profile:v', 'high', '-level', '4.1', '-crf', '16', '-maxrate', '16M', '-bufsize', '32M', '-g', '60', '-bf', '2', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '128k', '-shortest', '-movflags', '+faststart', '../out/AIFS_2026102300_globe_storm_bay_1080p.mp4']' returned non-zero exit status 254.
+09:59:50    ECMWF AIFS Single 2026-10-23 06Z: not on the server yet
+09:59:50    ECMWF AIFS Single 2026-10-23 06Z: not on the server yet
+09:59:50    ECMWF AIFS Single 2026-10-23 06Z: not on the server yet
+09:59:50    ECMWF AIFS Single 2026-10-23 00Z: complete to +360 h
+09:59:50  ECMWF AIFS Single: looking for the newest complete run ...
+09:59:50  ECMWF AIFS Single 2026-10-23 00Z: 0 steps to download -> /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_data/AIFS/2026102300
+09:59:50    ECMWF AIFS Single 2026-10-23 00Z: complete to +360 h
+09:59:50  ECMWF AIFS Single: looking for the newest complete run ...
+09:59:50    memory free now: 13.3 GB
+downloaded in 4 s
+09:59:50    ECMWF AIFS Single 2026-10-23 00Z: complete to +360 h
+09:59:50  ECMWF AIFS Single: looking for the newest complete run ...
+09:59:50  ECMWF AIFS Single 2026-10-23 00Z: 0 steps to download -> /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_data/AIFS/2026102300
+09:59:50  ECMWF AIFS Single 2026-10-23 00Z: 0 steps to download -> /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_data/AIFS/2026102300
+09:59:50    memory free now: 13.3 GB
+downloaded in 4 s
+09:59:50    ECMWF AIFS Single 2026-10-23 06Z: not on the server yet
+09:59:50    memory free now: 13.3 GB
+downloaded in 4 s
+09:59:50    ECMWF AIFS Single 2026-10-23 00Z: complete to +360 h
+09:59:50  ECMWF AIFS Single: looking for the newest complete run ...
+09:59:50  ECMWF AIFS Single 2026-10-23 00Z: 0 steps to download -> /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_data/AIFS/2026102300
+09:59:51    memory free now: 13.3 GB
+downloaded in 4 s
+09:59:53    ECMWF AIFS Single globe_storm_bay ...
+09:59:53    ECMWF AIFS Single globe_storm_bay ...
+09:59:53    ECMWF AIFS Single globe_storm_bay ...
+09:59:54    ECMWF AIFS Single globe_storm_bay ...
+09:59:57    tracked 6 system(s): 969 hPa near 126E, 988 hPa near 86E, 1009 hPa near 58E, 1010 hPa near 57E, 1009 hPa near 50E, 1008 hPa near 72E
+09:59:57      globe_storm_bay: following the system from +0 h to +168 h
+09:59:57      globe_storm_bay: 1537 frames on 4 CPU workers ...
+09:59:57    globe_storm_bay failed (carrying on): 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+
+        To fix this issue, refer to the "Safe importing of main module"
+        section in https://docs.python.org/3/library/multiprocessing.html
+        
+09:59:57    tracked 6 system(s): 969 hPa near 126E, 988 hPa near 86E, 1009 hPa near 58E, 1010 hPa near 57E, 1009 hPa near 50E, 1008 hPa near 72E
+09:59:57      globe_storm_bay: following the system from +0 h to +168 h
+09:59:57      globe_storm_bay: 1537 frames on 4 CPU workers ...
+09:59:57    globe_storm_bay failed (carrying on): 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+
+        To fix this issue, refer to the "Safe importing of main module"
+        section in https://docs.python.org/3/library/multiprocessing.html
+        
+09:59:57    tracked 6 system(s): 969 hPa near 126E, 988 hPa near 86E, 1009 hPa near 58E, 1010 hPa near 57E, 1009 hPa near 50E, 1008 hPa near 72E
+09:59:57    memory free now: 12.3 GB
+rendered in 11 s
+[in#0 @ 0x4600cec0] Error opening input: No such file or directory
+Error opening input file /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_charts/AIFS/2026102300/aifs_globe_storm_bay_2026102300.mp4.
+Error opening input files: No such file or directory
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 131, in _main
+09:59:57      globe_storm_bay: following the system from +0 h to +168 h
+    prepare(preparation_data)
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 246, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 297, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 291, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/runner/work/wx-charts-runner/wx-charts-runner/code/tools/hq_video.py", line 37, in <module>
+    subprocess.run([media.FFMPEG, "-y", "-loglevel", "error", "-i", str(src),
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2', '-y', '-loglevel', 'error', '-i', '/home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_charts/AIFS/2026102300/aifs_globe_storm_bay_2026102300.mp4', '-f', 'lavfi', '-i', 'anullsrc=r=48000:cl=stereo', '-vf', 'fps=30,scale=1920:-2:flags=lanczos', '-c:v', 'libx264', '-preset', 'slow', '-profile:v', 'high', '-level', '4.1', '-crf', '16', '-maxrate', '16M', '-bufsize', '32M', '-g', '60', '-bf', '2', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '128k', '-shortest', '-movflags', '+faststart', '../out/AIFS_2026102300_globe_storm_bay_1080p.mp4']' returned non-zero exit status 254.
+09:59:57      globe_storm_bay: 1537 frames on 4 CPU workers ...
+09:59:57    globe_storm_bay failed (carrying on): 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+
+        To fix this issue, refer to the "Safe importing of main module"
+        section in https://docs.python.org/3/library/multiprocessing.html
+        
+09:59:57    memory free now: 12.3 GB
+rendered in 11 s
+[in#0 @ 0x43bfbec0] Error opening input: No such file or directory
+Error opening input file /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_charts/AIFS/2026102300/aifs_globe_storm_bay_2026102300.mp4.
+Error opening input files: No such file or directory
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 131, in _main
+    prepare(preparation_data)
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 246, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 297, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 291, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/runner/work/wx-charts-runner/wx-charts-runner/code/tools/hq_video.py", line 37, in <module>
+    subprocess.run([media.FFMPEG, "-y", "-loglevel", "error", "-i", str(src),
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2', '-y', '-loglevel', 'error', '-i', '/home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_charts/AIFS/2026102300/aifs_globe_storm_bay_2026102300.mp4', '-f', 'lavfi', '-i', 'anullsrc=r=48000:cl=stereo', '-vf', 'fps=30,scale=1920:-2:flags=lanczos', '-c:v', 'libx264', '-preset', 'slow', '-profile:v', 'high', '-level', '4.1', '-crf', '16', '-maxrate', '16M', '-bufsize', '32M', '-g', '60', '-bf', '2', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '128k', '-shortest', '-movflags', '+faststart', '../out/AIFS_2026102300_globe_storm_bay_1080p.mp4']' returned non-zero exit status 254.
+09:59:57    memory free now: 12.3 GB
+rendered in 11 s
+[in#0 @ 0x164e3ec0] Error opening input: No such file or directory
+Error opening input file /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_charts/AIFS/2026102300/aifs_globe_storm_bay_2026102300.mp4.
+Error opening input files: No such file or directory
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 131, in _main
+    prepare(preparation_data)
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 246, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 297, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 291, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/runner/work/wx-charts-runner/wx-charts-runner/code/tools/hq_video.py", line 37, in <module>
+    subprocess.run([media.FFMPEG, "-y", "-loglevel", "error", "-i", str(src),
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2', '-y', '-loglevel', 'error', '-i', '/home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_charts/AIFS/2026102300/aifs_globe_storm_bay_2026102300.mp4', '-f', 'lavfi', '-i', 'anullsrc=r=48000:cl=stereo', '-vf', 'fps=30,scale=1920:-2:flags=lanczos', '-c:v', 'libx264', '-preset', 'slow', '-profile:v', 'high', '-level', '4.1', '-crf', '16', '-maxrate', '16M', '-bufsize', '32M', '-g', '60', '-bf', '2', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '128k', '-shortest', '-movflags', '+faststart', '../out/AIFS_2026102300_globe_storm_bay_1080p.mp4']' returned non-zero exit status 254.
+09:59:57    tracked 6 system(s): 969 hPa near 126E, 988 hPa near 86E, 1009 hPa near 58E, 1010 hPa near 57E, 1009 hPa near 50E, 1008 hPa near 72E
+09:59:57      globe_storm_bay: following the system from +0 h to +168 h
+09:59:57      globe_storm_bay: 1537 frames on 4 CPU workers ...
+09:59:57    globe_storm_bay failed (carrying on): 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+
+        To fix this issue, refer to the "Safe importing of main module"
+        section in https://docs.python.org/3/library/multiprocessing.html
+        
+09:59:58    memory free now: 12.8 GB
+rendered in 11 s
+[in#0 @ 0x2c749ec0] Error opening input: No such file or directory
+Error opening input file /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_charts/AIFS/2026102300/aifs_globe_storm_bay_2026102300.mp4.
+Error opening input files: No such file or directory
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 131, in _main
+    prepare(preparation_data)
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 246, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 297, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 291, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/runner/work/wx-charts-runner/wx-charts-runner/code/tools/hq_video.py", line 37, in <module>
+    subprocess.run([media.FFMPEG, "-y", "-loglevel", "error", "-i", str(src),
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2', '-y', '-loglevel', 'error', '-i', '/home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_charts/AIFS/2026102300/aifs_globe_storm_bay_2026102300.mp4', '-f', 'lavfi', '-i', 'anullsrc=r=48000:cl=stereo', '-vf', 'fps=30,scale=1920:-2:flags=lanczos', '-c:v', 'libx264', '-preset', 'slow', '-profile:v', 'high', '-level', '4.1', '-crf', '16', '-maxrate', '16M', '-bufsize', '32M', '-g', '60', '-bf', '2', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '128k', '-shortest', '-movflags', '+faststart', '../out/AIFS_2026102300_globe_storm_bay_1080p.mp4']' returned non-zero exit status 254.
+10:00:02    ECMWF AIFS Single 2026-10-23 06Z: not on the server yet
+10:00:02    ECMWF AIFS Single 2026-10-23 00Z: complete to +360 h
+10:00:02  ECMWF AIFS Single: looking for the newest complete run ...
+10:00:02  ECMWF AIFS Single 2026-10-23 00Z: 0 steps to download -> /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_data/AIFS/2026102300
+10:00:02    memory free now: 13.3 GB
+downloaded in 3 s
+10:00:03    ECMWF AIFS Single 2026-10-23 06Z: not on the server yet
+10:00:03    ECMWF AIFS Single 2026-10-23 00Z: complete to +360 h
+10:00:03  ECMWF AIFS Single: looking for the newest complete run ...
+10:00:03  ECMWF AIFS Single 2026-10-23 00Z: 0 steps to download -> /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_data/AIFS/2026102300
+10:00:03    ECMWF AIFS Single 2026-10-23 06Z: not on the server yet
+10:00:03    memory free now: 13.3 GB
+downloaded in 4 s
+10:00:03    ECMWF AIFS Single 2026-10-23 06Z: not on the server yet
+10:00:03    ECMWF AIFS Single 2026-10-23 00Z: complete to +360 h
+10:00:03  ECMWF AIFS Single: looking for the newest complete run ...
+10:00:03  ECMWF AIFS Single 2026-10-23 00Z: 0 steps to download -> /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_data/AIFS/2026102300
+10:00:03    ECMWF AIFS Single 2026-10-23 00Z: complete to +360 h
+10:00:03  ECMWF AIFS Single: looking for the newest complete run ...
+10:00:03  ECMWF AIFS Single 2026-10-23 00Z: 0 steps to download -> /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_data/AIFS/2026102300
+10:00:03    memory free now: 13.3 GB
+downloaded in 4 s
+10:00:03    memory free now: 13.3 GB
+downloaded in 4 s
+10:00:05    ECMWF AIFS Single globe_storm_bay ...
+10:00:06    ECMWF AIFS Single globe_storm_bay ...
+10:00:06    ECMWF AIFS Single globe_storm_bay ...
+10:00:06    ECMWF AIFS Single globe_storm_bay ...
+10:00:09    tracked 6 system(s): 969 hPa near 126E, 988 hPa near 86E, 1009 hPa near 58E, 1010 hPa near 57E, 1009 hPa near 50E, 1008 hPa near 72E
+10:00:09      globe_storm_bay: following the system from +0 h to +168 h
+10:00:09      globe_storm_bay: 1537 frames on 4 CPU workers ...
+10:00:09    globe_storm_bay failed (carrying on): 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+
+        To fix this issue, refer to the "Safe importing of main module"
+        section in https://docs.python.org/3/library/multiprocessing.html
+        
+10:00:09    memory free now: 12.2 GB
+rendered in 10 s
+[in#0 @ 0x289aaec0] Error opening input: No such file or directory
+Error opening input file /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_charts/AIFS/2026102300/aifs_globe_storm_bay_2026102300.mp4.
+Error opening input files: No such file or directory
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 131, in _main
+    prepare(preparation_data)
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 246, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 297, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 291, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/runner/work/wx-charts-runner/wx-charts-runner/code/tools/hq_video.py", line 37, in <module>
+    subprocess.run([media.FFMPEG, "-y", "-loglevel", "error", "-i", str(src),
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2', '-y', '-loglevel', 'error', '-i', '/home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_charts/AIFS/2026102300/aifs_globe_storm_bay_2026102300.mp4', '-f', 'lavfi', '-i', 'anullsrc=r=48000:cl=stereo', '-vf', 'fps=30,scale=1920:-2:flags=lanczos', '-c:v', 'libx264', '-preset', 'slow', '-profile:v', 'high', '-level', '4.1', '-crf', '16', '-maxrate', '16M', '-bufsize', '32M', '-g', '60', '-bf', '2', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '128k', '-shortest', '-movflags', '+faststart', '../out/AIFS_2026102300_globe_storm_bay_1080p.mp4']' returned non-zero exit status 254.
+10:00:10    tracked 6 system(s): 969 hPa near 126E, 988 hPa near 86E, 1009 hPa near 58E, 1010 hPa near 57E, 1009 hPa near 50E, 1008 hPa near 72E
+10:00:10      globe_storm_bay: following the system from +0 h to +168 h
+10:00:10      globe_storm_bay: 1537 frames on 4 CPU workers ...
+10:00:10    globe_storm_bay failed (carrying on): 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+
+        To fix this issue, refer to the "Safe importing of main module"
+        section in https://docs.python.org/3/library/multiprocessing.html
+        
+10:00:10    memory free now: 12.6 GB
+rendered in 11 s
+[in#0 @ 0x1c504ec0] Error opening input: No such file or directory
+Error opening input file /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_charts/AIFS/2026102300/aifs_globe_storm_bay_2026102300.mp4.
+Error opening input files: No such file or directory
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 131, in _main
+    prepare(preparation_data)
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 246, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 297, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 291, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/runner/work/wx-charts-runner/wx-charts-runner/code/tools/hq_video.py", line 37, in <module>
+    subprocess.run([media.FFMPEG, "-y", "-loglevel", "error", "-i", str(src),
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2', '-y', '-loglevel', 'error', '-i', '/home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_charts/AIFS/2026102300/aifs_globe_storm_bay_2026102300.mp4', '-f', 'lavfi', '-i', 'anullsrc=r=48000:cl=stereo', '-vf', 'fps=30,scale=1920:-2:flags=lanczos', '-c:v', 'libx264', '-preset', 'slow', '-profile:v', 'high', '-level', '4.1', '-crf', '16', '-maxrate', '16M', '-bufsize', '32M', '-g', '60', '-bf', '2', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '128k', '-shortest', '-movflags', '+faststart', '../out/AIFS_2026102300_globe_storm_bay_1080p.mp4']' returned non-zero exit status 254.
+10:00:10    tracked 6 system(s): 969 hPa near 126E, 988 hPa near 86E, 1009 hPa near 58E, 1010 hPa near 57E, 1009 hPa near 50E, 1008 hPa near 72E
+10:00:10      globe_storm_bay: following the system from +0 h to +168 h
+10:00:10      globe_storm_bay: 1537 frames on 4 CPU workers ...
+10:00:10    globe_storm_bay failed (carrying on): 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+
+        To fix this issue, refer to the "Safe importing of main module"
+        section in https://docs.python.org/3/library/multiprocessing.html
+        
+10:00:10    tracked 6 system(s): 969 hPa near 126E, 988 hPa near 86E, 1009 hPa near 58E, 1010 hPa near 57E, 1009 hPa near 50E, 1008 hPa near 72E
+10:00:10      globe_storm_bay: following the system from +0 h to +168 h
+10:00:10      globe_storm_bay: 1537 frames on 4 CPU workers ...
+10:00:10    globe_storm_bay failed (carrying on): 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+
+        To fix this issue, refer to the "Safe importing of main module"
+        section in https://docs.python.org/3/library/multiprocessing.html
+        
+10:00:10    memory free now: 12.7 GB
+rendered in 11 s
+[in#0 @ 0x1201cec0] Error opening input: No such file or directory
+Error opening input file /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_charts/AIFS/2026102300/aifs_globe_storm_bay_2026102300.mp4.
+Error opening input files: No such file or directory
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 131, in _main
+    prepare(preparation_data)
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 246, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 297, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 291, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/runner/work/wx-charts-runner/wx-charts-runner/code/tools/hq_video.py", line 37, in <module>
+    subprocess.run([media.FFMPEG, "-y", "-loglevel", "error", "-i", str(src),
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2', '-y', '-loglevel', 'error', '-i', '/home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_charts/AIFS/2026102300/aifs_globe_storm_bay_2026102300.mp4', '-f', 'lavfi', '-i', 'anullsrc=r=48000:cl=stereo', '-vf', 'fps=30,scale=1920:-2:flags=lanczos', '-c:v', 'libx264', '-preset', 'slow', '-profile:v', 'high', '-level', '4.1', '-crf', '16', '-maxrate', '16M', '-bufsize', '32M', '-g', '60', '-bf', '2', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '128k', '-shortest', '-movflags', '+faststart', '../out/AIFS_2026102300_globe_storm_bay_1080p.mp4']' returned non-zero exit status 254.
+10:00:10    memory free now: 12.9 GB
+rendered in 11 s
+[in#0 @ 0x20428ec0] Error opening input: No such file or directory
+Error opening input file /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_charts/AIFS/2026102300/aifs_globe_storm_bay_2026102300.mp4.
+Error opening input files: No such file or directory
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 131, in _main
+    prepare(preparation_data)
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 246, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 297, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 291, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/runner/work/wx-charts-runner/wx-charts-runner/code/tools/hq_video.py", line 37, in <module>
+    subprocess.run([media.FFMPEG, "-y", "-loglevel", "error", "-i", str(src),
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2', '-y', '-loglevel', 'error', '-i', '/home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_charts/AIFS/2026102300/aifs_globe_storm_bay_2026102300.mp4', '-f', 'lavfi', '-i', 'anullsrc=r=48000:cl=stereo', '-vf', 'fps=30,scale=1920:-2:flags=lanczos', '-c:v', 'libx264', '-preset', 'slow', '-profile:v', 'high', '-level', '4.1', '-crf', '16', '-maxrate', '16M', '-bufsize', '32M', '-g', '60', '-bf', '2', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '128k', '-shortest', '-movflags', '+faststart', '../out/AIFS_2026102300_globe_storm_bay_1080p.mp4']' returned non-zero exit status 254.
+10:00:14    ECMWF AIFS Single 2026-10-23 06Z: not on the server yet
+10:00:14    ECMWF AIFS Single 2026-10-23 00Z: complete to +360 h
+10:00:14  ECMWF AIFS Single: looking for the newest complete run ...
+10:00:14  ECMWF AIFS Single 2026-10-23 00Z: 0 steps to download -> /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_data/AIFS/2026102300
+10:00:14    memory free now: 13.4 GB
+downloaded in 4 s
+10:00:15    ECMWF AIFS Single 2026-10-23 06Z: not on the server yet
+10:00:15    ECMWF AIFS Single 2026-10-23 06Z: not on the server yet
+10:00:15    ECMWF AIFS Single 2026-10-23 00Z: complete to +360 h
+10:00:15  ECMWF AIFS Single: looking for the newest complete run ...
+10:00:15    ECMWF AIFS Single 2026-10-23 00Z: complete to +360 h
+10:00:15  ECMWF AIFS Single: looking for the newest complete run ...
+10:00:15  ECMWF AIFS Single 2026-10-23 00Z: 0 steps to download -> /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_data/AIFS/2026102300
+10:00:15  ECMWF AIFS Single 2026-10-23 00Z: 0 steps to download -> /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_data/AIFS/2026102300
+10:00:15    memory free now: 13.3 GB
+downloaded in 4 s
+10:00:15    memory free now: 13.3 GB
+downloaded in 4 s
+10:00:15    ECMWF AIFS Single 2026-10-23 06Z: not on the server yet
+10:00:15    ECMWF AIFS Single 2026-10-23 00Z: complete to +360 h
+10:00:15  ECMWF AIFS Single: looking for the newest complete run ...
+10:00:15  ECMWF AIFS Single 2026-10-23 00Z: 0 steps to download -> /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_data/AIFS/2026102300
+10:00:15    memory free now: 13.3 GB
+downloaded in 4 s
+10:00:17    ECMWF AIFS Single globe_storm_bay ...
+10:00:18    ECMWF AIFS Single globe_storm_bay ...
+10:00:18    ECMWF AIFS Single globe_storm_bay ...
+10:00:18    ECMWF AIFS Single globe_storm_bay ...
+10:00:20    tracked 6 system(s): 969 hPa near 126E, 988 hPa near 86E, 1009 hPa near 58E, 1010 hPa near 57E, 1009 hPa near 50E, 1008 hPa near 72E
+10:00:21      globe_storm_bay: following the system from +0 h to +168 h
+10:00:21      globe_storm_bay: 1537 frames on 4 CPU workers ...
+10:00:21    globe_storm_bay failed (carrying on): 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+
+        To fix this issue, refer to the "Safe importing of main module"
+        section in https://docs.python.org/3/library/multiprocessing.html
+        
+10:00:21    memory free now: 12.3 GB
+rendered in 10 s
+[in#0 @ 0x19b01ec0] Error opening input: No such file or directory
+Error opening input file /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_charts/AIFS/2026102300/aifs_globe_storm_bay_2026102300.mp4.
+Error opening input files: No such file or directory
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 131, in _main
+    prepare(preparation_data)
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 246, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 297, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 291, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/runner/work/wx-charts-runner/wx-charts-runner/code/tools/hq_video.py", line 37, in <module>
+    subprocess.run([media.FFMPEG, "-y", "-loglevel", "error", "-i", str(src),
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2', '-y', '-loglevel', 'error', '-i', '/home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_charts/AIFS/2026102300/aifs_globe_storm_bay_2026102300.mp4', '-f', 'lavfi', '-i', 'anullsrc=r=48000:cl=stereo', '-vf', 'fps=30,scale=1920:-2:flags=lanczos', '-c:v', 'libx264', '-preset', 'slow', '-profile:v', 'high', '-level', '4.1', '-crf', '16', '-maxrate', '16M', '-bufsize', '32M', '-g', '60', '-bf', '2', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '128k', '-shortest', '-movflags', '+faststart', '../out/AIFS_2026102300_globe_storm_bay_1080p.mp4']' returned non-zero exit status 254.
+10:00:22    tracked 6 system(s): 969 hPa near 126E, 988 hPa near 86E, 1009 hPa near 58E, 1010 hPa near 57E, 1009 hPa near 50E, 1008 hPa near 72E
+10:00:22    tracked 6 system(s): 969 hPa near 126E, 988 hPa near 86E, 1009 hPa near 58E, 1010 hPa near 57E, 1009 hPa near 50E, 1008 hPa near 72E
+10:00:22      globe_storm_bay: following the system from +0 h to +168 h
+10:00:22      globe_storm_bay: 1537 frames on 4 CPU workers ...
+10:00:22    globe_storm_bay failed (carrying on): 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+
+        To fix this issue, refer to the "Safe importing of main module"
+        section in https://docs.python.org/3/library/multiprocessing.html
+        
+10:00:22      globe_storm_bay: following the system from +0 h to +168 h
+10:00:22      globe_storm_bay: 1537 frames on 4 CPU workers ...
+10:00:22    globe_storm_bay failed (carrying on): 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+
+        To fix this issue, refer to the "Safe importing of main module"
+        section in https://docs.python.org/3/library/multiprocessing.html
+        
+10:00:22    memory free now: 12.5 GB
+rendered in 11 s
+[in#0 @ 0x1d215ec0] Error opening input: No such file or directory
+Error opening input file /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_charts/AIFS/2026102300/aifs_globe_storm_bay_2026102300.mp4.
+Error opening input files: No such file or directory
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 131, in _main
+    prepare(preparation_data)
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 246, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 297, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 291, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/runner/work/wx-charts-runner/wx-charts-runner/code/tools/hq_video.py", line 37, in <module>
+    subprocess.run([media.FFMPEG, "-y", "-loglevel", "error", "-i", str(src),
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2', '-y', '-loglevel', 'error', '-i', '/home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_charts/AIFS/2026102300/aifs_globe_storm_bay_2026102300.mp4', '-f', 'lavfi', '-i', 'anullsrc=r=48000:cl=stereo', '-vf', 'fps=30,scale=1920:-2:flags=lanczos', '-c:v', 'libx264', '-preset', 'slow', '-profile:v', 'high', '-level', '4.1', '-crf', '16', '-maxrate', '16M', '-bufsize', '32M', '-g', '60', '-bf', '2', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '128k', '-shortest', '-movflags', '+faststart', '../out/AIFS_2026102300_globe_storm_bay_1080p.mp4']' returned non-zero exit status 254.
+10:00:22    memory free now: 12.5 GB
+rendered in 11 s
+[in#0 @ 0xdc6fec0] Error opening input: No such file or directory
+Error opening input file /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_charts/AIFS/2026102300/aifs_globe_storm_bay_2026102300.mp4.
+Error opening input files: No such file or directory
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 131, in _main
+    prepare(preparation_data)
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 246, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 297, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 291, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/runner/work/wx-charts-runner/wx-charts-runner/code/tools/hq_video.py", line 37, in <module>
+    subprocess.run([media.FFMPEG, "-y", "-loglevel", "error", "-i", str(src),
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2', '-y', '-loglevel', 'error', '-i', '/home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_charts/AIFS/2026102300/aifs_globe_storm_bay_2026102300.mp4', '-f', 'lavfi', '-i', 'anullsrc=r=48000:cl=stereo', '-vf', 'fps=30,scale=1920:-2:flags=lanczos', '-c:v', 'libx264', '-preset', 'slow', '-profile:v', 'high', '-level', '4.1', '-crf', '16', '-maxrate', '16M', '-bufsize', '32M', '-g', '60', '-bf', '2', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '128k', '-shortest', '-movflags', '+faststart', '../out/AIFS_2026102300_globe_storm_bay_1080p.mp4']' returned non-zero exit status 254.
+10:00:22    tracked 6 system(s): 969 hPa near 126E, 988 hPa near 86E, 1009 hPa near 58E, 1010 hPa near 57E, 1009 hPa near 50E, 1008 hPa near 72E
+10:00:22      globe_storm_bay: following the system from +0 h to +168 h
+10:00:22      globe_storm_bay: 1537 frames on 4 CPU workers ...
+10:00:22    globe_storm_bay failed (carrying on): 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+
+        To fix this issue, refer to the "Safe importing of main module"
+        section in https://docs.python.org/3/library/multiprocessing.html
+        
+10:00:22    memory free now: 13.0 GB
+rendered in 11 s
+[in#0 @ 0x3447bec0] Error opening input: No such file or directory
+Error opening input file /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_charts/AIFS/2026102300/aifs_globe_storm_bay_2026102300.mp4.
+Error opening input files: No such file or directory
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 131, in _main
+    prepare(preparation_data)
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 246, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 297, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 291, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/runner/work/wx-charts-runner/wx-charts-runner/code/tools/hq_video.py", line 37, in <module>
+    subprocess.run([media.FFMPEG, "-y", "-loglevel", "error", "-i", str(src),
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2', '-y', '-loglevel', 'error', '-i', '/home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_charts/AIFS/2026102300/aifs_globe_storm_bay_2026102300.mp4', '-f', 'lavfi', '-i', 'anullsrc=r=48000:cl=stereo', '-vf', 'fps=30,scale=1920:-2:flags=lanczos', '-c:v', 'libx264', '-preset', 'slow', '-profile:v', 'high', '-level', '4.1', '-crf', '16', '-maxrate', '16M', '-bufsize', '32M', '-g', '60', '-bf', '2', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '128k', '-shortest', '-movflags', '+faststart', '../out/AIFS_2026102300_globe_storm_bay_1080p.mp4']' returned non-zero exit status 254.
+10:00:25    ECMWF AIFS Single 2026-10-23 06Z: not on the server yet
+10:00:26    ECMWF AIFS Single 2026-10-23 00Z: complete to +360 h
+10:00:26  ECMWF AIFS Single: looking for the newest complete run ...
+10:00:26  ECMWF AIFS Single 2026-10-23 00Z: 0 steps to download -> /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_data/AIFS/2026102300
+10:00:26    memory free now: 13.3 GB
+downloaded in 4 s
+10:00:26    ECMWF AIFS Single 2026-10-23 06Z: not on the server yet
+10:00:27    ECMWF AIFS Single 2026-10-23 00Z: complete to +360 h
+10:00:27  ECMWF AIFS Single: looking for the newest complete run ...
+10:00:27  ECMWF AIFS Single 2026-10-23 00Z: 0 steps to download -> /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_data/AIFS/2026102300
+10:00:27    memory free now: 13.3 GB
+downloaded in 4 s
+10:00:27    ECMWF AIFS Single 2026-10-23 06Z: not on the server yet
+10:00:27    ECMWF AIFS Single 2026-10-23 00Z: complete to +360 h
+10:00:27  ECMWF AIFS Single: looking for the newest complete run ...
+10:00:27  ECMWF AIFS Single 2026-10-23 00Z: 0 steps to download -> /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_data/AIFS/2026102300
+10:00:27    memory free now: 13.3 GB
+downloaded in 4 s
+10:00:27    ECMWF AIFS Single 2026-10-23 06Z: not on the server yet
+10:00:27    ECMWF AIFS Single 2026-10-23 00Z: complete to +360 h
+10:00:27  ECMWF AIFS Single: looking for the newest complete run ...
+10:00:27  ECMWF AIFS Single 2026-10-23 00Z: 0 steps to download -> /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_data/AIFS/2026102300
+10:00:27    memory free now: 13.2 GB
+downloaded in 4 s
+10:00:28    ECMWF AIFS Single globe_storm_bay ...
+10:00:29    ECMWF AIFS Single globe_storm_bay ...
+10:00:30    ECMWF AIFS Single globe_storm_bay ...
+10:00:30    ECMWF AIFS Single globe_storm_bay ...
+10:00:31    tracked 6 system(s): 969 hPa near 126E, 988 hPa near 86E, 1009 hPa near 58E, 1010 hPa near 57E, 1009 hPa near 50E, 1008 hPa near 72E
+10:00:31      globe_storm_bay: following the system from +0 h to +168 h
+10:00:31      globe_storm_bay: 1537 frames on 4 CPU workers ...
+10:00:31    globe_storm_bay failed (carrying on): 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+
+        To fix this issue, refer to the "Safe importing of main module"
+        section in https://docs.python.org/3/library/multiprocessing.html
+        
+10:00:31    memory free now: 12.5 GB
+rendered in 9 s
+[in#0 @ 0x33223ec0] Error opening input: No such file or directory
+Error opening input file /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_charts/AIFS/2026102300/aifs_globe_storm_bay_2026102300.mp4.
+Error opening input files: No such file or directory
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 131, in _main
+    prepare(preparation_data)
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 246, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 297, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 291, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/runner/work/wx-charts-runner/wx-charts-runner/code/tools/hq_video.py", line 37, in <module>
+    subprocess.run([media.FFMPEG, "-y", "-loglevel", "error", "-i", str(src),
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2', '-y', '-loglevel', 'error', '-i', '/home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_charts/AIFS/2026102300/aifs_globe_storm_bay_2026102300.mp4', '-f', 'lavfi', '-i', 'anullsrc=r=48000:cl=stereo', '-vf', 'fps=30,scale=1920:-2:flags=lanczos', '-c:v', 'libx264', '-preset', 'slow', '-profile:v', 'high', '-level', '4.1', '-crf', '16', '-maxrate', '16M', '-bufsize', '32M', '-g', '60', '-bf', '2', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '128k', '-shortest', '-movflags', '+faststart', '../out/AIFS_2026102300_globe_storm_bay_1080p.mp4']' returned non-zero exit status 254.
+10:00:32    tracked 6 system(s): 969 hPa near 126E, 988 hPa near 86E, 1009 hPa near 58E, 1010 hPa near 57E, 1009 hPa near 50E, 1008 hPa near 72E
+10:00:33      globe_storm_bay: following the system from +0 h to +168 h
+10:00:33      globe_storm_bay: 1537 frames on 4 CPU workers ...
+10:00:33    globe_storm_bay failed (carrying on): 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+
+        To fix this issue, refer to the "Safe importing of main module"
+        section in https://docs.python.org/3/library/multiprocessing.html
+        
+10:00:33    memory free now: 12.4 GB
+rendered in 10 s
+[in#0 @ 0x33057ec0] Error opening input: No such file or directory
+Error opening input file /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_charts/AIFS/2026102300/aifs_globe_storm_bay_2026102300.mp4.
+Error opening input files: No such file or directory
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 131, in _main
+    prepare(preparation_data)
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 246, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 297, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 291, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/runner/work/wx-charts-runner/wx-charts-runner/code/tools/hq_video.py", line 37, in <module>
+    subprocess.run([media.FFMPEG, "-y", "-loglevel", "error", "-i", str(src),
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2', '-y', '-loglevel', 'error', '-i', '/home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_charts/AIFS/2026102300/aifs_globe_storm_bay_2026102300.mp4', '-f', 'lavfi', '-i', 'anullsrc=r=48000:cl=stereo', '-vf', 'fps=30,scale=1920:-2:flags=lanczos', '-c:v', 'libx264', '-preset', 'slow', '-profile:v', 'high', '-level', '4.1', '-crf', '16', '-maxrate', '16M', '-bufsize', '32M', '-g', '60', '-bf', '2', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '128k', '-shortest', '-movflags', '+faststart', '../out/AIFS_2026102300_globe_storm_bay_1080p.mp4']' returned non-zero exit status 254.
+10:00:33    tracked 6 system(s): 969 hPa near 126E, 988 hPa near 86E, 1009 hPa near 58E, 1010 hPa near 57E, 1009 hPa near 50E, 1008 hPa near 72E
+10:00:33      globe_storm_bay: following the system from +0 h to +168 h
+10:00:33      globe_storm_bay: 1537 frames on 4 CPU workers ...
+10:00:33    globe_storm_bay failed (carrying on): 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+
+        To fix this issue, refer to the "Safe importing of main module"
+        section in https://docs.python.org/3/library/multiprocessing.html
+        
+10:00:33    memory free now: 12.7 GB
+rendered in 10 s
+[in#0 @ 0xfeb8ec0] Error opening input: No such file or directory
+Error opening input file /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_charts/AIFS/2026102300/aifs_globe_storm_bay_2026102300.mp4.
+Error opening input files: No such file or directory
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 131, in _main
+    prepare(preparation_data)
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 246, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 297, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 291, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/runner/work/wx-charts-runner/wx-charts-runner/code/tools/hq_video.py", line 37, in <module>
+    subprocess.run([media.FFMPEG, "-y", "-loglevel", "error", "-i", str(src),
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2', '-y', '-loglevel', 'error', '-i', '/home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_charts/AIFS/2026102300/aifs_globe_storm_bay_2026102300.mp4', '-f', 'lavfi', '-i', 'anullsrc=r=48000:cl=stereo', '-vf', 'fps=30,scale=1920:-2:flags=lanczos', '-c:v', 'libx264', '-preset', 'slow', '-profile:v', 'high', '-level', '4.1', '-crf', '16', '-maxrate', '16M', '-bufsize', '32M', '-g', '60', '-bf', '2', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '128k', '-shortest', '-movflags', '+faststart', '../out/AIFS_2026102300_globe_storm_bay_1080p.mp4']' returned non-zero exit status 254.
+10:00:33    tracked 6 system(s): 969 hPa near 126E, 988 hPa near 86E, 1009 hPa near 58E, 1010 hPa near 57E, 1009 hPa near 50E, 1008 hPa near 72E
+10:00:33      globe_storm_bay: following the system from +0 h to +168 h
+10:00:33      globe_storm_bay: 1537 frames on 4 CPU workers ...
+10:00:33    globe_storm_bay failed (carrying on): 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+
+        To fix this issue, refer to the "Safe importing of main module"
+        section in https://docs.python.org/3/library/multiprocessing.html
+        
+10:00:33    memory free now: 12.9 GB
+rendered in 10 s
+[in#0 @ 0x293f3ec0] Error opening input: No such file or directory
+Error opening input file /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_charts/AIFS/2026102300/aifs_globe_storm_bay_2026102300.mp4.
+Error opening input files: No such file or directory
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 131, in _main
+    prepare(preparation_data)
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 246, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 297, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 291, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/runner/work/wx-charts-runner/wx-charts-runner/code/tools/hq_video.py", line 37, in <module>
+    subprocess.run([media.FFMPEG, "-y", "-loglevel", "error", "-i", str(src),
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2', '-y', '-loglevel', 'error', '-i', '/home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_charts/AIFS/2026102300/aifs_globe_storm_bay_2026102300.mp4', '-f', 'lavfi', '-i', 'anullsrc=r=48000:cl=stereo', '-vf', 'fps=30,scale=1920:-2:flags=lanczos', '-c:v', 'libx264', '-preset', 'slow', '-profile:v', 'high', '-level', '4.1', '-crf', '16', '-maxrate', '16M', '-bufsize', '32M', '-g', '60', '-bf', '2', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '128k', '-shortest', '-movflags', '+faststart', '../out/AIFS_2026102300_globe_storm_bay_1080p.mp4']' returned non-zero exit status 254.
+10:00:37    ECMWF AIFS Single 2026-10-23 06Z: not on the server yet
+10:00:37    ECMWF AIFS Single 2026-10-23 00Z: complete to +360 h
+10:00:37  ECMWF AIFS Single: looking for the newest complete run ...
+10:00:37  ECMWF AIFS Single 2026-10-23 00Z: 0 steps to download -> /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_data/AIFS/2026102300
+10:00:37    memory free now: 13.4 GB
+downloaded in 4 s
+10:00:37    ECMWF AIFS Single 2026-10-23 06Z: not on the server yet
+10:00:37    ECMWF AIFS Single 2026-10-23 00Z: complete to +360 h
+10:00:37  ECMWF AIFS Single: looking for the newest complete run ...
+10:00:37  ECMWF AIFS Single 2026-10-23 00Z: 0 steps to download -> /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_data/AIFS/2026102300
+10:00:37    ECMWF AIFS Single 2026-10-23 06Z: not on the server yet
+10:00:38    memory free now: 13.4 GB
+downloaded in 4 s
+10:00:38    ECMWF AIFS Single 2026-10-23 06Z: not on the server yet
+10:00:38    ECMWF AIFS Single 2026-10-23 00Z: complete to +360 h
+10:00:38  ECMWF AIFS Single: looking for the newest complete run ...
+10:00:38  ECMWF AIFS Single 2026-10-23 00Z: 0 steps to download -> /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_data/AIFS/2026102300
+10:00:38    ECMWF AIFS Single 2026-10-23 00Z: complete to +360 h
+10:00:38  ECMWF AIFS Single: looking for the newest complete run ...
+10:00:38    memory free now: 13.4 GB
+downloaded in 4 s
+10:00:38  ECMWF AIFS Single 2026-10-23 00Z: 0 steps to download -> /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_data/AIFS/2026102300
+10:00:38    memory free now: 13.4 GB
+downloaded in 4 s
+10:00:39    ECMWF AIFS Single globe_storm_bay ...
+10:00:40    ECMWF AIFS Single globe_storm_bay ...
+10:00:40    ECMWF AIFS Single globe_storm_bay ...
+10:00:40    ECMWF AIFS Single globe_storm_bay ...
+10:00:42    tracked 6 system(s): 969 hPa near 126E, 988 hPa near 86E, 1009 hPa near 58E, 1010 hPa near 57E, 1009 hPa near 50E, 1008 hPa near 72E
+10:00:42      globe_storm_bay: following the system from +0 h to +168 h
+10:00:42      globe_storm_bay: 1537 frames on 4 CPU workers ...
+10:00:42    globe_storm_bay failed (carrying on): 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+
+        To fix this issue, refer to the "Safe importing of main module"
+        section in https://docs.python.org/3/library/multiprocessing.html
+        
+10:00:43    memory free now: 12.3 GB
+rendered in 10 s
+[in#0 @ 0x228d4ec0] Error opening input: No such file or directory
+Error opening input file /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_charts/AIFS/2026102300/aifs_globe_storm_bay_2026102300.mp4.
+Error opening input files: No such file or directory
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 131, in _main
+    prepare(preparation_data)
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 246, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 297, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 291, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/runner/work/wx-charts-runner/wx-charts-runner/code/tools/hq_video.py", line 37, in <module>
+    subprocess.run([media.FFMPEG, "-y", "-loglevel", "error", "-i", str(src),
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2', '-y', '-loglevel', 'error', '-i', '/home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_charts/AIFS/2026102300/aifs_globe_storm_bay_2026102300.mp4', '-f', 'lavfi', '-i', 'anullsrc=r=48000:cl=stereo', '-vf', 'fps=30,scale=1920:-2:flags=lanczos', '-c:v', 'libx264', '-preset', 'slow', '-profile:v', 'high', '-level', '4.1', '-crf', '16', '-maxrate', '16M', '-bufsize', '32M', '-g', '60', '-bf', '2', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '128k', '-shortest', '-movflags', '+faststart', '../out/AIFS_2026102300_globe_storm_bay_1080p.mp4']' returned non-zero exit status 254.
+10:00:43    tracked 6 system(s): 969 hPa near 126E, 988 hPa near 86E, 1009 hPa near 58E, 1010 hPa near 57E, 1009 hPa near 50E, 1008 hPa near 72E
+10:00:43      globe_storm_bay: following the system from +0 h to +168 h
+10:00:43      globe_storm_bay: 1537 frames on 4 CPU workers ...
+10:00:43    globe_storm_bay failed (carrying on): 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+
+        To fix this issue, refer to the "Safe importing of main module"
+        section in https://docs.python.org/3/library/multiprocessing.html
+        
+10:00:44    memory free now: 12.5 GB
+rendered in 10 s
+[in#0 @ 0x3f61bec0] Error opening input: No such file or directory
+Error opening input file /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_charts/AIFS/2026102300/aifs_globe_storm_bay_2026102300.mp4.
+Error opening input files: No such file or directory
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 131, in _main
+    prepare(preparation_data)
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 246, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 297, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 291, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/runner/work/wx-charts-runner/wx-charts-runner/code/tools/hq_video.py", line 37, in <module>
+    subprocess.run([media.FFMPEG, "-y", "-loglevel", "error", "-i", str(src),
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2', '-y', '-loglevel', 'error', '-i', '/home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_charts/AIFS/2026102300/aifs_globe_storm_bay_2026102300.mp4', '-f', 'lavfi', '-i', 'anullsrc=r=48000:cl=stereo', '-vf', 'fps=30,scale=1920:-2:flags=lanczos', '-c:v', 'libx264', '-preset', 'slow', '-profile:v', 'high', '-level', '4.1', '-crf', '16', '-maxrate', '16M', '-bufsize', '32M', '-g', '60', '-bf', '2', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '128k', '-shortest', '-movflags', '+faststart', '../out/AIFS_2026102300_globe_storm_bay_1080p.mp4']' returned non-zero exit status 254.
+10:00:44    tracked 6 system(s): 969 hPa near 126E, 988 hPa near 86E, 1009 hPa near 58E, 1010 hPa near 57E, 1009 hPa near 50E, 1008 hPa near 72E
+10:00:44      globe_storm_bay: following the system from +0 h to +168 h
+10:00:44      globe_storm_bay: 1537 frames on 4 CPU workers ...
+10:00:44    globe_storm_bay failed (carrying on): 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+
+        To fix this issue, refer to the "Safe importing of main module"
+        section in https://docs.python.org/3/library/multiprocessing.html
+        
+10:00:44    tracked 6 system(s): 969 hPa near 126E, 988 hPa near 86E, 1009 hPa near 58E, 1010 hPa near 57E, 1009 hPa near 50E, 1008 hPa near 72E
+10:00:44      globe_storm_bay: following the system from +0 h to +168 h
+10:00:44      globe_storm_bay: 1537 frames on 4 CPU workers ...
+10:00:44    globe_storm_bay failed (carrying on): 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+
+        To fix this issue, refer to the "Safe importing of main module"
+        section in https://docs.python.org/3/library/multiprocessing.html
+        
+10:00:44    memory free now: 12.7 GB
+rendered in 10 s
+[in#0 @ 0x17842ec0] Error opening input: No such file or directory
+Error opening input file /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_charts/AIFS/2026102300/aifs_globe_storm_bay_2026102300.mp4.
+Error opening input files: No such file or directory
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 131, in _main
+    prepare(preparation_data)
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 246, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 297, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 291, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/runner/work/wx-charts-runner/wx-charts-runner/code/tools/hq_video.py", line 37, in <module>
+    subprocess.run([media.FFMPEG, "-y", "-loglevel", "error", "-i", str(src),
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2', '-y', '-loglevel', 'error', '-i', '/home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_charts/AIFS/2026102300/aifs_globe_storm_bay_2026102300.mp4', '-f', 'lavfi', '-i', 'anullsrc=r=48000:cl=stereo', '-vf', 'fps=30,scale=1920:-2:flags=lanczos', '-c:v', 'libx264', '-preset', 'slow', '-profile:v', 'high', '-level', '4.1', '-crf', '16', '-maxrate', '16M', '-bufsize', '32M', '-g', '60', '-bf', '2', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '128k', '-shortest', '-movflags', '+faststart', '../out/AIFS_2026102300_globe_storm_bay_1080p.mp4']' returned non-zero exit status 254.
+10:00:44    memory free now: 12.7 GB
+rendered in 10 s
+[in#0 @ 0x1bd72ec0] Error opening input: No such file or directory
+Error opening input file /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_charts/AIFS/2026102300/aifs_globe_storm_bay_2026102300.mp4.
+Error opening input files: No such file or directory
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 131, in _main
+    prepare(preparation_data)
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 246, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/multiprocessing/spawn.py", line 297, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 291, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/runner/work/wx-charts-runner/wx-charts-runner/code/tools/hq_video.py", line 37, in <module>
+    subprocess.run([media.FFMPEG, "-y", "-loglevel", "error", "-i", str(src),
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2', '-y', '-loglevel', 'error', '-i', '/home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_charts/AIFS/2026102300/aifs_globe_storm_bay_2026102300.mp4', '-f', 'lavfi', '-i', 'anullsrc=r=48000:cl=stereo', '-vf', 'fps=30,scale=1920:-2:flags=lanczos', '-c:v', 'libx264', '-preset', 'slow', '-profile:v', 'high', '-level', '4.1', '-crf', '16', '-maxrate', '16M', '-bufsize', '32M', '-g', '60', '-bf', '2', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '128k', '-shortest', '-movflags', '+faststart', '../out/AIFS_2026102300_globe_storm_bay_1080p.mp4']' returned non-zero exit status 254.
+10:00:47    ECMWF AIFS Single 2026-10-23 06Z: not on the server yet
+10:00:47    ECMWF AIFS Single 2026-10-23 00Z: complete to +360 h
+10:00:47  ECMWF AIFS Single: looking for the newest complete run ...
+10:00:47  ECMWF AIFS Single 2026-10-23 00Z: 0 steps to download -> /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_data/AIFS/2026102300
+10:00:48    memory free now: 13.1 GB
+downloaded in 4 s
+10:00:48    ECMWF AIFS Single 2026-10-23 06Z: not on the server yet
+10:00:48    ECMWF AIFS Single 2026-10-23 00Z: complete to +360 h
+10:00:48  ECMWF AIFS Single: looking for the newest complete run ...
+10:00:48  ECMWF AIFS Single 2026-10-23 00Z: 0 steps to download -> /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_data/AIFS/2026102300
+10:00:48    memory free now: 13.2 GB
+downloaded in 3 s
+10:00:48    ECMWF AIFS Single 2026-10-23 06Z: not on the server yet
+10:00:49    ECMWF AIFS Single 2026-10-23 00Z: complete to +360 h
+10:00:49  ECMWF AIFS Single: looking for the newest complete run ...
+10:00:49  ECMWF AIFS Single 2026-10-23 00Z: 0 steps to download -> /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_data/AIFS/2026102300
+10:00:49    ECMWF AIFS Single 2026-10-23 06Z: not on the server yet
+10:00:49    memory free now: 13.2 GB
+downloaded in 4 s
+10:00:49    ECMWF AIFS Single 2026-10-23 00Z: complete to +360 h
+10:00:49  ECMWF AIFS Single: looking for the newest complete run ...
+10:00:49  ECMWF AIFS Single 2026-10-23 00Z: 0 steps to download -> /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_data/AIFS/2026102300
+10:00:49    memory free now: 13.2 GB
+downloaded in 4 s
+10:00:50    ECMWF AIFS Single globe_storm_bay ...
+10:00:51    ECMWF AIFS Single globe_storm_bay ...
