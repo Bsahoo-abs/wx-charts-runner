@@ -1,4 +1,4 @@
-# One-off: what the test site lists.
+# One-off: social-media copies of 'Follow the storm - Bay of Bengal' for download (not published). -> branch probe-out-vid
 name: probe-lat
 on:
   push:
@@ -9,16 +9,52 @@ permissions:
 jobs:
   p:
     runs-on: ubuntu-24.04
+    timeout-minutes: 40
     steps:
+      - uses: actions/cache/restore@v4
+        with:
+          path: site/vid/ECMWF
+          key: vid-ECMWF-none
+          restore-keys: vid-ECMWF-
+      - uses: actions/cache/restore@v4
+        with:
+          path: site/vid/AIFS
+          key: vid-AIFS-none
+          restore-keys: vid-AIFS-
+      - uses: actions/cache/restore@v4
+        with:
+          path: site/vid/GFS
+          key: vid-GFS-none
+          restore-keys: vid-GFS-
+      - uses: actions/cache/restore@v4
+        with:
+          path: site/vid/AIGFS
+          key: vid-AIGFS-none
+          restore-keys: vid-AIGFS-
+      - uses: actions/cache/restore@v4
+        with:
+          path: site/vid/ICON
+          key: vid-ICON-none
+          restore-keys: vid-ICON-
+      - uses: actions/cache/restore@v4
+        with:
+          path: site/vid/GEM
+          key: vid-GEM-none
+          restore-keys: vid-GEM-
       - run: |
+          sudo apt-get -qq update >/dev/null && sudo apt-get install -y -qq ffmpeg >/dev/null
           mkdir -p out
-          curl -sL "https://test.odisha-wx-charts.pages.dev/index.json?x=$RANDOM" | python3 -c "
-          import json,sys;d=json.load(sys.stdin)
-          for m in d['models']:
-              r=m['runs'][0];sp=list((r.get('states') or {}).get('odisha',{}).get('products',{}))
-              print(m['model'],r['run'],'partial' if r.get('partial') else 'full',r.get('upto'),sp)" > out/log.txt
+          for f in site/vid/*/*/globe_storm_bay.mp4; do
+            m=$(echo $f | cut -d/ -f3); r=$(echo $f | cut -d/ -f4)
+            ffprobe -v error -show_entries stream=width,height,r_frame_rate,bit_rate -show_entries format=duration -of csv=p=0 "$f" >> out/log.txt
+            ffmpeg -y -loglevel error -i "$f" -vf "fps=30,scale=w='if(gt(a,16/9),min(1920,iw),-2)':h='if(gt(a,16/9),-2,min(1080,ih))':flags=lanczos,pad=ceil(iw/2)*2:ceil(ih/2)*2" \
+              -c:v libx264 -preset slow -profile:v high -level 4.1 -crf 16 -maxrate 16M -bufsize 32M -g 60 -bf 2 -pix_fmt yuv420p \
+              -f lavfi -i anullsrc=r=48000:cl=stereo -shortest -c:a aac -b:a 128k -movflags +faststart \
+              "out/${m}_${r}_follow_storm_bay.mp4"
+            echo "$m $r $(du -h out/${m}_${r}_follow_storm_bay.mp4 | cut -f1)" >> out/log.txt
+          done
       - if: always()
         run: |
-          cd out && git init -q -b probe-out-lat && git add -A
-          git -c user.name=probe -c user.email=probe@users.noreply.github.com commit -qm lat
-          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-lat
+          cd out && git init -q -b probe-out-vid && git add -A
+          git -c user.name=probe -c user.email=probe@users.noreply.github.com commit -qm vid
+          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-vid
