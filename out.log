@@ -1,0 +1,51 @@
+09:57:36    CMC GEM Global 2026-10-23 06Z: not on the server yet
+09:57:36    CMC GEM Global 2026-10-23 00Z: complete to +240 h
+09:57:36  CMC GEM Global: looking for the newest complete run ...
+09:57:36  CMC GEM Global 2026-10-23 00Z: 61 steps to download -> /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_data/GEM/2026102300
+09:57:52      5/61 steps    16 s  (0 failed)
+09:58:07      10/61 steps    31 s  (0 failed)
+09:58:20      15/61 steps    44 s  (0 failed)
+09:58:35      20/61 steps    59 s  (0 failed)
+09:58:49      25/61 steps    73 s  (0 failed)
+09:59:03      30/61 steps    86 s  (0 failed)
+09:59:12      35/61 steps    96 s  (0 failed)
+09:59:31      40/61 steps   115 s  (0 failed)
+09:59:41      45/61 steps   125 s  (0 failed)
+09:59:50      50/61 steps   133 s  (0 failed)
+10:00:00      55/61 steps   144 s  (0 failed)
+10:00:24      60/61 steps   168 s  (0 failed)
+10:00:32      61/61 steps   176 s  (0 failed)
+10:00:32    memory free now: 11.4 GB
+downloaded in 176 s
+10:00:37    CMC GEM Global globe_storm_bay ...
+10:00:42    tracked 5 system(s): 976 hPa near 125E, 986 hPa near 87E, 1009 hPa near 46E, 1010 hPa near 53E, 1006 hPa near 80E
+10:00:42      globe_storm_bay: following the system from +0 h to +168 h
+10:00:42      globe_storm_bay: 1063 frames on 4 CPU workers ...
+10:00:43    CMC GEM Global 2026-10-23 06Z: not on the server yet
+10:00:43    CMC GEM Global 2026-10-23 06Z: not on the server yet
+10:00:43    CMC GEM Global 2026-10-23 00Z: complete to +240 h
+10:00:43  CMC GEM Global: looking for the newest complete run ...
+10:00:43    CMC GEM Global 2026-10-23 00Z: complete to +240 h
+10:00:43  CMC GEM Global: looking for the newest complete run ...
+10:00:43  CMC GEM Global 2026-10-23 00Z: 0 steps to download -> /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_data/GEM/2026102300
+10:00:43  CMC GEM Global 2026-10-23 00Z: 0 steps to download -> /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_data/GEM/2026102300
+10:00:43    memory free now: 12.9 GB
+downloaded in 0 s
+10:00:43    memory free now: 12.9 GB
+downloaded in 0 s
+10:00:43    CMC GEM Global 2026-10-23 06Z: not on the server yet
+10:00:43    CMC GEM Global 2026-10-23 06Z: not on the server yet
+10:00:43    CMC GEM Global 2026-10-23 00Z: complete to +240 h
+10:00:43  CMC GEM Global: looking for the newest complete run ...
+10:00:43    CMC GEM Global 2026-10-23 00Z: complete to +240 h
+10:00:43  CMC GEM Global: looking for the newest complete run ...
+10:00:43  CMC GEM Global 2026-10-23 00Z: 0 steps to download -> /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_data/GEM/2026102300
+10:00:43  CMC GEM Global 2026-10-23 00Z: 0 steps to download -> /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_data/GEM/2026102300
+10:00:43    memory free now: 12.8 GB
+downloaded in 0 s
+10:00:43    memory free now: 12.8 GB
+downloaded in 0 s
+10:00:50    CMC GEM Global globe_storm_bay ...
+10:00:50    CMC GEM Global globe_storm_bay ...
+10:00:50    CMC GEM Global globe_storm_bay ...
+10:00:50    CMC GEM Global globe_storm_bay ...
