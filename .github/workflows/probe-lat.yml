@@ -1,5 +1,4 @@
-# One-off: retire the old test address (test.<project>.pages.dev): publish a "no longer available" page there and
-# delete the earlier test deployments, so the old link and its per-deployment links stop showing the site.
+# One-off: check old and new test addresses.
 name: probe-lat
 on:
   push:
@@ -8,59 +7,16 @@ on:
 permissions:
   contents: write
 jobs:
-  retire:
+  p:
     runs-on: ubuntu-24.04
-    timeout-minutes: 30
     steps:
-      - name: Publish the closed page on the old address
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          PROJECT: ${{ vars.PAGES_PROJECT }}
-        run: |
-          mkdir -p gone
-          printf '<!doctype html><meta charset="utf-8"><meta name="robots" content="noindex"><title>Not available</title><body style="font-family:system-ui;padding:40px;color:#334"><h1>This page is no longer available.</h1></body>' > gone/index.html
-          cp gone/index.html gone/404.html
-          printf '/*\n  X-Robots-Tag: noindex\n  Cache-Control: no-store\n' > gone/_headers
-          npx --yes wrangler@3 pages deploy gone --project-name "$PROJECT" --branch test --commit-dirty=true
-      - name: Delete the old test deployments (keep the closed page)
-        env:
-          T: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          A: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          P: ${{ vars.PAGES_PROJECT }}
-        run: |
+      - run: |
           mkdir -p out
-          python3 - <<'PY' | tee out/log.txt
-          import json, os, urllib.request
-          T, A, P = os.environ["T"], os.environ["A"], os.environ["P"]
-          base = f"https://api.cloudflare.com/client/v4/accounts/{A}/pages/projects/{P}/deployments"
-          def call(url, method="GET"):
-              req = urllib.request.Request(url, method=method, headers={"Authorization": f"Bearer {T}"})
-              with urllib.request.urlopen(req, timeout=60) as r:
-                  return json.loads(r.read())
-          old, page = [], 1
-          while True:
-              js = call(f"{base}?env=preview&per_page=25&page={page}")
-              res = js.get("result") or []
-              for d in res:
-                  br = (d.get("deployment_trigger") or {}).get("metadata", {}).get("branch")
-                  if br == "test":
-                      old.append((d["created_on"], d["id"]))
-              if len(res) < 25 or page > 400:
-                  break
-              page += 1
-          old.sort(reverse=True)
-          print("test deployments:", len(old))
-          gone = 0
-          for _, i in old[1:]:                       # keep the newest = the closed page
-              try:
-                  call(f"{base}/{i}?force=true", "DELETE"); gone += 1
-              except Exception as e:
-                  print("could not delete", i, e)
-          print("deleted:", gone)
-          PY
+          for u in https://test.odisha-wx-charts.pages.dev/ https://test.odisha-wx-charts.pages.dev/lab.html https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev/ https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev/index.json https://odisha-wx-charts.pages.dev/; do
+            echo "$u $(curl -sL -o /tmp/b -w '%{http_code}' "$u") $(head -c 120 /tmp/b | tr '\n' ' ')" >> out/log.txt
+          done
       - if: always()
         run: |
-          mkdir -p out && cd out && git init -q -b probe-out-lat && git add -A
-          git -c user.name=probe -c user.email=probe@users.noreply.github.com commit -qm retire
+          cd out && git init -q -b probe-out-lat && git add -A
+          git -c user.name=probe -c user.email=probe@users.noreply.github.com commit -qm p
           git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-lat
