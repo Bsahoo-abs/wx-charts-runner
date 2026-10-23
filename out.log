@@ -1,0 +1,51 @@
+09:57:32    ECMWF HRES 2026-10-23 06Z: not on the server yet
+09:57:32    ECMWF HRES 2026-10-23 00Z: complete to +360 h
+09:57:32  ECMWF HRES: looking for the newest complete run ...
+09:57:32  ECMWF HRES 2026-10-23 00Z: 81 steps to download -> /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_data/ECMWF/2026102300
+09:57:41      5/81 steps     9 s  (0 failed)
+09:57:46      10/81 steps    14 s  (0 failed)
+09:57:52      15/81 steps    20 s  (0 failed)
+09:58:07      20/81 steps    35 s  (0 failed)
+09:58:24      25/81 steps    52 s  (0 failed)
+09:58:37      30/81 steps    65 s  (0 failed)
+09:58:47      35/81 steps    75 s  (0 failed)
+09:58:54      40/81 steps    82 s  (0 failed)
+09:59:17      45/81 steps   105 s  (0 failed)
+09:59:26      50/81 steps   114 s  (0 failed)
+09:59:31      55/81 steps   119 s  (0 failed)
+09:59:35      60/81 steps   123 s  (0 failed)
+09:59:38      65/81 steps   126 s  (0 failed)
+09:59:41      70/81 steps   130 s  (0 failed)
+09:59:49      75/81 steps   138 s  (0 failed)
+10:00:25      80/81 steps   173 s  (0 failed)
+10:00:37      81/81 steps   185 s  (0 failed)
+10:00:37    memory free now: 13.0 GB
+downloaded in 191 s
+10:00:39    ECMWF HRES globe_storm_bay ...
+10:00:41    tracked 6 system(s): 968 hPa near 124E, 985 hPa near 86E, 1010 hPa near 51E, 1008 hPa near 47E, 1010 hPa near 55E, 1008 hPa near 86E
+10:00:41      globe_storm_bay: following the system from +0 h to +174 h
+10:00:41      globe_storm_bay: 1543 frames on 4 CPU workers ...
+10:00:48    ECMWF HRES 2026-10-23 06Z: not on the server yet
+10:00:48    ECMWF HRES 2026-10-23 06Z: not on the server yet
+10:00:48    ECMWF HRES 2026-10-23 00Z: complete to +360 h
+10:00:48  ECMWF HRES: looking for the newest complete run ...
+10:00:48    ECMWF HRES 2026-10-23 06Z: not on the server yet
+10:00:48  ECMWF HRES 2026-10-23 00Z: 0 steps to download -> /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_data/ECMWF/2026102300
+10:00:48    ECMWF HRES 2026-10-23 06Z: not on the server yet
+10:00:48    ECMWF HRES 2026-10-23 00Z: complete to +360 h
+10:00:48  ECMWF HRES: looking for the newest complete run ...
+10:00:48    memory free now: 13.3 GB
+downloaded in 6 s
+10:00:48  ECMWF HRES 2026-10-23 00Z: 0 steps to download -> /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_data/ECMWF/2026102300
+10:00:48    memory free now: 13.3 GB
+downloaded in 6 s
+10:00:48    ECMWF HRES 2026-10-23 00Z: complete to +360 h
+10:00:48  ECMWF HRES: looking for the newest complete run ...
+10:00:48    ECMWF HRES 2026-10-23 00Z: complete to +360 h
+10:00:48  ECMWF HRES: looking for the newest complete run ...
+10:00:48  ECMWF HRES 2026-10-23 00Z: 0 steps to download -> /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_data/ECMWF/2026102300
+10:00:48  ECMWF HRES 2026-10-23 00Z: 0 steps to download -> /home/runner/work/wx-charts-runner/wx-charts-runner/work/forecast_data/ECMWF/2026102300
+10:00:49    memory free now: 13.2 GB
+downloaded in 6 s
+10:00:49    memory free now: 13.2 GB
+downloaded in 6 s
