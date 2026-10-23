@@ -9,7 +9,7 @@ permissions:
 jobs:
   hq:
     runs-on: ubuntu-24.04
-    timeout-minutes: 90
+    timeout-minutes: 330
     strategy:
       fail-fast: false
       matrix:
@@ -35,7 +35,7 @@ jobs:
           MPLBACKEND: Agg
         run: |
           pip install -q -r code/requirements.txt
-          cd code && python tools/hq_video.py --model ${{ matrix.model }} --work ../work --out ../out 2>&1 | tail -20 | tee ../out.log
+          cd code && python -u tools/hq_video.py --model ${{ matrix.model }} --work ../work --out ../out > ../out.log 2>&1; tail -20 ../out.log
       - if: always()
         run: |
           mkdir -p out && cp out.log out/ || true
