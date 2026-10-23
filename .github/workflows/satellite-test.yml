@@ -127,15 +127,6 @@ jobs:
           path: site/guide/archive
           key: garch-none
           restore-keys: garch-
-      - uses: actions/cache/restore@v4
-        with:
-          path: site/vidt
-          key: vidt-none
-          restore-keys: vidt-
-      - name: Social-media video copies (test)
-        run: |
-          if [ -d site/vidt ]; then for d in vid ens; do [ -d site/vidt/$d ] && mkdir -p site/$d && cp -r site/vidt/$d/. site/$d/; done; rm -rf site/vidt; fi
-          true
       - name: Model guidance
         continue-on-error: true
         env:
@@ -165,4 +156,4 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           PROJECT: ${{ vars.PAGES_PROJECT }}
-        run: npx --yes wrangler@3 pages deploy site --project-name "$PROJECT" --branch test --commit-dirty=true
+        run: npx --yes wrangler@3 pages deploy site --project-name "$PROJECT" --branch ow-5k4kr1ny9f --commit-dirty=true

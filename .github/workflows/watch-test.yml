@@ -41,5 +41,5 @@ jobs:
           GH_REPO: ${{ github.repository }}
         run: |
           cd code
-          python cloud_plan.py --site-url "https://test.${{ vars.PAGES_PROJECT }}.pages.dev" \
+          python cloud_plan.py --site-url "https://ow-5k4kr1ny9f.${{ vars.PAGES_PROJECT }}.pages.dev" \
             --models ECMWF,AIFS,GFS,AIGFS,ICON,GEM,ECMWF9 --watch 30 --dispatch build-test.yml
