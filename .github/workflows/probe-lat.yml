@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          mkdir o; cd o
+          set +e; mkdir o; cd o
           g(){ n=$1; u=$2; code=$(curl -sL -A "Mozilla/5.0" -m 40 -o "$n" -w "%{http_code} %{size_download}" "$u"); echo "$n $code $u" >> out.txt; }
           g jtwc_rss.xml https://www.metoc.navy.mil/jtwc/rss/jtwc.rss
           g ucar_adeck_dir.html http://hurricanes.ral.ucar.edu/repository/data/adecks_open/2026/
