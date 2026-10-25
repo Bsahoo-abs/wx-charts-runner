@@ -7,10 +7,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          U=https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev
           mkdir o; cd o
-          curl -s "$U/index.json?x=$RANDOM" | python3 -c "import json,sys;j=json.load(sys.stdin);print(j['built']);[print(m['model'],[(r['run'],r.get('flow')) for r in m['runs']]) for m in j['models']]" > out.txt
-          curl -s "$U/sat/sat.json?x=$RANDOM" | python3 -c "import json,sys;j=json.load(sys.stdin);f=j.get('flow');print('satflow',f and (f['size'],len(f['pairs'])))" >> out.txt
-          curl -sI "$U/livemap.html" | head -1 >> out.txt; curl -sI "$U/live/lines.json" | head -1 >> out.txt
-          git init -q; git checkout -q -b probe-out-live; git add out.txt; git -c user.name=p -c user.email=p@p commit -qm p
-          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" probe-out-live
+          g(){ n=$1; u=$2; code=$(curl -sL -A "Mozilla/5.0" -m 40 -o "$n" -w "%{http_code} %{size_download}" "$u"); echo "$n $code $u" >> out.txt; }
+          g jtwc_rss.xml https://www.metoc.navy.mil/jtwc/rss/jtwc.rss
+          g ucar_adeck_dir.html http://hurricanes.ral.ucar.edu/repository/data/adecks_open/2026/
+          g ucar_bdeck_dir.html http://hurricanes.ral.ucar.edu/repository/data/bdecks_open/2026/
+          g ucar_ni.html http://hurricanes.ral.ucar.edu/realtime/current/
+          g rammb.html "https://rammb-data.cira.colostate.edu/tc_realtime/"
+          g rsmc.html https://rsmcnewdelhi.imd.gov.in/
+          g mausam.html https://mausam.imd.gov.in/
+          g nhc_atcf.html https://ftp.nhc.noaa.gov/atcf/aid_public/
+          g nrl.html https://www.nrlmry.navy.mil/tcdat/tc2026/IO/
+          g tcvitals.txt https://ftp.nhc.noaa.gov/atcf/com/tcvitals
+          g nomads_vitals.html https://nomads.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/
+          for f in jtwc_rss.xml rammb.html; do grep -oiE "(io|sh|b)[0-9]{2}2026[a-z]*|[a-z0-9_/.:-]*io[0-9]{4}[a-z0-9_.]*" $f | sort -u | head -30 >> links.txt; done
+          grep -oE 'href="[^"]*(io|bio|aio)[^"]*"' ucar_adeck_dir.html ucar_bdeck_dir.html | tail -20 >> links.txt || true
+          grep -oiE 'href="[^"]*(cyclone|bulletin|tc|rsmc)[^"]*"' rsmc.html | sort -u | head -60 >> links.txt || true
+          grep -i "IO\b\|BOB\|ARB\| 0[0-9]B " tcvitals.txt | tail -5 >> links.txt || true
+          git init -q; git checkout -q -b probe-out-tc; git add .; git -c user.name=p -c user.email=p@p commit -qm p
+          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" probe-out-tc
