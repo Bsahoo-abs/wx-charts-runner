@@ -60,9 +60,10 @@ jobs:
           node grab.js || true
           wget -q -e robots=off -r -l 3 -np -p -k -P mirror "$BASE/" || true
           ls -la; du -sh .
-      - name: Keep it in the private code repository
-        run: |
-          cd ref && rm -rf node_modules package*.json
-          git init -q -b ref-site && git add -A
-          git -c user.name=probe -c user.email=probe@users.noreply.github.com commit -qm "reference site copy"
-          git push -q -f "https://x-access-token:${{ secrets.CODE_TOKEN }}@github.com/${{ vars.CODE_REPO }}.git" ref-site && echo "pushed to private repo"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ref-site
+          path: |
+            ref
+            !ref/node_modules
+          retention-days: 7
