@@ -1,0 +1,145 @@
+REGIONAL SPECIALISED METEOROLOGICAL CENTRE -TROPICAL CYCLONES, NEW DELHI
+SPECIAL TROPICAL WEATHER OUTLOOK
+DEMS-RSMC TROPICAL CYCLONES NEW DELHI DATED 25.10.2026
+SPECIAL TROPICAL WEATHER OUTLOOK FOR THE NORTH INDIAN OCEAN (THE BAY
+OF BENGAL AND THE ARABIAN SEA) VALID FOR THE NEXT 168 HOURS ISSUED AT
+0930 UTC OF 25.10.2026 BASED ON 0600 UTC OF 25.10.2026.
+Sub: Deep Depression over Eastcentral and adjoining Southeast Bay of Bengal [Cyclone
+Alert for Andhra Pradesh and adjoining South Odisha coasts.]
+The Depression over Eastcentral and adjoining Southeast Bay of Bengal moved southwestwards
+with speed of 5 kmph during past 6 hours, intensified into a Deep Depression and lay centered at
+0600 UTC of today, the 25th October, 2026 over the same region, near Latitude 15.1°N and
+Longitude 91.0°E, about 420 km north-northwest of Sri Vijaya Puram (Andaman Islands, 43333),
+870 km east-southeast of Vishakhapatnam (Andhra Pradesh, 43149), 960 km east-southeast of
+Kakinada (Andhra Pradesh, 43189), 1060 km east-Southeast of Machilipatnam (Andhra Pradesh,
+43185) and 1130 km east of Bapatla (Andhra Pradesh, 43220).
+It is very likely to move nearly southwestwards, and intensify further into a cyclonic storm over
+Eastcentral & adjoining Southeast Bay of Bengal by 0000 UTC of 26th October. Then it is very
+likely to move west-northwestwards over the Eastcentral & adjoining Westcentral Bay of Bengal
+and intensify into a severe cyclonic storm over westcentral Bay of Bengal around 0000 UTC of
+27th October, 2026.
+Thereafter, it is very likely to move northwestwards, intensify further into a very severe cyclonic
+storm and reach Westcentral Bay of Bengal near Andhra Pradesh coast around 0000 UTC of 28th
+October, 2026. It is very likely to cross Andhra Pradesh & Yanam coasts between Bapatla and
+Visakhapatnam as a very severe cyclonic storm with the maximum sustained wind speed of 115-
+125 kmph gusting to 140 kmph by 0600 UTC of 28th October, 2026.
+Forecast location and intensity are given in following table:
+Date/Time Position Maximum sustained surface Category of cyclonic
+(UTC) (Lat. 0N/ long. 0E) wind speed (Kmph) disturbance
+25.10.26/0600 15.1/91.0 50-60 gusting to 70 Deep Depression
+25.10.26/1200 14.9/90.5 55-65 gusting to 75 Deep Depression
+25.10.26/1800 14.7/89.8 55-65 gusting to 75 Deep Depression
+26.10.26/0000 14.6/89.1 65-75 gusting to 85 Cyclonic Storm
+26.10.26/0600 14.6/88.1 80-90 gusting to 100 Cyclonic Storm
+26.10.26/1800 14.6/86.4 95-105 gusting to 115 Severe Cyclonic Storm
+27.10.26/0600 14.9/84.8 115-125 gusting to 140 Very Severe Cyclonic Storm
+27.10.26/1800 15.5/83.3 115-125 gusting to 140 Very Severe Cyclonic Storm
+Cloud distribution: (a) Isolated: <25%, Scattered:25-50%, Broken: 51-75%, Solid:>75%, Convection Intensity: (a) Weak: Cloud Top Temperature(CTT)>-
+25°C, (b) Moderate: CTT:-25°Cto-40°C, (c) Intense: CTT: -41°Cto -70°C and (d) Very Intense::Less than -70°C Probability of cyclogenesis (formation of
+depression) :NIL:0%, LOW:1-33%, MODERATE:34-66% and HIGH:67-100%
+This is a guidance Bulletin for WMO/ESCAP Panel Member countries. Visit respective National websites for Country specific Bulletins.
+=====PAGE
+28.10.26/0600 16.7/82.2 105-115 gusting to 125 Severe Cyclonic Storm
+28.10.26/1800 18.4/81.3 80-90 gusting to 100 Cyclonic Storm
+29.10.26/0600 20.0/81.1 55-65 gusting to 75 Deep Depression
+29.10.26/1800 21.6/81.2 35-45 gusting to 55 Depression
+30.10.26/0600 23.2/81.6 30-40 gusting to 40 Well Marked Low Pressure Area
+The estimated central pressure is 1001 hPa and maximum sustained wind speed is 30 kt gusting
+to 35kt.
+A buoy near 16.3N/88.1E reported Mean Sea Level Pressure (MSLP) 1007.5 hPa and maximum
+sustained wind speed (MSW) 810/6kt. Another buoy near 17.0N/85.0E reported MSLP of 1009.9
+hPa and MSW 480/04kt. Another, buoy near 17.8N/89.2E reported MSLP of 1008.4 hPa and
+MSW 560/08kt. Another, buoy near 13.8/87.1E reported MSLP of 1008.7 hPa, and MSW
+1040/06kt.
+As per INSAT 3D(S), the vortex lay over the eastcentral and neighbourhood centered near
+15.5N/91.0 E. Intensity of the system is characterized as T2.0. Associated scattered to broken,
+low and medium clouds with embedded intense to very intense convection lay over the east Bay
+of Bengal (Minimum CTT-70 to -90°C) and medium to intense convection over west Bay of
+Bengal (Minimum CTT-40 to -70°C).
+Storm surge of 1.0 to 1.5 m height above astronomical tide is very likely to inundate low lying
+areas of near Kakinada and Yanam districts of Andhra Pradesh during the time of landfall
+(Graphics attached).
+Remarks –
+The guidance from various numerical models indicates that the Madden Julian Oscillation (MJO) is
+currently in Phase 3 with amplitude more than 1. It is likely to continue in same phase during the
+entire forecast period with amplitude more than 1 during next five days. Thus, MJO is favorable for
+enhancement of convective activity and cyclogenesis over the Bay of Bengal (BoB) during next 7
+days.
+The guidance from the NCICS model indicates prevalence of westerly wind anomaly (7-9mps)
+along with simultaneous occurrence of Equatorial Rossby wave (ERW), Kelvin wave (KW) &
+Madden Julian Oscillation (MJO) wave over south and adjoining central BoB and easterly wind
+anomaly (7-9 mps) over north BoB. These features indicate a highly favorable environment for
+cyclogenesis (formation of depression) and its further intensification into a VSCS over the central
+BoB till 27th Oct. Thereafter, MJO and ERW are likely to prevail over the region till 29th Oct and
+may move away after that.
+The Sea surface temperature is 30°C over eastcentral and adjoining Westcentral BoB and around
+29°C along the east coast of India. However, due to the slow movement the ocean surface is
+cooled and SST is slightly less 29 °C near system area. The ocean heat content is around 80-100
+KJ/cm2 over most parts of Bay of Bengal with 100-120 KJ/cm2 over some pockets over southwest
+and adjoining westcentral Bay of Bengal, North Andaman Sea, parts of southeast BoB, eastcentral
+and adjoining northeast BoB.
+The positive low-level vorticity is the same during past 6 hours and is around 100 X10-6 s-1 to the
+southwest of system area with vertical extension upto 500 hPa compare to yesterday the
+orientation of vorticity has changed from north-south to east-west, which suggests gradual
+increase in westward component in movement. Low level convergence is around 05-10X10-6 s-1 to
+the south of system centre. Upper-level divergence is 20 to the northwest of system centre and is
+north-south oriented. Mid-level wind-shear (500-850 hpa) is moderate (5-10) over the system area
+Cloud distribution: (a) Isolated: <25%, Scattered:25-50%, Broken: 51-75%, Solid:>75%, Convection Intensity: (a) Weak: Cloud Top Temperature(CTT)>-
+25°C, (b) Moderate: CTT:-25°Cto-40°C, (c) Intense: CTT: -41°Cto -70°C and (d) Very Intense::Less than -70°C Probability of cyclogenesis (formation of
+depression) :NIL:0%, LOW:1-33%, MODERATE:34-66% and HIGH:67-100%
+This is a guidance Bulletin for WMO/ESCAP Panel Member countries. Visit respective National websites for Country specific Bulletins.
+=====PAGE
+and along the predicted path, which is highly favorable for further intensification of the system.
+However the deep layer wind-shear (200-850 hpa) is low to moderate (10-20 kt) over system area
+upto 89°E, thereafter it is increasing slightly towards the west, along the expected path, which may
+not be supportive for intensification. However, the deep layer wind- shear which is slightly
+unfavorable will be offset by positive upper level divergence over the region.
+The upper tropospheric ridge runs along 19 °N. System has come under the influence of upper
+tropospheric easterly prevailing to the south of ridge and is therefore likely to be steered west-
+northwestward on 25th Oct 2026. The ridge which was lying along 17° N yesterday has shifted
+northwest along 19°N. It will support more westward component in movement.
+A deep trough in westerly is seen along 65 °E to the north of 15 °N at 200 hpa level. It is expected
+to reach 80°E on 28th. It would restrict the westward movement of the system after landfall and
+would lead to nearly northwards re-curvature of the system.
+The Total Precipitable water (TPW) indicates warm moist air (75mm) incursion into the system
+area from south and southeast. Cold dry air incursion is also seen in the northwest sector which
+may lead to slight weakening at the time of landfall. However the latest imagery shows warm moist
+air availability along southwest center along Andhra Pradesh. The dry cold air over the Andhra,
+Odisha and Chhattisgarh region will lead to rapid weakening of the system after landfall on 29th
+when the system moves across these areas. Water Vapour imagery indicates strong poleward
+outflow.
+A favorable environment is prevailing for further intensification of the system (high SST, low wind
+shear, simultaneous occurrence of MJO. ERW, KW, pole-ward outflow). The east – southeasterly
+winds in the periphery of ridge located near 19° N would lead to west- northwestward movement
+of the system till landfall and near northward movement under the influence of the trough in upper
+tropospheric levels thereafter.
+Most of the models are indicating initial southwards movement followed by nearly westward
+movement towards Andhra Pradesh coast and almost northward movement after landfall. IMD
+MME is also indicating similar movement. There is large divergence among various models with
+respect to intensification. Peak intensity is varying between 50-70kt. Landfall time is varying
+between 27/18 to 28/18 UTC.
+Confidence Level in estimation of:
+(a) Current location and intensity: High
+(b) Forecast Track: Moderate to High
+(c) Forecast intensity: Moderate to High
+Considering all above, the deep depression over eastcentral adjoining southeast BOB is very likely
+to intensify further into a cyclonic storm over the Eastcentral & adjoining Westcentral Bay of
+Bengal by 0000 UTC of 26th October, and into a severe cyclonic storm over Westcentral Bay of
+Bengal around 0000 UTC of 27th October 2026.
+Thereafter, it is very likely to move northwestwards, intensify further into a very severe cyclonic
+storm and reach Westcentral Bay of Bengal near Andhra Pradesh coast around 0000 UTC of 28th
+October, 2026. It is very likely to cross Andhra Pradesh & Yanam coasts between Bapatla and
+Visakhapatnam as a very severe cyclonic storm with the maximum sustained wind speed of 115-
+125 kmph gusting to 140 kmph around 0600 UTC of 28th October 2026.
+(Shashi Kant)
+Scientist-D
+RSMC New Delhi
+Cloud distribution: (a) Isolated: <25%, Scattered:25-50%, Broken: 51-75%, Solid:>75%, Convection Intensity: (a) Weak: Cloud Top Temperature(CTT)>-
+25°C, (b) Moderate: CTT:-25°Cto-40°C, (c) Intense: CTT: -41°Cto -70°C and (d) Very Intense::Less than -70°C Probability of cyclogenesis (formation of
+depression) :NIL:0%, LOW:1-33%, MODERATE:34-66% and HIGH:67-100%
+This is a guidance Bulletin for WMO/ESCAP Panel Member countries. Visit respective National websites for Country specific Bulletins.
+=====PAGE
+Cloud distribution: (a) Isolated: <25%, Scattered:25-50%, Broken: 51-75%, Solid:>75%, Convection Intensity: (a) Weak: Cloud Top Temperature(CTT)>-
+25°C, (b) Moderate: CTT:-25°Cto-40°C, (c) Intense: CTT: -41°Cto -70°C and (d) Very Intense::Less than -70°C Probability of cyclogenesis (formation of
+depression) :NIL:0%, LOW:1-33%, MODERATE:34-66% and HIGH:67-100%
+This is a guidance Bulletin for WMO/ESCAP Panel Member countries. Visit respective National websites for Country specific Bulletins.

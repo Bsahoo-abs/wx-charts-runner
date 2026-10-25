@@ -1,0 +1,207 @@
+Ministry of Earth Sciences
+India Meteorological Department
+Cyclone Warning Division, New Delhi
+Tropical Cyclone Forecast Programme
+Report Dated 25 October 2026
+Time of Issue: 1200 UTC
+Synoptic features (based on 0600 UTC analysis):
+Depression over Eastcentral and adjoining Southeast Bay of Bengal [Cyclone Alert for
+Andhra Pradesh and adjoining South Odisha coasts.]
+The Depression over Eastcentral and adjoining Southeast Bay of Bengal remained
+practically stationary during past 6 hours, and lay centered at 0300 UTC of today, the 25th
+October, 2026 over the same region, near Latitude 15.3°N and Longitude 91.2°E, about 440
+km north-northwest of Sri Vijaya Puram (43333, Andaman Islands), 980 km east-southeast of
+Vishakhapatnam (43149, Andhra Pradesh), 980 km east south east of Kakinada (43189,
+Andhra Pradesh), 1080 km east of Machilipatnam (43185, Andhra Pradesh) and 1150 km
+east of Bapatla (Andhra Pradesh).
+It is very likely to move nearly southwards, intensify into a Deep Depression and then
+gradually recurve west-northwestwards over the Eastcentral & adjoining Southeast Bay of
+Bengal today, the 25th October. Continuing to move west-northwestwards, it is very likely to
+intensify further into a cyclonic storm over the Eastcentral & adjoining Westcentral Bay of
+Bengal by 0000UTC of 26th October, and into a severe cyclonic storm over westcentral Bay
+of Bengal around 0000UTC of 27th October, 2026.
+Thereafter, it is very likely to move northwestwards, intensify further into a very severe
+cyclonic storm and reach Westcentral Bay of Bengal near Andhra Pradesh coast around
+0000UTC of 28th October, 2026. It is very likely to cross Andhra Pradesh& Yanam coasts
+between Bapatla and Visakhapatnam as a very severe cyclonic storm with the maximum
+sustained wind speed of 115-125 kmph gusting to140 kmph around 0600UTC of 28th
+October, 2026.
+Environmental Features based on 0600 UTC:
+Parameter Bay of Bengal (BoB) Arabian Sea (AS)
+Sea Surface
+Around 31 - 32°C over Around 31 - 32°C over
+Temperature (SST)
+Northeast, Southeast BoB & Southeast and adjoining
+ºC
+adjoining North Andaman westcentral AS. Around 28 -
+Sea. Around 29-30°C over 29°C over remaining parts of
+remaining parts of BoB. AS.
+Tropical Cyclone 90-110 over most parts of 60-70 over most parts of AS with
+Heat BoB with 120-150 over 110-120 over some parts of
+Potential (TCHP) southwest & adjoining southeast AS and Comorin area.
+kJ/cm2 w e s t c e n t r a l B o B
+60-70 over northwest BoB.
+Cyclonic Relative - 120-150 over the system 60-70 over southeast AS near
+vorticity (X10-6s-1) area Along and off Keralam coast &
+at 850 hPa 20-30 over Andaman Sea Comorin Area.
+20-30 over westcentral AS
+1
+=====PAGE
+Cyclonic Relative - 50-60 over system area and 30-40 over southeast AS near
+vorticity (X10-6s-1) adjoining east BoB Along and off Keralam coast &
+at 500 hPa Comorin Area.
+Low-Level 5-10 over north of system 5-10 over southeast AS along and
+convergence (eastcentral BoB) off Keralam coast and adjoining
+(X10-6 s-1) 5 over southeast BoB Comorin area.
+10-15 over EIO and adjoining
+Andaman Sea
+Upper-Level 20 over system area 5-10 over south AS
+divergence 10-20 over EIO and adjoining 5 over eastcentral AS along and
+(X10-6 s-1) Andaman Sea and south off Maharashtra coast.
+BoB
+Vertical Wind Low to moderate over High over north and central AS
+Shear (VWS) Andaman Sea and Low to moderate over south AS
+Low: 05-10 knots eastcentral BoB
+Moderate: 10-20 High over north BoB and
+knots adjoining westcentral BoB
+High: >20 knots and south BoB.
+Wind Shear Increasing over most parts Increasing over central and south
+Tendency BoB. AS
+(knots) Decreasing over north AS
+Upper Ridge is running along 12oN. Ridge is running along 15oN
+Tropospheric
+Ridge
+M.J.O. Index:
+The guidance from various numerical models indicates that the Madden Julian Oscillation
+(MJO) is currently in Phase 3 with amplitude more than 1. It is likely to continue in same
+phase during the entire forecast period with amplitude more than 1 during next five days.
+Thus, MJO is favorable for enhancement of convective activity and cyclogenesis over the
+Bay of Bengal (BoB) during next 7 days.
+Equatorial waves guidance:
+The guidance from the NCICS model indicates prevalence of westerly wind anomaly (7-
+9mps) along with simultaneous occurrence of Equatorial Rossby wave (ERW), Kelvin wave
+(KW) & Madden Julian Oscillation (MJO) wave over south and adjoining central BoB and
+easterly wind anomaly (7-9 mps) over north BoB. These features indicate a highly favorable
+environment for cyclogenesis (formation of depression) and its further intensification into a
+VSCS over the central BoB till 27th Oct. Thereafter, MJO and ERW are likely to prevail over
+the region till 29th Oct and may move away after that.
+Satellite features:
+Over the Bay of Bengal & Andaman Sea:
+As per INSAT 3D(S), vortex over the eastcentral & neighbourhood within half a degree of
+16.5N/90.5E. Intensity T1.0. Associated scattered to broken, low and medium clouds with
+embedded intense to very intense convection lay over the east with minimum cloud-top
+temperatures of -70°C to -90°C and moderate to intense convection lay over west Bay of
+Bengal with minimum cloud top temperature of -40°C to -70°C
+Scattered to broken, low and medium clouds with embedded intense to very intense
+convection lay over east Bay of Bengal and moderate to intense convection lay over west
+Bay of Bengal & Andaman Sea.
+2
+=====PAGE
+Over the Arabian Sea:
+As per INSAT 3D(S), low-level circulation over southeast Arabian Sea and neighbourhood.
+Associated scattered to broken low and medium clouds with embedded intense to very
+intense convection lay over south Arabian Sea, North Kerala, Tamil Nadu, South Karnataka
+and Lakshadweep Islands area (minimum CTT -70°C to –90°C).
+Scattered to broken low and medium clouds with embedded intense to very intense
+convection lay over eastcentral & southeast Arabian Sea, Lakshadweep Islands area,
+Maldives & Comorin area.
+Outside India:
+As per INSAT 3D(S), scattered low and medium clouds with embedded moderate to intense
+convection lay over Sri Lanka, Palk Strait, Gulf of Mannar, Maldives area, northern Pakistan,
+Tibet, China, Yellow Sea, Myanmar, Thailand, Gulf of Thailand, Cambodia, Laos, Sumatra,
+Strait of Malacca, Malaysia, Borneo, South China Sea, Java, Indonesian islands and sea,
+Philippines and Sulu Sea, and over the Indian Ocean between 5.0°N and 20.0°S and
+between 45.0°E and 100.0°E.
+NWP Guidance for FDP Cyclone:
+MODEL Bay of Bengal (BoB) Arabian Sea (AS)
+GUIDANCE
+IMD-GFS WML over eastcentral BoB on 25/00. To move LPA over Southeast
+west-northwestwards and intensify into D on 26/00 Arabian Sea & adj
+further into CS over the same region on 27/00. To Lakshadweep area to
+intensify further and move west-northwestwards move northeastwards and
+and cross AP coasts as VSCS on 28/12. merge with cyclonic storm
+Another cyclonic circulation to emerge from Gulf of over BoB during 23-27
+Thailand into south Andaman Sea on 27/00. To Oct.
+intensify into LPA on 28/00, to move
+northwestwards and intensify into CS over
+southeast BoB on 30/00. To weaken gradually in
+sea and cross AP coast as D on 31/00.
+IMD-GEFS LPA over eastcentral BoB on 25/12. To move LPA over Southeast
+west-northwestwards and intensify into D on 25/12 Arabian Sea & adj
+further into CS over the same region on 25/12. To Lakshadweep area to
+intensify further and move west-northwestwards move northeastwards and
+and cross AP coasts as VSCS on 28/12. merge with cyclonic storm
+Another cyclonic circulation to emerge from Gulf of over BoB during 25-27
+Thailand into south Andaman Sea on 27/12. To Oct.
+move northwestwards towards Odisha coast
+during 27/12 to 30/12 with no intensification.
+BFS Similar to IMD GFS Similar to IMD GFS.
+MITHUNA D over eastcentral BoB on 25/00. To move west- LPA over Southeast
+northwestwards and intensify CS over the same Arabian Sea & adj
+region on 26/00. To intensify further and move Lakshadweep area to
+west-northwestwards and cross AP coasts as move northeastwards and
+VSCS on 28/00. merge with cyclonic storm
+Another cyclonic circulation to emerge into south over BoB during 25-26
+Andaman Sea on 28/00, to move northwestwards Oct.
+and intensify to LPA over eastcentral BoB on
+30/00, CS on 31/00 and cross Odisha coast as
+SCS on 01/00 and weaken thereafter.
+NEPS CS over eastcentral BoB on 26/00. To move west- LPA over Southeast
+northwestwards and cross AP coasts as SCS on Arabian Sea & adj
+3
+=====PAGE
+28/12. Lakshadweep area to
+Cycir to emerge into south Andaman Sea on move northeastwards and
+28/00, to move westwards and become less merge with cyclonic storm
+marked during next 2 days. over BoB during 25-26
+Oct.
+ECMWF D over eastcentral BoB on 25/00. To move west- LPA over Southeast
+northwestwards and intensify into DD on 25/12 Arabian Sea & adj
+further into CS over the same region on 26/00. To Lakshadweep area to
+intensify further and move west-northwestwards move northeastwards and
+and cross AP coasts as VSCS on 28/00. merge with cyclonic storm
+Cycir to emerge into south Andaman Sea on over BoB during 25-26
+29/00, to move westwards towards Tamil Nadu Oct.
+coast during 29/00 to 31/00 with no intensification.
+NCEP-GFS D over eastcentral BoB on 25/00. To move west- LPA over Southeast
+northwestwards and intensify into DD on 25/12 Arabian Sea & adj
+further into CS over the same region on 26/00. To Lakshadweep area to
+intensify further and move west-northwestwards move northeastwards and
+and cross AP coasts as VSCS on 28/18. merge with cyclonic storm
+Cycir to emerge into south Andaman Sea on over BoB during 25-26
+29/00, to move westwards towards Tamil Nadu Oct.
+coast during 29/00 to 31/00 with no intensification.
+EC-AIFS D over eastcentral BoB on 25/00. To move west- LPA over Southeast
+northwestwards and intensify into DD on 25/12 Arabian Sea & adj
+further into CS over the same region on 26/00. To Lakshadweep area to
+intensify further and move west-northwestwards move northeastwards and
+and cross AP coasts as VSCS on 28/00. merge with cyclonic storm
+Cycir to emerge into south Andaman Sea on over BoB during 25-26
+29/00, to move westwards towards Tamil Nadu Oct.
+coast during 29/00 to 31/00 with no intensification.
+IMD D over eastcentral BoB on 25/00. To move west- LPA over Southeast
+AURORA northwestwards and intensify into CS over the Arabian Sea & adj
+same region on 26/00. To intensify further and Lakshadweep area to
+move west-northwestwards and cross AP coasts move northeastwards and
+as VSCS on 28/00 and become less marked merge with cyclonic storm
+thereafter. over BoB during 25-26
+Cycir to emerge into south Andaman Sea on Oct.
+29/00, to move westwards and become less
+marked during next 2 days.
+IMD FGN D over eastcentral BoB on 25/00. To move west- LPA over Southeast
+northwestwards and intensify into DD on 25/12 and Arabian Sea & adj
+into CS over the same region on 26/00. To Lakshadweep area to
+intensify further and move west-northwestwards move northeastwards and
+and cross AP coasts as VSCS on 28/00 and merge with cyclonic storm
+become less marked thereafter. over BoB during 25-26
+Cycir to emerge into south Andaman Sea on Oct.
+28/00, to move westwards and become less
+marked during next 2 days.
+IMD FCN D over eastcentral BoB on 24/00. To move west- LPA over Southeast
+northwestwards and intensify into DD on 25/00 and Arabian Sea & adj
+to CS over the same region on 26/00. To move Lakshadweep area to
+northwestwards and cross Odisha coasts as CS on move northeastwards and
+27/00 and become less marked thereafter. merge with cyclonic storm
+Cycir to emerge into south Andaman Sea on over BoB during 25-26
+27/00, to move westwards and intensify to D on Oct.
+4
