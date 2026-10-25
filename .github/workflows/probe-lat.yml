@@ -1,25 +1,16 @@
-# One-off: demo data (GFS textures; smooth satellite loop). Not published. -> branches probe-out-gfs, probe-out-satflow
 name: probe-lat
-on:
-  push:
-    paths: [".github/workflows/probe-lat.yml"]
-  workflow_dispatch:
+on: workflow_dispatch
 permissions:
   contents: write
 jobs:
-  gfs:
-    runs-on: ubuntu-24.04
-    timeout-minutes: 60
+  p:
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-        with: { repository: "${{ vars.CODE_REPO }}", token: "${{ secrets.CODE_TOKEN }}", ref: test, path: code }
-      - uses: actions/setup-python@v6
-        with: { python-version: "3.11" }
       - run: |
-          pip install -q numpy pillow eccodes scipy
-          python code/tools/demo_gfs.py out 2026102500 2>&1 | tail -30 | tee log.txt; cp log.txt out/ || true
-      - if: always()
-        run: |
-          mkdir -p out && cd out && git init -q -b probe-out-gfs && git add -A
-          git -c user.name=probe -c user.email=probe@users.noreply.github.com commit -qm gfs
-          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-gfs
+          U=https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev
+          mkdir o; cd o
+          curl -s "$U/index.json?x=$RANDOM" | python3 -c "import json,sys;j=json.load(sys.stdin);print(j['built']);[print(m['model'],[(r['run'],r.get('flow')) for r in m['runs']]) for m in j['models']]" > out.txt
+          curl -s "$U/sat/sat.json?x=$RANDOM" | python3 -c "import json,sys;j=json.load(sys.stdin);f=j.get('flow');print('satflow',f and (f['size'],len(f['pairs'])))" >> out.txt
+          curl -sI "$U/livemap.html" | head -1 >> out.txt; curl -sI "$U/live/lines.json" | head -1 >> out.txt
+          git init -q; git checkout -q -b probe-out-live; git add out.txt; git -c user.name=p -c user.email=p@p commit -qm p
+          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" probe-out-live
