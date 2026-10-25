@@ -1,4 +1,4 @@
-# One-off: save a copy of a reference weather website (for study; kept in the PRIVATE code repository).
+# One-off: demo data for the animated wind + rain map (not published). -> branch probe-out-wind
 name: probe-lat
 on:
   push:
@@ -7,9 +7,9 @@ on:
 permissions:
   contents: write
 jobs:
-  grab:
+  p:
     runs-on: ubuntu-24.04
-    timeout-minutes: 40
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v5
         with:
@@ -17,69 +17,18 @@ jobs:
           token: ${{ secrets.CODE_TOKEN }}
           ref: test
           path: code
-      - name: Save the site
-        env:
-          BASE: https://probe-lease-kerry-sept.trycloudflare.com
+      - uses: actions/cache/restore@v4
+        with:
+          path: ~/.local/share/cartopy
+          key: cartopy-v1
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+      - run: |
+          pip install -q numpy pillow eccodes cartopy "shapely>=2"
+          python code/tools/demo_wind.py out 2>&1 | tee log.txt; cp log.txt out/
+      - if: always()
         run: |
-          mkdir -p ref && cd ref
-          npm init -y >/dev/null && npm i -s playwright@1.48.2 >/dev/null 2>&1 && npx playwright install --with-deps chromium >/dev/null 2>&1
-          cat > grab.js <<'JS'
-          const { chromium } = require('playwright'); const fs = require('fs'), path = require('path');
-          const BASE = process.env.BASE; const save = {}; const log = [];
-          (async () => {
-            const b = await chromium.launch({args:['--use-gl=swiftshader','--enable-webgl','--ignore-gpu-blocklist']});
-            for (const [tag, vp, mob] of [['desk', {width:1440,height:900}, false], ['phone', {width:390,height:844}, true]]) {
-              const ctx = await b.newContext({viewport: vp, isMobile: mob, hasTouch: mob, deviceScaleFactor: mob ? 2 : 1});
-              const p = await ctx.newPage();
-              p.on('console', m => log.push(`[${tag} console] ${m.type()} ${m.text()}`.slice(0,500)));
-              p.on('response', async r => { const u = r.url(); log.push(`[${tag} net] ${r.status()} ${r.request().resourceType()} ${u}`.slice(0,400));
-                try { if (u.startsWith(BASE) && !save[u]) { const buf = await r.body(); if (buf.length < 30e6) { save[u] = 1;
-                  let f = path.join('site', new URL(u).pathname.replace(/\/$/, '/index.html')); if (new URL(u).search) f += '__' + new URL(u).search.replace(/[^a-z0-9]/gi,'_').slice(0,80);
-                  fs.mkdirSync(path.dirname(f), {recursive:true}); fs.writeFileSync(f, buf); } } } catch (e) {} });
-              for (const h of ['', '#model=gem&layer=wind']) {
-                await p.goto(BASE + '/' + h, {waitUntil:'networkidle', timeout: 90000}).catch(e => log.push('goto '+e));
-                await p.waitForTimeout(8000);
-                const n = (h||'home').replace(/[^a-z0-9]/gi,'_');
-                await p.screenshot({path:`shot_${tag}_${n}.png`, fullPage: true});
-                fs.writeFileSync(`dom_${tag}_${n}.html`, await p.content());
-                fs.writeFileSync(`text_${tag}_${n}.txt`, await p.evaluate(() => document.body.innerText));
-                fs.writeFileSync(`controls_${tag}_${n}.json`, JSON.stringify(await p.evaluate(() =>
-                  [...document.querySelectorAll('button,select,option,a,input,[role=button],[data-layer],[data-model]')].map(e => ({tag:e.tagName, id:e.id, cls:e.className && String(e.className).slice(0,80), text:(e.innerText||e.value||'').trim().slice(0,80), title:e.title, href:e.getAttribute('href'), data:{...e.dataset}}))), null, 1));
-              }
-              // click every visible button once (desktop), screenshot each state
-              if (tag === 'desk') {
-                const btns = await p.$$('button,[role=button]'); let k = 0;
-                for (const bt of btns.slice(0, 80)) { try { if (!(await bt.isVisible())) continue; const t = ((await bt.innerText())||'').trim().slice(0,30).replace(/[^a-z0-9]/gi,'_') || 'b';
-                  await bt.click({timeout: 3000}); await p.waitForTimeout(2500); await p.screenshot({path:`click_${String(k++).padStart(2,'0')}_${t}.png`}); } catch (e) {} }
-              }
-              await ctx.close();
-            }
-            fs.writeFileSync('network_and_console.txt', log.join('\n')); await b.close();
-          })();
-          JS
-          node grab.js || true
-          wget -q -e robots=off -r -l 3 -np -p -k -P mirror "$BASE/" || true
-          ls -la; du -sh .
-      - name: Encrypted copy (only this session's private key can open it)
-        run: |
-          cat > pub.pem <<'PEM'
-          -----BEGIN PUBLIC KEY-----
-          MIIBojANBgkqhkiG9w0BAQEFAAOCAY8AMIIBigKCAYEAvSnVz36JG+DJlcwrAiBY
-          zwZMXy83zljXzgi3+kWRhbRNi2QR44MZACrKAbwwrTodxXvLWdJn3gf2Non68F9R
-          ZyVesBTkwVjx2B8GNgiX/fbvnDpAuOW2KGXywcZ3oioFLNo0I8QqMPJfbEw2MBVK
-          RWWt5cirkzuJoC5tbZdWxDNE6RdFsf6NI+qjbI1OTSPRfWxi/9pcKpRJZFNP7TDP
-          1XnJag3cR/B683pChbcdQrlkWGWp331twb4gSoNPmNoyEoioA0lbEvNFyi+uubk3
-          ys/ATmtjfDdW7iWjbfvPI6wIiJm7N+uSvM5ZZBFOJ8fhb5SrtnAsL9dv4nVBDsPA
-          dAeRyGyesZtEXD4/uyg9rFjghSfbgtf9bu2k7XQX6BsPNOTfLqn1tRk3xa7Qnjt+
-          OO0SWkU1avuBqXA55o6B8gYYVyB4pW4rWB8+8RvQ53cGh7vSZDaybLDaf/8eVXaE
-          FYdM1uqOVezucs79ac10XEeJ/wVvNJ/HWS2hlyHK9I/LAgMBAAE=
-          -----END PUBLIC KEY-----
-          PEM
-          rm -rf ref/node_modules ref/package*.json
-          tar czf ref.tgz ref && openssl rand -hex 32 > k.txt
-          openssl enc -aes-256-cbc -pbkdf2 -salt -in ref.tgz -out ref.tgz.enc -pass file:k.txt
-          openssl pkeyutl -encrypt -pubin -inkey pub.pem -in k.txt -out k.enc
-          mkdir -p out && cp k.enc out/ && split -b 90m ref.tgz.enc out/ref.part. && ls -la out
-          cd out && git init -q -b probe-out-ref && git add -A
-          git -c user.name=probe -c user.email=probe@users.noreply.github.com commit -qm ref
-          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-ref
+          mkdir -p out && cd out && git init -q -b probe-out-wind && git add -A
+          git -c user.name=probe -c user.email=probe@users.noreply.github.com commit -qm wind
+          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-wind
