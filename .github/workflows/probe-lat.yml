@@ -1,4 +1,4 @@
-# One-off: demo data for the animated wind + rain map (not published). -> branch probe-out-wind
+# One-off: demo data (GFS textures; smooth satellite loop). Not published. -> branches probe-out-gfs, probe-out-satflow
 name: probe-lat
 on:
   push:
@@ -7,28 +7,37 @@ on:
 permissions:
   contents: write
 jobs:
-  p:
+  gfs:
     runs-on: ubuntu-24.04
-    timeout-minutes: 120
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
-        with:
-          repository: ${{ vars.CODE_REPO }}
-          token: ${{ secrets.CODE_TOKEN }}
-          ref: test
-          path: code
-      - uses: actions/cache/restore@v4
-        with:
-          path: ~/.local/share/cartopy
-          key: cartopy-v1
+        with: { repository: "${{ vars.CODE_REPO }}", token: "${{ secrets.CODE_TOKEN }}", ref: test, path: code }
       - uses: actions/setup-python@v6
-        with:
-          python-version: "3.11"
+        with: { python-version: "3.11" }
       - run: |
           pip install -q numpy pillow eccodes scipy
-          python code/tools/demo_wind.py out 2>&1 | tee log.txt; cp log.txt out/
+          python code/tools/demo_gfs.py out 2026102500 2>&1 | tail -30 | tee log.txt; cp log.txt out/ || true
       - if: always()
         run: |
-          mkdir -p out && cd out && git init -q -b probe-out-wind && git add -A
-          git -c user.name=probe -c user.email=probe@users.noreply.github.com commit -qm wind
-          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-wind
+          mkdir -p out && cd out && git init -q -b probe-out-gfs && git add -A
+          git -c user.name=probe -c user.email=probe@users.noreply.github.com commit -qm gfs
+          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-gfs
+  satflow:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+        with: { repository: "${{ vars.CODE_REPO }}", token: "${{ secrets.CODE_TOKEN }}", ref: test, path: code }
+      - uses: actions/cache/restore@v4
+        with: { path: site/sat, key: satt-IODC-none, restore-keys: satt-IODC- }
+      - uses: actions/setup-python@v6
+        with: { python-version: "3.11" }
+      - run: |
+          pip install -q numpy pillow opencv-python-headless
+          python code/tools/demo_satflow.py site/sat out 2>&1 | tail -20 | tee log.txt; cp log.txt out/ || true
+      - if: always()
+        run: |
+          mkdir -p out && cd out && git init -q -b probe-out-satflow && git add -A
+          git -c user.name=probe -c user.email=probe@users.noreply.github.com commit -qm sat
+          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-satflow
