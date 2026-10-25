@@ -9,7 +9,7 @@ permissions:
 jobs:
   p:
     runs-on: ubuntu-24.04
-    timeout-minutes: 30
+    timeout-minutes: 120
     steps:
       - uses: actions/checkout@v5
         with:
@@ -25,7 +25,7 @@ jobs:
         with:
           python-version: "3.11"
       - run: |
-          pip install -q numpy pillow eccodes cartopy "shapely>=2"
+          pip install -q numpy pillow eccodes scipy
           python code/tools/demo_wind.py out 2>&1 | tee log.txt; cp log.txt out/
       - if: always()
         run: |
