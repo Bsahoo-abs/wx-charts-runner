@@ -7,22 +7,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          set +e; mkdir o; cd o
-          g(){ n=$1; u=$2; code=$(curl -sL -A "Mozilla/5.0" -m 40 -o "$n" -w "%{http_code} %{size_download}" "$u"); echo "$n $code $u" >> out.txt; }
-          g jtwc_rss.xml https://www.metoc.navy.mil/jtwc/rss/jtwc.rss
-          g ucar_adeck_dir.html http://hurricanes.ral.ucar.edu/repository/data/adecks_open/2026/
-          g ucar_bdeck_dir.html http://hurricanes.ral.ucar.edu/repository/data/bdecks_open/2026/
+          set +e; mkdir o; cd o; sudo apt-get install -y -qq poppler-utils >/dev/null 2>&1
+          g(){ n=$1; u=$2; code=$(curl -sL -A "Mozilla/5.0" -m 60 -o "$n" -w "%{http_code} %{size_download}" "$u"); echo "$n $code $u" >> out.txt; }
           g ucar_ni.html http://hurricanes.ral.ucar.edu/realtime/current/
-          g rammb.html "https://rammb-data.cira.colostate.edu/tc_realtime/"
+          g ucar_root.html http://hurricanes.ral.ucar.edu/repository/data/adecks_open/
+          g aio98.dat http://hurricanes.ral.ucar.edu/repository/data/adecks_open/aio982026.dat
+          g aio98b.dat http://hurricanes.ral.ucar.edu/repository/data/adecks_open/2026/aio982026.dat
+          g bio98.dat http://hurricanes.ral.ucar.edu/repository/data/bdecks_open/2026/bio982026.dat
+          g io98web.txt https://www.metoc.navy.mil/jtwc/products/io9826web.txt
+          g io98.tcw https://www.metoc.navy.mil/jtwc/products/io9826.tcw
+          g jtwc.rss https://www.metoc.navy.mil/jtwc/rss/jtwc.rss
           g rsmc.html https://rsmcnewdelhi.imd.gov.in/
-          g mausam.html https://mausam.imd.gov.in/
-          g nhc_atcf.html https://ftp.nhc.noaa.gov/atcf/aid_public/
-          g nrl.html https://www.nrlmry.navy.mil/tcdat/tc2026/IO/
-          g tcvitals.txt https://ftp.nhc.noaa.gov/atcf/com/tcvitals
-          g nomads_vitals.html https://nomads.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/
-          for f in jtwc_rss.xml rammb.html; do grep -oiE "(io|sh|b)[0-9]{2}2026[a-z]*|[a-z0-9_/.:-]*io[0-9]{4}[a-z0-9_.]*" $f | sort -u | head -30 >> links.txt; done
-          grep -oE 'href="[^"]*(io|bio|aio)[^"]*"' ucar_adeck_dir.html ucar_bdeck_dir.html | tail -20 >> links.txt || true
-          grep -oiE 'href="[^"]*(cyclone|bulletin|tc|rsmc)[^"]*"' rsmc.html | sort -u | head -60 >> links.txt || true
-          grep -i "IO\b\|BOB\|ARB\| 0[0-9]B " tcvitals.txt | tail -5 >> links.txt || true
-          git init -q; git checkout -q -b probe-out-tc; git add .; git -c user.name=p -c user.email=p@p commit -qm p
-          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" probe-out-tc
+          a=$(grep -oE 'uploads/archive/[^"]*TC_ADVISORY[^"]*\.pdf' rsmc.html | head -1); g adv.pdf "https://rsmcnewdelhi.imd.gov.in/$a"; pdftotext -layout adv.pdf adv.txt
+          a=$(grep -oE 'uploads/archive/[^"]*QUADRANT[^"]*\.pdf' rsmc.html | head -1); g quad.pdf "https://rsmcnewdelhi.imd.gov.in/$a"; pdftotext -layout quad.pdf quad.txt
+          a=$(grep -oE 'uploads/archive/[^"]*National_Bulletin[^"]*\.pdf' rsmc.html | head -1); g nat.pdf "https://rsmcnewdelhi.imd.gov.in/$a"; pdftotext -layout nat.pdf nat.txt
+          g rammb.html "https://rammb-data.cira.colostate.edu/tc_realtime/"
+          grep -oE 'href="[^"]*"' ucar_ni.html | grep -i "io\|indian\|adeck\|\.dat" | head -30 > ucarlinks.txt
+          grep -oE 'href="[^"]*"' ucar_root.html | tail -30 >> ucarlinks.txt
+          grep -oE 'href="[^"]*"' rammb.html | grep -i "io\|storm" | head -30 > rammblinks.txt
+          rm -f *.pdf mausam.html
+          git init -q; git checkout -q -b probe-out-tc2; git add .; git -c user.name=p -c user.email=p@p commit -qm p
+          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" probe-out-tc2
