@@ -7,24 +7,31 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          set +e; mkdir o; cd o; sudo apt-get install -y -qq poppler-utils >/dev/null 2>&1
-          g(){ n=$1; u=$2; code=$(curl -sL -A "Mozilla/5.0" -m 60 -o "$n" -w "%{http_code} %{size_download}" "$u"); echo "$n $code $u" >> out.txt; }
-          g ucar_ni.html http://hurricanes.ral.ucar.edu/realtime/current/
-          g ucar_root.html http://hurricanes.ral.ucar.edu/repository/data/adecks_open/
-          g aio98.dat http://hurricanes.ral.ucar.edu/repository/data/adecks_open/aio982026.dat
-          g aio98b.dat http://hurricanes.ral.ucar.edu/repository/data/adecks_open/2026/aio982026.dat
-          g bio98.dat http://hurricanes.ral.ucar.edu/repository/data/bdecks_open/2026/bio982026.dat
-          g io98web.txt https://www.metoc.navy.mil/jtwc/products/io9826web.txt
-          g io98.tcw https://www.metoc.navy.mil/jtwc/products/io9826.tcw
-          g jtwc.rss https://www.metoc.navy.mil/jtwc/rss/jtwc.rss
+          set +e; mkdir o; cd o; pip install -q pdfplumber
+          g(){ curl -sL -A "Mozilla/5.0" -m 60 -o "$1" "$2"; echo "$1 $?" >> out.txt; }
           g rsmc.html https://rsmcnewdelhi.imd.gov.in/
-          a=$(grep -oE 'uploads/archive/[^"]*TC_ADVISORY[^"]*\.pdf' rsmc.html | head -1); g adv.pdf "https://rsmcnewdelhi.imd.gov.in/$a"; pdftotext -layout adv.pdf adv.txt
-          a=$(grep -oE 'uploads/archive/[^"]*QUADRANT[^"]*\.pdf' rsmc.html | head -1); g quad.pdf "https://rsmcnewdelhi.imd.gov.in/$a"; pdftotext -layout quad.pdf quad.txt
-          a=$(grep -oE 'uploads/archive/[^"]*National_Bulletin[^"]*\.pdf' rsmc.html | head -1); g nat.pdf "https://rsmcnewdelhi.imd.gov.in/$a"; pdftotext -layout nat.pdf nat.txt
-          g rammb.html "https://rammb-data.cira.colostate.edu/tc_realtime/"
-          grep -oE 'href="[^"]*"' ucar_ni.html | grep -i "io\|indian\|adeck\|\.dat" | head -30 > ucarlinks.txt
-          grep -oE 'href="[^"]*"' ucar_root.html | tail -30 >> ucarlinks.txt
-          grep -oE 'href="[^"]*"' rammb.html | grep -i "io\|storm" | head -30 > rammblinks.txt
-          rm -f *.pdf mausam.html
-          git init -q; git checkout -q -b probe-out-tc2; git add .; git -c user.name=p -c user.email=p@p commit -qm p
-          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" probe-out-tc2
+          for k in TC_ADVISORY QUADRANT National_Bulletin TCFP Tropical_Weather_Outlook; do a=$(grep -oE "uploads/archive/[^\"]*${k}[^\"]*\.pdf" rsmc.html | head -1); g "$k.pdf" "https://rsmcnewdelhi.imd.gov.in/$a"; done
+          python3 -c "
+          import pdfplumber,glob
+          for f in glob.glob('*.pdf'):
+              try:
+                  with pdfplumber.open(f) as p: open(f[:-4]+'.txt','w').write('\n=====PAGE\n'.join((pg.extract_text() or '') for pg in p.pages[:4]))
+              except Exception as e: print(f,e)
+          "
+          U=https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev
+          curl -s "$U/index.json" -o index.json
+          python3 -c "
+          import json,urllib.request
+          j=json.load(open('index.json'))
+          for m in j['models']:
+              r=m['runs'][0]['run']
+              try:
+                  d=urllib.request.urlopen('$U/%s/%s/tracks.json'%(m['model'],r)).read(); open('tracks_%s.json'%m['model'],'wb').write(d)
+              except Exception as e: print(m['model'],e)
+          "
+          g bio99.dat http://hurricanes.ral.ucar.edu/repository/data/bdecks_open/2026/bio992026.dat
+          g aio99.dat http://hurricanes.ral.ucar.edu/repository/data/adecks_open/aio992026.dat
+          g io99web.txt https://www.metoc.navy.mil/jtwc/products/io9926web.txt
+          rm -f *.pdf rsmc.html index.json
+          git init -q; git checkout -q -b probe-out-tc3; git add .; git -c user.name=p -c user.email=p@p commit -qm p
+          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" probe-out-tc3
