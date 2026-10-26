@@ -1,0 +1,278 @@
+checked at 2026-10-26 01:34 UTC; newest complete scan 01:00 UTC (34 min before)
+scan 00:10 UTC: ir105 file on AWS 22 min after the scan start
+scan 00:20 UTC: ir105 file on AWS 23 min after the scan start
+scan 00:30 UTC: ir105 file on AWS 23 min after the scan start
+scan 00:40 UTC: ir105 file on AWS 22 min after the scan start
+scan 00:50 UTC: ir105 file on AWS 37 min after the scan start
+scan 01:00 UTC: ir105 file on AWS 30 min after the scan start
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/cartopy/io/__init__.py:263: DownloadWarning: Downloading: https://naturalearth.s3.amazonaws.com/50m_physical/ne_50m_land.zip
+  warnings.warn(f'Downloading: {url}', DownloadWarning)
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+202610252240 8s
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+202610252250 7s
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+202610252300 7s
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+The input area chunks are large. This usually means that the input area is of much higher resolution than the output area. You can reduce the chunks passed, and ponder whether you are using the right resampler for the job.
+The input area chunks are large. This usually means that the input area is of much higher resolution than the output area. You can reduce the chunks passed, and ponder whether you are using the right resampler for the job.
+202610252310 32s
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+The input area chunks are large. This usually means that the input area is of much higher resolution than the output area. You can reduce the chunks passed, and ponder whether you are using the right resampler for the job.
+The input area chunks are large. This usually means that the input area is of much higher resolution than the output area. You can reduce the chunks passed, and ponder whether you are using the right resampler for the job.
+202610252320 33s
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+The input area chunks are large. This usually means that the input area is of much higher resolution than the output area. You can reduce the chunks passed, and ponder whether you are using the right resampler for the job.
+The input area chunks are large. This usually means that the input area is of much higher resolution than the output area. You can reduce the chunks passed, and ponder whether you are using the right resampler for the job.
+202610252330 34s
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+The input area chunks are large. This usually means that the input area is of much higher resolution than the output area. You can reduce the chunks passed, and ponder whether you are using the right resampler for the job.
+The input area chunks are large. This usually means that the input area is of much higher resolution than the output area. You can reduce the chunks passed, and ponder whether you are using the right resampler for the job.
+202610252340 33s
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+The input area chunks are large. This usually means that the input area is of much higher resolution than the output area. You can reduce the chunks passed, and ponder whether you are using the right resampler for the job.
+The input area chunks are large. This usually means that the input area is of much higher resolution than the output area. You can reduce the chunks passed, and ponder whether you are using the right resampler for the job.
+202610260000 33s
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+The input area chunks are large. This usually means that the input area is of much higher resolution than the output area. You can reduce the chunks passed, and ponder whether you are using the right resampler for the job.
+The input area chunks are large. This usually means that the input area is of much higher resolution than the output area. You can reduce the chunks passed, and ponder whether you are using the right resampler for the job.
+202610260010 33s
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+The input area chunks are large. This usually means that the input area is of much higher resolution than the output area. You can reduce the chunks passed, and ponder whether you are using the right resampler for the job.
+The input area chunks are large. This usually means that the input area is of much higher resolution than the output area. You can reduce the chunks passed, and ponder whether you are using the right resampler for the job.
+202610260020 33s
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+The input area chunks are large. This usually means that the input area is of much higher resolution than the output area. You can reduce the chunks passed, and ponder whether you are using the right resampler for the job.
+The input area chunks are large. This usually means that the input area is of much higher resolution than the output area. You can reduce the chunks passed, and ponder whether you are using the right resampler for the job.
+202610260030 34s
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+The input area chunks are large. This usually means that the input area is of much higher resolution than the output area. You can reduce the chunks passed, and ponder whether you are using the right resampler for the job.
+The input area chunks are large. This usually means that the input area is of much higher resolution than the output area. You can reduce the chunks passed, and ponder whether you are using the right resampler for the job.
+202610260040 34s
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+The input area chunks are large. This usually means that the input area is of much higher resolution than the output area. You can reduce the chunks passed, and ponder whether you are using the right resampler for the job.
+The input area chunks are large. This usually means that the input area is of much higher resolution than the output area. You can reduce the chunks passed, and ponder whether you are using the right resampler for the job.
+202610260050 35s
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_y" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/satpy/readers/ami_l1b.py:100: UserWarning: The specified chunks separate the stored chunks along dimension "dim_image_x" starting at index 4096. This could degrade performance. Instead, consider rechunking after loading.
+  self.nc = xr.open_dataset(f_obj,
+The input area chunks are large. This usually means that the input area is of much higher resolution than the output area. You can reduce the chunks passed, and ponder whether you are using the right resampler for the job.
+The input area chunks are large. This usually means that the input area is of much higher resolution than the output area. You can reduce the chunks passed, and ponder whether you are using the right resampler for the job.
+202610260100 34s
+done 14
