@@ -6,14 +6,32 @@ jobs:
   p:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-        with:
-          repository: ${{ vars.CODE_REPO }}
-          token: ${{ secrets.CODE_TOKEN }}
-          ref: dev-tc
-          path: code
       - run: |
-          set +e; mkdir o; cd o; pip install -q pdfplumber
-          python3 ../code/cloud_tcfeed.py . https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev > log.txt 2>&1
-          git init -q; git checkout -q -b probe-out-tc4; git add .; git -c user.name=p -c user.email=p@p commit -qm p
-          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" probe-out-tc4
+          set +e; mkdir o; cd o
+          date -u > out.txt
+          W=https://view.eumetsat.int/geoserver/wms
+          curl -s -m 180 "$W?service=WMS&version=1.3.0&request=GetCapabilities" -o caps.xml
+          python3 - >> out.txt <<'PY'
+          import re
+          c=open('caps.xml',encoding='utf-8',errors='ignore').read()
+          for m in re.finditer(r'<Layer[^>]*>\s*<Name>([^<]+)</Name>\s*<Title>([^<]*)</Title>(.*?)</Layer>',c,re.S):
+              n,t,body=m.groups()
+              if any(k in n.lower() for k in ('iodc','mtg','fci','h9','himawari','gk2a','insat','geocolour','geocolor')):
+                  d=re.search(r'<Dimension name="time" default="([^"]+)"',body)
+                  print(n,'|',t,'|',d.group(1) if d else '-')
+          PY
+          d=$(date -u +%Y%m/%d/%H)
+          curl -s "https://noaa-gk2a-pds.s3.amazonaws.com/?list-type=2&prefix=AMI/L1B/FD/$d/" | python3 -c "
+          import sys,re
+          x=sys.stdin.read()
+          ks=re.findall(r'<Key>([^<]+)</Key><LastModified>([^<]+)</LastModified>',x)
+          for k,t in ks:
+              if 'ir105' in k or 'vi006' in k: print(k.split('/')[-1],t)
+          " >> out.txt
+          for L in msg_iodc:ir108 msg_iodc:rgb_naturalenhncd msg_iodc:rgb_eview msg_iodc:hrv msg_iodc:rgb_convection; do
+            curl -s -m 120 "$W?service=WMS&version=1.3.0&request=GetMap&layers=$L&styles=&crs=EPSG:4326&bbox=8,78,24,96&width=1800&height=1600&format=image/png" -o "$(echo $L|tr : _).png"
+            echo "$L $(stat -c %s $(echo $L|tr : _).png)" >> out.txt
+          done
+          rm caps.xml
+          git init -q; git checkout -q -b probe-out-sat; git add .; git -c user.name=p -c user.email=p@p commit -qm p
+          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" probe-out-sat
