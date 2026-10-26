@@ -1,6 +1,7 @@
 # Sharp satellite pictures for the live map (testing), every 10 minutes, and the cyclone analysis feed (IMD, JTWC,
 # models) for the track maker, on their own small Cloudflare Pages project (<PAGES_PROJECT>-sat) like the radar.
-# Each run (twice an hour) keeps going for ~27 minutes and checks for a new GK-2A scan every 2.5 minutes.
+# Each run keeps going for ~55 minutes and checks for a new GK-2A scan every 2.5 minutes; runs start twice an hour,
+# so the next one is always waiting (GitHub's timer is often late) and there is no gap between them.
 name: sat2-test
 
 on:
@@ -21,7 +22,7 @@ permissions:
 jobs:
   sat:
     runs-on: ubuntu-24.04
-    timeout-minutes: 45
+    timeout-minutes: 66
     steps:
       - uses: actions/checkout@v5
         with:
@@ -62,7 +63,7 @@ jobs:
             python cloud_sat2.py ../pub 480 || echo "::warning title=sat2::failed this time"
             (cd pages_sat && { wrangler pages deploy ../../pub --project-name "$PROJECT" --branch test --commit-dirty=true >/dev/null 2>&1 \
               || wrangler pages deploy ../../pub --project-name "$PROJECT" --branch test --commit-dirty=true; })
-            [ $(( $(date +%s) - start )) -gt 1450 ] && break
+            [ $(( $(date +%s) - start )) -gt 3150 ] && break
             sleep 150
           done
           echo "::notice title=sat2::$(du -sh ../pub | cut -f1), $(ls ../pub/sat2/h | wc -l) pictures, newest $(ls ../pub/sat2/h | tail -1)"
