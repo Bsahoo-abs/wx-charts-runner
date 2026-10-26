@@ -1,0 +1,9 @@
+02:40 UTC made in 196s, on AWS 40 min after the scan
+02:30 UTC made in 285s, on AWS 50 min after the scan
+02:20 UTC made in 217s, on AWS 60 min after the scan
+02:10 UTC made in 260s, on AWS 70 min after the scan
+02:00 UTC made in 206s, on AWS 80 min after the scan
+01:50 UTC made in 262s, on AWS 90 min after the scan
+01:40 UTC made in 243s, on AWS 100 min after the scan
+01:30 UTC made in 240s, on AWS 110 min after the scan
+sat2: 8 pictures, new ['202610260240', '202610260230', '202610260220', '202610260210', '202610260200', '202610260150', '202610260140', '202610260130']
