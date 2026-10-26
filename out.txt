@@ -1,0 +1,40 @@
+Mon Oct 26 01:17:19 UTC 2026
+msg_iodc:clm | Cloud Mask - MSG - Indian Ocean | 2026-10-26T00:45:00Z
+msg_iodc:cth | Cloud Top Height - MSG - Indian Ocean | 2026-10-26T00:45:00Z
+msg_iodc:fire | Active Fire Monitoring (GRIB) - MSG - Indian Ocean | 2026-10-26T00:45:00Z
+mtg_fd:frp | Fire Radiative Power (FRP) | 2026-10-26T00:50:00Z
+msg_iodc:gii_kindex | Global Instability K-Index - MSG - Indian Ocean | 2026-10-26T00:45:00Z
+msg_iodc:gii_liftedindex | Global Instability Lifted-Index – MSG – Indian Ocean | 2026-10-26T00:45:00Z
+mtg_fd:h40b | Blended FCI / LEO MW precipitation - MTG - 0 degree | 2026-10-26T00:50:00Z
+msg_iodc:h63 | Precipitation rate at ground by GEO/IR supported by LEO/MW - MSG - Indian Ocean | 2026-10-26T00:45:00Z
+msg_iodc:ir039 | High Rate SEVIRI IR3.9 μm Image - MSG - Indian Ocean | 2026-10-26T00:45:00Z
+mtg_fd:ir105_hrfi | FCI HRFI IR10.5 μm Image - MTG-I - 0 degree | 2026-10-26T00:50:00Z
+msg_iodc:ir108 | High Rate SEVIRI IR10.8 μm Image - MSG - Indian Ocean | 2026-10-26T00:45:00Z
+mtg_fd:li_afa | LI Accumulated Flash Area - MTG-I - 0 degree | 2026-10-26T01:00:00Z
+msg_iodc:rgb_airmass | Airmass RGB - MSG - Indian Ocean | 2026-10-26T00:45:00Z
+msg_iodc:rgb_ash | Volcanic Ash RGB - MSG - Indian Ocean | 2026-10-26T00:45:00Z
+mtg_fd:rgb_cloudphase | Cloud Phase RGB - MTG-I - 0 degree | 2026-10-25T21:50:00Z
+mtg_fd:rgb_cloudtype | Cloud Type RGB - MTG-I - 0 degree | 2026-10-25T21:50:00Z
+msg_iodc:rgb_convection | Convection RGB - MSG - Indian Ocean | 2026-10-26T00:45:00Z
+mtg_fd:rgb_dust | Dust RGB - MTG-I - 0 degree | 2026-10-26T00:50:00Z
+msg_iodc:rgb_dust | Dust RGB - MSG - Indian Ocean | 2026-10-26T00:45:00Z
+msg_iodc:rgb_eview | European HRV RGB - MSG - Indian Ocean | 2026-10-26T00:45:00Z
+mtg_fd:rgb_firetemperature | Fire Temperature RGB - MTG-I - 0 degree | 2026-10-26T00:50:00Z
+mtg_fd:rgb_fog | Fog / Low Clouds RGB - MTG-I - 0 degree | 2026-10-26T00:50:00Z
+msg_iodc:rgb_fog | Fog / Low Clouds RGB - MSG - Indian Ocean | 2026-10-26T00:45:00Z
+mtg_fd:rgb_geocolour | Geo Colour RGB - MTG-I - 0 degree | 2026-10-26T00:50:00Z
+msg_iodc:rgb_microphysics | Day Microphysics RGB - MSG - Indian Ocean | 2026-10-26T00:45:00Z
+msg_iodc:rgb_natural | Natural Colour RGB - MSG - Indian Ocean | 2026-10-26T00:45:00Z
+msg_iodc:rgb_naturalenhncd | Natural Colour Enhanced RGB - MSG - Indian Ocean | 2026-10-26T00:45:00Z
+mtg_fd:rgb_snow | Snow RGB - MTG - 0 degree | 2026-10-26T00:50:00Z
+msg_iodc:rgb_snow | Snow RGB - MSG - Indian Ocean | 2026-10-26T00:45:00Z
+msg_iodc:rgb_tropicalairmass | Tropical Airmass RGB - MSG - Indian Ocean | 2026-10-26T00:45:00Z
+mtg_fd:rgb_truecolour | True Colour RGB - MTG-I - 0 degree | 2026-10-25T21:50:00Z
+msg_iodc:vis006 | High Rate SEVIRI VIS0.6 μm Image - MSG - Indian Ocean | 2026-10-26T00:45:00Z
+mtg_fd:vis06_hrfi | FCI HRFI VIS0.6 μm Image - MTG-I - 0 degree | 2026-10-25T21:50:00Z
+msg_iodc:wv062 | High Rate SEVIRI WV6.2 μm Image - MSG - Indian Ocean | 2026-10-26T00:45:00Z
+msg_iodc:ir108 2711751
+msg_iodc:rgb_naturalenhncd 5413416
+msg_iodc:rgb_eview 6395176
+msg_iodc:hrv 436
+msg_iodc:rgb_convection 6863995
