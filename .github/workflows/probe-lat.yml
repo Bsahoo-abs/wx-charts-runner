@@ -8,20 +8,7 @@ jobs:
     steps:
       - run: |
           set +e; mkdir o; cd o
-          python3 - > out.txt <<'PY'
-          import re,urllib.request
-          from datetime import datetime,timezone,timedelta
-          now=datetime.now(timezone.utc);print("now",now.strftime("%H:%M"))
-          rows={}
-          for h in (now-timedelta(hours=1),now):
-              pre=f"AMI/L1B/FD/{h:%Y%m/%d/%H}/"
-              x=urllib.request.urlopen(f"https://noaa-gk2a-pds.s3.amazonaws.com/?list-type=2&prefix={pre}").read().decode()
-              for k,lm in re.findall(r"<Key>([^<]+)</Key><LastModified>([^<]+)</LastModified>",x):
-                  b=k.split("_")[3];st=k[-15:-3];t=datetime.strptime(st,"%Y%m%d%H%M").replace(tzinfo=timezone.utc)
-                  m=(datetime.strptime(lm[:19],"%Y-%m-%dT%H:%M:%S").replace(tzinfo=timezone.utc)-t).total_seconds()/60
-                  rows.setdefault(st,{})[b]=round(m)
-          for st in sorted(rows)[-8:]:
-              r=rows[st];print(st[8:],"ir105",r.get("ir105"),"vi004",r.get("vi004"),"vi005",r.get("vi005"),"vi006",r.get("vi006"),"vi008",r.get("vi008"),"max",max(r.values()))
-          PY
+          S=https://test.odisha-wx-charts-sat.pages.dev
+          { date -u; curl -s $S/sat2/sat.json | python3 -c 'import sys,json;d=json.load(sys.stdin);print(d.get("look"),d["wide"],d["frames"][-3:],{k:len(v) for k,v in d.get("loops",{}).items()},d["made"])'; } > out.txt
           git init -q; git checkout -q -b probe-out-lat; git add .; git -c user.name=p -c user.email=p@p commit -qm p
           git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" probe-out-lat
