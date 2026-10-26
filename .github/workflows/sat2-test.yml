@@ -1,0 +1,80 @@
+# Sharp satellite pictures for the live map (testing), every 10 minutes, and the cyclone analysis feed (IMD, JTWC,
+# models) for the track maker, on their own small Cloudflare Pages project (<PAGES_PROJECT>-sat) like the radar.
+# Each run (twice an hour) keeps going for ~27 minutes and checks for a new GK-2A scan every 2.5 minutes.
+name: sat2-test
+
+on:
+  schedule:
+    - cron: "2,32 * * * *"
+  push:
+    paths: [".github/workflows/sat2-test.yml"]
+  workflow_dispatch:
+
+concurrency:
+  group: sat2-test
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  actions: write
+
+jobs:
+  sat:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          repository: ${{ vars.CODE_REPO }}
+          token: ${{ secrets.CODE_TOKEN }}
+          ref: test
+          path: code
+      - uses: actions/cache/restore@v4
+        with:
+          path: pub
+          key: s2t-none
+          restore-keys: s2t-
+      - uses: actions/cache/restore@v4
+        with:
+          path: ~/.local/share/cartopy
+          key: cartopy-v1
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+      - run: |
+          pip install -q numpy scipy pillow cartopy "shapely>=2" "satpy[ami_l1b]" pyspectral pyresample netCDF4 h5netcdf dask opencv-python-headless pdfplumber
+          npm i -g -s wrangler@3 >/dev/null 2>&1
+      - name: Satellite every 10 minutes
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          PROJECT: ${{ vars.PAGES_PROJECT }}-sat
+          TRACK_PASSCODE: ${{ secrets.TRACK_PASSCODE }}
+        run: |
+          cd code
+          mkdir -p ../pub
+          printf '/*\n  Access-Control-Allow-Origin: *\n/sat2/sat.json\n  Cache-Control: no-cache\n/tc/*\n  Cache-Control: no-cache\n/sat2/*\n  Cache-Control: public, max-age=86400\n' > ../pub/_headers
+          TRACK_PASSCODE="$TRACK_PASSCODE" python tools/cf_setup.py "$PROJECT" || true
+          python cloud_tcfeed.py ../pub https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev > ../tc.log 2>&1 || true
+          tail -3 ../tc.log
+          start=$(date +%s)
+          while :; do
+            python cloud_sat2.py ../pub 480 || echo "::warning title=sat2::failed this time"
+            (cd pages_sat && { wrangler pages deploy ../../pub --project-name "$PROJECT" --branch test --commit-dirty=true >/dev/null 2>&1 \
+              || wrangler pages deploy ../../pub --project-name "$PROJECT" --branch test --commit-dirty=true; })
+            [ $(( $(date +%s) - start )) -gt 1450 ] && break
+            sleep 150
+          done
+          echo "::notice title=sat2::$(du -sh ../pub | cut -f1), $(ls ../pub/sat2/h | wc -l) pictures, newest $(ls ../pub/sat2/h | tail -1)"
+      - uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: pub
+          key: s2t-${{ github.run_id }}
+      - name: Delete older saved sets
+        env:
+          GH_TOKEN: ${{ github.token }}
+          NEW: s2t-${{ github.run_id }}
+        run: |
+          gh cache list -R "$GITHUB_REPOSITORY" --key "s2t-" --limit 100 --json key -q '.[].key' |
+            while read -r k; do [ "$k" != "$NEW" ] && gh cache delete -R "$GITHUB_REPOSITORY" "$k" || true; done
