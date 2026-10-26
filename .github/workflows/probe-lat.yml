@@ -19,9 +19,22 @@ jobs:
       - run: pip install -q numpy scipy pillow cartopy "shapely>=2" "satpy[ami_l1b]" pyresample netCDF4 h5netcdf dask opencv-python-headless pdfplumber
       - run: |
           set +e; mkdir pub; cd code
-          python cloud_tcfeed.py ../pub https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev > ../pub/tc.log 2>&1
-          /usr/bin/time -v python cloud_sat2.py ../pub 1500 > ../pub/log.txt 2> ../pub/time.txt
-          tail -5 ../pub/log.txt; grep -i "maximum resident" ../pub/time.txt
+          python - > ../pub/log.txt 2>&1 <<'PY'
+          import traceback, os
+          from datetime import datetime, timezone, timedelta
+          import cloud_sat as C, cloud_sat2 as S2
+          now=datetime.now(timezone.utc).replace(second=0,microsecond=0); t=now-timedelta(minutes=now.minute%10+30)
+          fl=C.scan_files(t); print(t, sorted(fl))
+          p=C.fetch(fl["ir105"]); print(p, os.path.getsize(p))
+          from satpy import Scene
+          try:
+              sc=Scene(filenames=[p],reader="ami_l1b"); print("ok scene")
+          except Exception: traceback.print_exc()
+          try:
+              print(S2.make(t, __import__("pathlib").Path("../pub/sat2")))
+          except Exception: traceback.print_exc()
+          PY
+          cat ../pub/log.txt | tail -30
           cd ../pub; rm -rf sat2/ir
           git init -q; git checkout -q -b probe-out-sat3; git add .; git -c user.name=p -c user.email=p@p commit -qm p
           git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" probe-out-sat3
