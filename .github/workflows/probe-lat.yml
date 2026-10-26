@@ -4,24 +4,18 @@ permissions:
   contents: write
 jobs:
   p:
-    runs-on: ubuntu-24.04
-    timeout-minutes: 90
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-        with:
-          repository: ${{ vars.CODE_REPO }}
-          token: ${{ secrets.CODE_TOKEN }}
-          ref: dev-sat
-          path: code
-      - uses: actions/setup-python@v6
-        with:
-          python-version: "3.11"
-      - run: pip install -q numpy scipy pillow cartopy "shapely>=2" "satpy[ami_l1b]" pyspectral pyresample netCDF4 h5netcdf dask opencv-python-headless pdfplumber
       - run: |
-          set +e; mkdir pub; cd code
-          python cloud_tcfeed.py ../pub https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev > ../pub/tc.log 2>&1
-          /usr/bin/time -v python cloud_sat2.py ../pub 1700 > ../pub/log.txt 2> ../pub/time.txt
-          tail -5 ../pub/log.txt; grep -i "maximum resident" ../pub/time.txt
-          cd ../pub; rm -rf sat2/ir
-          git init -q; git checkout -q -b probe-out-sat3; git add .; git -c user.name=p -c user.email=p@p commit -qm p
-          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" probe-out-sat3
+          set +e; mkdir o; cd o
+          S=https://test.odisha-wx-charts-sat.pages.dev
+          T=https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev
+          { date -u
+            echo "sat.json: $(curl -s $S/sat2/sat.json | python3 -c 'import sys,json;d=json.load(sys.stdin);print(d["frames"][-3:],len(d["frames"]),d["made"])')"
+            echo "feed: $(curl -s $S/tc/feed.json | python3 -c 'import sys,json;d=json.load(sys.stdin);print(d["made"],[(s["id"],s.get("name"),len(s["sources"])) for s in d["storms"]],d.get("errors"))')"
+            echo "api/ow: $(curl -s -w ' %{http_code}' $S/api/ow)"
+            echo "cors: $(curl -sI $S/sat2/sat.json | grep -i access-control)"
+            echo "livemap: $(curl -s $T/livemap | grep -c SATB) trackmaker: $(curl -s -o /dev/null -w '%{http_code}' $T/trackmaker)"
+          } > out.txt
+          git init -q; git checkout -q -b probe-out-chk; git add .; git -c user.name=p -c user.email=p@p commit -qm p
+          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" probe-out-chk
