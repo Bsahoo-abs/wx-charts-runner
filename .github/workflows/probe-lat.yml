@@ -8,14 +8,20 @@ jobs:
     steps:
       - run: |
           set +e; mkdir o; cd o
-          S=https://test.odisha-wx-charts-sat.pages.dev
-          T=https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev
-          { date -u
-            echo "sat.json: $(curl -s $S/sat2/sat.json | python3 -c 'import sys,json;d=json.load(sys.stdin);print(d["frames"][-3:],len(d["frames"]),d["made"])')"
-            echo "feed: $(curl -s $S/tc/feed.json | python3 -c 'import sys,json;d=json.load(sys.stdin);print(d["made"],[(s["id"],s.get("name"),len(s["sources"])) for s in d["storms"]],d.get("errors"))')"
-            echo "api/ow: $(curl -s -w ' %{http_code}' $S/api/ow)"
-            echo "cors: $(curl -sI $S/sat2/sat.json | grep -i access-control)"
-            echo "livemap: $(curl -s $T/livemap | grep -c SATB) trackmaker: $(curl -s -o /dev/null -w '%{http_code}' $T/trackmaker)"
-          } > out.txt
-          git init -q; git checkout -q -b probe-out-chk; git add .; git -c user.name=p -c user.email=p@p commit -qm p
-          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" probe-out-chk
+          python3 - > out.txt <<'PY'
+          import re,urllib.request
+          from datetime import datetime,timezone,timedelta
+          now=datetime.now(timezone.utc);print("now",now.strftime("%H:%M"))
+          rows={}
+          for h in (now-timedelta(hours=1),now):
+              pre=f"AMI/L1B/FD/{h:%Y%m/%d/%H}/"
+              x=urllib.request.urlopen(f"https://noaa-gk2a-pds.s3.amazonaws.com/?list-type=2&prefix={pre}").read().decode()
+              for k,lm in re.findall(r"<Key>([^<]+)</Key><LastModified>([^<]+)</LastModified>",x):
+                  b=k.split("_")[3];st=k[-15:-3];t=datetime.strptime(st,"%Y%m%d%H%M").replace(tzinfo=timezone.utc)
+                  m=(datetime.strptime(lm[:19],"%Y-%m-%dT%H:%M:%S").replace(tzinfo=timezone.utc)-t).total_seconds()/60
+                  rows.setdefault(st,{})[b]=round(m)
+          for st in sorted(rows)[-8:]:
+              r=rows[st];print(st[8:],"ir105",r.get("ir105"),"vi004",r.get("vi004"),"vi005",r.get("vi005"),"vi006",r.get("vi006"),"vi008",r.get("vi008"),"max",max(r.values()))
+          PY
+          git init -q; git checkout -q -b probe-out-lat; git add .; git -c user.name=p -c user.email=p@p commit -qm p
+          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" probe-out-lat
