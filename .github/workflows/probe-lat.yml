@@ -13,5 +13,5 @@ jobs:
           for t in $(python3 -c "import json;print(' '.join(f['t'] for f in json.load(open('radar/radar.json'))['frames']))"); do curl -s -A "Mozilla/5.0" "$R/z_$t.png" -o radar/z_$t.png; done
           curl -s -A "Mozilla/5.0" https://test.odisha-wx-charts-sat.pages.dev/tc/feed.json -o feed.json
           ls radar | wc -l > out.txt
-          git init -q; git checkout -q -b probe-out-arnabr; git add .; git -c user.name=p -c user.email=p@p commit -qm p
-          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" probe-out-arnabr
+          git init -q; git checkout -q -b probe-out-radar8; git add .; git -c user.name=p -c user.email=p@p commit -qm p
+          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" probe-out-radar8
