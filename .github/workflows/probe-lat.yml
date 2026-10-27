@@ -4,23 +4,14 @@ permissions:
   contents: write
 jobs:
   p:
-    runs-on: ubuntu-24.04
-    timeout-minutes: 120
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-        with:
-          repository: ${{ vars.CODE_REPO }}
-          token: ${{ secrets.CODE_TOKEN }}
-          ref: dev-sat
-          path: code
-      - uses: actions/setup-python@v6
-        with:
-          python-version: "3.11"
-      - run: pip install -q numpy scipy pillow cartopy "shapely>=2" "satpy[ami_l1b]" pyspectral pyresample netCDF4 h5netcdf dask
       - run: |
-          set +e; mkdir o; cd code
-          python tools/arnab_data.py ../o 77 93 9 23 12.5 > ../o/log.txt 2>&1
-          tail -5 ../o/log.txt
-          cd ../o
-          git init -q; git checkout -q -b probe-out-arnab; git add .; git -c user.name=p -c user.email=p@p commit -qm p
-          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" probe-out-arnab
+          set +e; mkdir -p o/radar; cd o
+          R=https://test.odisha-wx-charts-radar.pages.dev/radar/
+          curl -s -A "Mozilla/5.0" $R/radar.json -o radar/radar.json
+          for t in $(python3 -c "import json;print(' '.join(f['t'] for f in json.load(open('radar/radar.json'))['frames']))"); do curl -s -A "Mozilla/5.0" "$R/z_$t.png" -o radar/z_$t.png; done
+          curl -s -A "Mozilla/5.0" https://test.odisha-wx-charts-sat.pages.dev/tc/feed.json -o feed.json
+          ls radar | wc -l > out.txt
+          git init -q; git checkout -q -b probe-out-arnabr; git add .; git -c user.name=p -c user.email=p@p commit -qm p
+          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" probe-out-arnabr
