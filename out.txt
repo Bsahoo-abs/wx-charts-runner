@@ -1,0 +1,80 @@
+== https://www.ncei.noaa.gov/data/geostationary-ir-channel-brightness-temperature-gridsat-b1/access/1999/GRIDSAT-B1.1999.10.28.18.v02r01.nc
+HTTP/1.1 200 OK
+Content-Length: 29783651
+GRIDSAT-B1.1999.10.20.00.v02r01.nc
+GRIDSAT-B1.1999.10.20.03.v02r01.nc
+GRIDSAT-B1.1999.10.20.06.v02r01.nc
+GRIDSAT-B1.1999.10.20.09.v02r01.nc
+GRIDSAT-B1.1999.10.20.12.v02r01.nc
+GRIDSAT-B1.1999.10.20.15.v02r01.nc
+GRIDSAT-B1.1999.10.20.18.v02r01.nc
+GRIDSAT-B1.1999.10.20.21.v02r01.nc
+GRIDSAT-B1.1999.10.21.00.v02r01.nc
+GRIDSAT-B1.1999.10.21.03.v02r01.nc
+GRIDSAT-B1.1999.10.21.06.v02r01.nc
+GRIDSAT-B1.1999.10.21.09.v02r01.nc
+== hursat
+HURSAT_b1_v06_1999201N25134_TD0721_c20170721.tar.gz
+HURSAT_b1_v06_1999203N17129_NEIL_c20170721.tar.gz
+HURSAT_b1_v06_1999204N17117_TS0725_c20170721.tar.gz
+HURSAT_b1_v06_1999205N11254_CALVIN_c20170721.tar.gz
+HURSAT_b1_v06_1999208N06139_OLGA_c20170721.tar.gz
+HURSAT_b1_v06_1999208N14234_MISSING_c20170721.tar.gz
+HURSAT_b1_v06_1999208N21089_MISSING_c20170721.tar.gz
+HURSAT_b1_v06_1999213N12144_PAUL_c20170721.tar.gz
+HURSAT_b1_v06_1999217N11265_DORA_c20170721.tar.gz
+HURSAT_b1_v06_1999218N12241_EUGENE_c20170721.tar.gz
+HURSAT_b1_v06_1999218N21116_RACHEL_c20170721.tar.gz
+HURSAT_b1_v06_1999219N21089_MISSING_c20170721.tar.gz
+HURSAT_b1_v06_1999219N25142_MISSING_c20170721.tar.gz
+HURSAT_b1_v06_1999225N12247_MISSING_c20170721.tar.gz
+HURSAT_b1_v06_1999228N10252_FERNANDA_c20170721.tar.gz
+HURSAT_b1_v06_1999228N31128_MISSING_c20170721.tar.gz
+HURSAT_b1_v06_1999230N12129_SAM_c20170721.tar.gz
+HURSAT_b1_v06_1999231N14341_CINDY_c20170721.tar.gz
+HURSAT_b1_v06_1999231N20266_BRET_c20170721.tar.gz
+HURSAT_b1_v06_1999231N30181_TANYA_c20170721.tar.gz
+HURSAT_b1_v06_1999003N05114_MISSING_c20170721.tar.gz
+HURSAT_b1_v06_1999005S21040_HSK1199_c20170721.tar.gz
+HURSAT_b1_v06_1999013S13164_DANI_c20170721.tar.gz
+HURSAT_b1_v06_1999015S20036_ALDA_c20170721.tar.gz
+HURSAT_b1_v06_1999020S17158_OLINDA_c20170721.tar.gz
+== hursat root
+href=".."
+href="1978"
+href="1979"
+href="1980"
+href="1981"
+href="1982"
+href="1983"
+href="1984"
+href="1985"
+href="1986"
+href="1987"
+href="1988"
+href="1989"
+href="1990"
+href="1991"
+href="1992"
+href="1993"
+href="1994"
+href="1995"
+href="1996"
+== kochi
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="stylesheet" type="text/css" href="wxhome.css" />
+<link rel="sh== http://weather.is.kochi-u.ac.jp/sat/gms.fareast/1999/10/28/
+HTTP/1.1 200 OK
+['lat', 'lon', 'time', 'satlat', 'satlon', 'satrad', 'satname', 'b1ufile', 'b1file', 'calslp_irwin', 'caloff_irwin', 'calslp_irwvp', 'caloff_irwvp', 'vis_rad_slope', 'vis_dc_slope', 'vis_dc_offset', 'irwin_cdr', 'irwin_2', 'irwin_3', 'irwvp', 'irwvp_2', 'vschn', 'vschn_2', 'satid_ir', 'satid_wv', 'satid_vs', 'sparse2ir', 'sparse2wv', 'sparse2vs', 'sparse3ir', 'satid_ir3', 'irwin_vza_adj']
+irwin_cdr (1, 2000, 5143) NOAA FCDR of Brightness Temperature near 11 microns (Nadir-most observations)
+satid_ir (1, 2000, 5143) IRWIN_CDR Satellite Index (packed)
+Tmin over box 201.4499969482422 res 0.06999969482421875
+sat ids [ 3 14 45]
+ 
+{'svn_info_b1u2grisat': '$Id: b1u_2_grisat.pro 45405 2014-04-04 19:22:27Z kknapp $', '_satid': '_satid attributes are comma delimited arrays withsatellite information that corresponds to the satid variable (-1 is missing)', 'Satellite_Name_satid': 'GMS-5,GOES-10,GOES-8,Meteosat-5,Meteosat-7', 'B1U_File_satid': 'ISCCP.B1U.a.GMS-5.1999.10.28.1731.JMA.gz,ISCCP.B1U.a.GOE-10.1999.10.28.1800.CSU.gz,ISCCP.B1U.a.GOE-8.1999.10.28.1745.AES.gz,ISCCP.B1U.a.MET-5.1999.10.28.1730.EUM.gz,ISCCP.B1U.a.MET-7.1999.10.28.1730.EUM.gz'}
