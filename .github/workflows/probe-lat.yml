@@ -4,33 +4,23 @@ permissions:
   contents: write
 jobs:
   p:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    timeout-minutes: 150
     steps:
+      - uses: actions/checkout@v5
+        with:
+          repository: ${{ vars.CODE_REPO }}
+          token: ${{ secrets.CODE_TOKEN }}
+          ref: dev-sat
+          path: code
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+      - run: pip install -q numpy pillow cartopy "shapely>=2" netCDF4
       - run: |
-          set +e; mkdir -p o; cd o
-          t(){ echo "== $1" >> out.txt; curl -sIL -A "Mozilla/5.0" --max-time 60 "$1" | grep -iE "^HTTP|content-length" >> out.txt; }
-          G=https://www.ncei.noaa.gov/data/geostationary-ir-channel-brightness-temperature-gridsat-b1/access/1999
-          t $G/GRIDSAT-B1.1999.10.28.18.v02r01.nc
-          curl -sL --max-time 60 $G/ | grep -o 'GRIDSAT-B1.1999.10.2[0-9][^"<]*' | sort -u | head -12 >> out.txt
-          H=https://www.ncei.noaa.gov/data/hurricane-satellite-hursat-b1/archive/v06/1999/
-          echo "== hursat" >> out.txt; curl -sL --max-time 60 $H | grep -o 'HURSAT[^"<]*' | sort -u | grep -iE "05B|ORISSA|1999298|1999[23][0-9][0-9]" | head -20 >> out.txt
-          curl -sL --max-time 60 $H | grep -o 'HURSAT[^"<]*' | sort -u | head -5 >> out.txt
-          echo "== hursat root" >> out.txt; curl -sL --max-time 60 https://www.ncei.noaa.gov/data/hurricane-satellite-hursat-b1/archive/v06/ | grep -o 'href="[^"]*"' | head -20 >> out.txt
-          echo "== kochi" >> out.txt; curl -sL --max-time 60 "http://weather.is.kochi-u.ac.jp/archive-e.html" | head -c 400 >> out.txt
-          t "http://weather.is.kochi-u.ac.jp/sat/gms.fareast/1999/10/28/"
-          # download one GridSat file and summarise
-          curl -sL -o g.nc $G/GRIDSAT-B1.1999.10.28.18.v02r01.nc && pip -q install netCDF4 && python3 - >> out.txt <<'PY'
-          import netCDF4 as N,numpy as np
-          d=N.Dataset('g.nc');print(list(d.variables))
-          for v in ('irwin_cdr','satid_ir'):
-              if v in d.variables:
-                  x=d[v];print(v,x.shape,getattr(x,'long_name',''))
-          lat=d['lat'][:];lon=d['lon'][:]
-          j=(lat>5)&(lat<30);i=(lon>75)&(lon<130)
-          T=d['irwin_cdr'][0][np.ix_(j,i)];print('Tmin over box',float(T.min()),'res',float(lat[1]-lat[0]))
-          s=d['satid_ir'][0][np.ix_(j,i)];print('sat ids',np.unique(np.asarray(s))[:10]);print(getattr(d['satid_ir'],'flag_meanings',''), getattr(d,'sat_names','') if hasattr(d,'sat_names') else '')
-          print({k:getattr(d,k) for k in d.ncattrs() if 'sat' in k.lower()})
-          PY
-          rm -f g.nc
-          git init -q; git checkout -q -b probe-out-sc99; git add .; git -c user.name=p -c user.email=p@p commit -qm p
-          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" probe-out-sc99
+          set +e; mkdir o; cd code
+          python tools/sc99_data.py ../o 76 128 2 28 > ../o/log.txt 2>&1
+          tail -5 ../o/log.txt
+          cd ../o
+          git init -q; git checkout -q -b probe-out-sc99d; git add .; git -c user.name=p -c user.email=p@p commit -qm p
+          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" probe-out-sc99d
