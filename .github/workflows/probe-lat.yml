@@ -5,7 +5,7 @@ permissions:
 jobs:
   p:
     runs-on: ubuntu-24.04
-    timeout-minutes: 150
+    timeout-minutes: 120
     steps:
       - uses: actions/checkout@v5
         with:
@@ -16,11 +16,11 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: "3.11"
-      - run: pip install -q numpy pillow cartopy "shapely>=2" netCDF4
+      - run: pip install -q numpy scipy pillow "satpy[ami_l1b]" pyspectral pyresample netCDF4 h5netcdf dask
       - run: |
           set +e; mkdir o; cd code
-          python tools/sc99_data.py ../o 76 128 2 28 > ../o/log.txt 2>&1
+          python tools/demo_vis.py ../o 80 92 14.5 24 0.01 202610300400 202610300410 202610300420 202610300430 202610300440 202610300450 202610300500 202610300510 202610300520 202610300530 202610300540 202610300550 202610300600 202610301130 202610301200 202610301230 202610301700 > ../o/log.txt 2>&1
           tail -5 ../o/log.txt
           cd ../o
-          git init -q; git checkout -q -b probe-out-sc99d; git add .; git -c user.name=p -c user.email=p@p commit -qm p
-          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" probe-out-sc99d
+          git init -q; git checkout -q -b probe-out-vis; git add .; git -c user.name=p -c user.email=p@p commit -qm p
+          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" probe-out-vis
