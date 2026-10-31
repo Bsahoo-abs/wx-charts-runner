@@ -11,6 +11,7 @@ jobs:
           python3 - <<'PY' > radar.txt 2>&1
           import json,urllib.request,io,numpy as np
           from PIL import Image
+          op=urllib.request.build_opener();op.addheaders=[("User-Agent","Mozilla/5.0")];urllib.request.install_opener(op)
           B="https://test.odisha-wx-charts-radar.pages.dev/radar/"
           j=json.load(urllib.request.urlopen(B+"radar.json"))
           print({k:(v if not isinstance(v,list) or len(v)<6 else (len(v),v[:2],v[-2:])) for k,v in j.items()})
