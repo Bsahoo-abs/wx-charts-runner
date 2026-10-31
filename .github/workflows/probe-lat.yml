@@ -14,17 +14,11 @@ jobs:
           (async()=>{const b=await chromium.launch({args:['--use-gl=swiftshader','--enable-unsafe-swiftshader','--ignore-gpu-blocklist']});const p=await b.newPage({viewport:{width:1440,height:900}});
           p.on('pageerror',e=>console.log('ERR',e.message));
           const B="https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev/";
-          await p.goto(B+"livemap.html#layer=wind",{timeout:60000});await p.waitForTimeout(14000);await p.screenshot({path:'wind.png'});
-          await p.goto(B+"livemap.html#layer=wind&model=GFSG",{timeout:60000});await p.waitForTimeout(12000);
-          for(let i=0;i<5;i++){await p.mouse.move(900,450);await p.mouse.wheel(0,600);await p.waitForTimeout(700)}
-          await p.mouse.move(1100,450);await p.mouse.down();await p.mouse.move(400,450,{steps:20});await p.mouse.up();
-          await p.waitForTimeout(8000);await p.screenshot({path:'globe.png'});
-          await p.goto(B+"lab.html#sat",{timeout:60000});await p.waitForTimeout(8000);
-          try{await p.click('#sat-products button:has-text("Meteosat")',{timeout:5000});}catch(e){console.log('no meteosat chip')}
-          await p.waitForTimeout(8000);await p.screenshot({path:'meteosat.png'});
-          await p.goto(B+"radar3d.html",{timeout:60000});await p.waitForTimeout(25000);await p.screenshot({path:'radar3d.png'});
+          await p.goto(B+"livemap.html#layer=wind",{timeout:60000});await p.waitForTimeout(14000);await p.screenshot({path:'wind.png'});await p.goto(B+'livemap.html#layer=gust',{timeout:60000});await p.waitForTimeout(12000);await p.screenshot({path:'gust.png'});
+          await p.goto(B+"live3d.html#layer=wind",{timeout:60000});await p.waitForTimeout(20000);await p.screenshot({path:'w3d.png'});
+          await p.goto(B+"live3d.html#layer=rain",{timeout:60000});await p.waitForTimeout(20000);await p.screenshot({path:'r3d.png'});
           await b.close()})();
           JS
           node s.js > log.txt 2>&1
-          git init -q; git checkout -q -b probe-out-shot3; git add *.png *.txt; git -c user.name=p -c user.email=p@p commit -qm p
-          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" probe-out-shot3
+          git init -q; git checkout -q -b probe-out-shot4; git add *.png *.txt; git -c user.name=p -c user.email=p@p commit -qm p
+          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" probe-out-shot4
