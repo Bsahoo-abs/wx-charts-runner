@@ -9,6 +9,7 @@ jobs:
       - run: |
           set +e; mkdir o; cd o; npm init -y >/dev/null; npm i playwright@1.48.2 >/dev/null 2>&1; npx playwright install chromium >/dev/null 2>&1
           curl -s -A Mozilla/5.0 https://test.odisha-wx-charts.pages.dev/sat/sat.json | python3 -c "import json,sys;j=json.load(sys.stdin);print({k:len(v['frames']) for k,v in j['products'].items()})" > sat.txt
+          for u in https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev https://test.odisha-wx-charts.pages.dev; do echo $u; curl -s -A Mozilla/5.0 $u/livemap.html | grep -o 'go3d\|6a73c4\|4b4fa6' | sort | uniq -c; curl -s -o /dev/null -w '%{http_code} %{size_download}\n' -A Mozilla/5.0 $u/live3d.html; done > chk.txt
           cat > s.js <<'JS'
           const {chromium}=require('playwright');
           (async()=>{const b=await chromium.launch({args:['--use-gl=swiftshader','--enable-unsafe-swiftshader','--ignore-gpu-blocklist']});const p=await b.newPage({viewport:{width:1440,height:900}});
