@@ -14,8 +14,7 @@ jobs:
           op=urllib.request.build_opener();op.addheaders=[("User-Agent","Mozilla/5.0")];urllib.request.install_opener(op)
           B="https://test.odisha-wx-charts-radar.pages.dev/radar/"
           j=json.load(urllib.request.urlopen(B+"radar.json"))
-          print({k:(v if not isinstance(v,list) or len(v)<6 else (len(v),v[:2],v[-2:])) for k,v in j.items()})
-          fr=j.get('frames',[])
+          fr=[x['t'] for x in j.get('frames',[])]
           worst=[]
           for f in fr:
             for pre in ('r_','z_'):
@@ -23,9 +22,9 @@ jobs:
                 a=np.asarray(Image.open(io.BytesIO(urllib.request.urlopen(B+pre+f+'.png').read())).convert('RGBA')).astype(int)
               except Exception as e:
                 print(pre,f,'ERR',e); continue
-              al=a[...,3]>30; dark=al&(a[...,:3].max(-1)<60)
+              al=a[...,3]>30; dark=al&(a[...,:3].max(-1)<70)
               worst.append((int(dark.sum()),pre,f,int(al.sum())))
-          worst.sort(reverse=True); print(worst[:15])
+          worst.sort(reverse=True); print(worst[:15]); import collections; print('lowest colours', collections.Counter(map(tuple,a[a[...,3]>30][:,:3].tolist())).most_common(8))
           for n,pre,f,_ in worst[:3]:
             open(f'w_{pre}{f}.png','wb').write(urllib.request.urlopen(B+pre+f+'.png').read())
           PY
