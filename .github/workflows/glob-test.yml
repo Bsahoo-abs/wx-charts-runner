@@ -1,0 +1,61 @@
+name: glob-test
+on:
+  schedule:
+    - cron: "17 * * * *"
+  push:
+    paths: [".github/workflows/glob-test.yml"]
+  workflow_dispatch:
+concurrency:
+  group: glob-test
+  cancel-in-progress: false
+permissions:
+  contents: read
+  actions: write
+jobs:
+  glob:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          repository: ${{ vars.CODE_REPO }}
+          token: ${{ secrets.CODE_TOKEN }}
+          ref: test
+          path: code
+      - uses: actions/cache/restore@v4
+        with:
+          path: pub
+          key: glt-none
+          restore-keys: glt-
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+      - run: pip install -q numpy scipy pillow eccodes eccodeslib || pip install -q numpy scipy pillow eccodes
+      - name: Globe
+        id: g
+        run: |
+          mkdir -p pub && cd code
+          if python -c "import sys,cloud_global as g;sys.exit(0 if g.main('../pub') else 1)"; then echo "new=1" >> "$GITHUB_OUTPUT"; fi
+      - name: Publish
+        if: steps.g.outputs.new == '1'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          PROJECT: ${{ vars.PAGES_PROJECT }}-glob
+        run: |
+          printf '/*\n  Access-Control-Allow-Origin: *\n/gfs/meta.json\n  Cache-Control: no-cache\n' > pub/_headers
+          npx --yes wrangler@3 pages project create "$PROJECT" --production-branch main >/dev/null 2>&1 || true
+          npx --yes wrangler@3 pages deploy pub --project-name "$PROJECT" --branch test --commit-dirty=true
+      - uses: actions/cache/save@v4
+        if: steps.g.outputs.new == '1'
+        with:
+          path: pub
+          key: glt-${{ github.run_id }}
+      - name: Delete older saved sets
+        if: steps.g.outputs.new == '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          NEW: glt-${{ github.run_id }}
+        run: |
+          gh cache list -R "$GITHUB_REPOSITORY" --key "glt-" --limit 100 --json key -q '.[].key' |
+            while read -r k; do [ "$k" != "$NEW" ] && gh cache delete -R "$GITHUB_REPOSITORY" "$k" || true; done
