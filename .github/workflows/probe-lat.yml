@@ -7,26 +7,24 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - run: |
-          set +e; mkdir o; cd o; pip install -q numpy pillow >/dev/null 2>&1
-          python3 - <<'PY' > radar.txt 2>&1
-          import json,urllib.request,io,numpy as np
-          from PIL import Image
-          op=urllib.request.build_opener();op.addheaders=[("User-Agent","Mozilla/5.0")];urllib.request.install_opener(op)
-          B="https://test.odisha-wx-charts-radar.pages.dev/radar/"
-          j=json.load(urllib.request.urlopen(B+"radar.json"))
-          fr=[x['t'] for x in j.get('frames',[])]
-          worst=[]
-          for f in fr:
-            for pre in ('r_','z_'):
-              try:
-                a=np.asarray(Image.open(io.BytesIO(urllib.request.urlopen(B+pre+f+'.png').read())).convert('RGBA')).astype(int)
-              except Exception as e:
-                print(pre,f,'ERR',e); continue
-              al=a[...,3]>30; dark=al&(a[...,:3].max(-1)<70)
-              worst.append((int(dark.sum()),pre,f,int(al.sum())))
-          worst.sort(reverse=True); print(worst[:15]); import collections; print('lowest colours', collections.Counter(map(tuple,a[a[...,3]>30][:,:3].tolist())).most_common(8))
-          for n,pre,f,_ in worst[:3]:
-            open(f'w_{pre}{f}.png','wb').write(urllib.request.urlopen(B+pre+f+'.png').read())
-          PY
-          git init -q; git checkout -q -b probe-out-rd; git add *.txt *.png 2>/dev/null; git add *.txt; git -c user.name=p -c user.email=p@p commit -qm p
-          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" probe-out-rd
+          set +e; mkdir o; cd o; npm init -y >/dev/null; npm i playwright@1.48.2 >/dev/null 2>&1; npx playwright install chromium >/dev/null 2>&1
+          curl -s -A Mozilla/5.0 https://test.odisha-wx-charts.pages.dev/sat/sat.json | python3 -c "import json,sys;j=json.load(sys.stdin);print({k:len(v['frames']) for k,v in j['products'].items()})" > sat.txt
+          cat > s.js <<'JS'
+          const {chromium}=require('playwright');
+          (async()=>{const b=await chromium.launch({args:['--use-gl=swiftshader','--enable-unsafe-swiftshader','--ignore-gpu-blocklist']});const p=await b.newPage({viewport:{width:1440,height:900}});
+          p.on('pageerror',e=>console.log('ERR',e.message));
+          const B="https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev/";
+          await p.goto(B+"livemap.html#layer=wind",{timeout:60000});await p.waitForTimeout(14000);await p.screenshot({path:'wind.png'});
+          await p.goto(B+"livemap.html#layer=wind&model=GFSG",{timeout:60000});await p.waitForTimeout(12000);
+          for(let i=0;i<5;i++){await p.mouse.move(900,450);await p.mouse.wheel(0,600);await p.waitForTimeout(700)}
+          await p.mouse.move(1100,450);await p.mouse.down();await p.mouse.move(400,450,{steps:20});await p.mouse.up();
+          await p.waitForTimeout(8000);await p.screenshot({path:'globe.png'});
+          await p.goto(B+"lab.html#sat",{timeout:60000});await p.waitForTimeout(8000);
+          try{await p.click('#sat-products button:has-text("Meteosat")',{timeout:5000});}catch(e){console.log('no meteosat chip')}
+          await p.waitForTimeout(8000);await p.screenshot({path:'meteosat.png'});
+          await p.goto(B+"radar3d.html",{timeout:60000});await p.waitForTimeout(25000);await p.screenshot({path:'radar3d.png'});
+          await b.close()})();
+          JS
+          node s.js > log.txt 2>&1
+          git init -q; git checkout -q -b probe-out-shot3; git add *.png *.txt; git -c user.name=p -c user.email=p@p commit -qm p
+          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" probe-out-shot3
