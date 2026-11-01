@@ -7,21 +7,21 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - run: |
-          set +e; mkdir o; cd o
-          python3 - <<'PY' > fy.txt 2>&1
-          import json,urllib.request
-          op=urllib.request.build_opener();op.addheaders=[("User-Agent","Mozilla/5.0")];urllib.request.install_opener(op)
-          for q in ["FY-4B","FY4B","AGRI","fengyun"]:
-            for base in ["https://wis2-gdc.weather.gc.ca","https://gdc.wis.cma.cn"]:
-              try:
-                j=json.load(urllib.request.urlopen(f"{base}/collections/wis2-discovery-metadata/items?q={q}&limit=30&f=json",timeout=60))
-                print("==",base,q,j.get("numberMatched"))
-                for f in j.get("features",[]):
-                  p=f.get("properties",{});print(" -",f.get("id"),"|",p.get("title"),"|",(p.get("wmo:dataPolicy") or ""))
-                  for l in f.get("links",[])[:8]:
-                    if l.get("channel") or "mqtt" in l.get("href","") or l.get("rel") in ("data","items","archives"): print("     ",l.get("rel"),l.get("channel"),l.get("href"))
-              except Exception as e: print("ERR",base,q,e)
-          PY
-          for u in "https://gsics.nsmc.org.cn/thredds/catalog.html" "http://satellite.nsmc.org.cn/DataPortal/en/home/index.html"; do echo "$u $(curl -s -m 30 -o /dev/null -w '%{http_code}' $u)" >> fy.txt; done
-          git init -q; git checkout -q -b probe-out-fy; git add *.txt; git -c user.name=p -c user.email=p@p commit -qm p
-          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" probe-out-fy
+          set +e; mkdir o; cd o; npm init -y >/dev/null; npm i playwright@1.48.2 >/dev/null 2>&1; npx playwright install chromium >/dev/null 2>&1
+          curl -s -A Mozilla/5.0 https://test.odisha-wx-charts-glob.pages.dev/gfs/xs.json | head -c 300 > xs.txt
+          cat > s.js <<'JS'
+          const {chromium}=require('playwright');
+          (async()=>{const b=await chromium.launch({args:['--use-gl=swiftshader','--enable-unsafe-swiftshader','--ignore-gpu-blocklist']});const p=await b.newPage({viewport:{width:1440,height:900}});
+          p.on('pageerror',e=>console.log('ERR',e.message));
+          const B="https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev/";
+          await p.goto(B+"#ECMWF9",{timeout:60000});await p.waitForTimeout(6000);await p.screenshot({path:'index.png'});
+          try{await p.click('.item:has-text("10 m wind")',{timeout:4000});await p.waitForTimeout(5000);await p.screenshot({path:'wind_chart.png'})}catch(e){console.log('no wind chart',e.message)}
+          await p.goto(B+"livemap.html#layer=wind&model=GFS",{timeout:60000});await p.waitForTimeout(14000);
+          await p.click('#t',{position:{x:5,y:5}}).catch(()=>{});await p.screenshot({path:'wind.png'});
+          await p.click('#secbtn');await p.waitForTimeout(600);await p.mouse.click(760,330);await p.waitForTimeout(500);await p.mouse.click(1150,420);await p.waitForTimeout(6000);
+          await p.screenshot({path:'section.png'});
+          await b.close()})();
+          JS
+          node s.js > log.txt 2>&1
+          git init -q; git checkout -q -b probe-out-shot5; git add *.png *.txt; git -c user.name=p -c user.email=p@p commit -qm p
+          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" probe-out-shot5
