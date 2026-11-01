@@ -7,11 +7,18 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - run: |
-          set +e; mkdir o; cd o; npm init -y >/dev/null; npm i playwright@1.48.2 >/dev/null 2>&1; npx playwright install chromium >/dev/null 2>&1
-          curl -s -A Mozilla/5.0 https://test.odisha-wx-charts-glob.pages.dev/gfs/xs.json | head -c 300 > xs.txt
-          curl -sL -A Mozilla/5.0 https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev/index.json | python3 -c "
-          import json,sys;j=json.load(sys.stdin)
-          for m in j['models']:
-            for r in m['runs'][:2]: print(m['model'],r['run'],{k:len(v.get('hours',[])) for k,v in r['charts'].items() if 'wind' in k or 'gust' in k})" > idx.txt
-          git init -q; git checkout -q -b probe-out-idx; git add *.txt; git -c user.name=p -c user.email=p@p commit -qm p
-          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" probe-out-idx
+          set +e; mkdir o; cd o
+          for u in \
+            http://img.nsmc.org.cn/CLOUDIMAGE/FY4B/AGRI/GCLR/FY4B_DISK_GCLR.JPG \
+            http://img.nsmc.org.cn/CLOUDIMAGE/FY4B/AGRI/C012/FY4B_DISK_C012.JPG \
+            http://img.nsmc.org.cn/CLOUDIMAGE/FY4B/AGRI/C002/FY4B_DISK_C002.JPG \
+            http://img.nsmc.org.cn/CLOUDIMAGE/FY4B/AGRI/GCLR/ \
+            https://img.nsmc.org.cn/CLOUDIMAGE/FY4B/AGRI/GCLR/FY4B_DISK_GCLR.JPG \
+            http://img.nsmc.org.cn/CLOUDIMAGE/FY4A/AGRI/GCLR/FY4A_DISK_GCLR.JPG \
+            http://fy4.nsmc.org.cn/data/en/data/realtime.html \
+            http://img.nsmc.org.cn/PORTAL/NSMC/XML/FY4B/FY4B_AGRI_IMG_DISK_GCLR_NOM.xml \
+            http://img.nsmc.org.cn/PORTAL/NSMC/XML/FY4B/FY4B_AGRI_IMG_DISK_C012_NOM.xml ; do
+            f=$(echo $u | md5sum | cut -c1-8); code=$(curl -s -m 60 -A Mozilla/5.0 -o $f -w '%{http_code} %{size_download} %{content_type}' "$u"); echo "$u -> $code ($f)" >> fy.txt; done
+          for f in $(ls | grep -v fy.txt); do t=$(file -b $f | cut -c1-60); echo "$f $t" >> fy.txt; case "$t" in *JPEG*) mv $f $f.jpg;; *XML*|*text*|*HTML*) head -c 1500 $f >> fy.txt; echo >> fy.txt; rm $f;; *) rm $f;; esac; done
+          git init -q; git checkout -q -b probe-out-fy2; git add -A; git -c user.name=p -c user.email=p@p commit -qm p
+          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" probe-out-fy2
