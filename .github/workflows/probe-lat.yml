@@ -7,10 +7,21 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - run: |
-          set +e; mkdir o; cd o; B=https://test.odisha-wx-charts-glob.pages.dev/gfs
-          curl -s -A Mozilla/5.0 $B/xs.json -o xs.json; curl -s -A Mozilla/5.0 $B/meta.json -o meta.json
-          python3 -c "
-          import json;j=json.load(open('xs.json'));print(' '.join('x%03d'%s['h'] for s in j['steps'] if '2026-11-02T00' <= s['valid'] <= '2026-11-03T12'))" > list.txt
-          for x in $(cat list.txt); do curl -s -A Mozilla/5.0 $B/$x.webp -o $x.webp; f=$(echo $x|sed 's/x/f/'); curl -s -A Mozilla/5.0 $B/$f.webp -o $f.webp; done
-          git init -q; git checkout -q -b probe-out-xs; git add -A; git -c user.name=p -c user.email=p@p commit -qm p
-          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" probe-out-xs
+          set +e; mkdir o; cd o; npm init -y >/dev/null; npm i playwright@1.48.2 >/dev/null 2>&1; npx playwright install chromium >/dev/null 2>&1
+          for m in gfs ecmwf aifs; do echo "$m $(curl -s -A Mozilla/5.0 https://test.odisha-wx-charts-glob.pages.dev/$m/meta.json | head -c 120)" >> chk.txt; done
+          curl -s -A Mozilla/5.0 https://test.odisha-wx-charts.pages.dev/sat/sat.json | python3 -c "import json,sys;j=json.load(sys.stdin);print({k:len(v['frames']) for k,v in j['products'].items()})" >> chk.txt 2>&1
+          curl -sL -A Mozilla/5.0 https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev/sat/sat.json | python3 -c "import json,sys;j=json.load(sys.stdin);print({k:len(v['frames']) for k,v in j['products'].items()})" >> chk.txt 2>&1
+          cat > s.js <<'JS'
+          const {chromium}=require('playwright');
+          (async()=>{const b=await chromium.launch({args:['--use-gl=swiftshader','--enable-unsafe-swiftshader','--ignore-gpu-blocklist']});const p=await b.newPage({viewport:{width:1440,height:900}});
+          p.on('pageerror',e=>console.log('ERR',e.message));
+          const B="https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev/";
+          await p.goto(B+"livemap.html#layer=wind&model=ECMWF",{timeout:60000});await p.waitForTimeout(15000);await p.screenshot({path:'ecmwf.png'});
+          await p.goto(B+"lab.html#sat",{timeout:60000});await p.waitForTimeout(8000);
+          try{await p.click('#sat-products button:has-text("FY-4B")',{timeout:5000});}catch(e){console.log('no fy chip')}
+          await p.waitForTimeout(8000);await p.screenshot({path:'fy.png'});
+          await b.close()})();
+          JS
+          node s.js > log.txt 2>&1
+          git init -q; git checkout -q -b probe-out-shot6; git add *.png *.txt; git -c user.name=p -c user.email=p@p commit -qm p
+          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" probe-out-shot6
