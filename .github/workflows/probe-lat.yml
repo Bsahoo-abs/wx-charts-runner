@@ -13,14 +13,13 @@ jobs:
           const b=await chromium.launch({args:['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader','--ignore-gpu-blocklist']});
           const S='https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev';
           const p=await b.newPage({viewport:{width:1280,height:760}});p.on('pageerror',e=>console.log('ERR',e.message));
-          await p.goto(S+'/livemap.html#layer=sat');await p.waitForTimeout(15000);
-          for(let i=0;i<4;i++){await p.click('#zout');await p.waitForTimeout(1500)}
-          await p.waitForTimeout(8000);await p.screenshot({path:'sat_world.jpg',quality:80});
-          await p.click('#home');await p.waitForTimeout(4000);await p.screenshot({path:'livemap_btn.jpg',quality:80});
+          await p.goto(S+'/route.html#from=Konark&to=Gop&go=1');await p.waitForTimeout(15000);await p.screenshot({path:'route.jpg',quality:80});
+          await p.selectOption('#stay','120');await p.waitForTimeout(8000);await p.evaluate(()=>document.getElementById('pan').scrollTop=520);await p.screenshot({path:'route2.jpg',quality:80});
           const q=await b.newPage({viewport:{width:1280,height:760}});q.on('pageerror',e=>console.log('ERR3d',e.message));
-          await q.goto(S+'/live3d.html#model=ECMWF&area=storm');await q.waitForTimeout(25000);await q.screenshot({path:'live3d.jpg',quality:80});
+          await q.goto(S+'/live3d.html#model=ECMWF&area=storm');await q.waitForTimeout(30000);await q.screenshot({path:'live3d.jpg',quality:80});
+          await q.click('#lvl button:nth-child(3)');await q.waitForTimeout(8000);await q.screenshot({path:'live3d_850.jpg',quality:80});
           await b.close()})();
           J
           node s.js > log.txt 2>&1; rm -rf node_modules package*.json s.js
-          git init -q; git checkout -q -b probe-out-c4; git add -A; git -c user.name=p -c user.email=p@p commit -qm p
-          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" probe-out-c4
+          git init -q; git checkout -q -b probe-out-c5; git add -A; git -c user.name=p -c user.email=p@p commit -qm p
+          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" probe-out-c5
