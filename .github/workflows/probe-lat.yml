@@ -8,17 +8,7 @@ jobs:
     steps:
       - run: |
           set +e; mkdir o; cd o
-          for u in \
-            http://img.nsmc.org.cn/CLOUDIMAGE/FY4B/AGRI/GCLR/FY4B_DISK_GCLR.JPG \
-            http://img.nsmc.org.cn/CLOUDIMAGE/FY4B/AGRI/C012/FY4B_DISK_C012.JPG \
-            http://img.nsmc.org.cn/CLOUDIMAGE/FY4B/AGRI/C002/FY4B_DISK_C002.JPG \
-            http://img.nsmc.org.cn/CLOUDIMAGE/FY4B/AGRI/GCLR/ \
-            https://img.nsmc.org.cn/CLOUDIMAGE/FY4B/AGRI/GCLR/FY4B_DISK_GCLR.JPG \
-            http://img.nsmc.org.cn/CLOUDIMAGE/FY4A/AGRI/GCLR/FY4A_DISK_GCLR.JPG \
-            http://fy4.nsmc.org.cn/data/en/data/realtime.html \
-            http://img.nsmc.org.cn/PORTAL/NSMC/XML/FY4B/FY4B_AGRI_IMG_DISK_GCLR_NOM.xml \
-            http://img.nsmc.org.cn/PORTAL/NSMC/XML/FY4B/FY4B_AGRI_IMG_DISK_C012_NOM.xml ; do
-            f=$(echo $u | md5sum | cut -c1-8); code=$(curl -s -m 60 -A Mozilla/5.0 -o $f -w '%{http_code} %{size_download} %{content_type}' "$u"); echo "$u -> $code ($f)" >> fy.txt; done
-          for f in $(ls | grep -v fy.txt); do t=$(file -b $f | cut -c1-60); echo "$f $t" >> fy.txt; case "$t" in *JPEG*) mv $f $f.jpg;; *XML*|*text*|*HTML*) head -c 1500 $f >> fy.txt; echo >> fy.txt; rm $f;; *) rm $f;; esac; done
-          git init -q; git checkout -q -b probe-out-fy2; git add -A; git -c user.name=p -c user.email=p@p commit -qm p
-          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" probe-out-fy2
+          curl -s -A Mozilla/5.0 https://test.odisha-wx-charts-sat.pages.dev/tc/feed.json -o feed.json
+          curl -s -A Mozilla/5.0 https://odisha-wx-charts-sat.pages.dev/tc/feed.json -o feed_main.json
+          git init -q; git checkout -q -b probe-out-feed; git add -A; git -c user.name=p -c user.email=p@p commit -qm p
+          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" probe-out-feed
