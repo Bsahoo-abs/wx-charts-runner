@@ -43,7 +43,7 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           PROJECT: ${{ vars.PAGES_PROJECT }}-glob
         run: |
-          printf '/*\n  Access-Control-Allow-Origin: *\n/gfs/meta.json\n  Cache-Control: no-cache\n' > pub/_headers
+          printf '/*\n  Access-Control-Allow-Origin: *\n/*/meta.json\n  Cache-Control: no-cache\n/*/xs.json\n  Cache-Control: no-cache\n' > pub/_headers
           npx --yes wrangler@3 pages project create "$PROJECT" --production-branch main >/dev/null 2>&1 || true
           npx --yes wrangler@3 pages deploy pub --project-name "$PROJECT" --branch test --commit-dirty=true
       - uses: actions/cache/save@v4
