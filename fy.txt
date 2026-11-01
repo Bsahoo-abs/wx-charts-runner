@@ -1,0 +1,169 @@
+http://img.nsmc.org.cn/CLOUDIMAGE/FY4B/AGRI/GCLR/FY4B_DISK_GCLR.JPG -> 200 22317153 image/jpeg (b86dcb04)
+http://img.nsmc.org.cn/CLOUDIMAGE/FY4B/AGRI/C012/FY4B_DISK_C012.JPG -> 404 1163 text/html (70b2c2ef)
+http://img.nsmc.org.cn/CLOUDIMAGE/FY4B/AGRI/C002/FY4B_DISK_C002.JPG -> 404 1163 text/html (8dc8f81d)
+http://img.nsmc.org.cn/CLOUDIMAGE/FY4B/AGRI/GCLR/ -> 403 1157 text/html (a21bee4f)
+https://img.nsmc.org.cn/CLOUDIMAGE/FY4B/AGRI/GCLR/FY4B_DISK_GCLR.JPG -> 200 22317153 image/jpeg (4766ed01)
+http://img.nsmc.org.cn/CLOUDIMAGE/FY4A/AGRI/GCLR/FY4A_DISK_GCLR.JPG -> 404 1163 text/html (4ae5119a)
+http://fy4.nsmc.org.cn/data/en/data/realtime.html -> 404 0  (410d2ba1)
+http://img.nsmc.org.cn/PORTAL/NSMC/XML/FY4B/FY4B_AGRI_IMG_DISK_GCLR_NOM.xml -> 200 59824 text/xml (08f185d0)
+http://img.nsmc.org.cn/PORTAL/NSMC/XML/FY4B/FY4B_AGRI_IMG_DISK_C012_NOM.xml -> 404 1163 text/html (30385ede)
+08f185d0 ASCII text, with very long lines (59824), with no line termi
+<imagelist name="FY4B AGRI IMG DISK GCLR NOM" tag="FY4B AGRI IMG DISK GCLR NOM"><image time="2026-11-01 04:30 (UTC)" desc="FY4B AGRI IMG DISK GCLR NOM" url="//img.nsmc.org.cn/CLOUDIMAGE/FY4B/AGRI/GCLR/DISK/FY4B-_AGRI--_N_DISK_1050E_L2-_GCLR_MULT_NOM_20261101043000_20261101044459_1000M_V0001.JPG"/><image time="2026-11-01 04:15 (UTC)" desc="FY4B AGRI IMG DISK GCLR NOM" url="//img.nsmc.org.cn/CLOUDIMAGE/FY4B/AGRI/GCLR/DISK/FY4B-_AGRI--_N_DISK_1050E_L2-_GCLR_MULT_NOM_20261101041500_20261101042959_1000M_V0001.JPG"/><image time="2026-11-01 04:00 (UTC)" desc="FY4B AGRI IMG DISK GCLR NOM" url="//img.nsmc.org.cn/CLOUDIMAGE/FY4B/AGRI/GCLR/DISK/FY4B-_AGRI--_N_DISK_1050E_L2-_GCLR_MULT_NOM_20261101040000_20261101041459_1000M_V0001.JPG"/><image time="2026-11-01 03:45 (UTC)" desc="FY4B AGRI IMG DISK GCLR NOM" url="//img.nsmc.org.cn/CLOUDIMAGE/FY4B/AGRI/GCLR/DISK/FY4B-_AGRI--_N_DISK_1050E_L2-_GCLR_MULT_NOM_20261101034500_20261101035959_1000M_V0001.JPG"/><image time="2026-11-01 03:30 (UTC)" desc="FY4B AGRI IMG DISK GCLR NOM" url="//img.nsmc.org.cn/CLOUDIMAGE/FY4B/AGRI/GCLR/DISK/FY4B-_AGRI--_N_DISK_1050E_L2-_GCLR_MULT_NOM_20261101033000_20261101034459_1000M_V0001.JPG"/><image time="2026-11-01 03:15 (UTC)" desc="FY4B AGRI IMG DISK GCLR NOM" url="//img.nsmc.org.cn/CLOUDIMAGE/FY4B/AGRI/GCLR/DISK/FY4B-_AGRI--_N_DISK_1050E_L2-_GCLR_MULT_NOM_20261101031500_20261101032959_1000M_V0001.JPG"/><image time="2026-11-01 03:00 (UTC)" desc="FY4B AGRI IMG DISK GCLR NOM" url="//img.nsmc.org.cn/CLOUDIMAGE/FY4B/A
+30385ede HTML document, ISO-8859 text, with CRLF line terminators
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"/>
+<title>404 - 找不到文件或目录。</title>
+<style type="text/css">
+<!--
+body{margin:0;font-size:.7em;font-family:Verdana, Arial, Helvetica, sans-serif;background:#EEEEEE;}
+fieldset{padding:0 15px 10px 15px;} 
+h1{font-size:2.4em;margin:0;color:#FFF;}
+h2{font-size:1.7em;margin:0;color:#CC0000;} 
+h3{font-size:1.2em;margin:10px 0 0 0;color:#000000;} 
+#header{width:96%;margin:0 0 0 0;padding:6px 2% 6px 2%;font-family:"trebuchet MS", Verdana, sans-serif;color:#FFF;
+background-color:#555555;}
+#content{margin:0 0 0 2%;position:relative;}
+.content-container{background:#FFF;width:96%;margin-top:8px;padding:10px;position:relative;}
+-->
+</style>
+</head>
+<body>
+<div id="header"><h1>服务器错误</h1></div>
+<div id="content">
+ <div class="content-container"><fieldset>
+  <h2>404 - 找不到文件或目录。</h2>
+  <h3>您要查找的资源可能已被删除，已更改名称或者暂时不可用。</h3>
+ </fieldset></div>
+</div>
+</body>
+</html>
+
+410d2ba1 empty
+4766ed01 JPEG image data, JFIF standard 1.01, aspect ratio, density 1
+4ae5119a HTML document, ISO-8859 text, with CRLF line terminators
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"/>
+<title>404 - 找不到文件或目录。</title>
+<style type="text/css">
+<!--
+body{margin:0;font-size:.7em;font-family:Verdana, Arial, Helvetica, sans-serif;background:#EEEEEE;}
+fieldset{padding:0 15px 10px 15px;} 
+h1{font-size:2.4em;margin:0;color:#FFF;}
+h2{font-size:1.7em;margin:0;color:#CC0000;} 
+h3{font-size:1.2em;margin:10px 0 0 0;color:#000000;} 
+#header{width:96%;margin:0 0 0 0;padding:6px 2% 6px 2%;font-family:"trebuchet MS", Verdana, sans-serif;color:#FFF;
+background-color:#555555;}
+#content{margin:0 0 0 2%;position:relative;}
+.content-container{background:#FFF;width:96%;margin-top:8px;padding:10px;position:relative;}
+-->
+</style>
+</head>
+<body>
+<div id="header"><h1>服务器错误</h1></div>
+<div id="content">
+ <div class="content-container"><fieldset>
+  <h2>404 - 找不到文件或目录。</h2>
+  <h3>您要查找的资源可能已被删除，已更改名称或者暂时不可用。</h3>
+ </fieldset></div>
+</div>
+</body>
+</html>
+
+70b2c2ef HTML document, ISO-8859 text, with CRLF line terminators
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"/>
+<title>404 - 找不到文件或目录。</title>
+<style type="text/css">
+<!--
+body{margin:0;font-size:.7em;font-family:Verdana, Arial, Helvetica, sans-serif;background:#EEEEEE;}
+fieldset{padding:0 15px 10px 15px;} 
+h1{font-size:2.4em;margin:0;color:#FFF;}
+h2{font-size:1.7em;margin:0;color:#CC0000;} 
+h3{font-size:1.2em;margin:10px 0 0 0;color:#000000;} 
+#header{width:96%;margin:0 0 0 0;padding:6px 2% 6px 2%;font-family:"trebuchet MS", Verdana, sans-serif;color:#FFF;
+background-color:#555555;}
+#content{margin:0 0 0 2%;position:relative;}
+.content-container{background:#FFF;width:96%;margin-top:8px;padding:10px;position:relative;}
+-->
+</style>
+</head>
+<body>
+<div id="header"><h1>服务器错误</h1></div>
+<div id="content">
+ <div class="content-container"><fieldset>
+  <h2>404 - 找不到文件或目录。</h2>
+  <h3>您要查找的资源可能已被删除，已更改名称或者暂时不可用。</h3>
+ </fieldset></div>
+</div>
+</body>
+</html>
+
+8dc8f81d HTML document, ISO-8859 text, with CRLF line terminators
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"/>
+<title>404 - 找不到文件或目录。</title>
+<style type="text/css">
+<!--
+body{margin:0;font-size:.7em;font-family:Verdana, Arial, Helvetica, sans-serif;background:#EEEEEE;}
+fieldset{padding:0 15px 10px 15px;} 
+h1{font-size:2.4em;margin:0;color:#FFF;}
+h2{font-size:1.7em;margin:0;color:#CC0000;} 
+h3{font-size:1.2em;margin:10px 0 0 0;color:#000000;} 
+#header{width:96%;margin:0 0 0 0;padding:6px 2% 6px 2%;font-family:"trebuchet MS", Verdana, sans-serif;color:#FFF;
+background-color:#555555;}
+#content{margin:0 0 0 2%;position:relative;}
+.content-container{background:#FFF;width:96%;margin-top:8px;padding:10px;position:relative;}
+-->
+</style>
+</head>
+<body>
+<div id="header"><h1>服务器错误</h1></div>
+<div id="content">
+ <div class="content-container"><fieldset>
+  <h2>404 - 找不到文件或目录。</h2>
+  <h3>您要查找的资源可能已被删除，已更改名称或者暂时不可用。</h3>
+ </fieldset></div>
+</div>
+</body>
+</html>
+
+a21bee4f HTML document, ISO-8859 text, with CRLF line terminators
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"/>
+<title>403 - 禁止访问: 访问被拒绝。</title>
+<style type="text/css">
+<!--
+body{margin:0;font-size:.7em;font-family:Verdana, Arial, Helvetica, sans-serif;background:#EEEEEE;}
+fieldset{padding:0 15px 10px 15px;} 
+h1{font-size:2.4em;margin:0;color:#FFF;}
+h2{font-size:1.7em;margin:0;color:#CC0000;} 
+h3{font-size:1.2em;margin:10px 0 0 0;color:#000000;} 
+#header{width:96%;margin:0 0 0 0;padding:6px 2% 6px 2%;font-family:"trebuchet MS", Verdana, sans-serif;color:#FFF;
+background-color:#555555;}
+#content{margin:0 0 0 2%;position:relative;}
+.content-container{background:#FFF;width:96%;margin-top:8px;padding:10px;position:relative;}
+-->
+</style>
+</head>
+<body>
+<div id="header"><h1>服务器错误</h1></div>
+<div id="content">
+ <div class="content-container"><fieldset>
+  <h2>403 - 禁止访问: 访问被拒绝。</h2>
+  <h3>您无权使用所提供的凭据查看此目录或页面。</h3>
+ </fieldset></div>
+</div>
+</body>
+</html>
+
+b86dcb04 JPEG image data, JFIF standard 1.01, aspect ratio, density 1
