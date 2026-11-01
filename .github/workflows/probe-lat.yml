@@ -7,35 +7,11 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - run: |
-          set +e; mkdir o; cd o; pip install -q eccodes eccodeslib numpy >/dev/null 2>&1
+          set +e; mkdir o; cd o; date -u > chk.txt
           S=https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev
-          curl -sL -A Mozilla/5.0 $S/index.json -o index.json
-          python3 - <<'PY' > chk.txt 2>&1
-          import json,urllib.request
-          op=urllib.request.build_opener();op.addheaders=[("User-Agent","Mozilla/5.0")];urllib.request.install_opener(op)
-          j=json.load(open('index.json'))
-          for m in j['models']:
-            for r in m['runs'][:2]: print(m['model'],r['run'],sorted(r['charts']), {k:len(v.get('hours',[])) for k,v in r['charts'].items() if 'wind' in k or 'gust' in k}, 'flow',r.get('flow'))
-          G="https://test.odisha-wx-charts-glob.pages.dev/"
-          for d in ("gfs","ecmwf","aifs"):
-            mt=json.load(urllib.request.urlopen(G+d+"/meta.json"));h=mt['steps'][len(mt['steps'])//2]['h']
-            req=urllib.request.Request(G+d+f"/f{h:03d}.webp",method="HEAD");print(d,mt['run'],len(mt['steps']),mt.get('size'),urllib.request.urlopen(req).headers.get('content-length'))
-          m=[x for x in j['models'] if x['model']=='ECMWF'][0];r=[x for x in m['runs'] if x.get('flow')][0]
-          mt=json.load(urllib.request.urlopen(f"{'https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev'}/ECMWF/{r['run']}/flow/meta.json"));print('ecmwf regional',r['run'],mt['size'],[s['valid'] for s in mt['steps'][:30]])
-          json.dump(mt,open('ecr_meta.json','w'))
-          for s in mt['steps']:
-            if s['valid'] in ('2026-11-02T18:00Z','2026-11-02T21:00Z','2026-11-03T00:00Z'):
-              open(f"ecr_{s['h']:03d}.webp",'wb').write(urllib.request.urlopen(f"https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev/ECMWF/{r['run']}/flow/f{s['h']:03d}.webp").read())
-          # AIFS tp check
-          import eccodes,numpy as np
-          base="https://data.ecmwf.int/forecasts/20261101/00z/aifs-single/0p25/oper/2026110100"
-          for h in (6,12):
-            idx=[json.loads(l) for l in urllib.request.urlopen(f"{base}0000-{h}h-oper-fc.index").read().decode().splitlines() if l.strip()]
-            r=[x for x in idx if x.get('param')=='tp'][0]
-            b=urllib.request.urlopen(urllib.request.Request(f"{base}0000-{h}h-oper-fc.grib2",headers={"Range":f"bytes={r['_offset']}-{r['_offset']+r['_length']-1}"})).read()
-            g=eccodes.codes_new_from_message(b);v=eccodes.codes_get_values(g)
-            print('AIFS tp',h,eccodes.codes_get(g,'units'),eccodes.codes_get(g,'stepRange'),float(np.max(v)),float(np.mean(v)))
-          print('pl params ifs', sorted({(x.get('param'),x.get('levelist')) for x in [json.loads(l) for l in urllib.request.urlopen("https://data.ecmwf.int/forecasts/20261101/00z/ifs/0p25/oper/20261101000000-12h-oper-fc.index").read().decode().splitlines() if l.strip()] if x.get('levtype')=='pl' and x.get('param') in ('u','r')}))
-          PY
-          git init -q; git checkout -q -b probe-out-diag; git add -A; git -c user.name=p -c user.email=p@p commit -qm p
-          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" probe-out-diag
+          curl -sL -A Mozilla/5.0 $S/livemap.html | grep -o 'id="go3d"\|wsat/world' | sort | uniq -c >> chk.txt
+          curl -sL -A Mozilla/5.0 -o /dev/null -w 'live3d %{http_code} %{size_download}\n' $S/live3d.html >> chk.txt
+          curl -s -A Mozilla/5.0 https://test.odisha-wx-charts-glob.pages.dev/wsat/wsat.json >> chk.txt; echo >> chk.txt
+          for m in ecmwf aifs; do curl -s -A Mozilla/5.0 https://test.odisha-wx-charts-glob.pages.dev/$m/xs.json | head -c 100 >> chk.txt; echo >> chk.txt; done
+          git init -q; git checkout -q -b probe-out-c3; git add -A; git -c user.name=p -c user.email=p@p commit -qm p
+          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" probe-out-c3
