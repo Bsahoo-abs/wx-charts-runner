@@ -7,11 +7,20 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - run: |
-          set +e; mkdir o; cd o; date -u > chk.txt
-          S=https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev
-          curl -sL -A Mozilla/5.0 $S/livemap.html | grep -o 'id="go3d"\|wsat/world' | sort | uniq -c >> chk.txt
-          curl -sL -A Mozilla/5.0 -o /dev/null -w 'live3d %{http_code} %{size_download}\n' $S/live3d.html >> chk.txt
-          curl -s -A Mozilla/5.0 https://test.odisha-wx-charts-glob.pages.dev/wsat/wsat.json >> chk.txt; echo >> chk.txt
-          for m in ecmwf aifs; do curl -s -A Mozilla/5.0 https://test.odisha-wx-charts-glob.pages.dev/$m/xs.json | head -c 100 >> chk.txt; echo >> chk.txt; done
-          git init -q; git checkout -q -b probe-out-c3; git add -A; git -c user.name=p -c user.email=p@p commit -qm p
-          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" probe-out-c3
+          set +e; mkdir o; cd o; npm i -s playwright@1.48.2 >/dev/null 2>&1; npx playwright install --with-deps chromium >/dev/null 2>&1
+          cat > s.js <<'J'
+          const {chromium}=require('playwright');(async()=>{
+          const b=await chromium.launch({args:['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader','--ignore-gpu-blocklist']});
+          const S='https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev';
+          const p=await b.newPage({viewport:{width:1280,height:760}});p.on('pageerror',e=>console.log('ERR',e.message));
+          await p.goto(S+'/livemap.html#layer=sat');await p.waitForTimeout(15000);
+          for(let i=0;i<4;i++){await p.click('#zout');await p.waitForTimeout(1500)}
+          await p.waitForTimeout(8000);await p.screenshot({path:'sat_world.jpg',quality:80});
+          await p.click('#home');await p.waitForTimeout(4000);await p.screenshot({path:'livemap_btn.jpg',quality:80});
+          const q=await b.newPage({viewport:{width:1280,height:760}});q.on('pageerror',e=>console.log('ERR3d',e.message));
+          await q.goto(S+'/live3d.html#model=ECMWF&area=storm');await q.waitForTimeout(25000);await q.screenshot({path:'live3d.jpg',quality:80});
+          await b.close()})();
+          J
+          node s.js > log.txt 2>&1; rm -rf node_modules package*.json s.js
+          git init -q; git checkout -q -b probe-out-c4; git add -A; git -c user.name=p -c user.email=p@p commit -qm p
+          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" probe-out-c4
