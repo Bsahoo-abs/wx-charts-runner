@@ -1,0 +1,24 @@
+== https://wis2-gdc.weather.gc.ca FY-4B 2
+ - urn:wmo:md:int-eumetsat:regional:vass | Atmospheric Sounding Service - Feng-Yun - 3 - Regional Data Service | core
+      data None https://user.eumetsat.int/catalogue/EO:EUM:DAT:FY3C:EARS-VASS
+      items cache/a/wis2/int-eumetsat/data/core/weather/space-based-observations/fy-3d/mwhs-2 mqtts://everyone:everyone@gb.wis.cma.cn:8883
+      items cache/a/wis2/int-eumetsat/data/core/weather/space-based-observations/fy-3d/mwhs-2 mqtts://everyone:everyone@globalbroker.meteo.fr:8883
+      items cache/a/wis2/int-eumetsat/data/core/weather/space-based-observations/fy-3d/mwhs-2 mqtts://everyone:everyone@globalbroker.inmet.gov.br:8883
+      items cache/a/wis2/int-eumetsat/data/core/weather/space-based-observations/fy-3d/mwhs-2 mqtts://everyone:everyone@wis2globalbroker.nws.noaa.gov:8883
+      items cache/a/wis2/int-eumetsat/data/core/weather/space-based-observations/fy-3d/mwts-2 mqtts://everyone:everyone@gb.wis.cma.cn:8883
+      items cache/a/wis2/int-eumetsat/data/core/weather/space-based-observations/fy-3d/mwts-2 mqtts://everyone:everyone@globalbroker.meteo.fr:8883
+      items cache/a/wis2/int-eumetsat/data/core/weather/space-based-observations/fy-3d/mwts-2 mqtts://everyone:everyone@globalbroker.inmet.gov.br:8883
+ - urn:wmo:md:cn-cma:data.core.weather.space-based-observations.fy-3e.gnos-2 | Fy-3e radio occultation | core
+      items cache/a/wis2/cn-cma/data/core/weather/space-based-observations/fy-3e/gnos-2 mqtts://everyone:everyone@gb.wis.cma.cn:8883
+      items cache/a/wis2/cn-cma/data/core/weather/space-based-observations/fy-3e/gnos-2 mqtts://everyone:everyone@globalbroker.meteo.fr:8883
+      items cache/a/wis2/cn-cma/data/core/weather/space-based-observations/fy-3e/gnos-2 mqtts://everyone:everyone@globalbroker.inmet.gov.br:8883
+      items cache/a/wis2/cn-cma/data/core/weather/space-based-observations/fy-3e/gnos-2 mqtts://everyone:everyone@wis2globalbroker.nws.noaa.gov:8883
+== https://gdc.wis.cma.cn FY-4B 0
+== https://wis2-gdc.weather.gc.ca FY4B 0
+== https://gdc.wis.cma.cn FY4B 0
+== https://wis2-gdc.weather.gc.ca AGRI 0
+== https://gdc.wis.cma.cn AGRI 0
+== https://wis2-gdc.weather.gc.ca fengyun 0
+== https://gdc.wis.cma.cn fengyun 0
+https://gsics.nsmc.org.cn/thredds/catalog.html 200
+http://satellite.nsmc.org.cn/DataPortal/en/home/index.html 200
