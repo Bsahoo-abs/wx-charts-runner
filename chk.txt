@@ -1,0 +1,21 @@
+ECMWF9 2026103112 ['precip6', 'precip_total', 'rh_mid', 'vort850'] {} flow {'v': 1, 'steps': 60, 'last': 240}
+ECMWF9 2026103100 ['precip6', 'precip_total', 'rh_mid', 'vort850'] {} flow None
+ECMWF 2026110100 ['gust10', 'gust_max', 'precip6', 'precip_total', 'rh_mid', 'vort850', 'wind10', 'wind850'] {'wind10': 61, 'gust10': 51, 'gust_max': 51, 'wind850': 61} flow {'v': 1, 'steps': 60, 'last': 240}
+ECMWF 2026103118 ['precip6', 'precip_total', 'rh_mid', 'vort850'] {} flow None
+AIFS 2026110100 ['gust10', 'gust_max', 'precip6', 'precip_total', 'rh_mid', 'vort850', 'wind10', 'wind850'] {'wind10': 61, 'gust10': 60, 'gust_max': 60, 'wind850': 61} flow {'v': 1, 'steps': 40, 'last': 240}
+AIFS 2026103118 ['precip6', 'precip_total', 'rh_mid', 'vort850'] {} flow None
+GFS 2026110100 ['gust10', 'gust_max', 'precip6', 'precip_total', 'rh_mid', 'vort850', 'wind10', 'wind850'] {'wind10': 65, 'gust10': 164, 'gust_max': 64, 'wind850': 65} flow {'v': 1, 'steps': 60, 'last': 240}
+GFS 2026103118 ['precip6', 'precip_total', 'rh_mid', 'vort850'] {} flow None
+AIGFS 2026110100 ['gust10', 'gust_max', 'precip6', 'precip_total', 'rh_mid', 'vort850', 'wind10', 'wind850'] {'wind10': 65, 'gust10': 64, 'gust_max': 64, 'wind850': 65} flow {'v': 1, 'steps': 40, 'last': 240}
+AIGFS 2026103118 ['precip6', 'precip_total', 'rh_mid', 'vort850'] {} flow None
+ICON 2026110100 ['precip6', 'precip_total', 'rh_mid', 'vort850'] {} flow {'v': 1, 'steps': 50, 'last': 180}
+ICON 2026103118 ['precip6', 'precip_total', 'rh_mid', 'vort850'] {} flow None
+GEM 2026110100 ['gust10', 'gust_max', 'precip6', 'precip_total', 'rh_mid', 'vort850', 'wind10', 'wind850'] {'wind10': 41, 'gust10': 40, 'gust_max': 40, 'wind850': 41} flow {'v': 1, 'steps': 60, 'last': 240}
+GEM 2026103112 ['precip6', 'precip_total', 'rh_mid', 'vort850'] {} flow None
+gfs 2026-11-01T00Z 60 [721, 329] None
+ecmwf 2026-10-31T12Z 64 [721, 329] None
+aifs 2026-11-01T00Z 40 [721, 329] None
+ecmwf regional 2026110100 [321, 205] ['2026-11-01T03:00Z', '2026-11-01T06:00Z', '2026-11-01T09:00Z', '2026-11-01T12:00Z', '2026-11-01T15:00Z', '2026-11-01T18:00Z', '2026-11-01T21:00Z', '2026-11-02T00:00Z', '2026-11-02T03:00Z', '2026-11-02T06:00Z', '2026-11-02T09:00Z', '2026-11-02T12:00Z', '2026-11-02T15:00Z', '2026-11-02T18:00Z', '2026-11-02T21:00Z', '2026-11-03T00:00Z', '2026-11-03T03:00Z', '2026-11-03T06:00Z', '2026-11-03T09:00Z', '2026-11-03T12:00Z', '2026-11-03T15:00Z', '2026-11-03T18:00Z', '2026-11-03T21:00Z', '2026-11-04T00:00Z', '2026-11-04T03:00Z', '2026-11-04T06:00Z', '2026-11-04T09:00Z', '2026-11-04T12:00Z', '2026-11-04T15:00Z', '2026-11-04T18:00Z']
+AIFS tp 6 kg m**-2 0-6 144.75 0.6294764457158268
+AIFS tp 12 kg m**-2 0-12 203.0625 1.2816121513330252
+pl params ifs [('r', '10'), ('r', '100'), ('r', '1000'), ('r', '150'), ('r', '200'), ('r', '250'), ('r', '300'), ('r', '400'), ('r', '50'), ('r', '500'), ('r', '600'), ('r', '700'), ('r', '850'), ('r', '925'), ('u', '10'), ('u', '100'), ('u', '1000'), ('u', '150'), ('u', '200'), ('u', '250'), ('u', '300'), ('u', '400'), ('u', '50'), ('u', '500'), ('u', '600'), ('u', '700'), ('u', '850'), ('u', '925')]
