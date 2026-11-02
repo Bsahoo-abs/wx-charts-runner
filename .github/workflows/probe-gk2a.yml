@@ -1,0 +1,11 @@
+name: probe-gk2a
+on: workflow_dispatch
+jobs:
+  p:
+    runs-on: ubuntu-24.04
+    steps:
+      - run: |
+          date -u
+          curl -s https://test.odisha-wx-charts-sat.pages.dev/sat/sat.json | python3 -c "import json,sys;j=json.load(sys.stdin);print('lab made',j['made']);[print(k,v['frames'][-1],len(v['frames'])) for k,v in j['products'].items() if v['frames']]" || echo no-lab
+          curl -s https://test.odisha-wx-charts-radar.pages.dev/radar/radar.json | python3 -c "import json,sys;j=json.load(sys.stdin);f=j['frames'][-1];print('radar',f['t'],len(f['radars']),'gop' in f['radars']);print('left',j['left_out'].get('gop'))"
+          curl -s https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev/lab.html | grep -c 'SATL'; curl -s https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev/index.html | grep -c 'route.html'
