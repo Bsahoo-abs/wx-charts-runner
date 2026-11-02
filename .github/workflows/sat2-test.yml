@@ -67,13 +67,13 @@ jobs:
           # Satellite tab (cloud_sat.py) runs alongside: newest scan first, a few minutes per run, copied in when complete
           lab() { mkdir -p ../site/sat ../pub/sat && rsync -a --delete ../site/sat/ ../pub/sat/; }
           lab
-          SAT_BUDGET=240 SAT_MSG_BUDGET=150 SAT_FY_BUDGET=90 python cloud_sat.py ../site > ../lab.log 2>&1 & LAB=$!
+          N=0; N=$((N+1)); MB=-1; [ $((N % 4)) -eq 0 ] && MB=420; SAT_RAW=sat_raw_lab SAT_BUDGET=240 SAT_MSG_BUDGET=$MB SAT_FY_BUDGET=90 python cloud_sat.py ../site > ../lab.log 2>&1 & LAB=$!
           start=$(date +%s)
           while :; do
             if [ -n "$LAB" ] && ! kill -0 $LAB 2>/dev/null; then
               wait $LAB && lab || tail -5 ../lab.log; grep -h 'ok in\|newest' ../lab.log | tail -3
               LAB=""
-              [ $(( $(date +%s) - start )) -lt 3000 ] && { SAT_BUDGET=240 SAT_MSG_BUDGET=150 SAT_FY_BUDGET=90 python cloud_sat.py ../site > ../lab.log 2>&1 & LAB=$!; }
+              [ $(( $(date +%s) - start )) -lt 3000 ] && { N=$((N+1)); MB=-1; [ $((N % 4)) -eq 0 ] && MB=420; SAT_RAW=sat_raw_lab SAT_BUDGET=240 SAT_MSG_BUDGET=$MB SAT_FY_BUDGET=90 python cloud_sat.py ../site > ../lab.log 2>&1 & LAB=$!; }
             fi
             python cloud_sat2.py ../pub 480 || echo "::warning title=sat2::failed this time"
             (cd pages_sat && { wrangler pages deploy ../../pub --project-name "$PROJECT" --branch test --commit-dirty=true >/dev/null 2>&1 \
