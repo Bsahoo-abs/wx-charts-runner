@@ -1,0 +1,8 @@
+msg_iodc:ir108 2026-11-02T03:15:00Z
+msg_fes:ir108 2026-11-02T03:15:00Z
+mtg_fd:ir105_hrfi 2026-11-02T03:10:00Z
+mtg_fd:rgb_truecolour 2026-11-02T03:10:00Z
+time="2026-10-30 04:15 (UTC)"
+time="2026-10-30 04:00 (UTC)"
+time="2026-10-30 03:45 (UTC)"
+Mon Nov  2 03:34:40 UTC 2026
