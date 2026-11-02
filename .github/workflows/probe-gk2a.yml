@@ -1,0 +1,11 @@
+name: probe-gk2a
+on: workflow_dispatch
+jobs:
+  p:
+    runs-on: ubuntu-24.04
+    steps:
+      - run: |
+          date -u
+          for h in 0 1; do P=$(date -u -d "-$h hour" +%Y%m/%d/%H); curl -s "https://noaa-gk2a-pds.s3.amazonaws.com/?list-type=2&prefix=AMI/L1B/FD/$P/" | grep -o '<Key>[^<]*ir105[^<]*</Key><LastModified>[^<]*' | sed 's/<[^>]*>/ /g' | awk '{print $1, $2}' | sed 's#.*_\([0-9]\{12\}\).nc#\1#' ; done | sort
+          echo "--- FY4B / Meteosat"
+          curl -s -o /dev/null -w "%{http_code}\n" https://view.eumetsat.int/geoserver/wms
