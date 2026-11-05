@@ -47,12 +47,13 @@ jobs:
           pip install -q numpy scipy pillow cartopy "shapely>=2" "satpy[ami_l1b]" opencv-python-headless pyspectral pyresample netCDF4 h5netcdf dask
           python code/cloud_sat.py site
       - name: Sample pictures for checking (test only)
+        continue-on-error: true
         if: contains('satellite-test', 'test')
         run: |
           mkdir -p sample && cp site/sat/base.webp sample/ && for k in visible clouds ir wv; do f=$(ls site/sat/$k/*.webp | tail -1); cp "$f" sample/$k.webp; done
           cd sample && git init -q -b probe-out-satimg && git add -A
           git -c user.name=probe -c user.email=probe@users.noreply.github.com commit -qm sample
-          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-satimg
+          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-satimg || true
       - uses: actions/cache/save@v4
         with:
           path: site/sat
@@ -156,4 +157,4 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           PROJECT: ${{ vars.PAGES_PROJECT }}
-        run: npx --yes wrangler@3 pages deploy site --project-name "$PROJECT" --branch ow-5k4kr1ny9f --commit-dirty=true
+        run: for i in 1 2 3; do npx --yes wrangler@3 pages deploy site --project-name "$PROJECT" --branch ow-5k4kr1ny9f --commit-dirty=true && break; [ $i = 3 ] && exit 1; echo "upload failed, trying again in 60 s"; sleep 60; done

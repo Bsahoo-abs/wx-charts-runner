@@ -45,7 +45,7 @@ jobs:
         run: |
           printf '/*\n  Access-Control-Allow-Origin: *\n/*/meta.json\n  Cache-Control: no-cache\n/*/xs.json\n  Cache-Control: no-cache\n' > pub/_headers
           npx --yes wrangler@3 pages project create "$PROJECT" --production-branch main >/dev/null 2>&1 || true
-          npx --yes wrangler@3 pages deploy pub --project-name "$PROJECT" --branch test --commit-dirty=true
+          for i in 1 2 3; do npx --yes wrangler@3 pages deploy pub --project-name "$PROJECT" --branch test --commit-dirty=true && break; [ $i = 3 ] && exit 1; echo "upload failed, trying again in 60 s"; sleep 60; done
       - uses: actions/cache/save@v4
         if: steps.g.outputs.new == '1'
         with:

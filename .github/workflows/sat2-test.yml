@@ -22,7 +22,7 @@ permissions:
 jobs:
   sat:
     runs-on: ubuntu-24.04
-    timeout-minutes: 85
+    timeout-minutes: 66
     steps:
       - uses: actions/checkout@v5
         with:
@@ -35,12 +35,6 @@ jobs:
           path: pub
           key: s2t-none
           restore-keys: s2t-
-      - name: Satellite tab pictures made so far
-        uses: actions/cache/restore@v4
-        with:
-          path: site/sat
-          key: satt-IODC-none
-          restore-keys: satt-IODC-
       - uses: actions/cache/restore@v4
         with:
           path: ~/.local/share/cartopy
@@ -60,40 +54,24 @@ jobs:
         run: |
           cd code
           mkdir -p ../pub
-          printf '/*\n  Access-Control-Allow-Origin: *\n/sat/sat.json\n  Cache-Control: no-cache\n/sat2/sat.json\n  Cache-Control: no-cache\n/tc/*\n  Cache-Control: no-cache\n/sat2/*\n  Cache-Control: public, max-age=86400\n' > ../pub/_headers
+          printf '/*\n  Access-Control-Allow-Origin: *\n/sat2/sat.json\n  Cache-Control: no-cache\n/tc/*\n  Cache-Control: no-cache\n/sat2/*\n  Cache-Control: public, max-age=86400\n' > ../pub/_headers
           TRACK_PASSCODE="$TRACK_PASSCODE" python tools/cf_setup.py "$PROJECT" || true
           python cloud_tcfeed.py ../pub https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev > ../tc.log 2>&1 || true
           tail -3 ../tc.log
-          # Satellite tab (cloud_sat.py) runs alongside: newest scan first, a few minutes per run, copied in when complete
-          lab() { mkdir -p ../site/sat ../pub/sat && rsync -a --delete ../site/sat/ ../pub/sat/; }
-          lab
-          N=0; N=$((N+1)); MB=-1; [ $((N % 4)) -eq 0 ] && MB=420; SAT_RAW=sat_raw_lab SAT_BUDGET=240 SAT_MSG_BUDGET=$MB SAT_FY_BUDGET=90 python cloud_sat.py ../site > ../lab.log 2>&1 & LAB=$!
           start=$(date +%s)
           while :; do
-            if [ -n "$LAB" ] && ! kill -0 $LAB 2>/dev/null; then
-              wait $LAB && lab || tail -5 ../lab.log; grep -h 'ok in\|newest' ../lab.log | tail -3
-              LAB=""
-              [ $(( $(date +%s) - start )) -lt 3000 ] && { N=$((N+1)); MB=-1; [ $((N % 4)) -eq 0 ] && MB=420; SAT_RAW=sat_raw_lab SAT_BUDGET=240 SAT_MSG_BUDGET=$MB SAT_FY_BUDGET=90 python cloud_sat.py ../site > ../lab.log 2>&1 & LAB=$!; }
-            fi
             python cloud_sat2.py ../pub 480 || echo "::warning title=sat2::failed this time"
             (cd pages_sat && { wrangler pages deploy ../../pub --project-name "$PROJECT" --branch test --commit-dirty=true >/dev/null 2>&1 \
-              || wrangler pages deploy ../../pub --project-name "$PROJECT" --branch test --commit-dirty=true; })
-            [ $(( $(date +%s) - start )) -gt 3150 ] && [ -z "$LAB" ] && break
-            [ $(( $(date +%s) - start )) -gt 3900 ] && break
+              || wrangler pages deploy ../../pub --project-name "$PROJECT" --branch test --commit-dirty=true; }) || echo "::warning title=sat2::upload failed, next pass tries again"
+            [ $(( $(date +%s) - start )) -gt 3150 ] && break
             sleep 150
           done
-          [ -n "$LAB" ] && kill $LAB 2>/dev/null; rm -rf ../pub/sat
           echo "::notice title=sat2::$(du -sh ../pub | cut -f1), $(ls ../pub/sat2/h | wc -l) pictures, newest $(ls ../pub/sat2/h | tail -1)"
       - uses: actions/cache/save@v4
         if: always()
         with:
           path: pub
           key: s2t-${{ github.run_id }}
-      - uses: actions/cache/save@v4
-        if: always()
-        with:
-          path: site/sat
-          key: satt-IODC-s2-${{ github.run_id }}
       - name: Delete older saved sets
         env:
           GH_TOKEN: ${{ github.token }}
