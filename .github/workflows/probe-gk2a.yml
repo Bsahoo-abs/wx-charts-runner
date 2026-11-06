@@ -1,26 +1,10 @@
 name: probe-gk2a
 on: workflow_dispatch
-permissions:
-  contents: write
 jobs:
   p:
     runs-on: ubuntu-24.04
-    timeout-minutes: 40
     steps:
       - run: |
-          git clone -q --depth 1 https://github.com/tehoro/weather-explorer-web we
-          pip install -q eccodes eccodeslib numpy pillow
-          cd we && python3 - <<'P'
-          import json
-          from datetime import datetime, timezone
-          from pathlib import Path
-          import build3d as B
-          B.steps_for = lambda item, run: list(range(0, 73, 3))
-          C=[["Chennai",80.27,13.08],["Visakhapatnam",83.22,17.69],["Bhubaneswar",85.82,20.3],["Kolkata",88.36,22.57],["Puri",85.83,19.81],["Berhampur",84.79,19.31],["Nellore",79.99,14.44],["Vijayawada",80.65,16.51],["Hyderabad",78.49,17.39],["Bengaluru",77.59,12.97],["Colombo",79.86,6.93],["Port Blair",92.73,11.62],["Yangon",96.1,16.84],["Kakinada",82.24,16.99],["Machilipatnam",81.14,16.17],["Gopalpur",84.9,19.26],["Paradip",86.65,20.26]]
-          bb=[76.0,6.0,96.0,22.5]
-          item={"id":"murasu","title":"Cyclone Murasu, Bay of Bengal","where":{"bbox":bb,"label":"Bay of Bengal"},"scenes":[{"bbox":bb,"focus":[{"label":n,"lon":lo,"lat":la} for n,lo,la in C]}]}
-          out=Path("../o/3d/murasu-2026110100");out.parent.mkdir(parents=True,exist_ok=True)
-          B.build_one(item, datetime(2026,11,1,tzinfo=timezone.utc), out)
-          P
-          cd ../o && ls -laR | head
-          git init -q -b probe-out-we3d && git add -A && git -c user.name=p -c user.email=p@x commit -qm o && git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-we3d
+          R=https://ecmwf-forecasts.s3.eu-central-1.amazonaws.com
+          for k in 20261101/00z/ifs/0p25/oper/20261101000000-0h-oper-fc.index 20261101/00z/ifs/0p25/oper/20261101000000-24h-oper-fc.index 20261102/12z/ifs/0p25/oper/20261102120000-24h-oper-fc.index; do echo "== $k"; curl -s -D - -o body.txt "$R/$k" | head -3; head -c 300 body.txt; echo; done
+          curl -s "$R/?list-type=2&prefix=20261101/00z/ifs/0p25/oper/20261101000000-0h&max-keys=4" | grep -o '<Key>[^<]*</Key><LastModified>[^<]*</LastModified>[^S]*<StorageClass>[^<]*' | head
