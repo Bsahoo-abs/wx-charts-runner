@@ -45,7 +45,7 @@ jobs:
         run: |
           which ffmpeg || (sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null)
           pip install -q numpy scipy pillow cartopy "shapely>=2" "satpy[ami_l1b]" opencv-python-headless pyspectral pyresample netCDF4 h5netcdf dask
-          python code/cloud_sat.py site
+          SAT_BUDGET=600 SAT_MSG_BUDGET=300 SAT_FY_BUDGET=240 timeout 40m python code/cloud_sat.py site || echo "::warning title=satellite::pictures stopped early this time"
       - name: Sample pictures for checking (test only)
         continue-on-error: true
         if: contains('satellite-test', 'test')
@@ -68,6 +68,7 @@ jobs:
 
   publish:
     needs: sat
+    if: always()
     runs-on: ubuntu-24.04
     timeout-minutes: 40
     concurrency:
