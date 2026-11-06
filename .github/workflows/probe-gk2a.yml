@@ -1,13 +1,21 @@
 name: probe-gk2a
 on: workflow_dispatch
+permissions:
+  contents: write
 jobs:
   p:
     runs-on: ubuntu-24.04
     steps:
+      - uses: actions/checkout@v5
+        with:
+          repository: ${{ vars.CODE_REPO }}
+          token: ${{ secrets.CODE_TOKEN }}
+          ref: test
+          path: code
       - run: |
-          B=https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev
-          for f in live3d.html live/terr/india.jpg live/terr/sam.png live/dem.png; do echo "$f $(curl -s -o /dev/null -w '%{http_code} %{size_download}' $B/$f)"; done
-          curl -s $B/live3d.html | grep -o "Wind particles\|live3d.html\|Terrain" | sort | uniq -c
-          curl -s $B/index.html | grep -o 'href="live3d.html"' | head -1
-          G=https://test.odisha-wx-charts-glob.pages.dev
-          for f in ecmwf/xs_wpac.json gfs/xs_am.json ecmwf/xs.json; do echo "$f $(curl -s -o /dev/null -w '%{http_code}' $G/$f)"; done
+          cd code && python3 cloud_tcworld.py ../o; cd ..
+          curl -s http://hurricanes.ral.ucar.edu/repository/data/bdecks_open/2026/ | head -c 1500 > o/listing.txt || true
+          curl -s https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev/tc/feed.json -o o/feed_site.json || true
+          curl -s https://test.odisha-wx-charts-sat.pages.dev/tc/feed.json -o o/feed.json || true
+          ls -la o o/tc
+          cd o && git init -q -b probe-out-tc && git add -A && git -c user.name=p -c user.email=p@x commit -qm o && git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-tc
