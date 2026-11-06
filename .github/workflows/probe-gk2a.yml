@@ -1,27 +1,18 @@
 name: probe-gk2a
 on: workflow_dispatch
-permissions:
-  contents: write
 jobs:
   p:
     runs-on: ubuntu-24.04
     steps:
       - run: |
-          mkdir -p o/glob && cd o/glob
-          G=https://test.odisha-wx-charts-glob.pages.dev
-          for m in ecmwf gfs; do mkdir -p $m; curl -s $G/$m/meta.json -o $m/meta.json; python3 -c "
-          import json;m=json.load(open('$m/meta.json'));print('$m',m.get('run'),m.get('size'),m.get('box'),m.get('rh'),[s['h'] for s in m['steps']][:20])
-          open('$m/hs.txt','w').write(' '.join('%03d'%s['h'] for s in m['steps'][:17]))"
-            for h in $(cat $m/hs.txt); do curl -s $G/$m/f$h.webp -o $m/f$h.webp; done; done
-          cd .. && curl -sL https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_populated_places_simple.geojson -o pp.geojson
+          curl -s "https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/1.0.0/WMTSCapabilities.xml" > c.xml
+          grep -o "<ows:Identifier>[^<]*</ows:Identifier>" c.xml | sed 's/<[^>]*>//g' | grep -iE "imerg|sst|sea_surface|ghrsst|meteosat|msg|seviri|himawari|goes|geo|band13|infrared|clean" | sort -u | head -60
           python3 - <<'P'
-          import json
-          d=json.load(open('pp.geojson'));out=[]
-          for f in d['features']:
-              p=f['properties'];r=p.get('scalerank',9)
-              if r<=5 or (p.get('adm0name')=='India' and r<=8):
-                  x,y=f['geometry']['coordinates'];out.append([p['name'],round(y,2),round(x,2),r])
-          json.dump(out,open('places.json','w'),separators=(',',':'));print('places',len(out))
+          import re
+          x=open('c.xml').read()
+          for name in ["IMERG_Precipitation_Rate","GHRSST_L4_MUR_Sea_Surface_Temperature","Himawari_AHI_Band13_Clean_Infrared"]:
+              i=x.find("<ows:Identifier>"+name+"</ows:Identifier>")
+              if i<0: print(name,"missing");continue
+              seg=x[i:i+4000]
+              print(name, re.findall(r"<TileMatrixSet>([^<]*)</TileMatrixSet>",seg)[:2], re.findall(r'<Format>([^<]*)</Format>',seg)[:1], re.findall(r'<Default>([^<]*)</Default>',seg)[:1], re.findall(r'<Value>([^<]*)</Value>',seg)[-1:])
           P
-          rm pp.geojson; du -sh *
-          git init -q -b probe-out-ch && git add -A && git -c user.name=p -c user.email=p@x commit -qm o && git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-ch
