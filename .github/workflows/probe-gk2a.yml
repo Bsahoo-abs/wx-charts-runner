@@ -6,26 +6,22 @@ jobs:
   p:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v5
-        with:
-          repository: ${{ vars.CODE_REPO }}
-          token: ${{ secrets.CODE_TOKEN }}
-          ref: demo-cyclones
-          path: code
       - run: |
-          cd code && python3 cloud_tcworld.py web && cd web
-          sed -i 's#<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet#<script>window.__SATB="./"</script><script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet#' cyclones.html
-          echo '{"storms":[]}' > tc/feed.json
-          (python3 -m http.server 8813 >/dev/null 2>&1 &) ; sleep 1
-          npm i -s playwright@1.47.2 >/dev/null 2>&1 && npx -y playwright@1.47.2 install chromium >/dev/null 2>&1
-          cat > s.js <<'J'
-          const {chromium}=require('playwright');
-          (async()=>{const b=await chromium.launch();const p=await b.newPage({viewport:{width:1440,height:800}});p.on('pageerror',e=>console.log('ERR',e.message));
-          await p.goto("http://localhost:8813/cyclones.html");await p.waitForTimeout(8000);await p.screenshot({path:'/tmp/o/e1.png'});
-          const ids=await p.$$eval('.sc',e=>e.map(x=>x.dataset.id));console.log(ids);
-          let n=2;for(const id of ids.slice(0,3)){await p.click(`.sc[data-id="${id}"]`);await p.waitForTimeout(7000);await p.screenshot({path:`/tmp/o/e${n++}.png`});
-           await p.evaluate(()=>{const t=document.getElementById('t');t.value=60;t.oninput({target:t})});await p.waitForTimeout(3000);await p.screenshot({path:`/tmp/o/e${n++}.png`});await p.click('#back');await p.waitForTimeout(1500)}
-          await b.close()})();
-          J
-          mkdir -p /tmp/o && node s.js
-          cd /tmp/o && git init -q -b probe-out-cy && git add -A && git -c user.name=p -c user.email=p@x commit -qm o && git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-cy
+          mkdir -p o/glob && cd o/glob
+          G=https://test.odisha-wx-charts-glob.pages.dev
+          for m in ecmwf gfs; do mkdir -p $m; curl -s $G/$m/meta.json -o $m/meta.json; python3 -c "
+          import json;m=json.load(open('$m/meta.json'));print('$m',m.get('run'),m.get('size'),m.get('box'),m.get('rh'),[s['h'] for s in m['steps']][:20])
+          open('$m/hs.txt','w').write(' '.join('%03d'%s['h'] for s in m['steps'][:17]))"
+            for h in $(cat $m/hs.txt); do curl -s $G/$m/f$h.webp -o $m/f$h.webp; done; done
+          cd .. && curl -sL https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_populated_places_simple.geojson -o pp.geojson
+          python3 - <<'P'
+          import json
+          d=json.load(open('pp.geojson'));out=[]
+          for f in d['features']:
+              p=f['properties'];r=p.get('scalerank',9)
+              if r<=5 or (p.get('adm0name')=='India' and r<=8):
+                  x,y=f['geometry']['coordinates'];out.append([p['name'],round(y,2),round(x,2),r])
+          json.dump(out,open('places.json','w'),separators=(',',':'));print('places',len(out))
+          P
+          rm pp.geojson; du -sh *
+          git init -q -b probe-out-ch && git add -A && git -c user.name=p -c user.email=p@x commit -qm o && git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-ch
