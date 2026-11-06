@@ -10,20 +10,39 @@ jobs:
         with:
           repository: ${{ vars.CODE_REPO }}
           token: ${{ secrets.CODE_TOKEN }}
-          ref: demo-phase3
+          ref: demo-route
           path: code
       - run: |
-          cd code/demo && (python3 -m http.server 8813 >/dev/null 2>&1 &) ; sleep 1
+          B=https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev
+          mkdir site && cd site && cp ../code/web/route.html ../code/web/*.png . 2>/dev/null; curl -s $B/index.json -o index.json
+          python3 - <<'P'
+          import json,urllib.request,os
+          B="https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev/"
+          ix=json.load(open("index.json"))
+          for m in ix["models"]:
+              if m["model"]!="ECMWF":continue
+              rs=[r for r in m.get("runs",[]) if r.get("flow")];r=next((x for x in rs if x["flow"]["last"]>=96),rs[0] if rs else None)
+              if not r:continue
+              d=f"{m['model']}/{r['run']}/flow/";os.makedirs(d,exist_ok=True)
+              meta=urllib.request.urlopen(B+d+"meta.json").read();open(d+"meta.json","wb").write(meta)
+              for s in json.loads(meta)["steps"][:24]:
+                  f=d+"f%03d.webp"%s["h"];open(f,"wb").write(urllib.request.urlopen(B+f).read())
+              print("got",d)
+          P
+          (python3 -m http.server 8813 >/dev/null 2>&1 &) ; sleep 1
           npm i -s playwright@1.47.2 >/dev/null 2>&1 && npx -y playwright@1.47.2 install chromium >/dev/null 2>&1
           cat > s.js <<'J'
           const {chromium}=require('playwright');
-          (async()=>{const b=await chromium.launch();
-          for(const [n,h,o] of [["a","m=ECMWF&p=wind&s=6&c=20,86,5",""],["b","m=AIFS&p=rain&s=8&c=15,100,4",""],["c","m=ECMWF&p=wind&s=2&c=15,120,4","sat"],["d","m=ECMWF&p=rain&s=2&c=15,100,4","imerg"],["e","m=ECMWF&p=msl&s=2&c=15,100,4","sst"]]){
-           const p=await b.newPage({viewport:{width:1440,height:820}});p.on('pageerror',e=>console.log('ERR',e.message));
-           await p.goto("http://localhost:8813/charts_demo.html#"+h);await p.waitForTimeout(9000);
-           if(o){await p.evaluate(o=>document.querySelector(`#obs input[data-o="${o}"]`).click(),o);await p.waitForTimeout(9000)}
-           await p.screenshot({path:`/tmp/o/${n}.png`});await p.close()}
+          (async()=>{const b=await chromium.launch();const ctx=await b.newContext({viewport:{width:1366,height:800},geolocation:{latitude:20.296,longitude:85.824},permissions:['geolocation']});
+          const p=await ctx.newPage();p.on('pageerror',e=>console.log('ERR',e.message));
+          await p.goto("http://localhost:8813/route.html");await p.waitForTimeout(6000);await p.screenshot({path:'/tmp/o/r1.png'});
+          await p.fill('#to','hospital');await p.waitForTimeout(3000);await p.screenshot({path:'/tmp/o/r2.png'});
+          const p2=await ctx.newPage();p2.on('pageerror',e=>console.log('ERR',e.message));
+          await p2.goto("http://localhost:8813/route.html#from=Bhubaneswar&to=Puri&stops=Pipili|Konark&mode=car");await p2.waitForTimeout(12000);await p2.screenshot({path:'/tmp/o/r3.png'});
+          await p2.click('#playtrip');await p2.waitForTimeout(5000);await p2.screenshot({path:'/tmp/o/r4.png'});
+          await p2.click('#tlay button[data-k="heat"]');await p2.waitForTimeout(3000);await p2.screenshot({path:'/tmp/o/r5.png'});
+          await p2.click('#tend');await p2.mouse.click(900,300,{button:'right'});await p2.waitForTimeout(4000);await p2.screenshot({path:'/tmp/o/r6.png'});
           await b.close()})();
           J
           mkdir -p /tmp/o && node s.js
-          cd /tmp/o && git init -q -b probe-out-ch2 && git add -A && git -c user.name=p -c user.email=p@x commit -qm o && git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-ch2
+          cd /tmp/o && git init -q -b probe-out-rt && git add -A && git -c user.name=p -c user.email=p@x commit -qm o && git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-rt
