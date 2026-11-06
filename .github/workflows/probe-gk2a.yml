@@ -5,35 +5,38 @@ permissions:
 jobs:
   p:
     runs-on: ubuntu-24.04
-    timeout-minutes: 60
+    timeout-minutes: 40
     steps:
       - run: |
-          git clone -q --depth 1 https://github.com/tehoro/weather-explorer-web we
-          pip install -q eccodes eccodeslib numpy pillow
-          cd we && python3 - <<'P'
-          import time, numpy as np
-          from datetime import datetime, timezone
-          from pathlib import Path
-          import build3d as B
-          B.steps_for = lambda item, run: list(range(0, 73, 3))
-          _g = B._get
-          def _get2(url, headers=None, timeout=60, attempts=6):
-              for k in range(8):
+          pip install -q numpy pillow
+          mkdir o && python3 - <<'P'
+          import io, math, urllib.request, numpy as np
+          from concurrent.futures import ThreadPoolExecutor
+          from PIL import Image
+          Z = 5; N = 2 ** Z; T = 256
+          def tile(xy):
+              x, y = xy
+              for k in range(4):
                   try:
-                      return _g(url, headers, timeout, attempts)
+                      b = urllib.request.urlopen(f"https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{Z}/{x}/{y}.png", timeout=60).read()
+                      a = np.asarray(Image.open(io.BytesIO(b)).convert("RGB")).astype(np.float32)
+                      return xy, a[..., 0] * 256 + a[..., 1] + a[..., 2] / 256 - 32768
                   except Exception:
-                      if k == 7:
-                          raise
-                      time.sleep(5 + k * 5)
-          B._get = _get2
-          bb=[60.0,0.0,100.0,35.0]
-          item={"id":"india","title":"India","where":{"bbox":bb,"label":"India"},"scenes":[{"bbox":bb,"focus":[]}]}
-          run=datetime(2026,11,1,tzinfo=timezone.utc)
-          out=Path("../o/3d/india-2026110100");out.parent.mkdir(parents=True,exist_ok=True)
-          B.build_one(item, run, out)
-          res=.25;box={"lons":np.arange(bb[0],bb[2]+1e-6,res),"lats":np.arange(bb[1],bb[3]+1e-6,res)}
-          t={f"t{s:03d}":B.field(run,s,"2t",None,box)-273.15 for s in range(3,73,3)}
-          np.savez_compressed("../o/t2m.npz",**t);print("t2m",len(t))
+                      pass
+              return xy, np.zeros((T, T), np.float32)
+          M = np.zeros((N * T, N * T), np.float32)
+          with ThreadPoolExecutor(16) as ex:
+              for (x, y), a in ex.map(tile, [(x, y) for x in range(N) for y in range(N)]):
+                  M[y * T:(y + 1) * T, x * T:(x + 1) * T] = a
+          # Web Mercator mosaic -> 0.1 deg lat/lon grid, -180..180 E, 80 S..84 N (same grid as landmask.png)
+          lon = np.arange(-180, 180, 0.1) + 0.05; lat = np.arange(84, -80, -0.1) - 0.05
+          X = ((lon + 180) / 360 * N * T).astype(int).clip(0, N * T - 1)
+          Y = ((1 - np.log(np.tan(np.radians(lat)) + 1 / np.cos(np.radians(lat))) / math.pi) / 2 * N * T).astype(int).clip(0, N * T - 1)
+          E = M[np.ix_(Y, X)]
+          v = np.clip(np.round(E + 500), 0, 65535).astype(np.uint32)      # metres + 500, 16 bits in red/green
+          img = np.dstack([(v >> 8).astype(np.uint8), (v & 255).astype(np.uint8), np.zeros_like(v, np.uint8)])
+          Image.fromarray(img, "RGB").save("o/dem.png", optimize=True)
+          print("dem", img.shape, "max", float(E.max()), "Everest area", float(E[int((84-27.99)/.1), int((86.93+180)/.1)]))
           P
-          cd ../o && ls -laR | head
-          git init -q -b probe-out-india && git add -A && git -c user.name=p -c user.email=p@x commit -qm o && git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-india
+          ls -la o
+          cd o && git init -q -b probe-out-dem && git add -A && git -c user.name=p -c user.email=p@x commit -qm o && git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-dem
