@@ -46,4 +46,4 @@ jobs:
           await b.close()})();
           J
           mkdir -p /tmp/o && node s.js
-          cd /tmp/o && git init -q -b probe-out-rt && git add -A && git -c user.name=p -c user.email=p@x commit -qm o && git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-rt
+          cp -r index.json ECMWF /tmp/o/ && cd /tmp/o && git init -q -b probe-out-rt && git add -A && git -c user.name=p -c user.email=p@x commit -qm o && git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-rt
