@@ -14,9 +14,10 @@ jobs:
           path: code
       - run: |
           B=https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev
-          mkdir site && cd site && cp ../code/web/route.html ../code/web/*.png . 2>/dev/null; curl -s $B/index.json -o index.json
+          mkdir site && cd site && cp ../code/web/route.html ../code/web/*.png . 2>/dev/null; curl -sA "Mozilla/5.0 Chrome/130" $B/index.json -o index.json
           python3 - <<'P'
-          import json,urllib.request,os
+          import json,os,subprocess
+          get=lambda u,f:subprocess.run(["curl","-sfA","Mozilla/5.0 (X11; Linux x86_64) Chrome/130","-o",f,u],check=True)
           B="https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev/"
           ix=json.load(open("index.json"))
           for m in ix["models"]:
@@ -24,9 +25,9 @@ jobs:
               rs=[r for r in m.get("runs",[]) if r.get("flow")];r=next((x for x in rs if x["flow"]["last"]>=96),rs[0] if rs else None)
               if not r:continue
               d=f"{m['model']}/{r['run']}/flow/";os.makedirs(d,exist_ok=True)
-              meta=urllib.request.urlopen(B+d+"meta.json").read();open(d+"meta.json","wb").write(meta)
+              get(B+d+"meta.json",d+"meta.json");meta=open(d+"meta.json").read()
               for s in json.loads(meta)["steps"][:24]:
-                  f=d+"f%03d.webp"%s["h"];open(f,"wb").write(urllib.request.urlopen(B+f).read())
+                  f=d+"f%03d.webp"%s["h"];get(B+f,f)
               print("got",d)
           P
           (python3 -m http.server 8813 >/dev/null 2>&1 &) ; sleep 1
