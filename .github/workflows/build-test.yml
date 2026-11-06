@@ -182,4 +182,4 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           PROJECT: ${{ vars.PAGES_PROJECT }}
-        run: for i in 1 2 3; do npx --yes wrangler@3 pages deploy site --project-name "$PROJECT" --branch ow-5k4kr1ny9f --commit-dirty=true && break; [ $i = 3 ] && exit 1; echo "upload failed, trying again in 60 s"; sleep 60; done
+        run: for w in 60 120 240 300 0; do npx --yes wrangler@3 pages deploy site --project-name "$PROJECT" --branch ow-5k4kr1ny9f --commit-dirty=true && break; [ $w = 0 ] && { echo "::warning title=charts::Cloudflare would not take the upload after 5 tries; the next run publishes again"; break; }; echo "upload failed, trying again in $w s"; sleep $w; done

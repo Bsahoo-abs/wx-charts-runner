@@ -50,7 +50,7 @@ jobs:
           start=$(date +%s)
           while :; do
             python code/cloud_radar.py pub || echo "::warning title=radar::reading failed this time"
-            wrangler pages deploy pub --project-name "$PROJECT" --branch test --commit-dirty=true >/dev/null 2>&1               || wrangler pages deploy pub --project-name "$PROJECT" --branch test --commit-dirty=true
+            wrangler pages deploy pub --project-name "$PROJECT" --branch test --commit-dirty=true >/dev/null 2>&1               || { sleep 20; wrangler pages deploy pub --project-name "$PROJECT" --branch test --commit-dirty=true; } || echo "::warning title=radar::upload failed, the next pass tries again"
             now=$(date +%s); [ $((now - start)) -gt 1500 ] && break
             sleep $(( 600 - $(date +%s) % 600 + 60 ))      # next 10-minute mark + 1 min (IMD's new scans are up by then)
             [ $(( $(date +%s) - start )) -gt 1680 ] && break
