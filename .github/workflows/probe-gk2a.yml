@@ -5,24 +5,35 @@ permissions:
 jobs:
   p:
     runs-on: ubuntu-24.04
-    timeout-minutes: 30
+    timeout-minutes: 60
     steps:
       - run: |
           git clone -q --depth 1 https://github.com/tehoro/weather-explorer-web we
-          pip install -q eccodes eccodeslib numpy
+          pip install -q eccodes eccodeslib numpy pillow
           cd we && python3 - <<'P'
           import time, numpy as np
           from datetime import datetime, timezone
+          from pathlib import Path
           import build3d as B
-          bb=[76.0,6.0,96.0,22.5];res=.25
-          box={"lons":np.arange(bb[0],bb[2]+1e-6,res),"lats":np.arange(bb[1],bb[3]+1e-6,res)}
-          run=datetime(2026,11,1,tzinfo=timezone.utc);out={}
-          for s in range(3,73,3):
+          B.steps_for = lambda item, run: list(range(0, 73, 3))
+          _g = B._get
+          def _get2(url, headers=None, timeout=60, attempts=6):
               for k in range(8):
                   try:
-                      out[f"t{s:03d}"]=B.field(run,s,"2t",None,box)-273.15;break
+                      return _g(url, headers, timeout, attempts)
                   except Exception:
-                      time.sleep(5+5*k)
-          np.savez_compressed("../t2m.npz",**out);print(len(out),"steps")
+                      if k == 7:
+                          raise
+                      time.sleep(5 + k * 5)
+          B._get = _get2
+          bb=[60.0,0.0,100.0,35.0]
+          item={"id":"india","title":"India","where":{"bbox":bb,"label":"India"},"scenes":[{"bbox":bb,"focus":[]}]}
+          run=datetime(2026,11,1,tzinfo=timezone.utc)
+          out=Path("../o/3d/india-2026110100");out.parent.mkdir(parents=True,exist_ok=True)
+          B.build_one(item, run, out)
+          res=.25;box={"lons":np.arange(bb[0],bb[2]+1e-6,res),"lats":np.arange(bb[1],bb[3]+1e-6,res)}
+          t={f"t{s:03d}":B.field(run,s,"2t",None,box)-273.15 for s in range(3,73,3)}
+          np.savez_compressed("../o/t2m.npz",**t);print("t2m",len(t))
           P
-          mkdir -p ../o && mv ../t2m.npz ../o/ && cd ../o && git init -q -b probe-out-t2m && git add -A && git -c user.name=p -c user.email=p@x commit -qm o && git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-t2m
+          cd ../o && ls -laR | head
+          git init -q -b probe-out-india && git add -A && git -c user.name=p -c user.email=p@x commit -qm o && git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-india
