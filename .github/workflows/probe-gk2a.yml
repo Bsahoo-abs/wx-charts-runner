@@ -1,61 +1,13 @@
 name: probe-gk2a
 on: workflow_dispatch
-permissions:
-  contents: write
 jobs:
   p:
     runs-on: ubuntu-24.04
-    timeout-minutes: 50
     steps:
       - run: |
-          pip install -q numpy pillow
-          mkdir o && python3 - <<'P'
-          import io, math, urllib.request, numpy as np
-          from concurrent.futures import ThreadPoolExecutor
-          from PIL import Image
-          Image.MAX_IMAGE_PIXELS = None
-          A = {"bay":[78,95,8,23],"odisha":[81,90,16,24],"arab":[60,77,8,24],"india":[66,98,6,32],"nind":[68,92,22,37],"scs":[105,125,4,24],
-               "wpac":[122,160,5,32],"japan":[105,145,22,48],"aus":[110,158,-40,-10],"sio":[45,100,-32,-5],"afr":[-18,52,-36,24],"eur":[-12,38,34,60],
-               "atl":[-90,-40,8,36],"gulf":[-98,-60,10,32],"epac":[-135,-95,5,30],"usa":[-125,-68,24,50],"sam":[-82,-34,-40,8]}
-          def get(u, tries=5):
-              for k in range(tries):
-                  try: return urllib.request.urlopen(u, timeout=90).read()
-                  except Exception as e: err = e
-              print("fail", u, err); return None
-          def tile(a):
-              z, x, y = a; b = get(f"https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png")
-              if b is None: return a, np.zeros((256, 256), np.float32)
-              t = np.asarray(Image.open(io.BytesIO(b)).convert("RGB")).astype(np.float32)
-              return a, t[..., 0] * 256 + t[..., 1] + t[..., 2] / 256 - 32768
-          def my(la): return (1 - math.log(math.tan(math.radians(la)) + 1 / math.cos(math.radians(la))) / math.pi) / 2
-          for key, (w, e, s, n) in A.items():
-              res = max(0.01, max(e - w, n - s) / 1600)
-              nx, ny = round((e - w) / res) + 1, round((n - s) / res) + 1
-              z = min(9, max(4, math.ceil(math.log2(360 / (256 * res)))))
-              N = 2 ** z
-              x0, x1 = int((w + 180) / 360 * N), int((e + 180) / 360 * N)
-              y0, y1 = int(my(n) * N), int(my(s) * N)
-              M = np.zeros(((y1 - y0 + 1) * 256, (x1 - x0 + 1) * 256), np.float32)
-              with ThreadPoolExecutor(24) as ex:
-                  for (_, x, y), t in ex.map(tile, [(z, x, y) for x in range(x0, x1 + 1) for y in range(y0, y1 + 1)]):
-                      M[(y - y0) * 256:(y - y0 + 1) * 256, (x - x0) * 256:(x - x0 + 1) * 256] = t
-              lon = w + np.arange(nx) * res; lat = n - np.arange(ny) * res
-              X = ((lon + 180) / 360 * N - x0) * 256; Y = (np.array([my(v) for v in lat]) * N - y0) * 256
-              Xi = X.astype(int).clip(0, M.shape[1] - 2); Yi = Y.astype(int).clip(0, M.shape[0] - 2)
-              fx = (X - Xi).clip(0, 1)[None, :]; fy = (Y - Yi).clip(0, 1)[:, None]
-              E = (M[np.ix_(Yi, Xi)] * (1 - fx) + M[np.ix_(Yi, Xi + 1)] * fx) * (1 - fy) + (M[np.ix_(Yi + 1, Xi)] * (1 - fx) + M[np.ix_(Yi + 1, Xi + 1)] * fx) * fy
-              v = np.clip(np.round(E + 12000), 0, 65535).astype(np.uint32)   # metres + 12000 (sea floor too)
-              Image.fromarray(np.dstack([(v >> 8).astype(np.uint8), (v & 255).astype(np.uint8), np.zeros_like(v, np.uint8)]), "RGB").save(f"o/{key}.png", optimize=True)
-              # colour picture of the ground
-              C = Image.new("RGB", (nx, ny)); step = 1024
-              for j in range(0, ny, step):
-                  for i in range(0, nx, step):
-                      cw, ch = min(step, nx - i), min(step, ny - j)
-                      b0, b1 = w + (i - .5) * res, w + (i + cw - .5) * res; c1, c0 = n - (j - .5) * res, n - (j + ch - .5) * res
-                      b = get(f"https://gibs.earthdata.nasa.gov/wms/epsg4326/best/wms.cgi?SERVICE=WMS&REQUEST=GetMap&VERSION=1.1.1&LAYERS=BlueMarble_NextGeneration&STYLES=&SRS=EPSG:4326&BBOX={b0},{c0},{b1},{c1}&WIDTH={cw}&HEIGHT={ch}&FORMAT=image/jpeg")
-                      if b: C.paste(Image.open(io.BytesIO(b)).convert("RGB"), (i, j))
-              C.save(f"o/{key}.jpg", quality=86)
-              print(key, nx, ny, "z", z, "max", int(E.max()), "min", int(E.min()), flush=True)
-          P
-          ls -la o
-          cd o && git init -q -b probe-out-terr && git add -A && git -c user.name=p -c user.email=p@x commit -qm o && git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-terr
+          B=https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev
+          for f in live3d.html live/terr/india.jpg live/terr/sam.png live/dem.png; do echo "$f $(curl -s -o /dev/null -w '%{http_code} %{size_download}' $B/$f)"; done
+          curl -s $B/live3d.html | grep -o "Wind particles\|live3d.html\|Terrain" | sort | uniq -c
+          curl -s $B/index.html | grep -o 'href="live3d.html"' | head -1
+          G=https://test.odisha-wx-charts-glob.pages.dev
+          for f in ecmwf/xs_wpac.json gfs/xs_am.json ecmwf/xs.json; do echo "$f $(curl -s -o /dev/null -w '%{http_code}' $G/$f)"; done
