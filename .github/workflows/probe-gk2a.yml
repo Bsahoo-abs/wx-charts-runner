@@ -6,7 +6,5 @@ jobs:
     steps:
       - run: |
           G=https://gibs.earthdata.nasa.gov/wmts/epsg3857/best
-          curl -sI -H "Origin: https://x.pages.dev" $G/BlueMarble_ShadedRelief_Bathymetry/default/GoogleMapsCompatible_Level8/3/3/5.jpeg | grep -i "^HTTP\|access-control"
-          T=$(date -u -d '-60 min' +%Y-%m-%dT%H:%M); T=${T:0:15}0:00Z; echo $T
-          for l in Himawari_AHI_Band13_Clean_Infrared GOES-East_ABI_Band13_Clean_Infrared GOES-West_ABI_Band13_Clean_Infrared; do echo "$l $(curl -s -o /tmp/x -w '%{http_code} %{content_type} %{size_download}' -H 'Origin: https://x.pages.dev' $G/$l/default/$T/GoogleMapsCompatible_Level6/3/3/6.png)"; done
-          curl -s "https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/1.0.0/WMTSCapabilities.xml" | grep -o "<ows:Identifier>[A-Za-z0-9_-]*\(Band13\|Infrared\|Meteosat\|IR\)[A-Za-z0-9_-]*</ows:Identifier>" | sort -u | head -20
+          curl -s -D - -o /dev/null -H "Origin: https://x.pages.dev" $G/BlueMarble_ShadedRelief_Bathymetry/default/GoogleMapsCompatible_Level8/3/3/5.jpeg | head -20
+          curl -s -D - -o /dev/null -H "Origin: https://x.pages.dev" $G/Coastlines_15m/default/GoogleMapsCompatible_Level13/3/3/5.png | grep -i "^http\|access"
