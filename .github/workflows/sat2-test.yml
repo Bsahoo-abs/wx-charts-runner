@@ -57,6 +57,7 @@ jobs:
           printf '/*\n  Access-Control-Allow-Origin: *\n/sat2/sat.json\n  Cache-Control: no-cache\n/tc/*\n  Cache-Control: no-cache\n/sat2/*\n  Cache-Control: public, max-age=86400\n' > ../pub/_headers
           TRACK_PASSCODE="$TRACK_PASSCODE" python tools/cf_setup.py "$PROJECT" || true
           python cloud_tcfeed.py ../pub https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev > ../tc.log 2>&1 || true
+          python cloud_tcworld.py ../pub >> ../tc.log 2>&1 || true
           tail -3 ../tc.log
           start=$(date +%s)
           while :; do
