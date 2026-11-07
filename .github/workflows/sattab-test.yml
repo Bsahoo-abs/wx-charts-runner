@@ -63,16 +63,23 @@ jobs:
           }
           [ -f site/sat/sat.json ] && publish
           start=$(date +%s); n=0; last=""
+          # side job on the same machine: the slow Meteosat and FY-4B pictures, so a GK-2A scan never waits for them
+          ( while [ $(( $(date +%s) - start )) -lt 3000 ]; do
+              ( cd code && SAT_PARTS=extra SAT_MSG_BUDGET=600 SAT_FY_BUDGET=240 python cloud_sat.py ../site >> ../extra.log 2>&1 ) || true
+              sleep 90
+            done ) &
           while :; do
-            n=$((n+1)); mb=-1; [ $((n % 4)) -eq 0 ] && mb=420           # Meteosat-only pictures (slow) every 4th pass
-            ( cd code && SAT_BUDGET=300 SAT_MSG_BUDGET=$mb SAT_FY_BUDGET=90 python cloud_sat.py ../site > ../pass.log 2>&1 ) \
+            n=$((n+1))
+            ( cd code && SAT_PARTS=gk SAT_BUDGET=300 python cloud_sat.py ../site > ../pass.log 2>&1 ) \
               || { echo "::warning title=satellite tab::pass $n failed"; tail -4 pass.log; }
             newest=$(python3 -c "import json;print(max(json.load(open('site/sat/sat.json'))['products']['clouds']['frames']))" 2>/dev/null || echo "")
-            echo "pass $n: newest $newest; $(grep -h 'ok in' pass.log | tr '\n' ' ' | cut -c1-200)"
-            [ -n "$newest" ] && [ "$newest" != "$last" -o $((n % 4)) -eq 0 ] && { publish; last=$newest; }
+            echo "$(date -u +%H:%M) pass $n: newest $newest; $(grep -h 'ok in' pass.log | tr '\n' ' ' | cut -c1-160)"
+            # publish as soon as a new scan is drawn; every 3rd pass anyway, to bring in the side job's pictures
+            [ -n "$newest" ] && [ "$newest" != "$last" -o $((n % 3)) -eq 0 ] && { publish; last=$newest; }
             [ $(( $(date +%s) - start )) -gt 3150 ] && break
-            sleep 60
+            sleep 30
           done
+          echo "side job: $(grep -h 'ok in' extra.log | tail -6 | tr '\n' ' ')"
           echo "::notice title=satellite tab::newest $last after $n passes"
       - uses: actions/cache/save@v4
         if: always()
