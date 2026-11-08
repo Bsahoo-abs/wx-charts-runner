@@ -6,44 +6,50 @@ jobs:
   p:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v5
-        with:
-          repository: ${{ vars.CODE_REPO }}
-          token: ${{ secrets.CODE_TOKEN }}
-          ref: demo-route
-          path: code
       - run: |
-          B=https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev
-          mkdir site && cd site && cp ../code/web/route.html ../code/web/*.png . 2>/dev/null; curl -sA "Mozilla/5.0 Chrome/130" $B/index.json -o index.json
+          mkdir -p /tmp/o && cd /tmp/o
+          UA="Mozilla/5.0 (X11; Linux x86_64) Chrome/130"
           python3 - <<'P'
-          import json,os,subprocess
-          get=lambda u,f:subprocess.run(["curl","-sfA","Mozilla/5.0 (X11; Linux x86_64) Chrome/130","-o",f,u],check=True)
-          B="https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev/"
-          ix=json.load(open("index.json"))
-          for m in ix["models"]:
-              if m["model"]!="ECMWF":continue
-              rs=[r for r in m.get("runs",[]) if r.get("flow")];r=next((x for x in rs if x["flow"]["last"]>=96),rs[0] if rs else None)
-              if not r:continue
-              d=f"{m['model']}/{r['run']}/flow/";os.makedirs(d,exist_ok=True)
-              get(B+d+"meta.json",d+"meta.json");meta=open(d+"meta.json").read()
-              for s in json.loads(meta)["steps"][:24]:
-                  f=d+"f%03d.webp"%s["h"];get(B+f,f)
-              print("got",d)
+          import json,subprocess,urllib.parse,time
+          V=["Kalarahanga","Raghurajpur","Gopinathpur Cuttack","Bentkar","Kuakhia","Haridaspur","Balikuda","Gurujanga","Mahanga","Bhatapada","Kantilo","Sakhigopal","Jhumpura","Bisoi","Raghurajpura","Kalarahang","Singhpur Jajpur","Badachana","Tangi Cuttack","Baramunda","Naraj","Barang","Phulnakhara","Gop","Astarang","Kakatpur","Chandanpur Puri","Nimapada","Delang","Jatni"]
+          def g(u):
+              r=subprocess.run(["curl","-s","--max-time","20","-A","AbsWxProbe/1.0","-H","Referer: https://odisha-wx-charts.pages.dev",u],capture_output=True,text=True);return r.stdout
+          out=[]
+          for q in V:
+              e=urllib.parse.quote(q)
+              try:ph=[(f["properties"].get("name"),f["properties"].get("state"),f["properties"].get("osm_value"),round(f["geometry"]["coordinates"][1],3),round(f["geometry"]["coordinates"][0],3)) for f in json.loads(g(f"https://photon.komoot.io/api/?q={e}&limit=5&lat=20.3&lon=85.8&location_bias_scale=0.4&lang=en"))["features"]]
+              except Exception as x:ph=str(x)
+              try:no=[(d["display_name"][:70],d.get("type")) for d in json.loads(g(f"https://nominatim.openstreetmap.org/search?q={e}&format=jsonv2&countrycodes=in&limit=5"))]
+              except Exception as x:no=str(x)
+              time.sleep(1.2)
+              out.append({"q":q,"photon":ph,"nominatim":no})
+          json.dump(out,open("search.json","w"),indent=1)
           P
-          (python3 -m http.server 8813 >/dev/null 2>&1 &) ; sleep 1
-          npm i -s playwright@1.47.2 >/dev/null 2>&1 && npx -y playwright@1.47.2 install chromium >/dev/null 2>&1
-          cat > s.js <<'J'
-          const {chromium}=require('playwright');
-          (async()=>{const b=await chromium.launch();const ctx=await b.newContext({viewport:{width:1366,height:800},geolocation:{latitude:20.296,longitude:85.824},permissions:['geolocation']});
-          const p=await ctx.newPage();p.on('pageerror',e=>console.log('ERR',e.message));
-          await p.goto("http://localhost:8813/route.html");await p.waitForTimeout(6000);await p.screenshot({path:'/tmp/o/r1.png'});
-          await p.fill('#to','hospital');await p.waitForTimeout(3000);await p.screenshot({path:'/tmp/o/r2.png'});
-          const p2=await ctx.newPage();p2.on('pageerror',e=>console.log('ERR',e.message));
-          await p2.goto("http://localhost:8813/route.html#from=Bhubaneswar&to=Puri&stops=Pipili|Konark&mode=car");await p2.waitForTimeout(12000);await p2.screenshot({path:'/tmp/o/r3.png'});
-          await p2.click('#playtrip');await p2.waitForTimeout(5000);await p2.screenshot({path:'/tmp/o/r4.png'});
-          await p2.click('#tlay button[data-k="heat"]');await p2.waitForTimeout(3000);await p2.screenshot({path:'/tmp/o/r5.png'});
-          await p2.click('#tend');await p2.mouse.click(900,300,{button:'right'});await p2.waitForTimeout(4000);await p2.screenshot({path:'/tmp/o/r6.png'});
-          await b.close()})();
-          J
-          mkdir -p /tmp/o && node s.js
-          cp -r index.json ECMWF /tmp/o/ && cd /tmp/o && git init -q -b probe-out-rt && git add -A && git -c user.name=p -c user.email=p@x commit -qm o && git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-rt
+          curl -s -A "$UA" -o IN.zip https://download.geonames.org/export/dump/IN.zip; ls -la IN.zip; unzip -oq IN.zip IN.txt
+          python3 - <<'P'
+          import csv,json,collections
+          c=collections.Counter();rows=[]
+          for r in csv.reader(open("IN.txt",encoding="utf-8"),delimiter="\t",quoting=csv.QUOTE_NONE):
+              c[(r[6],r[7])]+=1
+              if r[6]=="P":rows.append([r[1],r[2],r[3][:200],float(r[4]),float(r[5]),r[7],r[10],r[11],int(r[14] or 0)])
+          print("total",sum(c.values()),c.most_common(12));print("P",len(rows),"odisha P",sum(1 for r in rows if r[6]=="21"))
+          json.dump(rows,open("gn_P.json","w"),separators=(",",":"))
+          P
+          ls -la gn_P.json
+          cat > q.txt <<'Q'
+          [out:csv(::id,::lat,::lon,name,"name:en",place,"addr:district";false;"\t")][timeout:600];
+          area["ISO3166-2"="IN-OR"]->.a;
+          node["place"~"^(village|hamlet|isolated_dwelling|locality|neighbourhood|suburb|town|city|quarter)$"](area.a);
+          out;
+          Q
+          curl -s --max-time 900 -A "$UA" --data-urlencode data@q.txt https://overpass-api.de/api/interpreter -o osm_or.tsv; wc -l osm_or.tsv; cut -f6 osm_or.tsv|sort|uniq -c
+          python3 - <<'P'
+          import json
+          rows=[l.rstrip("\n").split("\t") for l in open("osm_or.tsv",encoding="utf-8")]
+          gn=json.load(open("gn_P.json"));gor=[r for r in gn if r[6]=="21"]
+          for q in ["kalarahanga","raghurajpur","bentkar","kuakhia","haridaspur","gurujanga","mahanga","bhatapada","badachana","phulnakhara","delang","kakatpur"]:
+              a=[r[3] for r in rows if len(r)>3 and r[3].lower().startswith(q)];b=[r[0] for r in gor if r[1].lower().startswith(q)]
+              print(q,"osm",len(a),a[:3],"| geonames",len(b),b[:3])
+          P
+          rm -f IN.zip IN.txt
+          git init -q -b probe-out-sr && git add -A && git -c user.name=p -c user.email=p@x commit -qm o && git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-sr
