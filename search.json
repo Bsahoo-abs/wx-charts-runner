@@ -1,0 +1,1330 @@
+[
+ {
+  "q": "Kalarahanga",
+  "photon": [
+   [
+    "kalarahanga canal route",
+    "Odisha",
+    "stream",
+    20.37,
+    85.83
+   ],
+   [
+    "kalarahanga volly ground",
+    "Odisha",
+    "park",
+    20.369,
+    85.833
+   ],
+   [
+    "Kalarahanga Internal",
+    "Odisha",
+    "residential",
+    20.358,
+    85.843
+   ],
+   [
+    "Kalasbhanga",
+    "Chattogram Division",
+    "village",
+    23.417,
+    90.685
+   ]
+  ],
+  "nominatim": [
+   [
+    "kalarahanga canal route, Gandarpur, Nandankanan, Khordha, Odisha, 7510",
+    "stream"
+   ],
+   [
+    "kalarahanga volly ground, Nandankanan, Khordha, Odisha, India",
+    "park"
+   ],
+   [
+    "Kalarahanga Internal, Mancheswar, Khordha, Odisha, 751034, India",
+    "residential"
+   ]
+  ]
+ },
+ {
+  "q": "Raghurajpur",
+  "photon": [
+   [
+    "Raghurajpur",
+    "Odisha",
+    "village",
+    19.885,
+    85.827
+   ],
+   [
+    "Raghurajpura",
+    "Rajasthan",
+    "hamlet",
+    25.872,
+    75.789
+   ],
+   [
+    "Raghurajpura",
+    "Rajasthan",
+    "hamlet",
+    25.572,
+    74.871
+   ],
+   [
+    "Raghurampur",
+    "Chattogram Division",
+    "village",
+    23.219,
+    91.021
+   ]
+  ],
+  "nominatim": [
+   [
+    "Raghurajpur, Chandanpur, Puri, Odisha, 752012, India",
+    "village"
+   ]
+  ]
+ },
+ {
+  "q": "Gopinathpur Cuttack",
+  "photon": [],
+  "nominatim": []
+ },
+ {
+  "q": "Bentkar",
+  "photon": [
+   [
+    "Bentkarpur",
+    "Odisha",
+    "hamlet",
+    20.949,
+    83.005
+   ],
+   [
+    "Bentkar\u015f\u0131s\u0131 Tepe",
+    "Istanbul",
+    "peak",
+    41.361,
+    28.315
+   ],
+   [
+    "PHC, Bentkar",
+    "Odisha",
+    "centre",
+    20.409,
+    85.937
+   ],
+   [
+    "Bentham",
+    "England",
+    "administrative",
+    54.109,
+    -2.496
+   ],
+   [
+    "Bentham",
+    "England",
+    "station",
+    54.115,
+    -2.511
+   ]
+  ],
+  "nominatim": [
+   [
+    "PHC, Bentkar, Canal Road, Cuttack Sadar, Cuttack, Odisha, 754112, Indi",
+    "centre"
+   ]
+  ]
+ },
+ {
+  "q": "Kuakhia",
+  "photon": [
+   [
+    "Kuakhia",
+    "Odisha",
+    "administrative",
+    20.836,
+    86.166
+   ],
+   [
+    "Kuakhia",
+    "Odisha",
+    "village",
+    20.82,
+    86.201
+   ],
+   [
+    "Kuakhia",
+    "Odisha",
+    "village",
+    20.822,
+    86.197
+   ],
+   [
+    "Kuakhia Flyover",
+    "Odisha",
+    "trunk",
+    20.819,
+    86.2
+   ],
+   [
+    "Kukkia",
+    "Pirkanmaa",
+    "lake",
+    61.338,
+    24.761
+   ]
+  ],
+  "nominatim": [
+   [
+    "Kuakhia, Jajpur, Odisha, India",
+    "administrative"
+   ],
+   [
+    "Kuakhia, Jajpur, Odisha, 755008, India",
+    "village"
+   ],
+   [
+    "Kuakhia, Jajpur, Odisha, 755009, India",
+    "village"
+   ]
+  ]
+ },
+ {
+  "q": "Haridaspur",
+  "photon": [
+   [
+    "Haridaspur",
+    "Odisha",
+    "station",
+    20.724,
+    86.117
+   ],
+   [
+    "Haridaspur",
+    "West Bengal",
+    "village",
+    23.876,
+    87.36
+   ],
+   [
+    "Haridaspur",
+    "Odisha",
+    "village",
+    19.163,
+    83.092
+   ],
+   [
+    "Haridaspur",
+    "West Bengal",
+    "village",
+    23.038,
+    88.868
+   ],
+   [
+    "Haridaspur",
+    "West Bengal",
+    "village",
+    24.077,
+    87.631
+   ]
+  ],
+  "nominatim": [
+   [
+    "Haridaspur, NH53, Bribati, Dharmasala, Jajpur, Odisha, 755023, India",
+    "station"
+   ],
+   [
+    "Haridaspur, Bongaon, North 24 Parganas, West Bengal, 743235, India",
+    "village"
+   ],
+   [
+    "Haridaspur, Kondapur mandal, Sangareddy, Telangana, 502306, India",
+    "village"
+   ],
+   [
+    "Haridaspur, Tikiri, Rayagada, Odisha, India",
+    "village"
+   ],
+   [
+    "Haridaspur, Dubrajpur, Birbhum, West Bengal, India",
+    "village"
+   ]
+  ]
+ },
+ {
+  "q": "Balikuda",
+  "photon": [
+   [
+    "Balikuda",
+    "Odisha",
+    "administrative",
+    20.09,
+    86.315
+   ],
+   [
+    "Balikuda",
+    "Odisha",
+    "village",
+    20.14,
+    86.27
+   ],
+   [
+    "Gopalpur Balikuda",
+    "Odisha",
+    "halt",
+    20.433,
+    85.879
+   ],
+   [
+    "UGPHC,Balikuda",
+    "Odisha",
+    "centre",
+    20.137,
+    86.268
+   ],
+   [
+    "Balipada",
+    "Odisha",
+    "village",
+    20.843,
+    85.647
+   ]
+  ],
+  "nominatim": [
+   [
+    "Balikuda, Jagatsinghapur, Odisha, India",
+    "administrative"
+   ],
+   [
+    "Balikuda, Jagatsinghapur, Odisha, India",
+    "village"
+   ]
+  ]
+ },
+ {
+  "q": "Gurujanga",
+  "photon": [
+   [
+    "GURUJANGA",
+    "Odisha",
+    "suburb",
+    20.197,
+    85.622
+   ],
+   [
+    "Gurujanga",
+    "Odisha",
+    "village",
+    20.475,
+    85.061
+   ],
+   [
+    "GURUJANGA DUAN SAHII",
+    "Odisha",
+    "neighbourhood",
+    20.195,
+    85.626
+   ],
+   [
+    "GURUJANGA SQUARE",
+    "Odisha",
+    "yes",
+    20.193,
+    85.623
+   ],
+   [
+    "Gurusinga",
+    "North Sumatra",
+    "village",
+    3.159,
+    98.493
+   ]
+  ],
+  "nominatim": [
+   [
+    "GURUJANGA, Khurdha Municipality Boundary, Khordha, Odisha, 752057, Ind",
+    "suburb"
+   ],
+   [
+    "Gurujanga, Narasinghpur, Cuttack, Odisha, 754032, India",
+    "village"
+   ],
+   [
+    "Jawahar Navodaya Vidyalaya Khurdha, Gurujanga, pond road, Baseli Sahi,",
+    "school"
+   ]
+  ]
+ },
+ {
+  "q": "Mahanga",
+  "photon": [
+   [
+    "Mahanga",
+    "Odisha",
+    "administrative",
+    20.573,
+    86.187
+   ],
+   [
+    "Mahanga",
+    "Odisha",
+    "village",
+    20.56,
+    86.172
+   ],
+   [
+    "Mahanga",
+    "Mbale",
+    "village",
+    0.986,
+    34.204
+   ],
+   [
+    "Mahanga",
+    "North Kivu",
+    "village",
+    -1.355,
+    28.67
+   ],
+   [
+    "Mahanga",
+    "North Kivu",
+    "health",
+    -1.372,
+    28.669
+   ]
+  ],
+  "nominatim": [
+   [
+    "Mahanga, Cuttack, Odisha, India",
+    "administrative"
+   ],
+   [
+    "Mahanga, Cuttack, Odisha, 754206, India",
+    "village"
+   ],
+   [
+    "Mahagaon, Jharbandha, Bargarh, Odisha, India",
+    "village"
+   ]
+  ]
+ },
+ {
+  "q": "Bhatapada",
+  "photon": [
+   [
+    "Bhatapara",
+    "Chhattisgarh",
+    "town",
+    21.735,
+    81.944
+   ],
+   [
+    "Bhatpara",
+    "West Bengal",
+    "city",
+    22.846,
+    88.386
+   ],
+   [
+    "Bhatapara",
+    "Chhattisgarh",
+    "station",
+    21.732,
+    81.946
+   ],
+   [
+    "Bhatipada",
+    "Odisha",
+    "hamlet",
+    22.347,
+    84.046
+   ],
+   [
+    "Bhatipada",
+    "Odisha",
+    "village",
+    18.637,
+    82.432
+   ]
+  ],
+  "nominatim": [
+   [
+    "Bhatpara, Greater Kolkata, Barrackpur - I, North 24 Parganas, West Ben",
+    "city"
+   ]
+  ]
+ },
+ {
+  "q": "Kantilo",
+  "photon": [
+   [
+    "Kantilo",
+    "Odisha",
+    "town",
+    20.361,
+    85.193
+   ],
+   [
+    "Khandapada - Kantilo Road",
+    "Odisha",
+    "primary",
+    20.327,
+    85.169
+   ],
+   [
+    "Khandapada - Kantilo Road",
+    "Odisha",
+    "primary",
+    20.274,
+    85.176
+   ],
+   [
+    "PHC, Kantilo",
+    "Odisha",
+    "centre",
+    20.363,
+    85.196
+   ],
+   [
+    "Kangeilo",
+    "Odisha",
+    "village",
+    20.89,
+    85.61
+   ]
+  ],
+  "nominatim": [
+   [
+    "Kantilo, Khandapada, Nayagarh, Odisha, 752078, India",
+    "town"
+   ]
+  ]
+ },
+ {
+  "q": "Sakhigopal",
+  "photon": [
+   [
+    "Sakhigopal",
+    "Odisha",
+    "station",
+    19.943,
+    85.816
+   ],
+   [
+    "Sakhigopal",
+    "Odisha",
+    "town",
+    19.948,
+    85.815
+   ],
+   [
+    "Sakhigopal Temple Road",
+    "Odisha",
+    "tertiary",
+    19.956,
+    85.825
+   ],
+   [
+    "Sakhigopal Temple Road",
+    "Odisha",
+    "tertiary",
+    19.952,
+    85.812
+   ]
+  ],
+  "nominatim": [
+   [
+    "Sakhigopal, Sakhigopal Temple Road, Sakhigopal, Satyabadi, Puri, Odish",
+    "station"
+   ],
+   [
+    "Sakhigopal, Satyabadi, Puri, Odisha, India",
+    "town"
+   ]
+  ]
+ },
+ {
+  "q": "Jhumpura",
+  "photon": [
+   [
+    "Jhumpura",
+    "Odisha",
+    "administrative",
+    21.888,
+    85.586
+   ],
+   [
+    "Jhumpura",
+    "Odisha",
+    "town",
+    21.824,
+    85.571
+   ],
+   [
+    "Government Hospital, Jhumpura",
+    "Odisha",
+    "hospital",
+    21.822,
+    85.576
+   ],
+   [
+    "Jhumuka",
+    "Odisha",
+    "village",
+    18.928,
+    83.214
+   ],
+   [
+    "Jhumuka",
+    "Odisha",
+    "hamlet",
+    19.081,
+    83.208
+   ]
+  ],
+  "nominatim": [
+   [
+    "Jhumpura, Kendujhar, Odisha, India",
+    "administrative"
+   ],
+   [
+    "Jhumpura, Kendujhar, Odisha, 758031, India",
+    "town"
+   ]
+  ]
+ },
+ {
+  "q": "Bisoi",
+  "photon": [
+   [
+    "Bisoi",
+    "Odisha",
+    "administrative",
+    22.129,
+    86.378
+   ],
+   [
+    "Bisoi",
+    "Odisha",
+    "town",
+    22.16,
+    86.409
+   ],
+   [
+    "Bisoi",
+    "England",
+    "yes",
+    54.606,
+    -3.19
+   ],
+   [
+    "Bisoiguda",
+    "Odisha",
+    "village",
+    18.848,
+    82.418
+   ],
+   [
+    "Bisoiput",
+    "Odisha",
+    "village",
+    18.914,
+    82.561
+   ]
+  ],
+  "nominatim": [
+   [
+    "Bisoi, Mayurbhanj, Odisha, 757033, India",
+    "administrative"
+   ],
+   [
+    "Bisoi, Mayurbhanj, Odisha, India",
+    "town"
+   ]
+  ]
+ },
+ {
+  "q": "Raghurajpura",
+  "photon": [
+   [
+    "Raghurajpura",
+    "Rajasthan",
+    "hamlet",
+    25.872,
+    75.789
+   ],
+   [
+    "Raghurajpura",
+    "Rajasthan",
+    "hamlet",
+    25.572,
+    74.871
+   ],
+   [
+    "Raghurajpur",
+    "Odisha",
+    "village",
+    19.885,
+    85.827
+   ],
+   [
+    "Raghurampuram",
+    "Andhra Pradesh",
+    "hamlet",
+    18.802,
+    84.524
+   ],
+   [
+    "Raghurampur",
+    "Chattogram Division",
+    "village",
+    23.219,
+    91.021
+   ]
+  ],
+  "nominatim": [
+   [
+    "Raghurajpura, Daulatpura, Shahpura Tehsil, Bhilwara, Rajasthan, 311408",
+    "hamlet"
+   ],
+   [
+    "Raghurajpura, Nagar Fort, Dooni Tehsil, Tonk, Rajasthan, India",
+    "hamlet"
+   ]
+  ]
+ },
+ {
+  "q": "Kalarahang",
+  "photon": [
+   [
+    "kalarahanga canal route",
+    "Odisha",
+    "stream",
+    20.37,
+    85.83
+   ],
+   [
+    "kalarahanga volly ground",
+    "Odisha",
+    "park",
+    20.369,
+    85.833
+   ],
+   [
+    "Kalarahanga Internal",
+    "Odisha",
+    "residential",
+    20.358,
+    85.843
+   ],
+   [
+    "Kalat Ahan",
+    "Razavi Khorasan",
+    "village",
+    36.268,
+    59.336
+   ],
+   [
+    "Kamarahan",
+    "Cotabato",
+    "village",
+    7.131,
+    125.009
+   ]
+  ],
+  "nominatim": []
+ },
+ {
+  "q": "Singhpur Jajpur",
+  "photon": [
+   [
+    "Singhpuri",
+    "Rajasthan",
+    "hamlet",
+    27.084,
+    76.226
+   ],
+   [
+    "Singarpur",
+    "Uttar Pradesh",
+    "station",
+    27.118,
+    77.729
+   ]
+  ],
+  "nominatim": []
+ },
+ {
+  "q": "Badachana",
+  "photon": [
+   [
+    "Badachana",
+    "Odisha",
+    "administrative",
+    20.668,
+    86.085
+   ],
+   [
+    "Badachana",
+    "Odisha",
+    "village",
+    20.66,
+    86.11
+   ],
+   [
+    "Balakhna",
+    "Nizhny Novgorod Oblast",
+    "town",
+    56.505,
+    43.601
+   ],
+   [
+    "B\u0103l\u0103ceana",
+    null,
+    "municipality",
+    47.646,
+    26.05
+   ],
+   [
+    "B\u0103l\u0103ceana",
+    null,
+    "village",
+    47.643,
+    26.039
+   ]
+  ],
+  "nominatim": [
+   [
+    "Badachana, Jajpur, Odisha, India",
+    "administrative"
+   ],
+   [
+    "Badachana, Jajpur, Odisha, 754296, India",
+    "village"
+   ]
+  ]
+ },
+ {
+  "q": "Tangi Cuttack",
+  "photon": [
+   [
+    "Tangi",
+    "Odisha",
+    "administrative",
+    20.601,
+    85.984
+   ],
+   [
+    "Tangi",
+    "Odisha",
+    "village",
+    20.562,
+    85.99
+   ],
+   [
+    "UGPHC, Tangi",
+    "Odisha",
+    "centre",
+    20.562,
+    85.986
+   ]
+  ],
+  "nominatim": [
+   [
+    "Tangi, Cuttack, Odisha, 754022, India",
+    "administrative"
+   ],
+   [
+    "Tangi, Cuttack, Odisha, 754022, India",
+    "village"
+   ]
+  ]
+ },
+ {
+  "q": "Baramunda",
+  "photon": [
+   [
+    "Baramunda",
+    "Odisha",
+    "locality",
+    20.273,
+    85.795
+   ],
+   [
+    "Baramunda Duplex Park",
+    "Odisha",
+    "park",
+    20.276,
+    85.794
+   ],
+   [
+    "Baramunda Bus Stand",
+    "Odisha",
+    "bus_station",
+    20.273,
+    85.792
+   ],
+   [
+    "Baramunda Playground",
+    "Odisha",
+    "pitch",
+    20.275,
+    85.796
+   ],
+   [
+    "Baramunda Homeopathy Hospital",
+    "Odisha",
+    "hospital",
+    20.267,
+    85.799
+   ]
+  ],
+  "nominatim": [
+   [
+    "Baramunda, Ward 50, South West Zone, Bhubaneswar Municipal Corporation",
+    "locality"
+   ],
+   [
+    "Baramunda Duplex Park, Ward 49, South West Zone, Bhubaneswar Municipal",
+    "park"
+   ]
+  ]
+ },
+ {
+  "q": "Naraj",
+  "photon": [
+   [
+    "Naraja Marthapur",
+    "Odisha",
+    "station",
+    20.46,
+    85.781
+   ],
+   [
+    "Naraj Bridge",
+    "Odisha",
+    "primary",
+    20.475,
+    85.78
+   ],
+   [
+    "Narajty",
+    "Warmian-Masurian Voivodeship",
+    "village",
+    53.605,
+    20.766
+   ],
+   [
+    "Narajamula Thanda",
+    "Andhra Pradesh",
+    "village",
+    16.157,
+    79.315
+   ],
+   [
+    "Narajada",
+    "Andhra Pradesh",
+    "village",
+    16.731,
+    82.004
+   ]
+  ],
+  "nominatim": [
+   [
+    "Naraj Bridge, Cuttack, Cuttack (M.Corp.) P.S, Cuttack, Odisha, 753001,",
+    "primary"
+   ]
+  ]
+ },
+ {
+  "q": "Barang",
+  "photon": [
+   [
+    "Barang",
+    "Odisha",
+    "administrative",
+    20.449,
+    85.801
+   ],
+   [
+    "Barang",
+    "Odisha",
+    "village",
+    20.417,
+    85.831
+   ],
+   [
+    "Barang Junction",
+    "Odisha",
+    "station",
+    20.404,
+    85.832
+   ],
+   [
+    "Barang",
+    "East Java",
+    "village",
+    -8.218,
+    111.469
+   ],
+   [
+    "Barang",
+    "East Nusa Tenggara",
+    "village",
+    -8.525,
+    120.499
+   ]
+  ],
+  "nominatim": [
+   [
+    "Barang, Cuttack, Odisha, 754006, India",
+    "administrative"
+   ],
+   [
+    "Barang, Cuttack, Odisha, 754005, India",
+    "village"
+   ],
+   [
+    "Barang, Kalpa, Kinnaur, Himachal Pradesh, 172107, India",
+    "village"
+   ]
+  ]
+ },
+ {
+  "q": "Phulnakhara",
+  "photon": [],
+  "nominatim": []
+ },
+ {
+  "q": "Gop",
+  "photon": [
+   [
+    "Gop",
+    "Odisha",
+    "administrative",
+    19.962,
+    86.019
+   ],
+   [
+    "Gop",
+    "Odisha",
+    "town",
+    19.985,
+    86.017
+   ],
+   [
+    "Gopalpur Balikuda",
+    "Odisha",
+    "halt",
+    20.433,
+    85.879
+   ],
+   [
+    "Gopabandhu Square",
+    "Odisha",
+    "tertiary",
+    20.27,
+    85.813
+   ],
+   [
+    "Gopabandhu - Governor House Road",
+    "Odisha",
+    "tertiary",
+    20.27,
+    85.813
+   ]
+  ],
+  "nominatim": [
+   [
+    "Gop Jam, SH27, Lalpur Taluka, Jamnagar, Gujarat, India",
+    "station"
+   ],
+   [
+    "Gorakhpur Air Force Station, NH727BB, Air Force Area, Gorakhpur, Uttar",
+    "aerodrome"
+   ],
+   [
+    "Gop, Puri, Odisha, India",
+    "administrative"
+   ],
+   [
+    "Gop, Puri, Odisha, 752116, India",
+    "town"
+   ]
+  ]
+ },
+ {
+  "q": "Astarang",
+  "photon": [
+   [
+    "Astaranga",
+    "Odisha",
+    "administrative",
+    19.978,
+    86.31
+   ],
+   [
+    "Astaranga",
+    "Odisha",
+    "town",
+    19.978,
+    86.266
+   ],
+   [
+    "Astaranga-Bangurigaon-Road",
+    "Odisha",
+    "unclassified",
+    19.941,
+    86.193
+   ],
+   [
+    "Astaranga-Bangurigan-Road",
+    "Odisha",
+    "unclassified",
+    19.953,
+    86.26
+   ],
+   [
+    "Astaranga-Sundar-Road",
+    "Odisha",
+    "residential",
+    19.944,
+    86.264
+   ]
+  ],
+  "nominatim": [
+   [
+    "Community Health Centre, Astarang, Astaranga-Jahania &  Astarnaga-Bang",
+    "centre"
+   ]
+  ]
+ },
+ {
+  "q": "Kakatpur",
+  "photon": [
+   [
+    "Kakatpur",
+    "Odisha",
+    "administrative",
+    19.977,
+    86.205
+   ],
+   [
+    "Kakatpur",
+    "Odisha",
+    "town",
+    20.003,
+    86.193
+   ],
+   [
+    "Kakatpur New Bus Stand",
+    "Odisha",
+    "bus_station",
+    20.007,
+    86.188
+   ],
+   [
+    "Kakatpur Police Station",
+    "Odisha",
+    "police",
+    20.003,
+    86.194
+   ],
+   [
+    "Kakatpur Fire Station",
+    "Odisha",
+    "fire_station",
+    19.991,
+    86.225
+   ]
+  ],
+  "nominatim": [
+   [
+    "Kakatpur, Puri, Odisha, India",
+    "administrative"
+   ],
+   [
+    "Kakatpur, Puri, Odisha, 752108, India",
+    "town"
+   ]
+  ]
+ },
+ {
+  "q": "Chandanpur Puri",
+  "photon": [
+   [
+    "Chandanpur",
+    "Odisha",
+    "administrative",
+    19.889,
+    85.798
+   ],
+   [
+    "Chandanpur",
+    "Odisha",
+    "town",
+    19.89,
+    85.817
+   ],
+   [
+    "Bhubaneswar Puri Highway",
+    "Odisha",
+    "trunk",
+    19.904,
+    85.814
+   ]
+  ],
+  "nominatim": [
+   [
+    "Chandanpur, Puri, Odisha, 752012, India",
+    "administrative"
+   ],
+   [
+    "Chandanpur, Puri, Odisha, 752012, India",
+    "town"
+   ]
+  ]
+ },
+ {
+  "q": "Nimapada",
+  "photon": [
+   [
+    "Nimapada",
+    "Odisha",
+    "administrative",
+    20.051,
+    85.996
+   ],
+   [
+    "Nimapada",
+    "Odisha",
+    "town",
+    20.061,
+    86.002
+   ],
+   [
+    "Nimapada-Charichhak-Astaranga Road",
+    "Odisha",
+    "primary",
+    20.065,
+    86.029
+   ]
+  ],
+  "nominatim": [
+   [
+    "Nimapada, Puri, Odisha, 752114, India",
+    "administrative"
+   ],
+   [
+    "Nimapada, Puri, Odisha, India",
+    "town"
+   ]
+  ]
+ },
+ {
+  "q": "Delang",
+  "photon": [
+   [
+    "Delang",
+    "Odisha",
+    "station",
+    20.038,
+    85.767
+   ],
+   [
+    "Delanga",
+    "Odisha",
+    "administrative",
+    20.068,
+    85.737
+   ],
+   [
+    "Delanga",
+    "Odisha",
+    "village",
+    20.063,
+    85.748
+   ],
+   [
+    "Delang - Pipili Road",
+    "Odisha",
+    "tertiary",
+    20.116,
+    85.821
+   ],
+   [
+    "Delang - Pipili Road",
+    "Odisha",
+    "tertiary",
+    20.078,
+    85.795
+   ]
+  ],
+  "nominatim": [
+   [
+    "Delang, Delang - Pipili Road, Brahman Taraboi, Delanga, Puri, Odisha, ",
+    "station"
+   ]
+  ]
+ },
+ {
+  "q": "Jatni",
+  "photon": [
+   [
+    "Jatni - Sundarpada Road",
+    "Odisha",
+    "secondary",
+    20.161,
+    85.77
+   ],
+   [
+    "Jatni Filling Station",
+    "Odisha",
+    "fuel",
+    20.165,
+    85.699
+   ],
+   [
+    "Jatni\u00ebl",
+    "Gauteng",
+    "suburb",
+    -26.115,
+    28.316
+   ],
+   [
+    "KHORDHA -JATNI ROAD",
+    "Odisha",
+    "primary",
+    20.154,
+    85.717
+   ],
+   [
+    "Jatani",
+    "Odisha",
+    "town",
+    20.162,
+    85.705
+   ]
+  ],
+  "nominatim": [
+   [
+    "Nagla Jatni, Bilari, Moradabad, Uttar Pradesh, India",
+    "village"
+   ],
+   [
+    "Jatni - Sundarpada Road, Pipili, Puri, Odisha, India",
+    "secondary"
+   ],
+   [
+    "KHORDHA -JATNI ROAD, Jatani, Khordha, Odisha, 752050, India",
+    "primary"
+   ],
+   [
+    "Jatni Filling Station, Khorda - Jatani Road, Jatani, Khordha, Odisha, ",
+    "fuel"
+   ]
+  ]
+ }
+]

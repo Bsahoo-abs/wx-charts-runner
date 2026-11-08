@@ -1,0 +1,4 @@
+[out:csv(::id,::lat,::lon,name,"name:en",place,"addr:district";false;"\t")][timeout:600];
+area["ISO3166-2"="IN-OR"]->.a;
+node["place"~"^(village|hamlet|isolated_dwelling|locality|neighbourhood|suburb|town|city|quarter)$"](area.a);
+out;
