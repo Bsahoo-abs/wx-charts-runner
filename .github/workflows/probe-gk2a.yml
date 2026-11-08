@@ -1,55 +1,19 @@
 name: probe-gk2a
 on: workflow_dispatch
-permissions:
-  contents: write
 jobs:
   p:
     runs-on: ubuntu-24.04
     steps:
       - run: |
-          mkdir -p /tmp/o && cd /tmp/o
-          UA="Mozilla/5.0 (X11; Linux x86_64) Chrome/130"
           python3 - <<'P'
           import json,subprocess,urllib.parse,time
-          V=["Kalarahanga","Raghurajpur","Gopinathpur Cuttack","Bentkar","Kuakhia","Haridaspur","Balikuda","Gurujanga","Mahanga","Bhatapada","Kantilo","Sakhigopal","Jhumpura","Bisoi","Raghurajpura","Kalarahang","Singhpur Jajpur","Badachana","Tangi Cuttack","Baramunda","Naraj","Barang","Phulnakhara","Gop","Astarang","Kakatpur","Chandanpur Puri","Nimapada","Delang","Jatni"]
           def g(u):
-              r=subprocess.run(["curl","-s","--max-time","20","-A","AbsWxProbe/1.0","-H","Referer: https://odisha-wx-charts.pages.dev",u],capture_output=True,text=True);return r.stdout
-          out=[]
-          for q in V:
+              r=subprocess.run(["curl","-s","--max-time","20","-A","AbsWxProbe/1.0",u],capture_output=True,text=True);return r.stdout
+          Q=["Phulnakhara","Phulnakhra","Phulanakhara","Fulnakhara","Bhatapada","Bhatpada","Gopinathpur","Singhpur","Jatni","Kalarahanga","Kalarahanga village","Gopinathpur Cuttack","Patia","Chandaka","Bhatapada Cuttack","Tangiapada","Bentkar","Aul","Rasulgarh"]
+          for q in Q:
               e=urllib.parse.quote(q)
-              try:ph=[(f["properties"].get("name"),f["properties"].get("state"),f["properties"].get("osm_value"),round(f["geometry"]["coordinates"][1],3),round(f["geometry"]["coordinates"][0],3)) for f in json.loads(g(f"https://photon.komoot.io/api/?q={e}&limit=5&lat=20.3&lon=85.8&location_bias_scale=0.4&lang=en"))["features"]]
-              except Exception as x:ph=str(x)
-              try:no=[(d["display_name"][:70],d.get("type")) for d in json.loads(g(f"https://nominatim.openstreetmap.org/search?q={e}&format=jsonv2&countrycodes=in&limit=5"))]
-              except Exception as x:no=str(x)
-              time.sleep(1.2)
-              out.append({"q":q,"photon":ph,"nominatim":no})
-          json.dump(out,open("search.json","w"),indent=1)
+              for extra in ["","&osm_tag=place"]:
+                  try:f=json.loads(g(f"https://photon.komoot.io/api/?q={e}&limit=6&lat=20.3&lon=85.8&location_bias_scale=0.3&lang=en{extra}"))["features"]
+                  except Exception as x:print(q,extra,"ERR",x);continue
+                  print(q,extra or "all","->",[(p["properties"].get("name"),p["properties"].get("osm_value"),p["properties"].get("county") or p["properties"].get("district"),p["properties"].get("state")) for p in f][:5])
           P
-          curl -s -A "$UA" -o IN.zip https://download.geonames.org/export/dump/IN.zip; ls -la IN.zip; unzip -oq IN.zip IN.txt
-          python3 - <<'P'
-          import csv,json,collections
-          c=collections.Counter();rows=[]
-          for r in csv.reader(open("IN.txt",encoding="utf-8"),delimiter="\t",quoting=csv.QUOTE_NONE):
-              c[(r[6],r[7])]+=1
-              if r[6]=="P":rows.append([r[1],r[2],r[3][:200],float(r[4]),float(r[5]),r[7],r[10],r[11],int(r[14] or 0)])
-          print("total",sum(c.values()),c.most_common(12));print("P",len(rows),"odisha P",sum(1 for r in rows if r[6]=="21"))
-          json.dump(rows,open("gn_P.json","w"),separators=(",",":"))
-          P
-          ls -la gn_P.json
-          cat > q.txt <<'Q'
-          [out:csv(::id,::lat,::lon,name,"name:en",place,"addr:district";false;"\t")][timeout:600];
-          area["ISO3166-2"="IN-OR"]->.a;
-          node["place"~"^(village|hamlet|isolated_dwelling|locality|neighbourhood|suburb|town|city|quarter)$"](area.a);
-          out;
-          Q
-          curl -s --max-time 900 -A "$UA" --data-urlencode data@q.txt https://overpass-api.de/api/interpreter -o osm_or.tsv; wc -l osm_or.tsv; cut -f6 osm_or.tsv|sort|uniq -c
-          python3 - <<'P'
-          import json
-          rows=[l.rstrip("\n").split("\t") for l in open("osm_or.tsv",encoding="utf-8")]
-          gn=json.load(open("gn_P.json"));gor=[r for r in gn if r[6]=="21"]
-          for q in ["kalarahanga","raghurajpur","bentkar","kuakhia","haridaspur","gurujanga","mahanga","bhatapada","badachana","phulnakhara","delang","kakatpur"]:
-              a=[r[3] for r in rows if len(r)>3 and r[3].lower().startswith(q)];b=[r[0] for r in gor if r[1].lower().startswith(q)]
-              print(q,"osm",len(a),a[:3],"| geonames",len(b),b[:3])
-          P
-          rm -f IN.zip IN.txt
-          git init -q -b probe-out-sr && git add -A && git -c user.name=p -c user.email=p@x commit -qm o && git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-sr
