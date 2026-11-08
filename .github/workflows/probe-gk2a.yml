@@ -1,20 +1,21 @@
 name: probe-gk2a
 on: workflow_dispatch
+permissions:
+  contents: write
 jobs:
   p:
     runs-on: ubuntu-24.04
     steps:
       - run: |
-          python3 - <<'P'
-          import json,subprocess,urllib.parse
-          def q(s):
-              r=subprocess.run(["curl","-s","--max-time","120","-H","Accept: application/sparql-results+json","-A","AbsWxProbe/1.0 (weather site)","--data-urlencode","query="+s,"https://query.wikidata.org/sparql"],capture_output=True,text=True)
-              try:return json.loads(r.stdout)["results"]["bindings"]
-              except Exception:return r.stdout[:300]
-          print("odisha villages with coords:",q('SELECT (COUNT(?i) AS ?n) WHERE { ?i wdt:P31 wd:Q56436498; wdt:P131/wdt:P131* wd:Q22048; wdt:P625 ?c }'))
-          print("odisha villages all:",q('SELECT (COUNT(?i) AS ?n) WHERE { ?i wdt:P31 wd:Q56436498; wdt:P131/wdt:P131* wd:Q22048 }'))
-          print("india villages with coords:",q('SELECT (COUNT(?i) AS ?n) WHERE { ?i wdt:P31 wd:Q56436498; wdt:P625 ?c }'))
-          for n in ["Phulnakhara","Kalarahanga","Bhatapada","Bentkar","Gurujanga","Jatni","Raghurajpur","Badachana","Kuakhia","Tangiapada"]:
-              r=q('SELECT ?i ?l ?c ?dl WHERE { ?i rdfs:label ?l. FILTER(STRSTARTS(STR(?l),"%s")) ?i wdt:P17 wd:Q668. OPTIONAL{?i wdt:P625 ?c} OPTIONAL{?i wdt:P131 ?d. ?d rdfs:label ?dl FILTER(lang(?dl)="en")} } LIMIT 6'%n) if False else q('SELECT ?i ?l ?c ?dl WHERE { SERVICE wikibase:mwapi { bd:serviceParam wikibase:api "EntitySearch"; wikibase:endpoint "www.wikidata.org"; mwapi:search "%s"; mwapi:language "en". ?i wikibase:apiOutputItem mwapi:item. } ?i wdt:P17 wd:Q668. OPTIONAL{?i wdt:P625 ?c} OPTIONAL{?i wdt:P131 ?d. ?d rdfs:label ?dl FILTER(lang(?dl)="en")} } LIMIT 8'%n)
-              print(n,"->",[(x.get("c",{}).get("value","no coord")[:40],x.get("dl",{}).get("value")) for x in r] if isinstance(r,list) else r)
-          P
+          mkdir -p /tmp/o && cd /tmp && npm i -s playwright@1.47.2 >/dev/null 2>&1 && npx -y playwright@1.47.2 install chromium >/dev/null 2>&1
+          cat > s.js <<'J'
+          const {chromium}=require('playwright');
+          (async()=>{const b=await chromium.launch({args:["--use-gl=angle","--use-angle=swiftshader","--enable-unsafe-swiftshader"]});
+          const B="https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev/live3d.html";
+          for(const [n,vp,mob] of [["m1",{width:390,height:844},true],["m2",{width:360,height:740},true],["d1",{width:1440,height:860},false]]){
+           const c=await b.newContext({viewport:vp,isMobile:mob,hasTouch:mob,deviceScaleFactor:mob?2:1});const p=await c.newPage();p.on('pageerror',e=>console.log(n,'ERR',e.message));
+           await p.goto(B+"#area=bay");await p.waitForTimeout(25000);await p.screenshot({path:'/tmp/o/'+n+'.png'});await c.close()}
+          await b.close()})();
+          J
+          node s.js
+          cd /tmp/o && git init -q -b probe-out-3d && git add -A && git -c user.name=p -c user.email=p@x commit -qm o && git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-3d
