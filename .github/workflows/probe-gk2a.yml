@@ -6,14 +6,15 @@ jobs:
     steps:
       - run: |
           python3 - <<'P'
-          import json,subprocess,urllib.parse,time
-          def g(u):
-              r=subprocess.run(["curl","-s","--max-time","20","-A","AbsWxProbe/1.0",u],capture_output=True,text=True);return r.stdout
-          Q=["Phulnakhara","Phulnakhra","Phulanakhara","Fulnakhara","Bhatapada","Bhatpada","Gopinathpur","Singhpur","Jatni","Kalarahanga","Kalarahanga village","Gopinathpur Cuttack","Patia","Chandaka","Bhatapada Cuttack","Tangiapada","Bentkar","Aul","Rasulgarh"]
-          for q in Q:
-              e=urllib.parse.quote(q)
-              for extra in ["","&osm_tag=place"]:
-                  try:f=json.loads(g(f"https://photon.komoot.io/api/?q={e}&limit=6&lat=20.3&lon=85.8&location_bias_scale=0.3&lang=en{extra}"))["features"]
-                  except Exception as x:print(q,extra,"ERR",x);continue
-                  print(q,extra or "all","->",[(p["properties"].get("name"),p["properties"].get("osm_value"),p["properties"].get("county") or p["properties"].get("district"),p["properties"].get("state")) for p in f][:5])
+          import json,subprocess,urllib.parse
+          def q(s):
+              r=subprocess.run(["curl","-s","--max-time","120","-H","Accept: application/sparql-results+json","-A","AbsWxProbe/1.0 (weather site)","--data-urlencode","query="+s,"https://query.wikidata.org/sparql"],capture_output=True,text=True)
+              try:return json.loads(r.stdout)["results"]["bindings"]
+              except Exception:return r.stdout[:300]
+          print("odisha villages with coords:",q('SELECT (COUNT(?i) AS ?n) WHERE { ?i wdt:P31 wd:Q56436498; wdt:P131/wdt:P131* wd:Q22048; wdt:P625 ?c }'))
+          print("odisha villages all:",q('SELECT (COUNT(?i) AS ?n) WHERE { ?i wdt:P31 wd:Q56436498; wdt:P131/wdt:P131* wd:Q22048 }'))
+          print("india villages with coords:",q('SELECT (COUNT(?i) AS ?n) WHERE { ?i wdt:P31 wd:Q56436498; wdt:P625 ?c }'))
+          for n in ["Phulnakhara","Kalarahanga","Bhatapada","Bentkar","Gurujanga","Jatni","Raghurajpur","Badachana","Kuakhia","Tangiapada"]:
+              r=q('SELECT ?i ?l ?c ?dl WHERE { ?i rdfs:label ?l. FILTER(STRSTARTS(STR(?l),"%s")) ?i wdt:P17 wd:Q668. OPTIONAL{?i wdt:P625 ?c} OPTIONAL{?i wdt:P131 ?d. ?d rdfs:label ?dl FILTER(lang(?dl)="en")} } LIMIT 6'%n) if False else q('SELECT ?i ?l ?c ?dl WHERE { SERVICE wikibase:mwapi { bd:serviceParam wikibase:api "EntitySearch"; wikibase:endpoint "www.wikidata.org"; mwapi:search "%s"; mwapi:language "en". ?i wikibase:apiOutputItem mwapi:item. } ?i wdt:P17 wd:Q668. OPTIONAL{?i wdt:P625 ?c} OPTIONAL{?i wdt:P131 ?d. ?d rdfs:label ?dl FILTER(lang(?dl)="en")} } LIMIT 8'%n)
+              print(n,"->",[(x.get("c",{}).get("value","no coord")[:40],x.get("dl",{}).get("value")) for x in r] if isinstance(r,list) else r)
           P
