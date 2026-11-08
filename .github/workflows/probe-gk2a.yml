@@ -6,16 +6,40 @@ jobs:
   p:
     runs-on: ubuntu-24.04
     steps:
+      - uses: actions/checkout@v5
+        with: {repository: "${{ vars.CODE_REPO }}", token: "${{ secrets.CODE_TOKEN }}", ref: demo-3d2, path: c3d}
+      - uses: actions/checkout@v5
+        with: {repository: "${{ vars.CODE_REPO }}", token: "${{ secrets.CODE_TOKEN }}", ref: demo-phase3, path: cch}
+      - uses: actions/checkout@v5
+        with: {repository: "${{ vars.CODE_REPO }}", token: "${{ secrets.CODE_TOKEN }}", ref: demo-route, path: crt}
       - run: |
-          mkdir -p /tmp/o && cd /tmp && npm i -s playwright@1.47.2 >/dev/null 2>&1 && npx -y playwright@1.47.2 install chromium >/dev/null 2>&1
+          mkdir -p /tmp/o && npm i -s playwright@1.47.2 >/dev/null 2>&1 && npx -y playwright@1.47.2 install chromium >/dev/null 2>&1
           cat > s.js <<'J'
-          const {chromium}=require('playwright');
+          const {chromium}=require('playwright'),fs=require('fs'),path=require('path');
+          const B="https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev/";
+          const shot=async(p,f)=>{try{await p.screenshot({path:'/tmp/o/'+f+'.png',timeout:120000})}catch(e){console.log(f,'shot failed',e.message.slice(0,80))}};
+          async function ctx(b,dir,vp,mob,geo){const c=await b.newContext({viewport:vp,isMobile:mob,hasTouch:mob,deviceScaleFactor:1,geolocation:geo,permissions:geo?['geolocation']:[]});
+           await c.route('**/__new/**',async r=>{const u=new URL(r.request().url()),rel=u.pathname.replace(/^\/__new\//,''),f=path.join(dir,'web',rel);
+            if(fs.existsSync(f)&&fs.statSync(f).isFile())return r.fulfill({path:f,contentType:rel.endsWith('.html')?'text/html':rel.endsWith('.json')?'application/json':undefined});
+            const res=await r.fetch({url:B+rel});return r.fulfill({response:res})});return c}
           (async()=>{const b=await chromium.launch({args:["--use-gl=angle","--use-angle=swiftshader","--enable-unsafe-swiftshader"]});
-          const B="https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev/live3d.html";
-          for(const [n,vp,mob] of [["m1",{width:390,height:844},true],["m2",{width:360,height:740},true],["d1",{width:1440,height:860},false]]){
-           const c=await b.newContext({viewport:vp,isMobile:mob,hasTouch:mob,deviceScaleFactor:mob?2:1});const p=await c.newPage();p.on('pageerror',e=>console.log(n,'ERR',e.message));
-           await p.goto(B+"#area=bay");await p.waitForTimeout(25000);await p.screenshot({path:'/tmp/o/'+n+'.png'});await c.close()}
+          // 3D before / after
+          for(const [n,url,dir,vp,mob] of [["3d_old_m",B+"live3d.html#area=bay","c3d",{width:390,height:844},true],["3d_new_m",B+"__new/live3d.html#area=bay","c3d",{width:390,height:844},true],["3d_new_d",B+"__new/live3d.html#area=india","c3d",{width:1440,height:860},false]]){
+           const c=await ctx(b,dir,vp,mob);const p=await c.newPage();p.on('pageerror',e=>console.log(n,'ERR',e.message));await p.goto(url);await p.waitForTimeout(30000);await shot(p,n);
+           if(n==="3d_new_d"){const o=await p.$$eval('#areas option',e=>e.map(x=>x.textContent));console.log('areas',o.join(' | '))}await c.close()}
+          // charts on the test site address
+          for(const [n,h,vp,mob] of [["ch_d","m=ECMWF&p=rain&s=6",{width:1440,height:860},false],["ch_sat","m=ECMWF&p=sat&s=0&c=18,95,3",{width:1440,height:860},false],["ch_imerg","m=ECMWF&p=imerg&s=0&c=15,85,3",{width:1440,height:860},false],["ch_sst","m=ECMWF&p=sst&s=0&c=15,85,3",{width:1440,height:860},false],["ch_m","m=ECMWF&p=wind&s=6&c=20,86,5",{width:390,height:844},true]]){
+           const c=await ctx(b,"cch",vp,mob);const p=await c.newPage();p.on('pageerror',e=>console.log(n,'ERR',e.message));p.on('console',m=>{if(m.type()==='error')console.log(n,'console',m.text().slice(0,160))});
+           await p.goto(B+"__new/charts.html#"+h);await p.waitForTimeout(15000);await shot(p,n);await c.close()}
+          // route: location + searches
+          {const c=await ctx(b,"crt",{width:1366,height:800},false,{latitude:20.2961,longitude:85.8245,accuracy:20});const p=await c.newPage();p.on('pageerror',e=>console.log('rt ERR',e.message));
+           await p.goto(B+"__new/route.html");await p.waitForTimeout(8000);await shot(p,"rt_loc");console.log('from=',await p.$eval('#from',e=>e.value),'| note=',await p.$eval('#locnote',e=>e.textContent).catch(()=>'none'));
+           for(const q of ["Gopinathpur Cuttack","Jatni","Bhatapada","Kalarahanga","Bentkar","Gurujanga Khordha","Raghurajpura","Phulnakhara","Kuakhia","Sakhigopal"]){await p.fill('#to','');await p.click('#to');await p.type('#to',q,{delay:30});await p.waitForTimeout(4500);
+            let l=await p.$$eval('#sto div',e=>e.map(x=>x.textContent.replace(/\s+/g,' ').trim()).slice(0,4));console.log('Q',q,'=>',JSON.stringify(l));
+            if(!l.some(x=>!/Your location|Search more|Nothing found/.test(x))){await p.click('#sto .more').catch(()=>{});await p.waitForTimeout(6000);l=await p.$$eval('#sto div',e=>e.map(x=>x.textContent.replace(/\s+/g,' ').trim()).slice(0,4));console.log('  deep',JSON.stringify(l))}}
+           await shot(p,"rt_sug");await c.close()}
+          {const c=await ctx(b,"crt",{width:390,height:844},true,{latitude:20.2961,longitude:85.8245,accuracy:2500});const p=await c.newPage();await p.goto(B+"__new/route.html");await p.waitForTimeout(18000);await shot(p,"rt_rough_m");await c.close()}
           await b.close()})();
           J
           node s.js
-          cd /tmp/o && git init -q -b probe-out-3d && git add -A && git -c user.name=p -c user.email=p@x commit -qm o && git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-3d
+          cd /tmp/o && git init -q -b probe-out-all && git add -A && git -c user.name=p -c user.email=p@x commit -qm o && git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-all
