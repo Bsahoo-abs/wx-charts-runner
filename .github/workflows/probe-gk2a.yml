@@ -5,22 +5,33 @@ permissions:
 jobs:
   p:
     runs-on: ubuntu-24.04
-    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
-        with: {repository: "${{ vars.CODE_REPO }}", token: "${{ secrets.CODE_TOKEN }}", ref: demo-feels, path: code}
-      - uses: actions/setup-python@v6
-        with: {python-version: "3.11"}
-      - run: pip install -q numpy scipy pillow eccodes eccodeslib || pip install -q numpy scipy pillow eccodes
+        with: {repository: "${{ vars.CODE_REPO }}", token: "${{ secrets.CODE_TOKEN }}", ref: demo-live2, path: c}
       - run: |
-          mkdir pub && cd code
-          GLOB_MAXH=120 python -c "import cloud_global as g;print('gfs',g.gfs('../pub'))" 2>&1 | grep -v "^f[0-9]" | tail -8
-          GLOB_MAXH=120 python -c "import cloud_global as g;print('ec',g.ec_model('ECMWF','../pub'))" 2>&1 | tail -3
-          cd ../pub && python3 -c "
-          import json
-          for d in ['gfs','ecmwf']:
-              m=json.load(open(d+'/meta.json'));print(d,{k:m.get(k) for k in ['run','blocks','aq','vis','rh2','aq_run']},len(m['steps']))"
-          python3 -c "
-          from PIL import Image;import numpy as np
-          a=np.asarray(Image.open('gfs/f024.webp'));h=a.shape[0]//5;b=a[4*h:];print('pm byte max',b[...,0].max(),'mean',b[...,0].mean().round(1),'vis byte min',b[...,1].min(),'lcc max',b[...,2].max())"
-          rm -f */x*.webp; git init -q -b probe-out-feels && git add -A && git -c user.name=p -c user.email=p@x commit -qm o && git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-feels
+          mkdir -p /tmp/o/assets && npm i -s playwright@1.47.2 >/dev/null 2>&1 && npx -y playwright@1.47.2 install chromium >/dev/null 2>&1
+          RAW=https://raw.githubusercontent.com/Bsahoo-abs/wx-charts-runner/probe-out-feels/
+          sed "s#\"https://test.odisha-wx-charts-glob.pages.dev/\":null#\"$RAW\":null#" c/web/livemap.html > /tmp/lm.html; grep -c probe-out-feels /tmp/lm.html
+          cat > s.js <<'J'
+          const {chromium}=require('playwright'),fs=require('fs'),path=require('path');
+          const B="https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev/";const saved={};
+          (async()=>{const b=await chromium.launch({args:["--use-gl=angle","--use-angle=swiftshader","--enable-unsafe-swiftshader"]});
+          for(const [n,lay,vp,mob,cx] of [["lm_feels","feels",{width:1440,height:860},false,[20,80,3.2]],["lm_aqi","aqi",{width:1440,height:860},false,[24,82,4]],["lm_fog","fog",{width:1440,height:860},false,[26,80,4.2]],["lm_aqi_m","aqi",{width:390,height:844},true,[24,82,3.6]],["lm_vid","wind",{width:1440,height:860},false,null]]){
+           const c=await b.newContext({viewport:vp,isMobile:mob,hasTouch:mob});
+           await c.route(B+"__new/**",async r=>{const rel=new URL(r.request().url()).pathname.replace(/^\/__new\//,'');if(rel==="livemap.html")return r.fulfill({path:"/tmp/lm.html",contentType:"text/html"});
+            const res=await r.fetch({url:B+rel});const body=await res.body();if(!/^(ECMWF|GFS|AIFS|ICON|GEM|AIGFS|ECMWF9)\//.test(rel)&&body.length<3e6)saved[rel]=body.toString('base64');return r.fulfill({response:res,body})});
+           const p=await c.newPage();p.on('pageerror',e=>console.log(n,'ERR',e.message));p.on('console',m=>{if(m.type()==='error')console.log(n,'console',m.text().slice(0,150))});
+           await p.addInitScript(([l])=>{try{localStorage.setItem("lm_prefs",JSON.stringify({layer:l}))}catch(e){}},[lay]);
+           await p.goto(B+"__new/livemap.html#layer="+lay);await p.waitForTimeout(9000);
+           if(cx)await p.evaluate(([la,lo,z])=>{},cx);
+           if(n==="lm_vid"){await p.evaluate(()=>document.getElementById("videos").scrollIntoView());await p.waitForTimeout(1500)}
+           else{const btn=await p.$(`#layers button:text-is("${({feels:"Feels like",aqi:"Air quality",fog:"Fog"})[lay]}")`);if(btn){await btn.click();await p.waitForTimeout(12000)}
+            const sz=vp;await p.mouse.click(sz.width*(mob?.5:.55),sz.height*.42);await p.waitForTimeout(2500)}
+           try{await p.screenshot({path:'/tmp/o/'+n+'.png',timeout:120000})}catch(e){console.log(n,'shot fail')}
+           console.log(n,'legend:',await p.$eval('#klab',e=>e.textContent).catch(()=>'-'),'| probe:',await p.$eval('#probe',e=>e.hidden?'hidden':e.textContent.slice(0,200)).catch(()=>'-'),'| src:',await p.$eval('#src',e=>e.textContent).catch(()=>'-'));
+           if(n==="lm_vid")console.log('videos:',await p.$$eval('#vids .go',e=>e.map(x=>x.textContent).join(' | ')));
+           await c.close()}
+          fs.writeFileSync('/tmp/o/assets/saved.json',JSON.stringify(saved));console.log('saved',Object.keys(saved).join(' '));await b.close()})();
+          J
+          node s.js
+          cd /tmp/o && git init -q -b probe-out-lm && git add -A && git -c user.name=p -c user.email=p@x commit -qm o && git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-lm
