@@ -148,6 +148,8 @@ jobs:
         with:
           path: ~/.local/share/cartopy
           key: cartopy-v1
+      - name: Bring back any part GitHub did not keep (from the live site)
+        run: python3 code/cloud_keep.py fill site https://odisha-wx-charts.pages.dev code/web
       - name: Model guidance
         continue-on-error: true
         env:
@@ -156,10 +158,10 @@ jobs:
           pip install -q numpy matplotlib cartopy "shapely>=2" reportlab pillow
           python code/cloud_guidance.py site
       - name: Build the website
-        run: python3 code/site_build.py site
+        run: python3 code/site_build.py site && python3 code/cloud_keep.py write site
       - name: Publish to Cloudflare Pages
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           PROJECT: ${{ vars.PAGES_PROJECT }}
-        run: for w in 60 120 240 300 0; do npx --yes wrangler@3 pages deploy site --project-name "$PROJECT" --branch main --commit-dirty=true && break; [ $w = 0 ] && { echo "::warning title=upload::Cloudflare would not take the upload after 5 tries; the next run publishes again"; break; }; echo "upload failed, trying again in $w s"; sleep $w; done
+        run: python3 code/cloud_keep.py check site https://odisha-wx-charts.pages.dev || exit 0; for w in 60 120 240 300 0; do npx --yes wrangler@3 pages deploy site --project-name "$PROJECT" --branch main --commit-dirty=true && break; [ $w = 0 ] && { echo "::warning title=upload::Cloudflare would not take the upload after 5 tries; the next run publishes again"; break; }; echo "upload failed, trying again in $w s"; sleep $w; done

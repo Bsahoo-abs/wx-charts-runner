@@ -156,7 +156,7 @@ jobs:
           key: garch-none
           restore-keys: garch-
       - name: Bring back any part GitHub did not keep (from the live site)
-        run: python3 code/cloud_keep.py fill site https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev
+        run: python3 code/cloud_keep.py fill site https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev code/web
       - name: Model guidance
         continue-on-error: true
         env:
