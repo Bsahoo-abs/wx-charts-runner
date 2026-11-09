@@ -1,13 +1,26 @@
 name: probe-gk2a
 on: workflow_dispatch
+permissions:
+  contents: write
 jobs:
   p:
     runs-on: ubuntu-24.04
+    timeout-minutes: 60
     steps:
+      - uses: actions/checkout@v5
+        with: {repository: "${{ vars.CODE_REPO }}", token: "${{ secrets.CODE_TOKEN }}", ref: demo-feels, path: code}
+      - uses: actions/setup-python@v6
+        with: {python-version: "3.11"}
+      - run: pip install -q numpy scipy pillow eccodes eccodeslib || pip install -q numpy scipy pillow eccodes
       - run: |
-          B=https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev; G=https://test.odisha-wx-charts-glob.pages.dev; U="Mozilla/5.0 Chrome/130"
-          echo "route new search: $(curl -sLA "$U" $B/route.html | grep -c 'Search more')"; echo "3D home button: $(curl -sLA "$U" $B/live3d.html | grep -c 'id=\"home\"')"
-          echo "3D new ground: $(curl -sA "$U" -o /dev/null -w '%{http_code} %{size_download}' $B/live/terr/scs.png)"
-          for m in ecmwf gfs; do echo "globe $m: $(curl -sA "$U" $G/$m/meta.json | head -c 120)"; done
-          echo "globe parts: $(curl -sA "$U" $G/keep-parts.json | python3 -c 'import sys,json;print({k:len(v) for k,v in json.load(sys.stdin)["parts"].items()})')"
-          echo "test parts: $(curl -sA "$U" $B/keep-parts.json | python3 -c 'import sys,json;print(sorted(json.load(sys.stdin)["parts"]))')"
+          mkdir pub && cd code
+          GLOB_MAXH=120 python -c "import cloud_global as g;print('gfs',g.gfs('../pub'))" 2>&1 | grep -v "^f[0-9]" | tail -8
+          GLOB_MAXH=120 python -c "import cloud_global as g;print('ec',g.ec_model('ECMWF','../pub'))" 2>&1 | tail -3
+          cd ../pub && python3 -c "
+          import json
+          for d in ['gfs','ecmwf']:
+              m=json.load(open(d+'/meta.json'));print(d,{k:m.get(k) for k in ['run','blocks','aq','vis','rh2','aq_run']},len(m['steps']))"
+          python3 -c "
+          from PIL import Image;import numpy as np
+          a=np.asarray(Image.open('gfs/f024.webp'));h=a.shape[0]//5;b=a[4*h:];print('pm byte max',b[...,0].max(),'mean',b[...,0].mean().round(1),'vis byte min',b[...,1].min(),'lcc max',b[...,2].max())"
+          rm -f */x*.webp; git init -q -b probe-out-feels && git add -A && git -c user.name=p -c user.email=p@x commit -qm o && git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-feels
