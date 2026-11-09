@@ -1,11 +1,8 @@
 name: probe-gk2a
 on: workflow_dispatch
-permissions:
-  contents: write
 jobs:
   p:
     runs-on: ubuntu-24.04
-    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
         with: {repository: "${{ vars.CODE_REPO }}", token: "${{ secrets.CODE_TOKEN }}", ref: demo-feels, path: code}
@@ -13,14 +10,17 @@ jobs:
         with: {python-version: "3.11"}
       - run: pip install -q numpy scipy pillow eccodes eccodeslib || pip install -q numpy scipy pillow eccodes
       - run: |
-          mkdir pub && cd code
-          GLOB_MAXH=120 python -c "import cloud_global as g;print('gfs',g.gfs('../pub'))" 2>&1 | grep -v "^f[0-9]" | tail -8
-          GLOB_MAXH=120 python -c "import cloud_global as g;print('ec',g.ec_model('ECMWF','../pub'))" 2>&1 | tail -3
-          cd ../pub && python3 -c "
-          import json
-          for d in ['gfs','ecmwf']:
-              m=json.load(open(d+'/meta.json'));print(d,{k:m.get(k) for k in ['run','blocks','aq','vis','rh2','aq_run']},len(m['steps']))"
-          python3 -c "
-          from PIL import Image;import numpy as np
-          a=np.asarray(Image.open('gfs/f024.webp'));h=a.shape[0]//5;b=a[4*h:];print('pm byte max',b[...,0].max(),'mean',b[...,0].mean().round(1),'vis byte min',b[...,1].min(),'lcc max',b[...,2].max())"
-          rm -f */x*.webp; git init -q -b probe-out-feels && git add -A && git -c user.name=p -c user.email=p@x commit -qm o && git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-feels
+          cd code && python - <<'P'
+          import cloud_global as g, numpy as np, eccodes
+          from datetime import datetime,timezone,timedelta
+          t=datetime(2026,11,9,0,tzinfo=timezone.utc)
+          recs=g.records(g.get(g.chem_url(t,24)+".idx"));r=next(r for r in recs if ":PMTF:surface:" in r[2] and "Total aerosol" in r[2]);print(r[2])
+          b=g.get(g.chem_url(t,24),(r[0],r[1]));h=eccodes.codes_new_from_message(b)
+          for k in ["units","name","shortName","Ni","Nj","latitudeOfFirstGridPointInDegrees","longitudeOfFirstGridPointInDegrees","missingValue","bitmapPresent","numberOfValues"]:
+              try:print(k,eccodes.codes_get(h,k))
+              except Exception as e:print(k,"?",e)
+          a=eccodes.codes_get_values(h);print("pct",np.percentile(a,[1,25,50,75,99]),a.max())
+          a=g.decode(b)[::2,::2];print(a.shape,np.percentile(a,[1,50,99]))
+          # Delhi ~ 28.6N 77.2E on the 0.5 grid rows 90N..
+          j=int((90-28.5)/.5);i=int(77/.5);print("delhi",a[j,i]*1e9)
+          P
