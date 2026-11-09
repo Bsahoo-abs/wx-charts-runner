@@ -7,55 +7,22 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 50
     steps:
-      - run: |
-          pip install -q numpy pillow
-          mkdir o && python3 - <<'P'
-          import io, math, urllib.request, numpy as np
-          from concurrent.futures import ThreadPoolExecutor
-          from PIL import Image
-          Image.MAX_IMAGE_PIXELS = None
-          A = {"india":[62,100,4,38],"odisha":[80,91,15,25],"bay":[76,100,2,27],"arab":[48,80,0,30],"nind":[64,98,20,40],"scs":[92,135,-8,28],
-               "wpac":[115,175,0,42],"japan":[100,150,18,50],"aus":[105,160,-45,-5],"sio":[35,80,-40,0],"afr":[-20,55,-38,38],"eur":[-15,45,30,60],
-               "atl":[-100,-10,0,45],"gulf":[-100,-55,8,35],"epac":[-160,-90,0,35],"usa":[-125,-68,24,50],"sam":[-85,-30,-45,12]}
-          def get(u, tries=5):
-              for k in range(tries):
-                  try: return urllib.request.urlopen(u, timeout=90).read()
-                  except Exception as e: err = e
-              print("fail", u, err); return None
-          def tile(a):
-              z, x, y = a; b = get(f"https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png")
-              if b is None: return a, np.zeros((256, 256), np.float32)
-              t = np.asarray(Image.open(io.BytesIO(b)).convert("RGB")).astype(np.float32)
-              return a, t[..., 0] * 256 + t[..., 1] + t[..., 2] / 256 - 32768
-          def my(la): return (1 - math.log(math.tan(math.radians(la)) + 1 / math.cos(math.radians(la))) / math.pi) / 2
-          for key, (w, e, s, n) in A.items():
-              res = max(0.01, max(e - w, n - s) / 1600)
-              nx, ny = round((e - w) / res) + 1, round((n - s) / res) + 1
-              z = min(9, max(4, math.ceil(math.log2(360 / (256 * res)))))
-              N = 2 ** z
-              x0, x1 = int((w + 180) / 360 * N), int((e + 180) / 360 * N)
-              y0, y1 = int(my(n) * N), int(my(s) * N)
-              M = np.zeros(((y1 - y0 + 1) * 256, (x1 - x0 + 1) * 256), np.float32)
-              with ThreadPoolExecutor(24) as ex:
-                  for (_, x, y), t in ex.map(tile, [(z, x, y) for x in range(x0, x1 + 1) for y in range(y0, y1 + 1)]):
-                      M[(y - y0) * 256:(y - y0 + 1) * 256, (x - x0) * 256:(x - x0 + 1) * 256] = t
-              lon = w + np.arange(nx) * res; lat = n - np.arange(ny) * res
-              X = ((lon + 180) / 360 * N - x0) * 256; Y = (np.array([my(v) for v in lat]) * N - y0) * 256
-              Xi = X.astype(int).clip(0, M.shape[1] - 2); Yi = Y.astype(int).clip(0, M.shape[0] - 2)
-              fx = (X - Xi).clip(0, 1)[None, :]; fy = (Y - Yi).clip(0, 1)[:, None]
-              E = (M[np.ix_(Yi, Xi)] * (1 - fx) + M[np.ix_(Yi, Xi + 1)] * fx) * (1 - fy) + (M[np.ix_(Yi + 1, Xi)] * (1 - fx) + M[np.ix_(Yi + 1, Xi + 1)] * fx) * fy
-              v = np.clip(np.round(E + 12000), 0, 65535).astype(np.uint32)   # metres + 12000 (sea floor too)
-              Image.fromarray(np.dstack([(v >> 8).astype(np.uint8), (v & 255).astype(np.uint8), np.zeros_like(v, np.uint8)]), "RGB").save(f"o/{key}.png", optimize=True)
-              # colour picture of the ground
-              C = Image.new("RGB", (nx, ny)); step = 1024
-              for j in range(0, ny, step):
-                  for i in range(0, nx, step):
-                      cw, ch = min(step, nx - i), min(step, ny - j)
-                      b0, b1 = w + (i - .5) * res, w + (i + cw - .5) * res; c1, c0 = n - (j - .5) * res, n - (j + ch - .5) * res
-                      b = get(f"https://gibs.earthdata.nasa.gov/wms/epsg4326/best/wms.cgi?SERVICE=WMS&REQUEST=GetMap&VERSION=1.1.1&LAYERS=BlueMarble_NextGeneration&STYLES=&SRS=EPSG:4326&BBOX={b0},{c0},{b1},{c1}&WIDTH={cw}&HEIGHT={ch}&FORMAT=image/jpeg")
-                      if b: C.paste(Image.open(io.BytesIO(b)).convert("RGB"), (i, j))
-              C.save(f"o/{key}.jpg", quality=86)
-              print(key, nx, ny, "z", z, "max", int(E.max()), "min", int(E.min()), flush=True)
-          P
-          ls -la o
-          cd o && git init -q -b probe-out-terr && git add -A && git -c user.name=p -c user.email=p@x commit -qm o && git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-terr
+      - uses: actions/checkout@v5
+        with: {repository: "${{ vars.CODE_REPO }}", token: "${{ secrets.CODE_TOKEN }}", ref: demo-feels, path: code}
+      - uses: actions/setup-python@v6
+        with: {python-version: "3.11"}
+      - run: pip install -q numpy scipy pillow eccodes eccodeslib || pip install -q numpy scipy pillow eccodes
+      - name: data sources for fog and air quality
+        run: |
+          D=$(date -u -d '-1 day' +%Y%m%d)
+          echo "== ECMWF open data surface params"; curl -s "https://data.ecmwf.int/forecasts/$D/00z/ifs/0p25/oper/${D}000000-24h-oper-fc.index" | python3 -c "import sys,json;print(sorted({(j.get('levtype'),j['param']) for j in map(json.loads,sys.stdin) if j.get('levtype')=='sfc'}))"
+          echo "== GFS visibility / low cloud"; curl -s "https://noaa-gfs-bdp-pds.s3.amazonaws.com/gfs.$D/00/atmos/gfs.t00z.pgrb2.0p50.f024.idx" | grep -E ":VIS:|:LCDC:|:TCDC:low|:DPT:2 m|:RH:2 m" | head
+          echo "== GEFS aerosols"; curl -s "https://noaa-gefs-pds.s3.amazonaws.com/?list-type=2&prefix=gefs.$D/00/chem/&delimiter=/" | grep -o "<Prefix>[^<]*" | head; 
+          curl -s "https://noaa-gefs-pds.s3.amazonaws.com/?list-type=2&prefix=gefs.$D/00/chem/pgrb2ap25/&max-keys=8" | grep -o "<Key>[^<]*" | head -8
+          F=$(curl -s "https://noaa-gefs-pds.s3.amazonaws.com/?list-type=2&prefix=gefs.$D/00/chem/pgrb2ap25/&max-keys=40" | grep -o "<Key>[^<]*idx" | sed 's/<Key>//' | sed -n 5p); echo "idx $F"; curl -s "https://noaa-gefs-pds.s3.amazonaws.com/$F" | head -30
+          curl -s "https://noaa-gefs-pds.s3.amazonaws.com/?list-type=2&prefix=gefs.$D/00/chem/pgrb2ap25/&max-keys=1000" | grep -o "<Key>[^<]*" | grep -v idx | tail -3
+      - name: short ECMWF globe run with humidity
+        run: |
+          mkdir pub && cd code && GLOB_MAXH=72 python -c "import cloud_global as g;print(g.ec_model('ECMWF','../pub'))" 2>&1 | tail -5
+          cd ../pub && ls ecmwf | head; python3 -c "import json;m=json.load(open('ecmwf/meta.json'));print(m.get('rh2'),len(m['steps']))"
+          rm -f ecmwf/x*.webp; git init -q -b probe-out-feels && git add -A && git -c user.name=p -c user.email=p@x commit -qm o && git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-feels
