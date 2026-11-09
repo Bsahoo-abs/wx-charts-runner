@@ -25,7 +25,7 @@ jobs:
            await p.goto(B+"__new/livemap.html#layer="+lay);await p.waitForTimeout(9000);
            if(cx)await p.evaluate(([la,lo,z])=>{},cx);
            if(n==="lm_vid"){await p.evaluate(()=>document.getElementById("videos").scrollIntoView());await p.waitForTimeout(1500)}
-           else{const btn=await p.$(`#layers button:text-is("${({feels:"Feels like",aqi:"Air quality",fog:"Fog"})[lay]}")`);if(btn){await btn.click();await p.waitForTimeout(12000)}
+           else{const btn=await p.$(`#layers button:text-is("${({feels:"Feels like",aqi:"Air quality",fog:"Fog"})[lay]}")`);if(btn){try{await btn.click({timeout:3000})}catch(e){}await p.waitForTimeout(12000)}
             const sz=vp;await p.mouse.click(sz.width*(mob?.5:.55),sz.height*.42);await p.waitForTimeout(2500)}
            try{await p.screenshot({path:'/tmp/o/'+n+'.png',timeout:120000})}catch(e){console.log(n,'shot fail')}
            console.log(n,'legend:',await p.$eval('#klab',e=>e.textContent).catch(()=>'-'),'| probe:',await p.$eval('#probe',e=>e.hidden?'hidden':e.textContent.slice(0,200)).catch(()=>'-'),'| src:',await p.$eval('#src',e=>e.textContent).catch(()=>'-'));
