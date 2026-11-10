@@ -5,33 +5,25 @@ permissions:
 jobs:
   p:
     runs-on: ubuntu-24.04
+    timeout-minutes: 40
     steps:
       - uses: actions/checkout@v5
         with: {repository: "${{ vars.CODE_REPO }}", token: "${{ secrets.CODE_TOKEN }}", ref: demo-live2, path: c}
       - run: |
-          mkdir -p /tmp/o/assets && npm i -s playwright@1.47.2 >/dev/null 2>&1 && npx -y playwright@1.47.2 install chromium >/dev/null 2>&1
-          RAW=https://raw.githubusercontent.com/Bsahoo-abs/wx-charts-runner/probe-out-feels/
-          sed "s#\"https://test.odisha-wx-charts-glob.pages.dev/\":null#\"$RAW\":null#" c/web/livemap.html > /tmp/lm.html; grep -c probe-out-feels /tmp/lm.html
+          mkdir -p /tmp/o && npm i -s playwright@1.47.2 >/dev/null 2>&1 && npx -y playwright@1.47.2 install chromium >/dev/null 2>&1
           cat > s.js <<'J'
           const {chromium}=require('playwright'),fs=require('fs'),path=require('path');
-          const B="https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev/";const saved={};
+          const B="https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev/";
           (async()=>{const b=await chromium.launch({args:["--use-gl=angle","--use-angle=swiftshader","--enable-unsafe-swiftshader"]});
-          for(const [n,lay,vp,mob,cx] of [["lm_feels","feels",{width:1440,height:860},false,[20,80,3.2]],["lm_aqi","aqi",{width:1440,height:860},false,[24,82,4]],["lm_fog","fog",{width:1440,height:860},false,[26,80,4.2]],["lm_aqi_m","aqi",{width:390,height:844},true,[24,82,3.6]],["lm_vid","wind",{width:1440,height:860},false,null]]){
-           const c=await b.newContext({viewport:vp,isMobile:mob,hasTouch:mob});
-           await c.route(B+"__new/**",async r=>{const rel=new URL(r.request().url()).pathname.replace(/^\/__new\//,'');if(rel==="livemap.html")return r.fulfill({path:"/tmp/lm.html",contentType:"text/html"});
-            const res=await r.fetch({url:B+rel});const body=await res.body();if(!/^(ECMWF|GFS|AIFS|ICON|GEM|AIGFS|ECMWF9)\//.test(rel)&&body.length<3e6)saved[rel]=body.toString('base64');return r.fulfill({response:res,body})});
-           const p=await c.newPage();p.on('pageerror',e=>console.log(n,'ERR',e.message));p.on('console',m=>{if(m.type()==='error')console.log(n,'console',m.text().slice(0,150))});
-           await p.addInitScript(([l])=>{try{localStorage.setItem("lm_prefs",JSON.stringify({layer:l}))}catch(e){}},[lay]);
-           await p.goto(B+"__new/livemap.html#layer="+lay);await p.waitForTimeout(9000);
-           if(cx)await p.evaluate(([la,lo,z])=>{},cx);
-           if(n==="lm_vid"){await p.evaluate(()=>document.getElementById("videos").scrollIntoView());await p.waitForTimeout(1500)}
-           else{const btn=await p.$(`#layers button:text-is("${({feels:"Feels like",aqi:"Air quality",fog:"Fog"})[lay]}")`);if(btn){try{await btn.click({timeout:3000})}catch(e){}await p.waitForTimeout(12000)}
-            const sz=vp;await p.mouse.click(sz.width*(mob?.5:.55),sz.height*.42);await p.waitForTimeout(2500)}
-           try{await p.screenshot({path:'/tmp/o/'+n+'.png',timeout:120000})}catch(e){console.log(n,'shot fail')}
-           console.log(n,'legend:',await p.$eval('#klab',e=>e.textContent).catch(()=>'-'),'| probe:',await p.$eval('#probe',e=>e.hidden?'hidden':e.textContent.slice(0,200)).catch(()=>'-'),'| src:',await p.$eval('#src',e=>e.textContent).catch(()=>'-'));
-           if(n==="lm_vid")console.log('videos:',await p.$$eval('#vids .go',e=>e.map(x=>x.textContent).join(' | ')));
+          for(const [n,h,mk] of [["v_india","m=ECMWF&type=rain&len=72&area=India%20and%20the%20seas%20around",1],["v_globe","m=GFS&type=rain&len=72&area=Whole%20globe",0],["v_bay_wind","m=ECMWF&type=wind&len=72&area=Bay%20of%20Bengal",0]]){
+           const c=await b.newContext({viewport:{width:1500,height:900},acceptDownloads:true});
+           await c.route(B+"__new/**",async r=>{const rel=new URL(r.request().url()).pathname.replace(/^\/__new\//,''),f=path.join('c/web',rel);if(fs.existsSync(f)&&fs.statSync(f).isFile())return r.fulfill({path:f,contentType:rel.endsWith('.html')?'text/html':rel.endsWith('.json')?'application/json':undefined});const res=await r.fetch({url:B+rel});return r.fulfill({response:res})});
+           const p=await c.newPage();p.on('pageerror',e=>console.log(n,'ERR',e.message));await p.goto(B+"__new/videos.html#"+h);await p.waitForTimeout(40000);
+           console.log(n,await p.$eval('#stat',e=>e.textContent),'| storms:',await p.$$eval('#storms button',e=>e.map(x=>x.textContent).join(', ')));
+           await p.$eval('#out',e=>e.scrollIntoView());await (await p.$('#out')).screenshot({path:'/tmp/o/'+n+'.png',timeout:120000});
+           if(mk){const t0=Date.now();const [dl]=await Promise.all([p.waitForEvent('download',{timeout:1500000}),p.click('#bmake')]);await dl.saveAs('/tmp/o/'+n+'.mp4');console.log(n,'mp4',(Date.now()-t0)/1000,'s')}
            await c.close()}
-          fs.writeFileSync('/tmp/o/assets/saved.json',JSON.stringify(saved));console.log('saved',Object.keys(saved).join(' '));await b.close()})();
+          await b.close()})();
           J
           node s.js
-          cd /tmp/o && git init -q -b probe-out-lm && git add -A && git -c user.name=p -c user.email=p@x commit -qm o && git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-lm
+          cd /tmp/o && git init -q -b probe-out-vid && git add -A && git -c user.name=p -c user.email=p@x commit -qm o && git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-vid
