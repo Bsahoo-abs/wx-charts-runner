@@ -17,8 +17,8 @@ jobs:
           (async()=>{const b=await chromium.launch({args:["--use-gl=angle","--use-angle=swiftshader","--enable-unsafe-swiftshader"]});
           {const c=await b.newContext();await c.route(B+"__new/**",async r=>{const rel=new URL(r.request().url()).pathname.replace(/^\/__new\//,''),f=path.join('c/web',rel);if(fs.existsSync(f)&&fs.statSync(f).isFile())return r.fulfill({path:f,contentType:rel.endsWith('.html')?'text/html':rel.endsWith('.json')?'application/json':undefined});const res=await r.fetch({url:B+rel});return r.fulfill({response:res})});
            const p=await c.newPage();p.on('console',m=>console.log('c',m.type(),m.text().slice(0,200)));p.on('pageerror',e=>console.log('ERR',e.message));await p.goto(B+"__new/videos.html#area=Bay%20of%20Bengal");await p.waitForTimeout(30000);
-           console.log(await p.evaluate(async()=>{const u="https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/BlueMarble_NextGeneration/default/GoogleMapsCompatible_Level8/3/3/5.jpeg";const r=await fetch(u);const u2="https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/BlueMarble_ShadedRelief/default/GoogleMapsCompatible_Level8/3/3/5.jpeg";const r2=await fetch(u2);
-            const l=await fetch("live/land.json").then(r=>r.status);return JSON.stringify({bm:r.status,cors:r.headers.get("access-control-allow-origin"),type:r.headers.get("content-type"),sr:r2.status,land:l})}));
+           console.log('dbg',await p.evaluate(()=>{let t;try{t=window.__base.toDataURL().length}catch(e){t='tainted '+e.message}const g=window.__base.getContext("2d");let px;try{px=[...g.getImageData(640,300,1,1).data]}catch(e){px='x'}return JSON.stringify({dbg:window.__dbg,url:t,px})}));
+           await (await p.$('#out')).screenshot({path:'/tmp/o/dbg.png'});
            await c.close()}
           await b.close()})();
           J
