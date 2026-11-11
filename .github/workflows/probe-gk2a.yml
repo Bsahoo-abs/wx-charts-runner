@@ -20,7 +20,7 @@ jobs:
           const btns=await p.$$eval('button',e=>e.filter(x=>x.offsetParent).map(x=>x.textContent.trim().slice(0,40)));console.log('buttons',JSON.stringify(btns.slice(0,30)));
           const pick=await p.$('button:has-text("Tracks by pressure")');if(pick){await pick.click();await p.waitForTimeout(1500)}
           await p.screenshot({path:'/tmp/o/sheet.png'});
-          const g=await p.$('text=Cyclone guidance: all models');console.log('guide item',!!g);if(g){await g.click();await p.waitForTimeout(6000);console.log('now at',p.url());await p.screenshot({path:'/tmp/o/guide.png'})}
+          const g=p.locator('#sheet :text("Cyclone guidance: all models")');console.log('guide item in sheet',await g.count());if(await g.count()){await g.first().click({timeout:5000});await p.waitForTimeout(6000);console.log('now at',p.url());await p.screenshot({path:'/tmp/o/guide.png'})}
           await p.goto(B+"__new/lab.html#guide-change");await p.waitForTimeout(6000);await p.screenshot({path:'/tmp/o/change.png'});
           await b.close()})();
           J
