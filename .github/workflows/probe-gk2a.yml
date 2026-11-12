@@ -1,5 +1,8 @@
 name: probe-gk2a
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      ref: {default: demo-brand}
 permissions:
   contents: write
 jobs:
@@ -7,7 +10,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v5
-        with: {repository: "${{ vars.CODE_REPO }}", token: "${{ secrets.CODE_TOKEN }}", ref: demo-brand, path: c}
+        with: {repository: "${{ vars.CODE_REPO }}", token: "${{ secrets.CODE_TOKEN }}", ref: "${{ inputs.ref }}", path: c}
       - run: mkdir -p /tmp/o && bash c/demo/probe.sh /tmp/o 2>&1 | tail -60
       - if: always()
         run: cd /tmp/o && git init -q -b probe-out-brand && git add -A && git -c user.name=p -c user.email=p@x commit -qm o && git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-brand
