@@ -13,7 +13,7 @@ jobs:
           cat > s.js <<'J'
           const {chromium}=require('playwright');(async()=>{const b=await chromium.launch({args:["--use-gl=angle","--use-angle=swiftshader","--enable-unsafe-swiftshader"]});
           for(const [n,vp] of [["hd",{width:1440,height:900}],["hm",{width:390,height:844}]]){const p=await b.newPage({viewport:vp});p.on('pageerror',e=>console.log(n,'ERR',e.message));p.on('console',m=>console.log(n,m.type(),m.text().slice(0,150)));
-           await p.goto('file://'+process.cwd()+'/c/demo/brand.html');await p.waitForTimeout(45000);console.log(n,await p.$eval('#credit',e=>e.textContent));await p.screenshot({path:'/tmp/o/'+n+'.png',timeout:120000});await p.close()}
+           await p.goto('file://'+process.cwd()+'/c/demo/brand.html',{waitUntil:'domcontentloaded'});await p.waitForTimeout(45000);console.log(n,await p.$eval('#credit',e=>e.textContent));await p.screenshot({path:'/tmp/o/'+n+'.png',timeout:120000});await p.close()}
           await b.close()})();
           J
           node s.js
