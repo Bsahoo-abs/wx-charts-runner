@@ -1,0 +1,71 @@
+{
+ "model": "ECMWF_ENS",
+ "label": "ECMWF ENS",
+ "version": "ens-5",
+ "pictures": {
+  "tc_wind_png": {
+   "file": "tc_wind.png",
+   "mb": 0.8
+  },
+  "tc_wind_gif": {
+   "file": "tc_wind.gif",
+   "mb": 6.9
+  }
+ },
+ "tracks": true,
+ "credit": "Data: ECMWF Open Data (ENS)",
+ "run": "2026111200",
+ "members": 51,
+ "init": "2026-11-12T00:00:00Z",
+ "made": "2026-11-12T08:17:54Z",
+ "items": {
+  "tracks_all": {
+   "title": "Tracks \u00b7 central pressure \u00b7 Whole map",
+   "mp4": "tracks_all.mp4",
+   "poster": "tracks_all.jpg",
+   "mb": 23.0,
+   "summary": "tracks_all_summary.png",
+   "gif": "tracks_all.gif"
+  },
+  "tracks_bob": {
+   "title": "Tracks \u00b7 central pressure \u00b7 Bay of Bengal",
+   "mp4": "tracks_bob.mp4",
+   "poster": "tracks_bob.jpg",
+   "mb": 18.5,
+   "summary": "tracks_bob_summary.png",
+   "gif": "tracks_bob.gif"
+  },
+  "tracks_arab": {
+   "title": "Tracks \u00b7 central pressure \u00b7 Arabian Sea",
+   "mp4": "tracks_arab.mp4",
+   "poster": "tracks_arab.jpg",
+   "mb": 15.6,
+   "summary": "tracks_arab_summary.png",
+   "gif": "tracks_arab.gif"
+  },
+  "tracks_wind_all": {
+   "title": "Tracks \u00b7 strongest wind \u00b7 Whole map",
+   "mp4": "tracks_wind_all.mp4",
+   "poster": "tracks_wind_all.jpg",
+   "mb": 23.3,
+   "summary": "tracks_wind_all_summary.png",
+   "gif": "tracks_wind_all.gif"
+  },
+  "tracks_wind_bob": {
+   "title": "Tracks \u00b7 strongest wind \u00b7 Bay of Bengal",
+   "mp4": "tracks_wind_bob.mp4",
+   "poster": "tracks_wind_bob.jpg",
+   "mb": 18.8,
+   "summary": "tracks_wind_bob_summary.png",
+   "gif": "tracks_wind_bob.gif"
+  },
+  "tracks_wind_arab": {
+   "title": "Tracks \u00b7 strongest wind \u00b7 Arabian Sea",
+   "mp4": "tracks_wind_arab.mp4",
+   "poster": "tracks_wind_arab.jpg",
+   "mb": 15.8,
+   "summary": "tracks_wind_arab_summary.png",
+   "gif": "tracks_wind_arab.gif"
+  }
+ }
+}

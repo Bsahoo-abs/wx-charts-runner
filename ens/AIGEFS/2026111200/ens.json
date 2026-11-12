@@ -1,0 +1,59 @@
+{
+ "model": "AIGEFS",
+ "label": "NOAA AIGEFS",
+ "version": "ens-5",
+ "pictures": {
+  "tc_wind_png": {
+   "file": "tc_wind.png",
+   "mb": 0.5
+  },
+  "tc_wind_gif": {
+   "file": "tc_wind.gif",
+   "mb": 1.3
+  },
+  "tc_centres_gif": {
+   "file": "tc_centres.gif",
+   "mb": 6.3
+  }
+ },
+ "tracks": true,
+ "credit": "Data: NOAA AIGEFS",
+ "run": "2026111200",
+ "members": 31,
+ "init": "2026-11-12T00:00:00Z",
+ "made": "2026-11-12T05:18:18Z",
+ "items": {
+  "tracks_all": {
+   "title": "Tracks \u00b7 central pressure \u00b7 Whole map",
+   "mp4": "tracks_all.mp4",
+   "poster": "tracks_all.jpg",
+   "mb": 11.9,
+   "summary": "tracks_all_summary.png",
+   "gif": "tracks_all.gif"
+  },
+  "tracks_bob": {
+   "title": "Tracks \u00b7 central pressure \u00b7 Bay of Bengal",
+   "mp4": "tracks_bob.mp4",
+   "poster": "tracks_bob.jpg",
+   "mb": 8.7,
+   "summary": "tracks_bob_summary.png",
+   "gif": "tracks_bob.gif"
+  },
+  "tracks_wind_all": {
+   "title": "Tracks \u00b7 strongest wind \u00b7 Whole map",
+   "mp4": "tracks_wind_all.mp4",
+   "poster": "tracks_wind_all.jpg",
+   "mb": 12.0,
+   "summary": "tracks_wind_all_summary.png",
+   "gif": "tracks_wind_all.gif"
+  },
+  "tracks_wind_bob": {
+   "title": "Tracks \u00b7 strongest wind \u00b7 Bay of Bengal",
+   "mp4": "tracks_wind_bob.mp4",
+   "poster": "tracks_wind_bob.jpg",
+   "mb": 8.9,
+   "summary": "tracks_wind_bob_summary.png",
+   "gif": "tracks_wind_bob.gif"
+  }
+ }
+}
