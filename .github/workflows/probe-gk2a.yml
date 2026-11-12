@@ -9,7 +9,7 @@ jobs:
       - run: |
           mkdir -p /tmp/o && cd /tmp/o
           B=https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev; U="Mozilla/5.0 Chrome/130"
-          curl -sfA "$U" $B/index.json -o index.json; curl -sfA "$U" $B/guide/guide.json -o guide.json
+          curl -sfA "$U" $B/index.json -o index.json; curl -sfA "$U" $B/guide/guide.json -o guide.json; for f in tracks_bob intensity_bob cycle_bob enstracks_bob; do curl -sfA "$U" $B/guide/$f.png -o $f.png; done; python3 -c "import json;print(json.load(open('index.json'))['models'][0]['runs'][0].get('charts',{}).keys())" || true
           python3 - <<'P'
           import json,subprocess,os
           B="https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev/";ix=json.load(open("index.json"))
