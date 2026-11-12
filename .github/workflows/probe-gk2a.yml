@@ -6,9 +6,15 @@ jobs:
   p:
     runs-on: ubuntu-24.04
     steps:
+      - uses: actions/checkout@v5
+        with: {repository: "${{ vars.CODE_REPO }}", token: "${{ secrets.CODE_TOKEN }}", ref: demo-brand, path: c}
       - run: |
-          mkdir -p /tmp/o && cd /tmp/o; B=https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev; U="Mozilla/5.0 Chrome/130"
-          curl -sfA "$U" $B/index.json -o index.json
-          R=$(python3 -c "import json;m=[x for x in json.load(open('index.json'))['models'] if x['model']=='ECMWF'][0];print(m['runs'][0]['run'])")
-          for c in precip6 wind10 gust10; do curl -sfA "$U" "$B/ECMWF/$R/$c/f048.png" -o ${c}_048.png; done; curl -sfA "$U" $B/logo-am-wide.png -o logo.png; ls -la
-          git init -q -b probe-out-ui && git add -A && git -c user.name=p -c user.email=p@x commit -qm o && git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-ui
+          mkdir -p /tmp/o && npm i -s playwright@1.47.2 >/dev/null 2>&1 && npx -y playwright@1.47.2 install chromium >/dev/null 2>&1
+          cat > s.js <<'J'
+          const {chromium}=require('playwright');(async()=>{const b=await chromium.launch({args:["--use-gl=angle","--use-angle=swiftshader","--enable-unsafe-swiftshader"]});
+          for(const [n,vp] of [["hd",{width:1440,height:900}],["hm",{width:390,height:844}]]){const p=await b.newPage({viewport:vp});p.on('pageerror',e=>console.log(n,'ERR',e.message));p.on('console',m=>console.log(n,m.type(),m.text().slice(0,150)));
+           await p.goto('file://'+process.cwd()+'/c/demo/brand.html');await p.waitForTimeout(45000);console.log(n,await p.$eval('#credit',e=>e.textContent));await p.screenshot({path:'/tmp/o/'+n+'.png',timeout:120000});await p.close()}
+          await b.close()})();
+          J
+          node s.js
+          cd /tmp/o && git init -q -b probe-out-brand && git add -A && git -c user.name=p -c user.email=p@x commit -qm o && git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-brand
