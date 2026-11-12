@@ -8,13 +8,6 @@ jobs:
     steps:
       - uses: actions/checkout@v5
         with: {repository: "${{ vars.CODE_REPO }}", token: "${{ secrets.CODE_TOKEN }}", ref: demo-brand, path: c}
-      - run: |
-          mkdir -p /tmp/o && npm i -s playwright@1.47.2 >/dev/null 2>&1 && npx -y playwright@1.47.2 install chromium >/dev/null 2>&1
-          cat > s.js <<'J'
-          const {chromium}=require('playwright');(async()=>{const b=await chromium.launch({args:["--use-gl=angle","--use-angle=swiftshader","--enable-unsafe-swiftshader"]});
-          for(const [n,vp] of [["hd",{width:1440,height:900}],["hm",{width:390,height:844}]]){const p=await b.newPage({viewport:vp});p.on('pageerror',e=>console.log(n,'ERR',e.message));p.on('console',m=>console.log(n,m.type(),m.text().slice(0,150)));
-           await p.goto('file://'+process.cwd()+'/c/demo/brand_built.html',{waitUntil:'domcontentloaded'});await p.waitForTimeout(45000);console.log(n,await p.$eval('#credit',e=>e.textContent));await p.screenshot({path:'/tmp/o/'+n+'.png',timeout:120000});await p.click('#pick button[data-p="charts"]');await p.waitForTimeout(1500);await p.screenshot({path:'/tmp/o/c'+n+'.png',timeout:120000});await p.click('#pick button[data-p="cyclones"]');await p.waitForTimeout(1500);await p.screenshot({path:'/tmp/o/y'+n+'.png',timeout:120000,fullPage:true});await p.click('#pick button[data-p="home"]');await p.evaluate(()=>document.getElementById('world').open=true);await p.waitForTimeout(800);await p.screenshot({path:'/tmp/o/w'+n+'.png',fullPage:true,timeout:120000});await p.close()}
-          await b.close()})();
-          J
-          node s.js
-          cd /tmp/o && git init -q -b probe-out-brand && git add -A && git -c user.name=p -c user.email=p@x commit -qm o && git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-brand
+      - run: mkdir -p /tmp/o && bash c/demo/probe.sh /tmp/o 2>&1 | tail -60
+      - if: always()
+        run: cd /tmp/o && git init -q -b probe-out-brand && git add -A && git -c user.name=p -c user.email=p@x commit -qm o && git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-brand
