@@ -6,23 +6,23 @@ jobs:
   p:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v5
-        with: {repository: "${{ vars.CODE_REPO }}", token: "${{ secrets.CODE_TOKEN }}", ref: demo-cycnav, path: c}
       - run: |
-          mkdir -p /tmp/o && npm i -s playwright@1.47.2 >/dev/null 2>&1 && npx -y playwright@1.47.2 install chromium >/dev/null 2>&1
-          cat > s.js <<'J'
-          const {chromium}=require('playwright'),fs=require('fs'),path=require('path');const B="https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev/";
-          (async()=>{const b=await chromium.launch();
-          const c=await b.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true});
-          await c.route(B+"__new/**",async r=>{const rel=new URL(r.request().url()).pathname.replace(/^\/__new\//,''),f=path.join('c/web',rel);if(fs.existsSync(f)&&fs.statSync(f).isFile()&&rel.endsWith('.html'))return r.fulfill({path:f,contentType:'text/html'});const res=await r.fetch({url:B+rel});return r.fulfill({response:res})});
-          const p=await c.newPage();p.on('pageerror',e=>console.log('ERR',e.message));await p.goto(B+"__new/index.html");await p.waitForTimeout(5000);
-          await p.click('text=Cyclones');await p.waitForTimeout(3000);
-          const btns=await p.$$eval('button',e=>e.filter(x=>x.offsetParent).map(x=>x.textContent.trim().slice(0,40)));console.log('buttons',JSON.stringify(btns.slice(0,30)));
-          const pick=await p.$('button:has-text("Tracks by pressure")');if(pick){await pick.click();await p.waitForTimeout(1500)}
-          await p.screenshot({path:'/tmp/o/sheet.png'});
-          const g=p.locator('#sheet :text("Cyclone guidance: all models")');console.log('guide item in sheet',await g.count());if(await g.count()){await g.first().click({timeout:5000});await p.waitForTimeout(6000);console.log('now at',p.url());await p.screenshot({path:'/tmp/o/guide.png'})}
-          await p.goto(B+"__new/lab.html#guide-change");await p.waitForTimeout(6000);await p.screenshot({path:'/tmp/o/change.png'});
-          await b.close()})();
-          J
-          node s.js
-          cd /tmp/o && git init -q -b probe-out-cyc && git add -A && git -c user.name=p -c user.email=p@x commit -qm o && git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-cyc
+          mkdir -p /tmp/o && cd /tmp/o
+          B=https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev; U="Mozilla/5.0 Chrome/130"
+          curl -sfA "$U" $B/index.json -o index.json; curl -sfA "$U" $B/guide/guide.json -o guide.json
+          python3 - <<'P'
+          import json,subprocess,os
+          B="https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev/";ix=json.load(open("index.json"))
+          for m in ix["models"]:
+              for r in m["runs"][:3]:
+                  d=f"{m['model']}/{r['run']}";os.makedirs(d,exist_ok=True)
+                  for f in ["tracks.json","run.json"]:
+                      subprocess.run(["curl","-sfA","Mozilla/5.0 Chrome/130","-o",f"{d}/{f}",B+d+"/"+f])
+          for m in ix.get("ens",[]):
+              for r in m["runs"][:2]:
+                  d=f"ens/{m['model']}/{r['run']}";os.makedirs(d,exist_ok=True)
+                  for f in ["tracks.csv","ens.json"]:
+                      subprocess.run(["curl","-sfA","Mozilla/5.0 Chrome/130","-o",f"{d}/{f}",B+d+"/"+f])
+          P
+          find . -name "*.json" -size -2 -delete; ls -R | head -80
+          git init -q -b probe-out-trk && git add -A && git -c user.name=p -c user.email=p@x commit -qm o && git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-trk
