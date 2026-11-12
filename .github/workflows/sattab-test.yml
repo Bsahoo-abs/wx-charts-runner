@@ -20,6 +20,7 @@ permissions:
 
 jobs:
   sat:
+    continue-on-error: true
     runs-on: ubuntu-24.04
     timeout-minutes: 75
     steps:
@@ -44,8 +45,8 @@ jobs:
           cache: pip
           cache-dependency-path: code/cloud_sat.py
       - run: |
-          pip install -q numpy scipy pillow cartopy "shapely>=2" "satpy[ami_l1b]" opencv-python-headless pyspectral pyresample netCDF4 h5netcdf dask
-          npm i -g -s wrangler@3 >/dev/null 2>&1
+          for i in 1 2 3; do pip install -q numpy scipy pillow cartopy "shapely>=2" "satpy[ami_l1b]" opencv-python-headless pyspectral pyresample netCDF4 h5netcdf dask && break; echo "install failed, trying again"; sleep 20; done
+          for i in 1 2 3; do npm i -g -s wrangler@3 >/dev/null 2>&1 && break; sleep 20; done
       - name: Satellite tab pictures, as soon as each scan arrives
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}

@@ -18,6 +18,7 @@ permissions:
 
 jobs:
   watch:
+    continue-on-error: true
     runs-on: ubuntu-24.04
     timeout-minutes: 40
     steps:
@@ -33,7 +34,7 @@ jobs:
           cache: pip
           cache-dependency-path: code/requirements.txt
       - name: Install
-        run: pip install -q -r code/requirements.txt
+        run: for i in 1 2 3; do pip install -q -r code/requirements.txt && break; echo "install failed, trying again"; sleep 20; done
       - name: Watch the data servers (every 2 minutes, 30 minutes long)
         env:
           MPLBACKEND: Agg

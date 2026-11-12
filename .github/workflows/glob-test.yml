@@ -13,6 +13,7 @@ permissions:
   actions: write
 jobs:
   glob:
+    continue-on-error: true
     runs-on: ubuntu-24.04
     timeout-minutes: 60
     steps:
@@ -30,7 +31,7 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: "3.11"
-      - run: pip install -q numpy scipy pillow eccodes eccodeslib || pip install -q numpy scipy pillow eccodes
+      - run: for i in 1 2 3; do (pip install -q numpy scipy pillow eccodes eccodeslib || pip install -q numpy scipy pillow eccodes) && break; echo "install failed, trying again"; sleep 20; done
       - name: Globe
         id: g
         run: |

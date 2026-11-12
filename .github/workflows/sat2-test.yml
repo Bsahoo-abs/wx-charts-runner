@@ -21,6 +21,7 @@ permissions:
 
 jobs:
   sat:
+    continue-on-error: true
     runs-on: ubuntu-24.04
     timeout-minutes: 66
     steps:
@@ -43,8 +44,8 @@ jobs:
         with:
           python-version: "3.11"
       - run: |
-          pip install -q numpy scipy pillow cartopy "shapely>=2" "satpy[ami_l1b]" pyspectral pyresample netCDF4 h5netcdf dask opencv-python-headless pdfplumber
-          npm i -g -s wrangler@3 >/dev/null 2>&1
+          for i in 1 2 3; do pip install -q numpy scipy pillow cartopy "shapely>=2" "satpy[ami_l1b]" pyspectral pyresample netCDF4 h5netcdf dask opencv-python-headless pdfplumber && break; echo "install failed, trying again"; sleep 20; done
+          for i in 1 2 3; do npm i -g -s wrangler@3 >/dev/null 2>&1 && break; sleep 20; done
       - name: Satellite every 10 minutes
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}

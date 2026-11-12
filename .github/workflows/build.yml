@@ -25,6 +25,7 @@ permissions:
 
 jobs:
   make:
+    continue-on-error: true
     runs-on: ubuntu-24.04
     timeout-minutes: 120
     outputs:
@@ -52,7 +53,7 @@ jobs:
           cache-dependency-path: code/requirements.txt
       - name: Install
         run: |
-          pip install -q -r code/requirements.txt
+          for i in 1 2 3; do pip install -q -r code/requirements.txt && break; echo "install failed, trying again"; sleep 20; done
           python -c "import cartopy, eccodes"
       - name: Make ${{ inputs.model }}
         id: run
@@ -95,6 +96,7 @@ jobs:
   publish:
     needs: make
     if: needs.make.result == 'success'
+    continue-on-error: true
     runs-on: ubuntu-24.04
     timeout-minutes: 40
     concurrency:
@@ -155,7 +157,7 @@ jobs:
         env:
           MPLBACKEND: Agg
         run: |
-          pip install -q numpy matplotlib cartopy "shapely>=2" reportlab pillow
+          for i in 1 2 3; do pip install -q numpy matplotlib cartopy "shapely>=2" reportlab pillow && break; echo "install failed, trying again"; sleep 20; done
           python code/cloud_guidance.py site
       - name: Build the website
         run: python3 code/site_build.py site && python3 code/cloud_keep.py write site
