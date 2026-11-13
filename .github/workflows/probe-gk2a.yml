@@ -12,5 +12,6 @@ jobs:
       - uses: actions/checkout@v5
         with: {repository: "${{ vars.CODE_REPO }}", token: "${{ secrets.CODE_TOKEN }}", ref: "${{ inputs.ref }}", path: c}
       - run: mkdir -p /tmp/o && bash c/demo/probe.sh /tmp/o 2>&1 | tail -60
+        env: {DATAGOV_KEY: "${{ secrets.DATAGOV_KEY }}"}
       - if: always()
         run: cd /tmp/o && git init -q -b probe-out-brand && git add -A && git -c user.name=p -c user.email=p@x commit -qm o && git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-out-brand
