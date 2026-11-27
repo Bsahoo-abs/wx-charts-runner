@@ -61,7 +61,7 @@ jobs:
           python cloud_tcfeed.py ../pub https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev > ../tc.log 2>&1 || true
           python cloud_tcworld.py ../pub >> ../tc.log 2>&1 || true
           tail -3 ../tc.log
-          start=$(date +%s); obs=0; first=1
+          start=$(date +%s); obs=0; city=0; first=1
           while :; do
             # weather stations: every 10 minutes (airports report each hour, weather stations every 3 hours)
             if [ $(( $(date +%s) - obs )) -ge 590 ]; then
@@ -70,6 +70,12 @@ jobs:
               # runs alongside the satellite, so neither waits for the other; its files go up with the next upload
               (OBS_SYNOP_H=$([ $first = 1 ] && echo 222 || echo 30) timeout 540 python cloud_obs.py ../pub https://test.odisha-wx-charts-sat.pages.dev > ../obs.log 2>&1 || echo "obs: failed this time" >> ../obs.log) &
               first=0
+            fi
+            # IMD district stations (IMD city weather): every 30 minutes
+            if [ $(( $(date +%s) - city )) -ge 1790 ]; then
+              city=$(date +%s)
+              [ -f ../city.log ] && tail -2 ../city.log
+              (timeout 900 python cloud_imdcity.py ../pub https://test.odisha-wx-charts-sat.pages.dev > ../city.log 2>&1 || echo "imdcity: failed this time" >> ../city.log) &
             fi
             python cloud_sat2.py ../pub 480 || echo "::warning title=sat2::failed this time"
             (cd pages_sat && { wrangler pages deploy ../../pub --project-name "$PROJECT" --branch test --commit-dirty=true >/dev/null 2>&1 \
