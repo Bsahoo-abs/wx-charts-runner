@@ -52,6 +52,7 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           PROJECT: ${{ vars.PAGES_PROJECT }}-sat
           TRACK_PASSCODE: ${{ secrets.TRACK_PASSCODE }}
+          GH_TOKEN: ${{ github.token }}
         run: |
           cd code
           mkdir -p ../pub
@@ -74,6 +75,8 @@ jobs:
             (cd pages_sat && { wrangler pages deploy ../../pub --project-name "$PROJECT" --branch test --commit-dirty=true >/dev/null 2>&1 \
               || wrangler pages deploy ../../pub --project-name "$PROJECT" --branch test --commit-dirty=true; }) || echo "::warning title=sat2::upload failed, next pass tries again"
             [ $(( $(date +%s) - start )) -gt 3150 ] && break
+            # GitHub's own timer is often hours late: near the end, line up the next run ourselves
+            if [ -z "$chained" ] && [ $(( $(date +%s) - start )) -gt 2700 ]; then chained=1; gh workflow run sat2-test.yml -R "$GITHUB_REPOSITORY" --ref main || true; fi
             sleep 150
           done
           echo "::notice title=sat2::$(du -sh ../pub | cut -f1), $(ls ../pub/sat2/h | wc -l) pictures, newest $(ls ../pub/sat2/h | tail -1)"
