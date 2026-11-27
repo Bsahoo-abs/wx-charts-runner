@@ -55,13 +55,19 @@ jobs:
         run: |
           cd code
           mkdir -p ../pub
-          printf '/*\n  Access-Control-Allow-Origin: *\n/sat2/sat.json\n  Cache-Control: no-cache\n/tc/*\n  Cache-Control: no-cache\n/sat2/*\n  Cache-Control: public, max-age=86400\n' > ../pub/_headers
+          printf '/*\n  Access-Control-Allow-Origin: *\n/sat2/sat.json\n  Cache-Control: no-cache\n/tc/*\n  Cache-Control: no-cache\n/obs/*\n  Cache-Control: max-age=60\n/sat2/*\n  Cache-Control: public, max-age=86400\n' > ../pub/_headers
           TRACK_PASSCODE="$TRACK_PASSCODE" python tools/cf_setup.py "$PROJECT" || true
           python cloud_tcfeed.py ../pub https://ow-5k4kr1ny9f.odisha-wx-charts.pages.dev > ../tc.log 2>&1 || true
           python cloud_tcworld.py ../pub >> ../tc.log 2>&1 || true
           tail -3 ../tc.log
-          start=$(date +%s)
+          start=$(date +%s); obs=0; first=1
           while :; do
+            # weather stations: every 10 minutes (airports report each hour, weather stations every 3 hours)
+            if [ $(( $(date +%s) - obs )) -ge 590 ]; then
+              obs=$(date +%s)
+              OBS_SYNOP_H=$([ $first = 1 ] && echo 222 || echo 30) timeout 400 python cloud_obs.py ../pub https://test.odisha-wx-charts-sat.pages.dev > ../obs.log 2>&1 || echo "::warning title=obs::station reports failed this time"
+              grep "^obs" ../obs.log | tail -8; first=0
+            fi
             python cloud_sat2.py ../pub 480 || echo "::warning title=sat2::failed this time"
             (cd pages_sat && { wrangler pages deploy ../../pub --project-name "$PROJECT" --branch test --commit-dirty=true >/dev/null 2>&1 \
               || wrangler pages deploy ../../pub --project-name "$PROJECT" --branch test --commit-dirty=true; }) || echo "::warning title=sat2::upload failed, next pass tries again"
